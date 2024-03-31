@@ -4,9 +4,30 @@ from streamlit_option_menu import option_menu
 from paginas import inicio, eda, modelo, sobre_nosotros
 
 def create_sidebar():
+    # Aplicar estilos CSS personalizados para el sidebar
+    st.markdown("""
+        <style>
+            /* Estilos para el fondo y el texto del sidebar */
+            .css-1lcbmhc {
+                background-color: black;
+                color: white;
+            }
+            /* Añadir estilos adicionales aquí si es necesario */
+        </style>
+        """, unsafe_allow_html=True)
+
+    # Añadir texto personalizado en el sidebar con markdown y HTML
+    st.sidebar.markdown(
+        f'<div style="text-align: center; color: white; font-size: 18px;">'
+        f'Proyecto realizado por<br>'
+        f'José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez'
+        f'</div>',
+        unsafe_allow_html=True
+    )
+
     # Crear el menú de opciones en el sidebar con option_menu
     with st.sidebar:
-        selected = option_menu("Main Menu", ["Inicio", "EDA", "Modelo machine learning", "Sobre nosotros"],
+        selected = option_menu("Menú del proyecto", ["Inicio", "EDA", "Modelo machine learning", "Sobre nosotros"],
             icons=["house", "bar-chart-line", "cpu", "people"],
             menu_icon="cast", default_index=0, orientation="vertical")
 
@@ -20,5 +41,3 @@ def create_sidebar():
     elif selected == "Sobre nosotros":
         sobre_nosotros.display()
 
-# No olvides llamar a la función create_sidebar en tu app
-create_sidebar()
