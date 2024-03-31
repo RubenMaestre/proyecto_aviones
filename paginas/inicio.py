@@ -1,12 +1,13 @@
 # paginas/inicio.py
 import streamlit as st
-from PIL import Image
+#from PIL import Image
 
 def display():
     # Asegúrate de que la ruta a la imagen esté correcta y sea accesible
-    #st.image("sources\cabecera.jpg", use_column_width=True, height=300)
-    img = Image.open('sources/cabecera.jpg')
-    img.show()
+    st.image('sources/cabecera.jpg', use_column_width=True)
+
+    #img = Image.open('sources/cabecera.jpg')
+    #img.show()
 
     # Título de bienvenida
     st.title("Bienvenidos al análisis de puntualidad en aeropuertos")
