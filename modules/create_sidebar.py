@@ -4,15 +4,39 @@ from streamlit_option_menu import option_menu
 from paginas import inicio, eda, modelo, sobre_nosotros
 
 def create_sidebar():
-    # Aplicar estilos CSS personalizados para el sidebar
+     # Aplicar estilos CSS personalizados para el sidebar
     st.markdown("""
         <style>
             /* Estilos para el fondo y el texto del sidebar */
-            .css-1lcbmhc {
-                background-color: black;
-                color: white;
+            [data-testid="stSidebar"] .css-1e5imcs {
+                background-color: black !important;
             }
-            /* Añadir estilos adicionales aquí si es necesario */
+            [data-testid="stSidebar"] .css-1e5imcs * {
+                color: white !important;
+            }
+            
+            /* Ajustar el color de texto de todos los elementos dentro del sidebar */
+            [data-testid="stSidebar"] .st-bq, 
+            [data-testid="stSidebar"] .st-cx {
+                color: white !important;
+            }
+            
+            /* Estilos específicos para el título y botones del sidebar */
+            [data-testid="stSidebar"] .st-cx {
+                text-align: center !important;
+                margin-top: 30px !important;
+            }
+            
+            [data-testid="stSidebar"] .stButton>button {
+                display: block;
+                margin: 10px auto;
+                width: 90%;
+            }
+            
+            /* Ajustes para el título del sidebar */
+            .css-1v3fvcr {
+                margin-bottom: 30px !important;
+            }
         </style>
         """, unsafe_allow_html=True)
 
