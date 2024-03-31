@@ -15,6 +15,7 @@ def create_sidebar():
                 color: black;
                 font-size: 18px;
                 padding-top: 20px;
+                padding-down: 100px;
                 text-align: center;
             }
                 .imagen-logo {
