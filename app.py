@@ -2,8 +2,12 @@ import streamlit as st
 from menu import create_sidebar
 
 # Configuraciones globales de la app, como el título y la configuración de la página
-st.set_page_config(page_title="Proyecto aviones", layout="wide")
-
+# Configuración de la página, incluyendo el favicon
+st.set_page_config(
+    page_title="Análisis de Puntualidad en Aeropuertos",  # Título de la pestaña del navegador
+    page_icon="images/favicon.png",  # Ruta al archivo del favicon
+    layout="wide"  # Opcional: Configura el layout de la página a "wide"
+)
 # Puedes llamar aquí a cualquier configuración global adicional si es necesario
 
 # Llama a la función de la barra lateral que crea el menú
