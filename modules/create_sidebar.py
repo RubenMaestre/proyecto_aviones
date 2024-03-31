@@ -18,7 +18,7 @@ def create_sidebar():
 
     # Añadir texto personalizado en el sidebar con markdown y HTML
     st.sidebar.markdown(
-        f'<div style="text-align: center; color: white; font-size: 18px;">'
+        f'<div style="text-align: center; color: white; font-size: 18px; margin-bottom: 30px;">'
         f'Proyecto realizado por<br>'
         f'José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez'
         f'</div>',
