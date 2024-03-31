@@ -1,6 +1,7 @@
-# menu.py
+"""# menu.py
 import streamlit as st
 from paginas import inicio, eda, modelo, sobre_nosotros
+from streamlit_option_menu import option_menu
 
 def create_sidebar():
     # Estilos CSS para aplicar imagen de fondo y estilos de texto al sidebar
@@ -59,3 +60,4 @@ def create_sidebar():
 
     # Llama a la función de la página actual
     menu_items[st.session_state['active_page']]()
+"""
