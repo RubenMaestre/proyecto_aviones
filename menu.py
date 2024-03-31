@@ -3,37 +3,31 @@ import streamlit as st
 from paginas import inicio, eda, modelo, sobre_nosotros
 
 def create_sidebar():
-    # Aplicar estilos CSS directamente
+    # Aplicar estilos CSS para usar una imagen de fondo en el sidebar
     st.markdown("""
         <style>
-            /* Estilo del título en el sidebar */
-            .titulo {
-                font-weight: bold;
-                color: white; /* Texto en blanco */
-                font-size: 18px;
-                padding-top: 20px;
-                text-align: center;
+            /* Establecer la imagen de fondo para el sidebar */
+            .css-1d391kg {
+                background-image: url('sources/fondo_menu.jpg');
+                background-size: cover;  /* Cubrir todo el sidebar */
             }
-            /* Estilo de la barra del sidebar */
-            .css-18e3th9 {
-                background-color: black; /* Fondo negro */
-                color: white; /* Texto en blanco */
+            /* Estilos adicionales para el texto y otros elementos en el sidebar para asegurar legibilidad */
+            .css-1d391kg, .css-1d391kg .st-bb, .css-1d391kg .st-cx, .css-1d391kg .st-dv, .css-1d391kg .st-ij {
+                color: white;  /* Texto en blanco */
             }
-            /* Centrar el título del menú y añadir separación */
-            .css-1xdhyk6 {
-                text-align: center;
-                padding-top: 50px;
-            }
-            /* Estilo de los botones del menú */
-            .css-1v3fvcr {
-                display: block;
+            /* Ajustes para el título y botones del sidebar */
+            .css-1v3fvcr, .css-1n2mvz5 {
                 margin: 0 auto;
                 text-align: center;
+                width: 100%;  /* Ajustar el ancho de los botones y el título */
+            }
+            .css-1xdhyk6 {
+                padding-top: 50px;  /* Añadir separación después del título del menú */
             }
         </style>
         """, unsafe_allow_html=True)
 
-    # Nombre del equipo en la parte superior del sidebar
+    # Título del equipo en el sidebar
     st.sidebar.markdown('<div class="titulo">José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez</div>', unsafe_allow_html=True)
 
     # Configuración de los elementos del menú
