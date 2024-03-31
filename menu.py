@@ -3,34 +3,40 @@ import streamlit as st
 from paginas import inicio, eda, modelo, sobre_nosotros
 
 def create_sidebar():
-    #logo_path = 'sources/logo.png'
-
-    with open('styles/custom_styles.css') as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
+    # Aplicar estilos CSS directamente
     st.markdown("""
         <style>
+            /* Estilo del título en el sidebar */
             .titulo {
                 font-weight: bold;
-                color: black;
+                color: white; /* Texto en blanco */
                 font-size: 18px;
                 padding-top: 20px;
-                padding-down: 100px;
                 text-align: center;
             }
-                .imagen-logo {
+            /* Estilo de la barra del sidebar */
+            .css-18e3th9 {
+                background-color: black; /* Fondo negro */
+                color: white; /* Texto en blanco */
+            }
+            /* Centrar el título del menú y añadir separación */
+            .css-1xdhyk6 {
+                text-align: center;
+                padding-top: 50px;
+            }
+            /* Estilo de los botones del menú */
+            .css-1v3fvcr {
                 display: block;
-                margin-left: 100px;
-                margin-right: 100px;
-                width: 30%;
+                margin: 0 auto;
+                text-align: center;
             }
         </style>
         """, unsafe_allow_html=True)
 
-    # st.sidebar.image(logo_path, width=150)  # Ajusta el ancho si es necesario
-    # Usamos un div con la clase 'titulo' para aplicar los estilos al título
+    # Nombre del equipo en la parte superior del sidebar
     st.sidebar.markdown('<div class="titulo">José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez</div>', unsafe_allow_html=True)
 
+    # Configuración de los elementos del menú
     menu_items = {
         "🏠 Inicio": inicio.display,
         "📊 EDA": eda.display,
@@ -38,12 +44,14 @@ def create_sidebar():
         "🏟 Sobre nosotros": sobre_nosotros.display,
     }
 
+    # Título del menú
     st.sidebar.title("Menú")
 
+    # Determinar la página activa
     if 'active_page' not in st.session_state:
-        # Esto establecerá la página de inicio como predeterminada
         st.session_state['active_page'] = "🏠 Inicio"
 
+    # Crear botones del menú
     for title, page_func in menu_items.items():
         if st.sidebar.button(title):
             st.session_state['active_page'] = title
