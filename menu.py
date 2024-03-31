@@ -3,26 +3,33 @@ import streamlit as st
 from paginas import inicio, eda, modelo, sobre_nosotros
 
 def create_sidebar():
-    # Aplicar estilos CSS para usar una imagen de fondo en el sidebar
+    # Estilos CSS para aplicar imagen de fondo y estilos de texto al sidebar
     st.markdown("""
         <style>
-            /* Establecer la imagen de fondo para el sidebar */
-            .css-1d391kg {
+            /* Aplicar la imagen de fondo a todos los elementos dentro del sidebar */
+            [data-testid="stSidebar"] .css-1e5imcs {
                 background-image: url('sources/fondo_menu.jpg');
-                background-size: cover;  /* Cubrir todo el sidebar */
+                background-size: cover;
             }
-            /* Estilos adicionales para el texto y otros elementos en el sidebar para asegurar legibilidad */
-            .css-1d391kg, .css-1d391kg .st-bb, .css-1d391kg .st-cx, .css-1d391kg .st-dv, .css-1d391kg .st-ij {
-                color: white;  /* Texto en blanco */
+            /* Ajustar el color de texto de todos los elementos dentro del sidebar */
+            [data-testid="stSidebar"] .css-1e5imcs, 
+            [data-testid="stSidebar"] .css-1e5imcs button,
+            [data-testid="stSidebar"] .css-1e5imcs .st-bq,
+            [data-testid="stSidebar"] .css-1e5imcs .st-cx {
+                color: white;
             }
-            /* Ajustes para el título y botones del sidebar */
-            .css-1v3fvcr, .css-1n2mvz5 {
-                margin: 0 auto;
+            /* Estilos específicos para el título y botones del sidebar */
+            .sidebar .block-container {
                 text-align: center;
-                width: 100%;  /* Ajustar el ancho de los botones y el título */
             }
-            .css-1xdhyk6 {
-                padding-top: 50px;  /* Añadir separación después del título del menú */
+            .sidebar .block-container button {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .sidebar .block-container h1 {
+                padding-top: 50px;
+                padding-bottom: 20px;
             }
         </style>
         """, unsafe_allow_html=True)
