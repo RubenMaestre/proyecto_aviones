@@ -1,5 +1,5 @@
 import streamlit as st
-from menu import create_sidebar
+from modules.create_sidebar import create_sidebar
 
 # Configuraciones globales de la app, como el título y la configuración de la página
 # Configuración de la página, incluyendo el favicon
