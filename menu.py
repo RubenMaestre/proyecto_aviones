@@ -1,9 +1,9 @@
 # menu.py
 import streamlit as st
-from paginas import inicio, overview, teams, players, matches
+from paginas import inicio, eda, modelo, sobre_nosotros
 
 def create_sidebar():
-    logo_path = 'sources/logo.png'
+    #logo_path = 'sources/logo.png'
 
     with open('styles/custom_styles.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -13,7 +13,7 @@ def create_sidebar():
             .titulo {
                 font-weight: bold;
                 color: black;
-                font-size: 32px;
+                font-size: 18px;
                 padding-top: 20px;
                 text-align: center;
             }
@@ -26,16 +26,15 @@ def create_sidebar():
         </style>
         """, unsafe_allow_html=True)
 
-    st.sidebar.image(logo_path, width=150)  # Ajusta el ancho si es necesario
+    # st.sidebar.image(logo_path, width=150)  # Ajusta el ancho si es necesario
     # Usamos un div con la clase 'titulo' para aplicar los estilos al título
-    st.sidebar.markdown('<div class="titulo">Rubén Maestre</div>', unsafe_allow_html=True)
+    st.sidebar.markdown('<div class="titulo">José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez</div>', unsafe_allow_html=True)
 
     menu_items = {
         "🏠 Inicio": inicio.display,
-        "📊 Datos generales": overview.display,
-        "⚽ Equipos": teams.display,
-        "👥 Jugadores": players.display,
-        "🏟 Partidos": matches.display,
+        "📊 EDA": eda.display,
+        "👥 Modelo machine learning": modelo.display,
+        "🏟 Sobre nosotros": sobre_nosotros.display,
     }
 
     st.sidebar.title("Menú")
