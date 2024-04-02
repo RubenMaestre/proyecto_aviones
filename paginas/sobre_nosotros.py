@@ -16,10 +16,10 @@ def display():
 
     # Información del equipo
     team_members = {
-        'José Núñez': ('Lorem ipsum...', 'https://www.linkedin.com/', 'https://www.github.com/'),
-        'Rubén Maestre': ('Descripción de Rubén...', 'https://www.linkedin.com/in/rubenmaestrezaplana/', 'https://www.github.com/RubenMaestre'),
-        'Dafne Moreno': ('Lorem ipsum...', 'https://www.linkedin.com/', 'https://www.github.com/'),
-        'Nahuel Núñez': ('Lorem ipsum...', 'https://www.linkedin.com/', 'https://www.github.com/'),
+        'José Núñez': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.', 'https://www.linkedin.com/', 'https://www.github.com/'),
+        'Rubén Maestre': ('Junior Data Scientist | Inteligencia Artificial, Python, SQL y Machine Learning | Experto en Marketing Digital y Comunicación | MBA en Gestión Deportiva | Diseño Gráfico, WordPress y Redes Sociales | Proyectos Digitales', 'https://www.linkedin.com/in/rubenmaestrezaplana/', 'https://www.github.com/RubenMaestre'),
+        'Dafne Moreno': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.', 'https://www.linkedin.com/', 'https://www.github.com/'),
+        'Nahuel Núñez': ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.', 'https://www.linkedin.com/', 'https://www.github.com/'),
         }
 
     cols = st.columns(4)
