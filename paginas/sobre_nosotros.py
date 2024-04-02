@@ -34,15 +34,34 @@ def display():
         'Nahuel Núñez': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
     }
 
-    for name, description in team_members.items():
+    for name, (description, linkedin_url, github_url) in team_members.items():
         with col1:
             st.image(f'sources/{name.replace(" ", "").lower()}.jpg', width=150, caption=name)
             st.markdown(description)
-            st.button("LinkedIn", key=f'linkedin-{name}')
-            st.button("GitHub", key=f'github-{name}')
+            st.markdown(f'[![LinkedIn]({linkedin_url}sources/LinkedIn-icon.png)]({linkedin_url})', unsafe_allow_html=True)
+            st.markdown(f'[![GitHub]({github_url}sources/GitHub-Mark.png)]({github_url})', unsafe_allow_html=True)
 
-    # Podrías repetir los bloques para col2, col3 y col4 si quieres darle un diseño similar
-    # a cada miembro del equipo como se muestra en la imagen que adjuntaste.
+    for name, (description, linkedin_url, github_url) in team_members.items():
+        with col2:
+            st.image(f'sources/{name.replace(" ", "").lower()}.jpg', width=150, caption=name)
+            st.markdown(description)
+            st.markdown(f'[![LinkedIn]({linkedin_url}sources/LinkedIn-icon.png)]({https://www.linkedin.com/in/rubenmaestrezaplana/})', unsafe_allow_html=True)
+            st.markdown(f'[![GitHub]({github_url}sources/GitHub-Mark.png)]({https://github.com/RubenMaestre})', unsafe_allow_html=True)
+
+        for name, (description, linkedin_url, github_url) in team_members.items():
+        with col3:
+            st.image(f'sources/{name.replace(" ", "").lower()}.jpg', width=150, caption=name)
+            st.markdown(description)
+            st.markdown(f'[![LinkedIn]({linkedin_url}sources/LinkedIn-icon.png)]({linkedin_url})', unsafe_allow_html=True)
+            st.markdown(f'[![GitHub]({github_url}sources/GitHub-Mark.png)]({github_url})', unsafe_allow_html=True)
+
+    for name, (description, linkedin_url, github_url) in team_members.items():
+        with col4:
+            st.image(f'sources/{name.replace(" ", "").lower()}.jpg', width=150, caption=name)
+            st.markdown(description)
+            st.markdown(f'[![LinkedIn]({linkedin_url}sources/LinkedIn-icon.png)]({linkedin_url})', unsafe_allow_html=True)
+            st.markdown(f'[![GitHub]({github_url}sources/GitHub-Mark.png)]({github_url})', unsafe_allow_html=True)
+
 
     st.markdown("""
     ---
