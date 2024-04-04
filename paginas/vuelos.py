@@ -4,7 +4,7 @@ from streamlit_folium import st_folium
 import folium
 
 # Para cargar desde CSV
-df_aeropuertos_unicos = pd.read_csv('/df/aeropuertos_unicos.csv')
+df_aeropuertos_unicos = pd.read_csv('df/aeropuertos_unicos.csv')
 
 def display():
     st.title('Vuelos en USA')
