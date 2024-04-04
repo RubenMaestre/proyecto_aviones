@@ -16,8 +16,4 @@ def display():
     for index, row in df_aeropuertos_unicos.iterrows():
         folium.Marker([row['latitude'], row['longitude']], popup=row['nombre_aeropuerto']).add_to(mapa)
 
-     # Centrar el mapa usando st.columns
-    col1= st.columns([1])
-
-    with col1:  # Usar la columna central para el mapa, haciendo que esté centrado
-        st_folium(mapa, width=1280, height=720)
+    st_folium(mapa, width=1280, height=720)
