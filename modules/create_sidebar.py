@@ -1,7 +1,7 @@
 # modules/create_sidebar.py
 import streamlit as st
 from streamlit_option_menu import option_menu
-from paginas import inicio, eda, modelo, sobre_nosotros
+from paginas import inicio, eda, modelo, sobre_nosotros, sobre_proyecto
 
 def create_sidebar():
     # Añadir texto personalizado en el sidebar con markdown y HTML
@@ -27,7 +27,7 @@ def create_sidebar():
     elif selected == "Modelo machine learning":
         modelo.display()
     elif selected == "Sobre el proyecto":
-        sobre_nosotros.display()
+        sobre_proyecto.display()
     elif selected == "Sobre nosotros":
         sobre_nosotros.display()
 
