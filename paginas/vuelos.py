@@ -32,8 +32,7 @@ def display_map(filtered_df):
 def app():
     st.title('Vuelos en USA')
 
-    # Llamar a display() para mostrar el primer mapa
-    display()
+    
 
     st.write("Seleccione un Estado para ver los aeropuertos correspondientes:")  # Solo para agregar claridad en la UI
 
