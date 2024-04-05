@@ -19,10 +19,11 @@ def prepare_aeropuertos_unicos(num_trozos, ruta_base_pickle='df/pickle/df_avione
     cols_origen = ['aeropuerto_origen', 'ciudad_origen', 'estado_origen', 'latitude_origen', 'longitude_origen']
     cols_destino = ['aeropuerto_destino', 'ciudad_destino', 'estado_destino', 'latitude_destino', 'longitude_destino']
 
-    df_origen = df_aviones[cols_origen].rename(columns=lambda x: x.replace('_origen', ''))
-    df_destino = df_aviones[cols_destino].rename(columns=lambda x: x.replace('_destino', ''))
+    df_origen = df_aviones[cols_origen].rename(columns={'aeropuerto_origen': 'nombre_aeropuerto', 'ciudad_origen': 'ciudad', 'estado_origen': 'estado', 'latitude_origen': 'latitude', 'longitude_origen': 'longitude'})
+    df_destino = df_aviones[cols_destino].rename(columns={'aeropuerto_destino': 'nombre_aeropuerto', 'ciudad_destino': 'ciudad', 'estado_destino': 'estado', 'latitude_destino': 'latitude', 'longitude_destino': 'longitude'})
 
     # Combinar y eliminar duplicados para obtener aeropuertos únicos
     df_combinado = pd.concat([df_origen, df_destino]).drop_duplicates().reset_index(drop=True)
 
     return df_combinado
+
