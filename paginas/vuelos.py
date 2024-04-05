@@ -42,15 +42,17 @@ def display_map(filtered_df):
 def app():
     st.title('Vuelos en USA')
 
+    # Llamar a display() para mostrar el primer mapa
+    display()
+
+    st.write("Seleccione un Estado para ver los aeropuertos correspondientes:")  # Solo para agregar claridad en la UI
+
     # Selección de Estado
     estados = df_aeropuertos_unicos['estado_origen'].unique()
-    estado_seleccionado = st.selectbox('Seleccione un Estado', estados)
+    estado_seleccionado = st.selectbox('', estados)  # Eliminé el texto del selectbox para evitar repetición
 
     # Filtrar DataFrame basado en la selección de estado
     df_filtrado = df_aeropuertos_unicos[df_aeropuertos_unicos['estado_origen'] == estado_seleccionado]
 
     # Mostrar mapa basado en el DataFrame filtrado
     display_map(df_filtrado)
-
-if __name__ == "__main__":
-    app()
