@@ -15,17 +15,7 @@ ruta_base_pickle = 'df/pickle/df_aviones_trozo_'
 # Preparar y cargar el DataFrame de aeropuertos únicos
 df_aeropuertos_unicos = prepare_aeropuertos_unicos(num_trozos, ruta_base_pickle)
 
-def display():
-    st.title('Vuelos en USA')
 
-    # Crear el mapa base con Folium
-    mapa = folium.Map(location=[40, -95], zoom_start=4)  # Ajusta según tus necesidades
-
-    # Añadir marcadores para cada aeropuerto (este es solo un ejemplo, ajusta según tu DataFrame)
-    for index, row in df_aeropuertos_unicos.iterrows():
-        folium.Marker([row['latitude'], row['longitude']], popup=row['nombre_aeropuerto']).add_to(mapa)
-
-    st_folium(mapa, width=1280, height=720)
 
 def display_map(filtered_df):
     # Crear un mapa base con Folium
