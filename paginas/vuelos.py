@@ -56,3 +56,6 @@ def app():
 
     # Mostrar mapa basado en el DataFrame filtrado
     display_map(df_filtrado)
+
+if __name__ == "__main__":
+    app()
