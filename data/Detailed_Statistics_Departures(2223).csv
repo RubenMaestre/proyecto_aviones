@@ -1,0 +1,19 @@
+Detailed Statistics Departures  
+Origin Airport: Tucson, AZ: Tucson International (TUS)
+Airline: Frontier Airlines Inc. (F9)
+Month(s): December
+Day(s): 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 and 31
+Year(s): 2021, 2022 and 2023
+
+Carrier Code,Date (MM/DD/YYYY),Flight Number,Tail Number,Destination Airport,Scheduled departure time,Actual departure time,Scheduled elapsed time (Minutes),Actual elapsed time (Minutes),Departure delay (Minutes),Wheels-off time,Taxi-Out time (Minutes),Delay Carrier (Minutes),Delay Weather (Minutes),Delay National Aviation System (Minutes),Delay Security (Minutes),Delay Late Aircraft Arrival (Minutes)
+"F9","12/03/2021","1979","N341FR","LAS","14:15","14:22","85","78","7","14:36","14","0","0","0","0","0"
+"F9","12/06/2021","1979","N329FR","LAS","21:38","21:28","85","80","-10","21:38","10","0","0","0","0","0"
+"F9","12/10/2021","1979","N311FR","LAS","14:13","14:55","85","104","42","15:11","16","0","0","19","0","42"
+"F9","12/13/2021","1979","N351FR","LAS","21:38","21:27","85","75","-11","21:38","11","0","0","0","0","0"
+"F9","12/17/2021","1979","N227FR","LAS","14:15","14:12","85","81","-3","14:28","16","0","0","0","0","0"
+"F9","12/20/2021","1979","N342FR","LAS","21:00","21:11","85","77","11","21:22","11","0","0","0","0","0"
+"F9","12/24/2021","1979","N338FR","LAS","14:15","14:24","85","87","9","14:39","15","0","0","0","0","0"
+"F9","12/27/2021","1979","N350FR","LAS","21:00","21:26","85","80","26","21:36","10","0","0","12","0","9"
+"F9","12/31/2021","1979","N301FR","LAS","14:15","14:02","85","94","-13","14:14","12","0","0","0","0","0"
+
+ SOURCE: Bureau of Transportation Statistics
