@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 from streamlit_folium import st_folium
 import folium
-from modules.data_preparation import prepare_aeropuertos_unicos
-from modules.load_data import cargar_y_combinar_df
-
 
 # Para cargar desde CSV
 df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
