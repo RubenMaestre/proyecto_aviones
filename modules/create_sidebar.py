@@ -2,6 +2,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from paginas import inicio, eda, vuelos, modelo, sobre_nosotros, sobre_proyecto
+from paginas.vuelos import aerolineas, aeropuertos, datos
+
 
 def create_sidebar():
     # Añadir texto personalizado en el sidebar con markdown y HTML
@@ -33,14 +35,12 @@ def create_sidebar():
         submenu_selected = st.sidebar.radio("Seleccione una opción:", submenu_options)
 
         if submenu_selected == "Info Aerolíneas":
-            # Llamar a la función o mostrar el contenido de "Info Aerolíneas"
-            pass  # Reemplaza `pass` con tu código
+            aerolineas.display()  # Llamar a la función de aerolineas
         elif submenu_selected == "Info Aeropuertos":
-            # Llamar a la función o mostrar el contenido de "Info Aeropuertos"
-            pass  # Reemplaza `pass` con tu código
+            aeropuertos.display()  # Llamar a la función de aeropuertos
         elif submenu_selected == "Datos Curiosos":
-            # Llamar a la función o mostrar el contenido de "Datos Curiosos"
-            pass  # Reemplaza `pass` con tu código
+            datos.display()  # Llamar a la función de datos
+            
     elif selected == "Modelo machine learning":
         modelo.display()
     elif selected == "Sobre el proyecto":
