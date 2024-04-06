@@ -14,7 +14,7 @@ def display():
     st.title('Vuelos en USA')
 
     # Crear el mapa base con Folium
-    mapa = folium.Map(location=[38.2699, 0.7126], zoom_start=2)  #Punto centrado en Elche, la idea es que se vea todo el mundo desde punto vista Europa
+    mapa = folium.Map(location=[38.2699, 30.7126], zoom_start=2)  #Punto centrado en Elche, la idea es que se vea todo el mundo desde punto vista Europa
 
     # Añadir marcadores para cada aeropuerto (este es solo un ejemplo, ajusta según tu DataFrame)
     for index, row in df_aeropuertos_unicos.iterrows():
