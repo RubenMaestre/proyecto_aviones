@@ -17,7 +17,7 @@ def display():
     for index, row in df_aeropuertos_unicos.iterrows():
         folium.Marker([row['latitude'], row['longitude']], popup=row['nombre_aeropuerto']).add_to(mapa)
 
-    st_folium(mapa, width=1280, height=720)
+    st_folium(mapa, width=1280, height=720, key="unique_map_key")
 
     # Llamar a display() para mostrar el primer mapa
     display()
