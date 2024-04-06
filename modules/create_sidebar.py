@@ -26,10 +26,24 @@ def create_sidebar():
         eda.display()
     elif selected == "Vuelos en USA":
         vuelos.display()
+        
+        # Submenú para "Vuelos en USA"
+        st.sidebar.markdown("### Submenú de Vuelos en USA")  # Título del submenú
+        submenu_options = ["Info Aerolíneas", "Info Aeropuertos", "Datos Curiosos"]
+        submenu_selected = st.sidebar.radio("Seleccione una opción:", submenu_options)
+
+        if submenu_selected == "Info Aerolíneas":
+            # Llamar a la función o mostrar el contenido de "Info Aerolíneas"
+            pass  # Reemplaza `pass` con tu código
+        elif submenu_selected == "Info Aeropuertos":
+            # Llamar a la función o mostrar el contenido de "Info Aeropuertos"
+            pass  # Reemplaza `pass` con tu código
+        elif submenu_selected == "Datos Curiosos":
+            # Llamar a la función o mostrar el contenido de "Datos Curiosos"
+            pass  # Reemplaza `pass` con tu código
     elif selected == "Modelo machine learning":
         modelo.display()
     elif selected == "Sobre el proyecto":
         sobre_proyecto.display()
     elif selected == "Sobre nosotros":
         sobre_nosotros.display()
-
