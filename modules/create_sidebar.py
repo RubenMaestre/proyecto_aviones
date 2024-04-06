@@ -1,7 +1,7 @@
 # modules/create_sidebar.py
 import streamlit as st
 from streamlit_option_menu import option_menu
-from paginas import inicio, eda, vuelos as vuelos_principal, modelo, sobre_nosotros, sobre_proyecto
+from paginas import inicio, eda, aviones, modelo, sobre_nosotros, sobre_proyecto
 from paginas.vuelos import aerolineas, aeropuertos, datos
 
 def create_sidebar():
@@ -26,7 +26,7 @@ def create_sidebar():
     elif selected == "EDA":
         eda.display()
     elif selected == "Vuelos en USA":
-        vuelos_principal.display()  # Mostrar siempre el contenido principal de "Vuelos en USA"
+        aviones.display()  # Usar aviones.display() para mostrar el contenido principal de "Vuelos en USA"
         
         # Submenú para "Vuelos en USA"
         st.sidebar.markdown("### Submenú de Vuelos en USA")  # Título del submenú
