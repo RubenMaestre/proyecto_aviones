@@ -7,13 +7,7 @@ from modules.load_data import cargar_y_combinar_df
 
 
 # Para cargar desde CSV
-df_aeropuertos_unicos = pd.read_csv('df/aeropuertos_unicos.csv')
-
-# Ajusta el número de trozos y la ruta base según cómo dividiste y guardaste el DataFrame original
-num_trozos = 5
-ruta_base_pickle = 'df/pickle/df_aviones_trozo_'
-# Preparar y cargar el DataFrame de aeropuertos únicos
-df_aeropuertos_unicos = prepare_aeropuertos_unicos(num_trozos, ruta_base_pickle)
+df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
 
 def display():
     st.title('Vuelos en USA')
