@@ -5,8 +5,8 @@ def crear_botones():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.image("sources/aviones.jpg", width=200)
         col1_1, col1_2, col1_3 = col1.columns([1,2,1])  # Ajusta las proporciones según sea necesario
+        st.image("sources/aviones.jpg", width=200)
         with col1_2:
             if st.button('Ver vuelos en USA', key='btn_vuelos_usa'):
                 st.session_state.subpagina = 'vuelos_usa'
