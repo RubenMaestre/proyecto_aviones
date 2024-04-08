@@ -14,25 +14,29 @@ def display():
     # Crear columnas para los botones
     col1, col2, col3, col4 = st.columns(4)
 
-    # Botón de imagen para volver a la página de aviones (vuelos en USA)
+    # Mostrar imagen y botón para volver a la página de aviones (vuelos en USA)
     with col1:
-        if st.image("sources/aviones.jpg", width=250, on_click=aviones.display):
-            pass  # La función aviones.display se llama cuando se hace clic en la imagen
+        st.image("sources/aviones.jpg", width=250)
+        if st.button("Vuelos en USA", key="btn_aviones"):
+            aviones.display()  # Asumiendo que tienes una función display en aviones.py
 
-    # Botón de imagen para ir a la página de aeropuertos
+    # Mostrar imagen y botón para ir a la página de aeropuertos
     with col2:
-        if st.image("sources/aeropuertos.jpg", width=250, on_click=aeropuertos.display):
-            pass  # La función aeropuertos.display se llama cuando se hace clic en la imagen
+        st.image("sources/aeropuertos.jpg", width=250)
+        if st.button("Aeropuertos", key="btn_aeropuertos"):
+            aeropuertos.display()  # Asumiendo que tienes una función display en aeropuertos.py
 
-    # Botón de imagen para ir a la página de aerolíneas
+    # Mostrar imagen y botón para ir a la página de aerolíneas
     with col3:
-        if st.image("sources/aerolineas.jpg", width=250, on_click=aerolineas.display):
-            pass  # La función aerolineas.display se llama cuando se hace clic en la imagen
+        st.image("sources/aerolineas.jpg", width=250)
+        if st.button("Aerolíneas", key="btn_aerolineas"):
+            aerolineas.display()  # Asumiendo que tienes una función display en aerolineas.py
 
-    # Botón de imagen para ir a la página de datos
+    # Mostrar imagen y botón para ir a la página de datos
     with col4:
-        if st.image("sources/datos.jpg", width=250, on_click=datos.display):
-            pass  # La función datos.display se llama cuando se hace clic en la imagen
+        st.image("sources/datos.jpg", width=250)
+        if st.button("Datos", key="btn_datos"):
+            datos.display()  # Asumiendo que tienes una función display en datos.py
 
     # Crear el mapa base con Folium
     mapa = folium.Map(location=[38.2699, 30.7126], zoom_start=2)
