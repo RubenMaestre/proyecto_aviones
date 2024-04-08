@@ -9,7 +9,8 @@ def crear_botones():
     <style>
         .btn {
             border: none;
-            color: white;
+            color: transparent;
+            background-color: transparent;
             padding: 0px;
             text-align: center;
             text-decoration: none;
@@ -27,26 +28,22 @@ def crear_botones():
     </style>
     """
 
-     # Botones invisibles de Streamlit para gestionar interacciones
+    # Aplica el estilo CSS
+    st.markdown(button_style, unsafe_allow_html=True)
+
+    # Botones de Streamlit para gestionar interacciones
     with col1:
-        button_style("btn1", "vuelos_usa")
-        if st.button("", key="vuelos_usa_btn", help="Haz clic en la imagen para ver vuelos en USA", **{"style": "visibility: hidden;"}):
+        if st.button("", key="vuelos_usa_btn", **{"class": "btn btn1"}):
             st.session_state.subpagina = "vuelos_usa"
 
     with col2:
-        button_style("btn2", "aeropuertos")
-        if st.button("", key="aeropuertos_btn", help="Haz clic en la imagen para ver aeropuertos", **{"style": "visibility: hidden;"}):
+        if st.button("", key="aeropuertos_btn", **{"class": "btn btn2"}):
             st.session_state.subpagina = "aeropuertos"
 
     with col3:
-        button_style("btn3", "aerolineas")
-        if st.button("", key="aerolineas_btn", help="Haz clic en la imagen para ver aerolíneas", **{"style": "visibility: hidden;"}):
+        if st.button("", key="aerolineas_btn", **{"class": "btn btn3"}):
             st.session_state.subpagina = "aerolineas"
 
     with col4:
-        button_style("btn4", "datos")
-        if st.button("", key="datos_btn", help="Haz clic en la imagen para ver datos", **{"style": "visibility: hidden;"}):
+        if st.button("", key="datos_btn", **{"class": "btn btn4"}):
             st.session_state.subpagina = "datos"
-
-    # Aplica el estilo CSS
-    st.markdown(button_style, unsafe_allow_html=True)
