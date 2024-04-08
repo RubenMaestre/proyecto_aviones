@@ -61,20 +61,23 @@ def display():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.subheader('Número Total de Estados')
-        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_estados}</h1>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center; color: white;'>Número total de Estados*</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_estados}</h1>", unsafe_allow_html=True)
 
     with col2:
-        st.subheader('Número Total de Ciudades')
-        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_ciudades}</h1>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center; color: white;'>Número total de ciudades</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_ciudades}</h1>", unsafe_allow_html=True)
 
     with col3:
-        st.subheader('Número Total de Aeropuertos')
-        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_aeropuertos}</h1>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center; color: white;'>Número total de aeropuertos</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_aeropuertos}</h1>", unsafe_allow_html=True)
 
     with col4:
-        st.subheader('Número Total de Aerolíneas')
-        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_aerolineas}</h1>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center; color: white;'>Número total de aerolíneas</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_aerolineas}</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    * Aquí se incluyen Estados de los Estados Unidos y también territorios no incorporados.
+    """)
 
     st.header('Uso de los datos')
     st.markdown("""
