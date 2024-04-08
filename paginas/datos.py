@@ -62,19 +62,19 @@ def display():
 
     # Definir el estilo CSS para el borde y el contenido de la columna
     column_style = """
-    <style>
-    .data-column {
-        border: 2px solid #CCCCCC;  /* Grosor y color del borde */
-        border-radius: 10px;  /* Bordes redondeados */
-        padding: 20px;  /* Espaciado interno */
-        text-align: center;  /* Alineación del texto */
-    }
-    </style>
-    <div class='data-column'>
-        <h4 style='color: black;'>{title}</h4>
-        <h1 style='color: #B0B0B0;'>{value}</h1>
-    </div>
-    """
+        <style>
+        .data-column {{
+            border: 2px solid #CCCCCC;  /* Grosor y color del borde */
+            border-radius: 10px;  /* Bordes redondeados */
+            padding: 20px;  /* Espaciado interno */
+            text-align: center;  /* Alineación del texto */
+        }}
+        </style>
+        <div class='data-column'>
+            <h4 style='color: black;'>{title}</h4>
+            <h1 style='color: #B0B0B0;'>{value}</h1>
+        </div>
+        """
 
     with col1:
         st.markdown(column_style.format(title='Número total de Estados*', value=numero_total_estados), unsafe_allow_html=True)
