@@ -12,6 +12,10 @@ def display():
     # Llama a la función para mostrar los botones de navegación
     crear_botones()
 
+    # Texto centrado después de los botones
+    st.markdown("<h3 style='text-align: center;'>Pulse una opción para saber más</h3>", unsafe_allow_html=True)
+
+
     # Navegación interna basada en el estado de la sesión
     if 'subpagina' in st.session_state:
         if st.session_state.subpagina == 'vuelos_usa':
