@@ -10,8 +10,13 @@ from paginas.anual.dec_2021 import display as display_2021
 
 from modules.pickles import unir_pickles
 
-df_vuelos_limpio = unir_pickles()
-# Ahora puedes usar df_vuelos_limpio en tu aplicación
+# Mensaje dentro del contexto del spinner
+with st.spinner('Cargando datos, por favor espera...'):
+    df_vuelos_limpio = unir_pickles()
+    # Asegúrate de incluir cualquier otro procesamiento necesario aquí dentro del contexto del spinner
+
+# Este código se ejecuta después de que la función unir_pickles() haya completado
+st.success('¡Datos cargados exitosamente!')
 
 def display():
     st.title('Exploración de Datos de Vuelos')
