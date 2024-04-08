@@ -1,4 +1,5 @@
 import streamlit as st
+from modules.data_count import cargar_y_contar_datos
 
 def display():
     st.title('Extracción de datos y explicación')
@@ -52,6 +53,28 @@ def display():
     st.markdown("""
     Los datos recopilados abarcan información detallada sobre los vuelos nacionales en Estados Unidos durante los meses de diciembre de 2021, 2022 y 2023. Esto incluye horarios de vuelo, retrasos, cancelaciones, aerolíneas y aeropuertos implicados.
     """)
+
+    # Llamar a la función para obtener los datos calculados
+    numero_total_estados, numero_total_ciudades, numero_total_aeropuertos, numero_total_aerolineas = cargar_y_contar_datos()
+
+    # Crear 4 columnas para mostrar los datos
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.subheader('Número Total de Estados')
+        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_estados}</h1>", unsafe_allow_html=True)
+
+    with col2:
+        st.subheader('Número Total de Ciudades')
+        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_ciudades}</h1>", unsafe_allow_html=True)
+
+    with col3:
+        st.subheader('Número Total de Aeropuertos')
+        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_aeropuertos}</h1>", unsafe_allow_html=True)
+
+    with col4:
+        st.subheader('Número Total de Aerolíneas')
+        st.write(f"<h1 style='text-align: center; color: black;'>{numero_total_aerolineas}</h1>", unsafe_allow_html=True)
 
     st.header('Uso de los datos')
     st.markdown("""
