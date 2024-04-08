@@ -26,13 +26,13 @@ def display():
     # Navegación interna basada en el estado de la sesión
     if 'subpagina_eda' in st.session_state:
         if st.session_state.subpagina_eda == 'todos':
-            display_todos()
+            display_todos(df_vuelos_limpio)  # Pasar el DataFrame unido a la función
         elif st.session_state.subpagina_eda == '2023':
-            display_2023()
+            display_2023(df_vuelos_limpio)  # Pasar el DataFrame unido a la función
         elif st.session_state.subpagina_eda == '2022':
-            display_2022()
+            display_2022(df_vuelos_limpio)  # Pasar el DataFrame unido a la función
         elif st.session_state.subpagina_eda == '2021':
-            display_2021()
+            display_2021(df_vuelos_limpio)  # Pasar el DataFrame unido a la función
 
 # Llama a la función para mostrar la página
 display()
