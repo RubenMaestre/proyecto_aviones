@@ -4,20 +4,22 @@ import streamlit as st
 def crear_botones():
     col1, col2, col3, col4 = st.columns(4)
 
-    # Función para generar el markdown de una imagen clicable
-    def markdown_image(image_path, key, caption=""):
-        # Usamos 'key' en el href para identificar qué enlace fue clickeado
-        # El manejo real se hará en la app principal usando 'st.session_state'.
-        return st.markdown(f"<a href='?{key}=True' style='display: inline-block; text-align: center;'><img src='{image_path}' class='img-fluid' width='200'><p>{caption}</p></a>", unsafe_allow_html=True)
+    def on_click(key):
+        st.session_state['navegar_a'] = key
 
     with col1:
-        markdown_image("sources/aviones.jpg", 'vuelos_usa', "Ver vuelos en USA")
+        if st.image("sources/aviones.jpg", width=200, caption="Ver vuelos en USA", on_click=lambda: on_click('vuelos_usa')):
+            pass
 
     with col2:
-        markdown_image("sources/aeropuertos.jpg", 'aeropuertos', "Ver aeropuertos de USA")
+        if st.image("sources/aeropuertos.jpg", width=200, caption="Ver aeropuertos de USA", on_click=lambda: on_click('aeropuertos')):
+            pass
 
     with col3:
-        markdown_image("sources/aerolineas.jpg", 'aerolineas', "Ver aerolíneas de USA")
+        if st.image("sources/aerolineas.jpg", width=200, caption="Ver aerolíneas de USA", on_click=lambda: on_click('aerolineas')):
+            pass
 
     with col4:
-        markdown_image("sources/datos.jpg", 'datos', "Ver datos de vuelos USA")
+        if st.image("sources/datos.jpg", width=200, caption="Ver datos de vuelos USA", on_click=lambda: on_click('datos')):
+            pass
+
