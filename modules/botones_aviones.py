@@ -1,33 +1,23 @@
 # modules/botones_aviones.py
 import streamlit as st
 
-# modules/botones_aviones.py
-import streamlit as st
-
 def crear_botones():
     col1, col2, col3, col4 = st.columns(4)
 
-    # Funciones que se llamarán cuando se haga clic en las imágenes
-    def on_click_vuelos_usa():
-        st.session_state.subpagina = 'vuelos_usa'
-
-    def on_click_aeropuertos():
-        st.session_state.subpagina = 'aeropuertos'
-
-    def on_click_aerolineas():
-        st.session_state.subpagina = 'aerolineas'
-
-    def on_click_datos():
-        st.session_state.subpagina = 'datos'
+    # Función para generar el markdown de una imagen clicable
+    def markdown_image(image_path, key, caption=""):
+        # Usamos 'key' en el href para identificar qué enlace fue clickeado
+        # El manejo real se hará en la app principal usando 'st.session_state'.
+        return st.markdown(f"<a href='?{key}=True' style='display: inline-block; text-align: center;'><img src='{image_path}' class='img-fluid' width='200'><p>{caption}</p></a>", unsafe_allow_html=True)
 
     with col1:
-        st.image("sources/aviones.jpg", width=200, on_click=on_click_vuelos_usa, caption="Ver vuelos en USA")
+        markdown_image("sources/aviones.jpg", 'vuelos_usa', "Ver vuelos en USA")
 
     with col2:
-        st.image("sources/aeropuertos.jpg", width=200, on_click=on_click_aeropuertos, caption="Ver aeropuertos de USA")
+        markdown_image("sources/aeropuertos.jpg", 'aeropuertos', "Ver aeropuertos de USA")
 
     with col3:
-        st.image("sources/aerolineas.jpg", width=200, on_click=on_click_aerolineas, caption="Ver aerolíneas de USA")
+        markdown_image("sources/aerolineas.jpg", 'aerolineas', "Ver aerolíneas de USA")
 
     with col4:
-        st.image("sources/datos.jpg", width=200, on_click=on_click_datos, caption="Ver datos de vuelos USA")
+        markdown_image("sources/datos.jpg", 'datos', "Ver datos de vuelos USA")
