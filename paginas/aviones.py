@@ -13,7 +13,7 @@ df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
 def display():
     st.title('Vuelos en USA')
 
-    crear_botones()  # Llamar a la función para crear y mostrar los botones
+    crear_botones(aviones, aeropuertos, aerolineas, datos)  # Llamar a la función para crear y mostrar los botones
 
     # Crear el mapa base con Folium
     mapa = folium.Map(location=[38.2699, 30.7126], zoom_start=2)
