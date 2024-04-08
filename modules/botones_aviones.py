@@ -6,7 +6,7 @@ def crear_botones():
     espacio_izq, col1, col2, col3, col4, espacio_der = st.columns([1,2,2,2,2,1])
 
     with col1:
-        if st.button("Ver vuelos en USA", key="vuelos_usa_btn"):
+        if st.button("Información vuelos en USA", key="vuelos_usa_btn"):
             st.session_state.subpagina = "vuelos_usa"
 
     with col2:
