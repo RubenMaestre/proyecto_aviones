@@ -89,7 +89,7 @@ def display():
         st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas), unsafe_allow_html=True)
 
     st.markdown("""
-    "*" Aquí se incluyen Estados de los Estados Unidos y también territorios no incorporados.
+    "*" Aquí se incluyen estados de los Estados Unidos y también territorios no incorporados.
     """)
 
     st.header('Uso de los datos')

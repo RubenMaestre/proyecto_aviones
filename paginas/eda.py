@@ -8,6 +8,11 @@ from paginas.anual.dec_2023 import display as display_2023
 from paginas.anual.dec_2022 import display as display_2022
 from paginas.anual.dec_2021 import display as display_2021
 
+from modules.pickles import unir_pickles
+
+df_vuelos_limpio = unir_pickles()
+# Ahora puedes usar df_vuelos_limpio en tu aplicación
+
 def display():
     st.title('Exploración de Datos de Vuelos')
 
