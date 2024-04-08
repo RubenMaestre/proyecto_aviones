@@ -27,23 +27,26 @@ def crear_botones():
     </style>
     """
 
-    # Asegúrate de que las URLs de las imágenes sean accesibles públicamente
-    def markdown_button(button_class, key):
-        # Al hacer clic en el botón, se actualizará st.session_state.subpagina
-        return st.markdown(f"<button class='btn {button_class}' onclick='if(typeof(Storage) !== \"undefined\") {{localStorage.setItem(\"{key}\", \"true\"); location.reload(); }}'></button>", unsafe_allow_html=True)
-
+     # Botones invisibles de Streamlit para gestionar interacciones
     with col1:
-        markdown_button("btn1", "vuelos_usa")
+        button_style("btn1", "vuelos_usa")
+        if st.button("", key="vuelos_usa_btn", help="Haz clic en la imagen para ver vuelos en USA", **{"style": "visibility: hidden;"}):
+            st.session_state.subpagina = "vuelos_usa"
 
     with col2:
-        markdown_button("btn2", "aeropuertos")
+        button_style("btn2", "aeropuertos")
+        if st.button("", key="aeropuertos_btn", help="Haz clic en la imagen para ver aeropuertos", **{"style": "visibility: hidden;"}):
+            st.session_state.subpagina = "aeropuertos"
 
     with col3:
-        markdown_button("btn3", "aerolineas")
+        button_style("btn3", "aerolineas")
+        if st.button("", key="aerolineas_btn", help="Haz clic en la imagen para ver aerolíneas", **{"style": "visibility: hidden;"}):
+            st.session_state.subpagina = "aerolineas"
 
     with col4:
-        markdown_button("btn4", "datos")
+        button_style("btn4", "datos")
+        if st.button("", key="datos_btn", help="Haz clic en la imagen para ver datos", **{"style": "visibility: hidden;"}):
+            st.session_state.subpagina = "datos"
 
     # Aplica el estilo CSS
     st.markdown(button_style, unsafe_allow_html=True)
-
