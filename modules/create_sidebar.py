@@ -16,7 +16,7 @@ def create_sidebar():
 
     # Crear el menú de opciones en el sidebar con option_menu
     with st.sidebar:
-        selected = option_menu("Menú del proyecto", ["Inicio", "Datos", "EDA", "Vuelos en USA", "Modelo machine learning", "Sobre el proyecto", "Sobre nosotros"],
+        selected = option_menu("Menú", ["Inicio", "Datos", "EDA", "Vuelos en USA", "Modelo machine learning", "Sobre el proyecto", "Sobre nosotros"],
             icons=["house", "disk", "bar-chart-line", "airplane", "cpu", "book", "people"],
             menu_icon="cast", default_index=0, orientation="vertical")
 
