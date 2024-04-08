@@ -71,7 +71,7 @@ def display():
         }}
         </style>
         <div class='data-column'>
-            <h4 style='color: black;'>{title}</h4>
+            <h4 style='color: white;'>{title}</h4>
             <h1 style='color: #B0B0B0;'>{value}</h1>
         </div>
         """
@@ -89,7 +89,7 @@ def display():
         st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas), unsafe_allow_html=True)
 
     st.markdown("""
-    * Aquí se incluyen Estados de los Estados Unidos y también territorios no incorporados.
+    "*" Aquí se incluyen Estados de los Estados Unidos y también territorios no incorporados.
     """)
 
     st.header('Uso de los datos')
