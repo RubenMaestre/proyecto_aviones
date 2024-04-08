@@ -60,21 +60,34 @@ def display():
     # Crear 4 columnas para mostrar los datos
     col1, col2, col3, col4 = st.columns(4)
 
+    # Definir el estilo CSS para el borde y el contenido de la columna
+    column_style = """
+    <style>
+    .data-column {
+        border: 2px solid #CCCCCC;  /* Grosor y color del borde */
+        border-radius: 10px;  /* Bordes redondeados */
+        padding: 20px;  /* Espaciado interno */
+        text-align: center;  /* Alineación del texto */
+    }
+    </style>
+    <div class='data-column'>
+        <h4 style='color: black;'>{title}</h4>
+        <h1 style='color: #B0B0B0;'>{value}</h1>
+    </div>
+    """
+
     with col1:
-        st.markdown("<h4 style='text-align: center; color: white;'>Número total de Estados*</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_estados}</h1>", unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de Estados*', value=numero_total_estados), unsafe_allow_html=True)
 
     with col2:
-        st.markdown("<h4 style='text-align: center; color: white;'>Número total de ciudades</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_ciudades}</h1>", unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de ciudades', value=numero_total_ciudades), unsafe_allow_html=True)
 
     with col3:
-        st.markdown("<h4 style='text-align: center; color: white;'>Número total de aeropuertos</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_aeropuertos}</h1>", unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de aeropuertos', value=numero_total_aeropuertos), unsafe_allow_html=True)
 
     with col4:
-        st.markdown("<h4 style='text-align: center; color: white;'>Número total de aerolíneas</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h1 style='text-align: center; color: #B0B0B0;'>{numero_total_aerolineas}</h1>", unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas), unsafe_allow_html=True)
+
     st.markdown("""
     * Aquí se incluyen Estados de los Estados Unidos y también territorios no incorporados.
     """)
