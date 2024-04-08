@@ -10,15 +10,15 @@ from paginas.anual.dec_2021 import display as display_2021
 
 from modules.pickles import unir_pickles
 
-# Crea un botón en la aplicación
 if st.button('Pulse aquí para cargar datos'):
-    # Mensaje e indicador de carga mientras se ejecuta la función
-    with st.spinner('Cargando datos, por favor espera...'):
-        df_vuelos_limpio = unir_pickles()
-        # La ejecución se detiene aquí hasta que la función haya terminado
-
-    # Mensaje de éxito una vez que los datos están cargados
-    st.success('¡Datos cargados exitosamente!')
+    generador_df = unir_pickles()  # Obtiene el generador
+    try:
+        while True:  # Este bucle seguirá intentando obtener DataFrames del generador
+            df_vuelos_limpio = next(generador_df)  # Obtiene el próximo DataFrame
+            st.write(df_vuelos_limpio)  # Muestra el DataFrame actual
+            st.text("Cargando más datos...")  # Mensaje de carga (puedes quitarlo si no lo necesitas)
+    except StopIteration:
+        st.success('Todos los datos han sido cargados.')
 
 def display():
     st.title('Exploración de Datos de Vuelos')
