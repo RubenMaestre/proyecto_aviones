@@ -4,47 +4,30 @@ from paginas.vuelos import aeropuertos, aerolineas, datos
 
 import streamlit as st
 
-def crear_botones(aviones, aeropuertos, aerolineas, datos):
-    boton_html_template = """
-    <style>
-    .boton {{
-        margin: 10px;
-        width: 240px;
-        height: 50px;
-        background-color: #FFFFFF;
-        color: #000000;
-        border: 3px solid #ADD8E6;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-    }}
-    .boton:hover {{
-        border-color: #0000FF;
-    }}
-    </style>
-    <center><button class="boton" title="{}" onclick="handleClick('{}')">{}</button></center>
-    <script>
-    function handleClick(key) {{
-        window.parent.postMessage({{func: 'keyPress', key: key}}, '*');
-    }}
-    </script>
-    """
-
-    # Crear columnas para los botones
+def crear_botones():
+    # Definición de las acciones al hacer clic en cada imagen
+    def navegar_a_aviones():
+        st.session_state.pagina_actual = 'aviones'
+    
+    def navegar_a_aeropuertos():
+        st.session_state.pagina_actual = 'aeropuertos'
+    
+    def navegar_a_aerolineas():
+        st.session_state.pagina_actual = 'aerolineas'
+    
+    def navegar_a_datos():
+        st.session_state.pagina_actual = 'datos'
+    
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.image("sources/aviones.jpg", width=250)
-        st.markdown(boton_html_template.format("Haz clic para ver Vuelos en USA", "aviones", "Vuelos en USA"), unsafe_allow_html=True)
+        st.image("sources/aviones.jpg", width=250, on_click=navegar_a_aviones)
 
     with col2:
-        st.image("sources/aeropuertos.jpg", width=250)
-        st.markdown(boton_html_template.format("Haz clic para ver Aeropuertos", "aeropuertos", "Aeropuertos"), unsafe_allow_html=True)
+        st.image("sources/aeropuertos.jpg", width=250, on_click=navegar_a_aeropuertos)
 
     with col3:
-        st.image("sources/aerolineas.jpg", width=250)
-        st.markdown(boton_html_template.format("Haz clic para ver Aerolíneas", "aerolineas", "Aerolíneas"), unsafe_allow_html=True)
+        st.image("sources/aerolineas.jpg", width=250, on_click=navegar_a_aerolineas)
 
     with col4:
-        st.image("sources/datos.jpg", width=250)
-        st.markdown(boton_html_template.format("Haz clic para ver Datos", "datos", "Datos"), unsafe_allow_html=True)
+        st.image("sources/datos.jpg", width=250, on_click=navegar_a_datos)
