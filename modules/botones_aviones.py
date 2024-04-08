@@ -1,4 +1,6 @@
 # modules/botones_aviones.py
+from paginas import aviones
+from paginas.vuelos import aeropuertos, aerolineas, datos
 
 import streamlit as st
 
