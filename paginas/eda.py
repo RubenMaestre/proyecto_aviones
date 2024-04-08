@@ -1,5 +1,6 @@
 # paginas/eda.py
 import streamlit as st
+import plotly.express as px
 from modules.botones_eda import crear_botones_eda  # Importa la función de botones
 
 # Importa las funciones display de cada año y TODOS
@@ -16,16 +17,14 @@ def display():
     # Llama a la función para mostrar los botones de navegación
     crear_botones_eda()
 
-    # Muestra el botón y maneja la carga de datos aquí dentro
     if st.button('Pulse aquí para cargar datos'):
+        barra_progreso = st.progress(0)
+        total_filas_texto = st.empty()  # Prepara un contenedor vacío para el texto
+
         generador_df = unir_pickles()  # Obtiene el generador
-        try:
-            while True:  # Este bucle seguirá intentando obtener DataFrames del generador
-                df_vuelos_limpio = next(generador_df)  # Obtiene el próximo DataFrame
-                st.write(df_vuelos_limpio)  # Muestra el DataFrame actual
-                st.text("Cargando más datos...")  # Mensaje de carga (puedes quitarlo si no lo necesitas)
-        except StopIteration:
-            st.success('Todos los datos han sido cargados.')
+        for df_vuelos_limpio, porcentaje, total_filas in generador_df:
+            barra_progreso.progress(porcentaje)  # Actualiza la barra de progreso
+            total_filas_texto.write(f'Total de filas cargadas: {total_filas}')  # Actualiza el texto de filas cargadas
 
     # Muestra el texto centrado solo si no se ha seleccionado una subpágina
     if 'subpagina_eda' not in st.session_state or st.session_state.subpagina_eda is None:
@@ -42,6 +41,16 @@ def display():
         elif st.session_state.subpagina_eda == '2021':
             display_2021()
 
+    st.success('Todos los datos han sido cargados.')
+    total_filas_texto.empty()  # Limpia el texto de filas cargadas
+
+    # Una vez cargados todos los datos, crea y muestra la gráfica
+    vuelos_anuales = df_vuelos_limpio.groupby(['anio']).size().reset_index(name ='cantidad_vuelos_anuales')
+    fig = px.bar(data_frame=vuelos_anuales, x='anio', y='cantidad_vuelos_anuales', opacity=0.8,
+                     title="Cantidad de Vuelos Anuales", color='anio')
+    fig.update_layout(title_x=0.5, xaxis_title='Año', yaxis_title='Cantidad de Vuelos', xaxis={'categoryorder': 'total descending'})
+    st.plotly_chart(fig)
+    
 # Llama a la función para mostrar la página
 display()
 
