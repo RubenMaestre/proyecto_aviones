@@ -28,26 +28,10 @@ def display():
     # Llama a la función para mostrar las estadísticas del DataFrame
     mostrar_estadisticas_df(df_todos, 'fecha')
 
-    import streamlit as st
-# Asegúrate de que los módulos siguientes estén correctamente importados
-from modules.carga_todos_df import cargar_todos_df
-from modules.datos_df_cargados import mostrar_estadisticas_df
-from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
-from modules.graph.evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_por_aerolinea
-
-def display():
-    st.title('Todos los datos juntos')
-    
-    # Llama a la función para cargar y unir todos los DataFrames
-    df_todos = cargar_todos_df()
-
     # Crear columnas para centrar el contenido
     col_izq, col_1, col_der = st.columns([1, 10, 1])
 
     with col_1:
-        # Llama a la función para mostrar las estadísticas del DataFrame
-        mostrar_estadisticas_df(df_todos, 'fecha')
-
         st.markdown("""
             ### Cantidad de vuelos nacionales por compañía aérea en Estados Unidos
             
