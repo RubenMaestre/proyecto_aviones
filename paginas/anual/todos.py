@@ -8,6 +8,8 @@ from modules.graph.correlacion_variables import graficar_correlacion_variables
 from modules.graph.correlacion_lineal import graficar_correlacion_lineal
 from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
 from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
+from modules.graph.numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
+
 
 
 
@@ -136,3 +138,18 @@ def display():
         graficar_retrasos_mas_15_festivos(df_todos)
 
         st.markdown("---")
+
+        st.markdown("""
+        ### Número de Vuelos por Días en Diciembre por Año
+        
+        Los gráficos muestran la cantidad de vuelos diarios durante el mes de diciembre para los años 2021, 2022 y 2023. Cada gráfico proporciona una visualización detallada del número de vuelos para un año específico, permitiendo observar tendencias, picos y variaciones diarias en la cantidad de vuelos.
+        
+        El gráfico 'Todos los Años' combina la información de los tres años, facilitando la comparación directa entre ellos y permitiendo identificar patrones recurrentes o cambios significativos en el número de vuelos durante el mismo periodo en años diferentes.
+    """)
+        
+        graficar_numero_vuelos_dias_diciembre(df_todos)
+
+        st.markdown("---")
+
+
+
