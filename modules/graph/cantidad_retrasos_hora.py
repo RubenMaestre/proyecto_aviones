@@ -23,7 +23,7 @@ def graficar_cantidad_retrasos_por_hora(df):
     salida_retrasos = llegada_salida_retrasos.groupby('rango_salida')['retraso'].sum().reindex(["00:00 - 05:59", "06:00 - 11:59", "12:00 - 17:59", "18:00 - 23:59"], fill_value=0)
     llegada_retrasos = llegada_salida_retrasos.groupby('rango_llegada')['retraso'].sum().reindex(["00:00 - 05:59", "06:00 - 11:59", "12:00 - 17:59", "18:00 - 23:59"], fill_value=0)
 
-    index = range(len(salida_retrasos))
+    index = list(range(len(salida_retrasos)))  # Convertir el objeto range a una lista
     bar_width = 0.35
 
     fig = make_subplots(rows=1, cols=1)

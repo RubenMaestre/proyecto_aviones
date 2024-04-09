@@ -12,11 +12,7 @@ from modules.graph.numero_vuelos_dias_diciembre import graficar_numero_vuelos_di
 from modules.graph.numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
 from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
 from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
-
-
-
-
-
+from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
 
 
 def display():
@@ -190,6 +186,18 @@ def display():
     """)
         
         graficar_cantidad_retrasos_por_hora(df_todos)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Análisis de Retrasos por Día de la Semana
+        
+        Este gráfico de barras apiladas muestra la cantidad de vuelos con y sin retrasos (definidos como retrasos superiores a 15 minutos en la llegada) para cada día de la semana. Las barras apiladas permiten comparar visualmente la proporción de vuelos puntuales frente a los retrasados para cada día, ofreciendo insights sobre los patrones de puntualidad a lo largo de la semana.
+        
+        La visualización puede ayudar a identificar los días con mayor propensión a retrasos, lo cual es valioso tanto para las aerolíneas en la optimización de sus operaciones como para los pasajeros en la planificación de sus viajes.
+    """)
+        
+        graficar_dias_semana_con_sin_retrasos(df_todos)
 
         st.markdown("---")
 
