@@ -23,17 +23,17 @@ def mostrar_estadisticas_df(df, columna_fecha):
     col1, col2, col3, col4 = st.columns([1, 3, 1, 3])
 
     with col1:
-        st.markdown(f"<h4 style='text-align: left;'>Total datos:</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: left;'>Total datos:</h4>", unsafe_allow_html=True)
 
     with col2:
         total_datos_str = f"{total_datos:,.0f}".replace(',', '.')
         total_datos_str += " vuelos nacionales en USA"
-        st.markdown(f"<h4 style='text-align: left;'>{total_datos_str}</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: left;'>{total_datos_str}</h4>", unsafe_allow_html=True)
 
     with col3:
-        st.markdown(f"<h4 style='text-align: left;'>Fecha datos:</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: left;'>Fecha datos:</h4>", unsafe_allow_html=True)
 
     with col4:
-        st.markdown(f"<h4 style='text-align: left;'>Del {fecha_min_str} al {fecha_max_str}</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: left;'>Del {fecha_min_str} al {fecha_max_str}</h4>", unsafe_allow_html=True)
 
     st.markdown("---")
