@@ -3,6 +3,8 @@ from modules.carga_dec_2023 import cargar_unir_2023
 from modules.datos_df_cargados import mostrar_estadisticas_df
 from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
 from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
+from modules.graph.correlacion_variables import graficar_correlacion_variables
+
 
 
 def display():
@@ -45,4 +47,17 @@ def display():
 
         st.markdown("---")
 
+        st.markdown("""
+        ### Correlaciones Lineales de las Variables Numéricas
+        
+        Este mapa de calor muestra la correlación lineal entre diferentes variables numéricas relacionadas con los vuelos. Cada celda en el mapa de calor representa el coeficiente de correlación entre dos variables, donde el valor 1 indica una correlación positiva perfecta, -1 indica una correlación negativa perfecta, y 0 indica ninguna correlación.
+        
+        Los colores más cálidos (como el rojo) indican una correlación positiva más fuerte, mientras que los colores más fríos (como el azul) indican una correlación negativa. Las celdas de color más cercano al blanco representan una correlación cercana a cero.
+        
+        Este análisis es fundamental para identificar relaciones potenciales entre variables, lo que puede ser crucial para entender los factores que afectan a aspectos como los retrasos de vuelos, la duración de los vuelos y otros comportamientos operativos.
+        
+        Por ejemplo, una fuerte correlación positiva entre el 'retraso de salida' y el 'retraso de llegada' sugiere que los vuelos que se retrasan al despegar tienden a llegar también tarde a su destino. Identificar estas correlaciones puede ayudar a las aerolíneas y a los gestores de tráfico aéreo a mejorar la eficiencia y la puntualidad de los servicios de vuelo.
+    """)
 
+
+        graficar_correlacion_variables(df_dec_2023)
