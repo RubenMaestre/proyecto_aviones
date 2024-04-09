@@ -1,6 +1,8 @@
 import streamlit as st
 from modules.carga_todos_df import cargar_todos_df
 from modules.datos_df_cargados import mostrar_estadisticas_df
+from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
+
 
 def display():
     st.title('Todos los datos juntos')
@@ -10,3 +12,6 @@ def display():
 
     # Llama a la función para mostrar las estadísticas del DataFrame
     mostrar_estadisticas_df(df_todos, 'fecha')
+
+    # Llama a la función para mostrar la gráfica de vuelos por aerolínea
+    graficar_vuelos_por_aerolinea(df_todos)
