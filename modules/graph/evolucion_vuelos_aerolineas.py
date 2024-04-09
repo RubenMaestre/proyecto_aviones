@@ -10,13 +10,18 @@ def graficar_evolucion_vuelos_por_aerolinea(df):
                   title='Evolución del número de vuelos por compañía aérea',
                   labels={'anio': 'Año', 'numero_vuelos': 'Número de vuelos'})
 
+    # Ajustar el tamaño de la gráfica y otros aspectos del layout
     fig.update_layout(xaxis_title='Año', yaxis_title='Número de Vuelos',
-                      xaxis={'type': 'category'},  # Asegurar que el eje x trate los años como categorías
-                      width=1280, height=720)  # Tamaño personalizado
+                      xaxis={'type': 'category'},
+                      width=1280, height=720)
 
-    # Permitir a los usuarios seleccionar/deseleccionar aerolíneas específicas para comparar
-    fig.update_layout(legend_title_text='Compañía Aérea')
-    fig.for_each_trace(lambda t: t.update(name=t.name.replace('aerolinea=', '')))
+    # Actualizar la leyenda para mostrar solo una aerolínea específica (ejemplo: "American Airlines")
+    fig.for_each_trace(lambda t: t.update(visible=True if t.name == "American Airlines" else 'legendonly'))
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
+
+    # Mensaje instructivo para los usuarios
+    st.markdown("""
+        **Instrucciones:** Haz click en los nombres de las aerolíneas en la leyenda para filtrar y ver la evolución de vuelos de aerolíneas específicas.
+    """)
