@@ -5,8 +5,7 @@ from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
 from modules.graph.evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_por_aerolinea
 from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
 from modules.graph.correlacion_variables import graficar_correlacion_variables
-
-
+from modules.graph.correlacion_lineal import graficar_correlacion_lineal
 
 
 def display():
@@ -91,3 +90,17 @@ def display():
     """)
 
         graficar_correlacion_variables(df_todos)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Correlación Lineal entre Retraso en la Salida y Llegada de Vuelos
+        
+        El siguiente gráfico de dispersión muestra la relación entre el retraso en la salida y el retraso en la llegada de los vuelos. Cada punto en el gráfico representa un vuelo, ubicado según su tiempo de retraso en la salida (eje X) y su tiempo de retraso en la llegada (eje Y).
+        
+        La línea de tendencia, calculada mediante el método de mínimos cuadrados ordinarios (OLS), indica la existencia de una correlación lineal entre estas dos variables. Una correlación positiva significativa entre estos indicadores sugiere que los vuelos que experimentan retrasos en la salida tienden a sufrir retrasos similares en la llegada.
+        
+        Esta correlación es crucial para la planificación operativa de las aerolíneas y la gestión del tráfico aéreo, ya que comprender la relación entre los retrasos en la salida y la llegada puede ayudar a minimizar los impactos negativos en los horarios de los vuelos y la satisfacción de los pasajeros.
+    """)
+
+        graficar_correlacion_lineal(df_todos)
