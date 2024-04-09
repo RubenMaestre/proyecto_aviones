@@ -10,10 +10,12 @@ def graficar_evolucion_vuelos_por_aerolinea(df):
                   title='Evolución del número de vuelos por compañía aérea',
                   labels={'anio': 'Año', 'numero_vuelos': 'Número de vuelos'})
 
-    # Ajustar el tamaño de la gráfica y otros aspectos del layout
-    fig.update_layout(xaxis_title='Año', yaxis_title='Número de Vuelos',
-                      xaxis={'type': 'category'},
-                      width=1280, height=720)
+    # Ajustar otros aspectos del layout sin especificar width y height
+    fig.update_layout(
+        xaxis_title='Año',
+        yaxis_title='Número de Vuelos',
+        xaxis={'type': 'category'}
+    )
 
     # Actualizar la leyenda para mostrar solo una aerolínea específica (ejemplo: "American Airlines")
     fig.for_each_trace(lambda t: t.update(visible=True if t.name == "American Airlines" else 'legendonly'))
