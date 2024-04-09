@@ -16,9 +16,6 @@ from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_
 from modules.graph.total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
 from modules.graph.analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
 
-
-
-
 def display():
     st.title('Todos los datos juntos')
     
