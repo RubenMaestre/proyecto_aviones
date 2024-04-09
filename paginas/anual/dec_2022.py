@@ -6,6 +6,8 @@ from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
 from modules.graph.correlacion_variables import graficar_correlacion_variables
 from modules.graph.correlacion_lineal import graficar_correlacion_lineal
 from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
+from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
+
 
 
 def display():
@@ -90,3 +92,17 @@ def display():
 
         # Asegúrate de tener la función graficar_retrasos_mas_15 importada y disponible para usar
         graficar_retrasos_mas_15(df_dec_2022)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Comparación del Porcentaje de Retrasos en Salidas y Llegadas de Vuelos en Días Festivos vs. Días Laborables
+        
+        Los gráficos de pastel presentados comparan el porcentaje de vuelos con retrasos menores o iguales a 15 minutos en salidas y llegadas, diferenciando entre días laborables y festivos. Esta distinción permite observar si los días festivos, que podrían conllevar un volumen diferente de tráfico aéreo, afectan la puntualidad de los vuelos de manera significativa.
+        
+        La visualización en cuatro partes ofrece una comparación directa, permitiendo evaluar de manera rápida si existe una variación notable en los porcentajes de retraso entre los tipos de días. Este análisis puede proporcionar insights valiosos para la planificación de operaciones y la gestión de expectativas de los pasajeros durante diferentes periodos.
+    """)
+        
+        graficar_retrasos_mas_15_festivos(df_dec_2022)
+
+        st.markdown("---")
