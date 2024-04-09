@@ -3,6 +3,7 @@ from modules.carga_todos_df import cargar_todos_df
 from modules.datos_df_cargados import mostrar_estadisticas_df
 from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
 from modules.graph.evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_por_aerolinea
+from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
 
 
 
@@ -58,5 +59,19 @@ def display():
 
         # Todos años por aerolínea / evolución
         graficar_evolucion_vuelos_por_aerolinea(df_todos)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Distribución de las horas de salida y llegada de los vuelos
+        
+        Estos diagramas de caja ilustran la distribución de las horas de salida y llegada de los vuelos, convertidas a minutos desde la medianoche, lo que ofrece una visión clara de los patrones típicos de operación de vuelo durante el día.
+        
+        En el diagrama de 'Salida', cada caja muestra el rango intercuartílico de la hora de salida de los vuelos, con la línea central representando la mediana. De manera similar, el diagrama de 'Llegada' refleja estas mismas estadísticas para las horas de llegada. Las 'antenas' que se extienden desde las cajas indican la variabilidad fuera del rango intercuartílico superior e inferior, y los puntos representan valores atípicos que se desvían significativamente de los demás.
+        
+        Este análisis puede ayudarte a comprender los horarios de mayor actividad en los aeropuertos, así como a identificar las horas en que los vuelos tienden a programarse con mayor o menor frecuencia.
+    """)
+        
+        graficar_horas_vuelos(df_todos)
 
         st.markdown("---")
