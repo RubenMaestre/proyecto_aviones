@@ -3,8 +3,8 @@ import streamlit as st
 import pandas as pd
 from streamlit_folium import st_folium
 import folium
-from modules.botones_aviones import crear_botones  # Importa la función
-from paginas.vuelos import vuelos_usa, aerolineas, aeropuertos, datos  # Asegúrate de que estas rutas sean correctas
+from modules.botones_aviones import crear_botones  
+from paginas.vuelos import vuelos_usa, aerolineas, aeropuertos, datos 
 
 def display():
     st.title('Vuelos en USA')
