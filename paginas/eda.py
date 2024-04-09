@@ -30,9 +30,6 @@ def display():
         elif st.session_state.subpagina_eda == '2021':
             display_2021()
 
-    st.success('Todos los datos han sido cargados.')
-    total_filas_texto.empty()  # Limpia el texto de filas cargadas
-
 # Llama a la función para mostrar la página
 display()
 
