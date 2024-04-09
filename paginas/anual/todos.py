@@ -10,6 +10,8 @@ from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
 from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
 from modules.graph.numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
 from modules.graph.numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
+from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
+
 
 
 
@@ -162,6 +164,18 @@ def display():
     """)
         
         graficar_numero_vuelos_acumulados_diciembre(df_todos)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Cantidad de Llegadas y Salidas por Rangos Horarios
+        
+        El gráfico compara la cantidad de vuelos que salen y llegan en diferentes rangos horarios a lo largo del día. Cada par de barras representa un rango horario específico, con la primera barra mostrando la cantidad de salidas y la segunda barra mostrando la cantidad de llegadas durante ese período.
+        
+        Esta visualización ayuda a entender los patrones de tráfico aéreo, identificando las horas pico de actividad en los aeropuertos y permitiendo evaluar cómo la distribución de las llegadas y salidas se compara a lo largo del día.
+    """)
+        
+        graficar_cantidad_llegadas_salidas_por_hora(df_todos)
 
         st.markdown("---")
 
