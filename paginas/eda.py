@@ -9,22 +9,11 @@ from paginas.anual.dec_2023 import display as display_2023
 from paginas.anual.dec_2022 import display as display_2022
 from paginas.anual.dec_2021 import display as display_2021
 
-from modules.pickles import unir_pickles
-
 def display():
     st.title('Exploración de Datos de Vuelos')
 
     # Llama a la función para mostrar los botones de navegación
     crear_botones_eda()
-
-    if st.button('Pulse aquí para cargar datos'):
-        barra_progreso = st.progress(0)
-        total_filas_texto = st.empty()  # Prepara un contenedor vacío para el texto
-
-        generador_df = unir_pickles()  # Obtiene el generador
-        for df_vuelos_limpio, porcentaje, total_filas in generador_df:
-            barra_progreso.progress(porcentaje)  # Actualiza la barra de progreso
-            total_filas_texto.write(f'Total de filas cargadas: {total_filas}')  # Actualiza el texto de filas cargadas
 
     # Muestra el texto centrado solo si no se ha seleccionado una subpágina
     if 'subpagina_eda' not in st.session_state or st.session_state.subpagina_eda is None:
@@ -44,13 +33,6 @@ def display():
     st.success('Todos los datos han sido cargados.')
     total_filas_texto.empty()  # Limpia el texto de filas cargadas
 
-    # Una vez cargados todos los datos, crea y muestra la gráfica
-    vuelos_anuales = df_vuelos_limpio.groupby(['anio']).size().reset_index(name ='cantidad_vuelos_anuales')
-    fig = px.bar(data_frame=vuelos_anuales, x='anio', y='cantidad_vuelos_anuales', opacity=0.8,
-                     title="Cantidad de Vuelos Anuales", color='anio')
-    fig.update_layout(title_x=0.5, xaxis_title='Año', yaxis_title='Cantidad de Vuelos', xaxis={'categoryorder': 'total descending'})
-    st.plotly_chart(fig)
-    
 # Llama a la función para mostrar la página
 display()
 
