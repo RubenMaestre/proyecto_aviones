@@ -11,6 +11,8 @@ from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_fest
 from modules.graph.numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
 from modules.graph.numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
 from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
+from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
+
 
 
 
@@ -176,6 +178,18 @@ def display():
     """)
         
         graficar_cantidad_llegadas_salidas_por_hora(df_todos)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Cantidad de Retrasos en Llegadas y Salidas por Rangos Horarios
+        
+        El gráfico compara la cantidad de retrasos superiores a 15 minutos que ocurren en diferentes rangos horarios a lo largo del día tanto para salidas como para llegadas de vuelos. Cada par de barras representa un rango horario específico, con la primera barra mostrando la cantidad de retrasos en salidas y la segunda barra mostrando la cantidad de retrasos en llegadas durante ese período.
+        
+        Esta visualización ayuda a identificar las horas pico de retrasos en los aeropuertos, lo que puede ser crucial para la planificación operativa y la mejora de la puntualidad en los servicios de vuelo.
+    """)
+        
+        graficar_cantidad_retrasos_por_hora(df_todos)
 
         st.markdown("---")
 
