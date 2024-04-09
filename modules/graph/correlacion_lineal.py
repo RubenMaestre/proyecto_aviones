@@ -12,7 +12,12 @@ def graficar_correlacion_lineal(df):
         trendline='ols'  # Añade una línea de tendencia de mínimos cuadrados ordinarios
     )
 
-    fig.update_layout(title_x=0.5)  # Centrar el título
+    # Actualiza el layout para incluir el ancho y la altura
+    fig.update_layout(
+        title_x=0.5,  # Centrar el título
+        width=1080,  # Ancho personalizado
+        height=720   # Altura personalizada
+    )
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
