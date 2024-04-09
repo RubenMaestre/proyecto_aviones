@@ -3,15 +3,21 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 
 def graficar_numero_vuelos_dias_diciembre(df):
-    df_fechas = df.groupby(['anio', 'fecha']).size().reset_index(name ='numero_vuelos')
+    df_fechas = df.groupby(['anio', 'fecha']).size().reset_index(name='numero_vuelos')
 
     # Crear gráficos de línea para cada año
-    fig1 = px.line(df_fechas[(df_fechas['anio'] == 2021)], x ='fecha', y = 'numero_vuelos', color_discrete_sequence=['skyblue'])
-    fig2 = px.line(df_fechas[(df_fechas['anio'] == 2022)], x ='fecha', y = 'numero_vuelos', color_discrete_sequence=['violet'])
-    fig3 = px.line(df_fechas[(df_fechas['anio'] == 2023)], x ='fecha', y = 'numero_vuelos', color_discrete_sequence=['springgreen'])
+    fig1 = px.line(df_fechas[df_fechas['anio'] == 2021], x='fecha', y='numero_vuelos', color_discrete_sequence=['skyblue'])
+    fig2 = px.line(df_fechas[df_fechas['anio'] == 2022], x='fecha', y='numero_vuelos', color_discrete_sequence=['violet'])
+    fig3 = px.line(df_fechas[df_fechas['anio'] == 2023], x='fecha', y='numero_vuelos', color_discrete_sequence=['springgreen'])
 
-    # Combinar los gráficos en un solo gráfico con subplots
-    fig = make_subplots(rows=2, cols=2, subplot_titles=('2021', '2022', '2023', 'Todos los Años'))
+    # Combinar los gráficos en un solo gráfico con subplots y ajustar el espaciado
+    fig = make_subplots(
+        rows=2, 
+        cols=2, 
+        subplot_titles=('2021', '2022', '2023', 'Todos los Años'),
+        vertical_spacing=0.15,  # Ajusta el espaciado vertical
+        horizontal_spacing=0.1  # Ajusta el espaciado horizontal
+    )
 
     fig.add_trace(fig1.data[0], row=1, col=1)
     fig.add_trace(fig2.data[0], row=1, col=2)
@@ -35,3 +41,4 @@ def graficar_numero_vuelos_dias_diciembre(df):
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
+
