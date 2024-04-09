@@ -118,5 +118,5 @@ def display():
         Estos insights son cruciales para las aerolíneas y los aeropuertos para implementar estrategias destinadas a mejorar la puntualidad y la experiencia general del pasajero.
     """)
 
-    # Asegúrate de tener la función graficar_retrasos_mas_15 importada y disponible para usar
-    graficar_retrasos_mas_15(df_todos)
+        # Asegúrate de tener la función graficar_retrasos_mas_15 importada y disponible para usar
+        graficar_retrasos_mas_15(df_todos)
