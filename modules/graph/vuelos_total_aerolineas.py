@@ -7,7 +7,7 @@ def graficar_vuelos_por_aerolinea(df):
 
     # Crear la figura con Plotly
     fig = px.bar(data_frame=vuelos_aerolinea,
-                 x='Aerolineas',
+                 x='aerolinea',
                  y='Número total de vuelos',
                  opacity=0.8,
                  title="Cantidad de vuelos nacionales por compañía aérea en Estados Unidos",
