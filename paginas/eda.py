@@ -21,15 +21,16 @@ def display():
 
     # Navegación interna basada en el estado de la sesión
     if 'subpagina_eda' in st.session_state:
-        if st.session_state.subpagina_eda == 'todos':
-            display_todos()
-        elif st.session_state.subpagina_eda == '2023':
+        if st.session_state.subpagina_eda == '2023':
             display_2023()
         elif st.session_state.subpagina_eda == '2022':
             display_2022()
         elif st.session_state.subpagina_eda == '2021':
             display_2021()
+        elif st.session_state.subpagina_eda == 'todos':
+            display_todos()
 
+    st.image('sources/mapa_aviones_usa.jpg')  # Asegúrate de que la ruta de la imagen sea correcta
 # Llama a la función para mostrar la página
 display()
 
