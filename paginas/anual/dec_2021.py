@@ -10,6 +10,10 @@ from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_fest
 from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
 from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
 from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
+from modules.graph.total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
+from modules.graph.analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
+
+
 
 def display():
     st.title('Datos diciembre 2021')
@@ -141,5 +145,31 @@ def display():
     """)
         
         graficar_dias_semana_con_sin_retrasos(df_dec_2021)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Total de Minutos por Tipo de Retraso
+        
+        Este gráfico de barras muestra la suma total de minutos de retraso acumulados para diferentes categorías: retraso por aerolínea, retraso por clima, retraso por sistema de aviación y retraso por seguridad. Cada barra representa una categoría específica de retraso y la altura de la barra indica el total acumulado de minutos de retraso asociado a esa categoría.
+        
+        Esta visualización es útil para identificar los principales factores que contribuyen a los retrasos en los vuelos, lo que puede ayudar a las aerolíneas y autoridades aeronáuticas a implementar medidas dirigidas a mitigar los retrasos y mejorar la puntualidad.
+    """)
+        
+        graficar_total_minutos_por_tipo_retraso(df_dec_2021)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Análisis de Retrasos Aéreos
+
+        Estos dos gráficos circulares presentan un análisis de los retrasos aéreos desde dos perspectivas: el tiempo de retraso acumulado y el porcentaje de ocurrencias de cada tipo de retraso.
+
+        El primer gráfico muestra la distribución del tiempo total de retraso atribuido a cada categoría, proporcionando una visión de los tipos de retraso que tienen un mayor impacto en términos de tiempo perdido.
+
+        El segundo gráfico refleja la frecuencia con la que ocurre cada tipo de retraso, ofreciendo insights sobre cuáles son más comunes, independientemente de la duración del tiempo de retraso asociado.
+    """)
+        
+        graficar_analisis_retrasos_aereos(df_dec_2021)
 
         st.markdown("---")
