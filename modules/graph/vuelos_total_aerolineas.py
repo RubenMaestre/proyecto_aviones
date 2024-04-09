@@ -13,12 +13,14 @@ def graficar_vuelos_por_aerolinea(df):
                  title="Cantidad de vuelos nacionales por compañía aérea en Estados Unidos",
                  color='aerolinea')  # Asegúrate de que 'color' se refiera a una columna existente o elimínalo si no es necesario
 
-    # Ajustar otros aspectos del layout sin especificar width y height
+    # Ajustar el tamaño de la gráfica y actualizar otros aspectos del layout
     fig.update_layout(
         title_x=0.5,
         xaxis_title='Compañías aéreas',
         yaxis_title='Cantidad total de vuelos',
-        xaxis={'categoryorder': 'total descending'}
+        xaxis={'categoryorder': 'total descending'},
+        width=1080,  # Ancho personalizado
+        height=720   # Altura personalizada, ajusta según necesidad
     )
     
     # Mostrar la figura en la aplicación Streamlit

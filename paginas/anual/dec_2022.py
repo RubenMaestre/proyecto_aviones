@@ -13,15 +13,19 @@ def display():
     # Llama a la función para mostrar las estadísticas del DataFrame
     mostrar_estadisticas_df(df_dec_2022, 'fecha')
 
-    st.markdown("""
-    ### Cantidad de vuelos nacionales por compañía aérea en Estados Unidos
-    
-    Esta gráfica muestra la distribución del número total de vuelos nacionales operados por diferentes compañías aéreas en Estados Unidos. Cada barra representa una aerolínea específica y la altura de la barra indica el número total de vuelos que esa aerolínea ha operado.
-    
-    Puedes utilizar esta información para identificar las aerolíneas con mayor y menor número de vuelos, lo que puede ser indicativo de su tamaño, alcance y actividad en el mercado de vuelos nacionales.
-""")
+    # Crear columnas para centrar el contenido
+    col_izq, col_1, col_der = st.columns([1, 10, 1])
 
-    # Llama a la función para mostrar la gráfica de vuelos por aerolínea
-    graficar_vuelos_por_aerolinea(df_dec_2022)
+    with col_1:
+        st.markdown("""
+        ### Cantidad de vuelos nacionales por compañía aérea en Estados Unidos
+        
+        Esta gráfica muestra la distribución del número total de vuelos nacionales operados por diferentes compañías aéreas en Estados Unidos. Cada barra representa una aerolínea específica y la altura de la barra indica el número total de vuelos que esa aerolínea ha operado.
+        
+        Puedes utilizar esta información para identificar las aerolíneas con mayor y menor número de vuelos, lo que puede ser indicativo de su tamaño, alcance y actividad en el mercado de vuelos nacionales.
+    """)
 
-    st.markdown("---")
+        # Llama a la función para mostrar la gráfica de vuelos por aerolínea
+        graficar_vuelos_por_aerolinea(df_dec_2022)
+
+        st.markdown("---")

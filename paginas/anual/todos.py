@@ -29,7 +29,7 @@ def display():
     df_todos = cargar_todos_df()
 
     # Crear columnas para centrar el contenido
-    col_izq, col_1, col_der = st.columns([1, 12, 1])
+    col_izq, col_1, col_der = st.columns([1, 10, 1])
 
     with col_1:
         # Llama a la función para mostrar las estadísticas del DataFrame
