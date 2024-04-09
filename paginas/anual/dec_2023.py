@@ -13,5 +13,13 @@ def display():
     # Llama a la función para mostrar las estadísticas del DataFrame
     mostrar_estadisticas_df(df_dec_2023, 'fecha')
 
-    # Llama a la función para mostrar la gráfica de vuelos por aerolínea
-    graficar_vuelos_por_aerolinea(df_dec_2023)
+# Usamos st.columns para dividir la pantalla en dos columnas
+    col1, col2 = st.columns(2)
+
+    # En la primera columna, ponemos la gráfica de vuelos por aerolínea
+    with col1:
+        graficar_vuelos_por_aerolinea(df_dec_2023)
+
+    # En la segunda columna, ponemos la gráfica de evolución de vuelos por aerolínea
+    with col2:
+        graficar_vuelos_por_aerolinea(df_dec_2023)
