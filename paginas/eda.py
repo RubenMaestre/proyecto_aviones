@@ -18,7 +18,8 @@ def display():
     # Muestra el texto centrado solo si no se ha seleccionado una subpágina
     if 'subpagina_eda' not in st.session_state or st.session_state.subpagina_eda is None:
         st.markdown("<h3 style='text-align: center;'>Seleccione un año para visualizar los datos</h3>", unsafe_allow_html=True)
-
+        st.image('sources/mapa_aviones_usa.png')  
+        
     # Navegación interna basada en el estado de la sesión
     if 'subpagina_eda' in st.session_state:
         if st.session_state.subpagina_eda == '2023':
@@ -30,7 +31,7 @@ def display():
         elif st.session_state.subpagina_eda == 'todos':
             display_todos()
 
-    st.image('sources/mapa_aviones_usa.jpg')  # Asegúrate de que la ruta de la imagen sea correcta
+    
 # Llama a la función para mostrar la página
 display()
 
