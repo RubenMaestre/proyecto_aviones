@@ -31,7 +31,7 @@ def graficar_numero_vuelos_dias_diciembre(df):
 
     fig.update_yaxes(title_text='Número de vuelos', row=1, col=1)
     fig.update_yaxes(title_text='Número de vuelos', row=2, col=1)
-    fig.update_layout(title_text='Número de vuelos por días en Diciembre por Año', title_x=0.5)
+    fig.update_layout(title_text='Número de vuelos por días en Diciembre por Año', title_x=0.5, width=1080)
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
