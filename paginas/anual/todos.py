@@ -6,6 +6,7 @@ from modules.graph.evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_
 from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
 from modules.graph.correlacion_variables import graficar_correlacion_variables
 from modules.graph.correlacion_lineal import graficar_correlacion_lineal
+from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
 
 
 def display():
@@ -104,3 +105,18 @@ def display():
     """)
 
         graficar_correlacion_lineal(df_todos)
+
+        st.markdown("---")
+
+        st.markdown("""
+        ### Análisis de Retrasos en Salidas y Llegadas de Vuelos
+
+        Los siguientes gráficos de pastel representan la proporción de vuelos que experimentaron retrasos de más de 15 minutos en sus salidas y llegadas, respectivamente. Estos retrasos son indicativos de las eficiencias operativas y pueden estar influenciados por una variedad de factores, incluidos problemas técnicos, condiciones climáticas adversas y congestión del tráfico aéreo.
+
+        Un 'retraso' se define como cualquier demora de más de 15 minutos en la salida o llegada programada del vuelo. La comparación entre los dos gráficos permite visualizar la relación entre los retrasos en la salida y los posibles impactos correspondientes en la llegada de los vuelos.
+
+        Estos insights son cruciales para las aerolíneas y los aeropuertos para implementar estrategias destinadas a mejorar la puntualidad y la experiencia general del pasajero.
+    """)
+
+    # Asegúrate de tener la función graficar_retrasos_mas_15 importada y disponible para usar
+    graficar_retrasos_mas_15(df_todos)
