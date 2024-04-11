@@ -61,4 +61,4 @@ def mostrar_mapa_aeropuertos_usa():
     ).add_to(mapa)
 
     # Mostrar el mapa base en Streamlit
-    st_folium(mapa, width=700, height=500, key="main_map")
+    st_folium(mapa, width=1280, height=720, key="main_map")
