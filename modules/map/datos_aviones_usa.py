@@ -56,5 +56,7 @@ def datos_aviones_usa():
         ]
     }
 
+    print(df_todos['ciudad_origen'].value_counts())
+    print(df_todos['ciudad_destino'].value_counts())
     df_datos = pd.DataFrame(datos)
     st.table(df_datos)
