@@ -1,7 +1,8 @@
 # paginas/vuelos/datos.py
 import streamlit as st
 from modules.carga_todos_df import cargar_todos_df
-from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
+from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
+#from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
 #from modules.graph.histograma_distancias_millas import graficar_histograma_distancias_millas
 #from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
 #from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
@@ -26,8 +27,8 @@ def display():
 
         Este tipo de visualización es útil para comprender la variabilidad de las distancias de vuelo, identificar posibles valores atípicos y obtener una idea general sobre la centralidad y la dispersión de los datos.
     """)
-
-        graficar_diagrama_distancia_millas(df_todos)
+        graficar_vuelos_por_aerolinea(df_todos)
+        #graficar_diagrama_distancia_millas(df_todos)
 
         st.markdown("---")
 
