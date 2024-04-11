@@ -23,7 +23,7 @@ def mostrar_aerolineas_unicos():
 
     # Si se encuentra una imagen, mostrarla centrada
     if imagen_path:
-        st.image(imagen_path, width=600, align='center', caption=aerolinea_info['aerolinea'])
+        st.image(imagen_path, width=600, caption=aerolinea_info['aerolinea'])
 
     # Mostrar la tabla con la información de la aerolínea
     tabla_data = [
