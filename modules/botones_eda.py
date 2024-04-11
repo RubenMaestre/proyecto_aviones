@@ -18,9 +18,9 @@ def crear_botones_eda():
             st.session_state.subpagina_eda = "2021"
     
     with col4:
-        if st.button("Todos años - Página 1", key="todos_btn"):
+        if st.button("Todos años - Página 1", key="todos_1_btn"):
             st.session_state.subpagina_eda = "todos_1"
     
     with col5:
-        if st.button("Todos años - Página 2", key="todos_btn"):
+        if st.button("Todos años - Página 2", key="todos_2_btn"):
             st.session_state.subpagina_eda = "todos_2"
