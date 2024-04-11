@@ -4,6 +4,8 @@ from modules.carga_todos_df import cargar_todos_df
 from modules.graph.vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
 from modules.map.datos_aviones_usa import datos_aviones_usa
 from modules.map.datos_aviones_usa_2 import datos_aviones_usa_2
+from modules.map.datos_aviones_usa_3 import datos_aviones_usa_3
+from modules.map.datos_aviones_usa_4 import datos_aviones_usa_4
 
 
 
@@ -23,6 +25,14 @@ def display():
         st.markdown("---")
 
         datos_aviones_usa_2()
+
+        st.markdown("---")
+
+        datos_aviones_usa_3()
+
+        st.markdown("---")
+
+        datos_aviones_usa_4()
 
         st.markdown("---")
         
