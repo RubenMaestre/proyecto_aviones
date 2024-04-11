@@ -5,6 +5,8 @@ import folium
 
 from modules.map.mapa_aeropuertos import mostrar_mapa_aeropuertos_globales
 from modules.map.estados_usa import mostrar_mapa_aeropuertos_usa
+from modules.map.selector_estado import mostrar_mapa_aeropuertos_por_estado
+
 
 # Para cargar desde CSV
 df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
@@ -21,8 +23,16 @@ def display():
     st.markdown("---")
 
     st.markdown("""
-            ### Mapa por estados donde tenemos los aeropeurtos""")
+            ### Mapa de estados de los Estados Unidos""")
 
     mostrar_mapa_aeropuertos_usa()
 
     st.markdown("---")
+
+    st.markdown("""
+                ### Selecciona un estado para ver los aeropuertos que contiene""")
+
+    mostrar_mapa_aeropuertos_por_estado()
+
+    st.markdown("---")
+

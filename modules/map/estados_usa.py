@@ -9,7 +9,7 @@ def mostrar_mapa_aeropuertos_usa():
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
 
     # Inicializar el mapa centrado en los Estados Unidos
-    mapa = folium.Map(location=[37.0902, -95.7129], zoom_start=5)
+    mapa = folium.Map(location=[37.0902, -95.7129], zoom_start=4)
 
     # Cargar el GeoJSON de los estados de EE.UU.
     geojson_usa = 'modules/map/us-states.json'
