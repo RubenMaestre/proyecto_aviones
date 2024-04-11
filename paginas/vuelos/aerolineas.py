@@ -1,5 +1,5 @@
 import streamlit as st
-from modules.map.aeropuertos_unicos import mostrar_aerolineas_unicos
+from modules.map.aerolineas_unicos import mostrar_aerolineas_unicos
 
 def display():
     st.title('Aerolineas')
