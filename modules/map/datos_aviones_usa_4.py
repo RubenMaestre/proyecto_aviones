@@ -4,6 +4,13 @@ from modules.carga_todos_df import cargar_todos_df
 
 def datos_aviones_usa_4():
     df_todos = cargar_todos_df()
+    
+    # Antes de usar '.dt', asegúrate de que 'hora_salida_real' esté en formato datetime
+    df_todos['hora_salida_real'] = pd.to_datetime(df_todos['hora_salida_real'])
+
+    # Ahora deberías poder usar '.dt' sin problemas
+    df_todos['hora_exacta_salida'] = df_todos['hora_salida_real'].dt.minute == 0
+
 
     # Vuelo más 'cercano a la hora'
     df_todos['hora_exacta_salida'] = df_todos['hora_salida_real'].dt.minute == 0
