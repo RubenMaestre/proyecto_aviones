@@ -6,6 +6,8 @@ import folium
 from modules.map.mapa_aeropuertos import mostrar_mapa_aeropuertos_globales
 from modules.map.estados_usa import mostrar_mapa_aeropuertos_usa
 from modules.map.selector_estado import mostrar_mapa_aeropuertos_por_estado
+from modules.map.selector_estado_interactivo import mostrar_mapa_aeropuertos_por_estado_interactivo
+
 
 
 # Para cargar desde CSV
@@ -35,4 +37,12 @@ def display():
     mostrar_mapa_aeropuertos_por_estado()
 
     st.markdown("---")
+
+    st.markdown("""
+                ### Selecciona un mapa""")
+    
+    mostrar_mapa_aeropuertos_por_estado_interactivo()
+
+    st.markdown("---")
+
 
