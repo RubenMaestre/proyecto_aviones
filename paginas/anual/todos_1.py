@@ -6,15 +6,10 @@ from modules.graph.evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_
 from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
 from modules.graph.correlacion_variables import graficar_correlacion_variables
 from modules.graph.correlacion_lineal import graficar_correlacion_lineal
-from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
-from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
 from modules.graph.numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
 from modules.graph.numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
 from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
-from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
-from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
-from modules.graph.total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
-from modules.graph.analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
+
 
 def display():
     st.title('Todos los datos juntos')

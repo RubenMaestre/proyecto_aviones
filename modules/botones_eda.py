@@ -3,7 +3,7 @@ import streamlit as st
 
 def crear_botones_eda():
     # Usamos st.columns para crear un diseño con espacios alrededor de los botones para centrarlos
-    espacio_izq, col1, col2, col3, col4, col5, espacio_der = st.columns([1, 2, 2, 2, 2, 2, 1])
+    espacio_izq, col1, col2, col3, col4, col5, col6, espacio_der = st.columns([1, 2, 2, 2, 2, 2, 2, 1])
 
     with col1:
         if st.button("2023", key="2023_btn"):
@@ -24,3 +24,7 @@ def crear_botones_eda():
     with col5:
         if st.button("Todos - Pagina 2", key="todos_2_btn"):
             st.session_state.subpagina_eda = "todos_2"
+    
+    with col6:
+        if st.button("Todos - Pagina 3", key="todos_3_btn"):
+            st.session_state.subpagina_eda = "todos_3"
