@@ -1,0 +1,50 @@
+import folium
+import pandas as pd
+import streamlit as st
+from streamlit_folium import st_folium
+
+def mostrar_aeropuertos_unicos():
+    # Cargar los datos de aeropuertos
+    df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
+
+    # Selector de Estado
+    nombres_estados = sorted(df_aeropuertos_unicos['nombre_estado'].unique())
+    nombre_estado_seleccionado = st.selectbox('Selecciona un estado:', nombres_estados)
+
+    # Filtrar por Estado seleccionado
+    df_estado = df_aeropuertos_unicos[df_aeropuertos_unicos['nombre_estado'] == nombre_estado_seleccionado]
+
+    # Selector de Ciudad
+    ciudades = sorted(df_estado['ciudad'].unique())
+    ciudad_seleccionada = st.selectbox('Selecciona una ciudad:', ciudades)
+
+    # Filtrar por Ciudad seleccionada
+    df_ciudad = df_estado[df_estado['ciudad'] == ciudad_seleccionada]
+
+    # Selector de Aeropuerto
+    aeropuertos = df_ciudad['nombre_aeropuerto'].tolist()
+    aeropuerto_seleccionado = st.selectbox('Selecciona un aeropuerto:', aeropuertos)
+
+    # Información del Aeropuerto seleccionado
+    aeropuerto_info = df_ciudad[df_ciudad['nombre_aeropuerto'] == aeropuerto_seleccionado].iloc[0]
+
+    # Mostrar detalles del aeropuerto
+    st.markdown(f"### {aeropuerto_info['nombre_aeropuerto']} + Airport")
+
+    # Tabla con información del aeropuerto
+    st.table(aeropuerto_info[['ciudad', 'nombre_estado', 'latitude', 'longitude']])
+
+    # Mostrar dirección en una nueva fila
+    st.write(f"**Dirección:** {aeropuerto_info['direccion']}")
+
+    # Mostrar el mapa
+    mapa = folium.Map(location=[aeropuerto_info['latitude'], aeropuerto_info['longitude']], zoom_start=12)
+    folium.Marker(
+        [aeropuerto_info['latitude'], aeropuerto_info['longitude']],
+        popup=f"{aeropuerto_info['nombre_aeropuerto']} + Airport",
+        icon=folium.Icon(color='red', icon='info-sign')
+    ).add_to(mapa)
+    st_folium(mapa, width=1080, height=480)
+
+    # Información de Wiki
+    st.write(f"**Información:** {aeropuerto_info['wiki_info']}")
