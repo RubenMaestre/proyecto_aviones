@@ -1,3 +1,4 @@
+# paginas/vuelos/datos.py
 import streamlit as st
 from modules.carga_todos_df import cargar_todos_df
 from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
@@ -26,7 +27,7 @@ def display():
         Este tipo de visualización es útil para comprender la variabilidad de las distancias de vuelo, identificar posibles valores atípicos y obtener una idea general sobre la centralidad y la dispersión de los datos.
     """)
 
-        graficar_diagrama_distancia_millas(df_todos)
+        #graficar_diagrama_distancia_millas(df_todos)
 
         st.markdown("---")
 
@@ -40,7 +41,7 @@ def display():
         Este análisis permite visualizar la distribución general de las distancias de vuelo y entender mejor las tendencias centrales de los datos.
     """)
         
-        #graficar_histograma_distancias_millas(df_todos)
+        graficar_histograma_distancias_millas(df_todos)
 
         st.markdown("---")
 
