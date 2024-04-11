@@ -8,7 +8,7 @@ from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_mill
 
 
 def display():
-    st.title('Todos los datos juntos')
+    st.title('Datoys y curiosidades sobre distancias')
     
     # Llama a la función para cargar y unir todos los DataFrames
     df_todos = cargar_todos_df()
@@ -40,7 +40,7 @@ def display():
         Este análisis permite visualizar la distribución general de las distancias de vuelo y entender mejor las tendencias centrales de los datos.
     """)
         
-        graficar_histograma_distancias_millas(df_todos)
+        #graficar_histograma_distancias_millas(df_todos)
 
         st.markdown("---")
 
@@ -52,7 +52,7 @@ def display():
         La visualización puede ser útil para entender si los vuelos más largos son más susceptibles a retrasos en comparación con los vuelos más cortos, y podría ayudar a las aerolíneas a optimizar sus operaciones y estrategias de manejo de retrasos.
     """)
         
-        graficar_relacion_retrasos_millas(df_todos)
+        #graficar_relacion_retrasos_millas(df_todos)
 
         st.markdown("---")
 
@@ -64,6 +64,6 @@ def display():
         Este análisis puede ofrecer insights sobre las rutas más largas operadas y cómo estas distancias extremas son gestionadas por las aerolíneas, además de los desafíos logísticos y operativos que representan.
     """)
         
-        graficar_maxima_distancia_millas(df_todos)
+        #graficar_maxima_distancia_millas(df_todos)
 
         st.markdown("---")
