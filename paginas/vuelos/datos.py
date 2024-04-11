@@ -9,10 +9,10 @@ from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_mill
 
 
 def display():
-    st.title('Datoys y curiosidades sobre distancias')
+    st.title('Datos y curiosidades sobre distancias')
     
     # Llama a la función para cargar y unir todos los DataFrames
-    df_todos = cargar_todos_df()
+    #df_todos = cargar_todos_df()
 
     # Crear columnas para centrar el contenido
     col_izq, col_1, col_der = st.columns([1, 10, 1])
