@@ -1,10 +1,10 @@
 # paginas/vuelos/datos.py
 import streamlit as st
-from modules.carga_todos_df import cargar_todos_df
-from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
-from modules.graph.histograma_distancias_millas import graficar_histograma_distancias_millas
-from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
-from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
+#from modules.carga_todos_df import cargar_todos_df
+#from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
+#from modules.graph.histograma_distancias_millas import graficar_histograma_distancias_millas
+#from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
+#from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
 
 
 
