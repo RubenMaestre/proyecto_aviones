@@ -30,7 +30,7 @@ def display():
     st.markdown("---")
 
     st.markdown("""
-                ### Selecciona un estado para ver los aeropuertos que contiene""")
+                ### Selecciona un  estado para ver los aeropuertos que contiene""")
 
     mostrar_mapa_aeropuertos_por_estado()
 
