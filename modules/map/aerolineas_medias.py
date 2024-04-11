@@ -53,8 +53,6 @@ def muestra_aerolineas_medias():
         ]
     }
 
-    # Crear DataFrame y mostrarlo como tabla
-    # Crear DataFrame y mostrarlo como tabla sin índice
     df_datos_curiosos = pd.DataFrame(datos_tabla)
-    df_datos_curiosos.reset_index(drop=True, inplace=True)  # Resetear índices
-    st.table(df_datos_curiosos)
+    html = df_datos_curiosos.to_html(index=False)
+    st.markdown(html, unsafe_allow_html=True)
