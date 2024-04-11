@@ -5,4 +5,4 @@ def display():
     st.title('Aerolineas')
     # Aquí iría el resto de tu contenido de la página de inicio
 
-    mostrar_aerolineas_unicas()
+    mostrar_aerolineas_unicos()

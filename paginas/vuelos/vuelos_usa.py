@@ -14,7 +14,7 @@ from modules.map.selector_estado_interactivo import mostrar_mapa_aeropuertos_por
 df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
 
 def display():
-    st.title('Datos de vuelos sobre Estados Unidos')
+    st.title('Mapas de vuelos sobre Estados Unidos')
     # Aquí iría el resto de tu contenido de la página de inicio
     
     st.markdown("""
