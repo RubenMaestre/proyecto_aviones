@@ -35,20 +35,26 @@ def muestra_aerolineas_medias():
             'Compañías con 150-500 aviones',
             'Compañías con más de 500 aviones'
         ],
+        
         'Descripción': [
             f"{df_aerolineas_unicas.loc[oldest_idx, 'aerolinea']} (Fundada en {int(df_aerolineas_unicas.loc[oldest_idx, 'oldest'])})",
             f"{df_aerolineas_unicas.loc[largest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[largest_fleet_idx, 'fleet_size'])} aviones)",
-            df_aerolineas_unicas.loc[smallest_fleet_idx, 'aerolinea'],
-            df_aerolineas_unicas.loc[oldest_fleet_idx, 'aerolinea'],
-            df_aerolineas_unicas.loc[youngest_fleet_idx, 'aerolinea'],
+            f"{df_aerolineas_unicas.loc[smallest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[smallest_fleet_idx, 'fleet_size'])} aviones)",
+            f"{df_aerolineas_unicas.loc[oldest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[oldest_fleet_idx, 'average_fleet_Age']:.2f} años)",
+            f"{df_aerolineas_unicas.loc[youngest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[youngest_fleet_idx, 'average_fleet_Age']:.2f} años)",
             f"{df_aerolineas_unicas['fleet_size'].mean():.2f}",
             f"{df_aerolineas_unicas['average_fleet_Age'].mean():.2f} años",
-            f"{(df_aerolineas_unicas['fleet_size'] < 150).sum()} compañías",
-            f"{((df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)).sum()} compañías",
-            f"{(df_aerolineas_unicas['fleet_size'] > 500).sum()} compañías"
+            f"{(df_aerolineas_unicas['fleet_size'] < 150).sum()} compañías " +
+            f"({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] < 150]['aerolinea'].tolist())})",
+            f"{((df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)).sum()} compañías " +
+            f"({', '.join(df_aerolineas_unicas[(df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)]['aerolinea'].tolist())})",
+            f"{(df_aerolineas_unicas['fleet_size'] > 500).sum()} compañías " +
+            f"({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] > 500]['aerolinea'].tolist())})"
         ]
     }
 
     # Crear DataFrame y mostrarlo como tabla
+    # Crear DataFrame y mostrarlo como tabla sin índice
     df_datos_curiosos = pd.DataFrame(datos_tabla)
+    df_datos_curiosos.reset_index(drop=True, inplace=True)  # Resetear índices
     st.table(df_datos_curiosos)

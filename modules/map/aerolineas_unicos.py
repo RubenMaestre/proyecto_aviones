@@ -13,18 +13,6 @@ def mostrar_aerolineas_unicos():
     # Información de la Aerolínea seleccionada
     aerolinea_info = df_aerolineas_unicas[df_aerolineas_unicas['aerolinea'] == aerolinea_seleccionada].iloc[0]
 
-    # Intenta cargar la imagen desde el directorio local, considerando diferentes extensiones
-    imagen_path = None
-    for ext in ['svg', 'jpg', 'png']:
-        path = f'sources/aerolineas/{aerolinea_seleccionada}.{ext}'
-        if os.path.exists(path):
-            imagen_path = path
-            break
-
-    # Si se encuentra una imagen, mostrarla centrada
-    if imagen_path:
-        st.image(imagen_path, width=600, caption=aerolinea_info['aerolinea'])
-
     # Mostrar la tabla con la información de la aerolínea
     tabla_data = [
         ['Nombre:', aerolinea_info['aerolinea']],
@@ -51,6 +39,18 @@ def mostrar_aerolineas_unicos():
 
     # Mostrar el título "Sobre la compañía"
     st.markdown("### Sobre la compañía:")
+
+    # Intenta cargar la imagen desde el directorio local, considerando diferentes extensiones
+    imagen_path = None
+    for ext in ['svg', 'jpg', 'png']:
+        path = f'sources/aerolineas/{aerolinea_seleccionada}.{ext}'
+        if os.path.exists(path):
+            imagen_path = path
+            break
+
+    # Si se encuentra una imagen, mostrarla centrada
+    if imagen_path:
+        st.image(imagen_path, width=600, caption=aerolinea_info['aerolinea'])
 
     # Mostrar el Resumen de la aerolínea seleccionada
     st.write(aerolinea_info['Resumen'])
