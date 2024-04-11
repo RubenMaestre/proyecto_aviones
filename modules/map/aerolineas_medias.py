@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-def aerolineas_medias():
+def muestra_aerolineas_medias():
     st.markdown("### Datos curiosos de las aerolíneas de Estados Unidos que debes saber")
 
     # Cargar los datos de aerolíneas
