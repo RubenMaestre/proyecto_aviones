@@ -1,22 +1,32 @@
 import streamlit as st
-import plotly.express as px
+import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 
 def graficar_histograma_distancias_millas(df):
-    fig = px.histogram(df, x="distancia_millas", title="Histograma de Distancia en Millas", opacity=0.8, nbins=50)
+    # Configurar el estilo de Seaborn
+    sns.set(style="whitegrid")
+    
+    # Crear el histograma usando Matplotlib
+    plt.figure(figsize=(12, 6))
+    sns.histplot(df['distancia_millas'], bins=50, kde=False, color="skyblue", alpha=0.8)
 
+    # Calcular media y mediana
     media = np.mean(df['distancia_millas'])
     mediana = np.median(df['distancia_millas'])
 
-    fig.add_vline(x=media, line_dash="dash", line_color="red", name="Media")
-    fig.add_vline(x=mediana, line_dash="dash", line_color="green", name="Mediana")
+    # Añadir líneas verticales para la media y la mediana
+    plt.axvline(media, color='red', linestyle='dashed', linewidth=1, label=f'Media: {media:.2f}')
+    plt.axvline(mediana, color='green', linestyle='dashed', linewidth=1, label=f'Mediana: {mediana:.2f}')
 
-    fig.update_layout(
-        title_x=0.5,
-        xaxis_title='Distancia en Millas',
-        yaxis_title='Cantidad de Vuelos',
-        width=1080
-    )
+    # Añadir título y etiquetas
+    plt.title('Histograma de Distancia en Millas', fontsize=16)
+    plt.xlabel('Distancia en Millas', fontsize=14)
+    plt.ylabel('Cantidad de Vuelos', fontsize=14)
 
-    # Mostrar la figura en la aplicación Streamlit
-    st.plotly_chart(fig)
+    # Añadir leyenda
+    plt.legend()
+
+    # Mostrar el histograma en Streamlit
+    st.pyplot(plt)
+
