@@ -6,7 +6,7 @@ def display():
     st.title('Aerolineas')
     # Aquí iría el resto de tu contenido de la página de inicio
 
-    muestra_aerolineas_medias
+    muestra_aerolineas_medias()
     
     st.markdown("---")
 
