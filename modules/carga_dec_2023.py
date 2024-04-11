@@ -11,5 +11,5 @@ def cargar_unir_2023():
 
         st.session_state.df_dec_2023 = pd.concat([df_2023_1, df_2023_2], ignore_index=True)
 
-    df_dec_2023 = st.session_state.df_dec_2022
+    df_dec_2023 = st.session_state.df_dec_2023
     return df_dec_2023
