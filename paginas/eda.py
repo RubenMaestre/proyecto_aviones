@@ -4,7 +4,8 @@ import plotly.express as px
 from modules.botones_eda import crear_botones_eda  # Importa la función de botones
 
 # Importa las funciones display de cada año y TODOS
-from paginas.anual.todos import display as display_todos
+from paginas.anual.todos_1 import display as display_todos_1
+from paginas.anual.todos_2 import display as display_todos_2
 from paginas.anual.dec_2023 import display as display_2023
 from paginas.anual.dec_2022 import display as display_2022
 from paginas.anual.dec_2021 import display as display_2021
@@ -28,8 +29,10 @@ def display():
             display_2022()
         elif st.session_state.subpagina_eda == '2021':
             display_2021()
-        elif st.session_state.subpagina_eda == 'todos':
-            display_todos()
+        elif st.session_state.subpagina_eda == 'Todos - Página 1':
+            display_todos_1()
+        elif st.session_state.subpagina_eda == 'Todos - Página 2':
+            display_todos_2()
 
     
 # Llama a la función para mostrar la página
