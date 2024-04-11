@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-def mostrar_aerolineas_unicas():
+def mostrar_aerolineas_unicos():
     # Cargar los datos de aerolíneas
     df_aerolineas_unicas = pd.read_pickle('data/aerolineas_unicas.pkl')
 
