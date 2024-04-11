@@ -12,7 +12,7 @@ def display():
     st.title('Datoys y curiosidades sobre distancias')
     
     # Llama a la función para cargar y unir todos los DataFrames
-    df_todos = cargar_todos_df()
+    #df_todos = cargar_todos_df()
 
     # Crear columnas para centrar el contenido
     col_izq, col_1, col_der = st.columns([1, 10, 1])
@@ -41,7 +41,7 @@ def display():
         Este análisis permite visualizar la distribución general de las distancias de vuelo y entender mejor las tendencias centrales de los datos.
     """)
         
-        graficar_histograma_distancias_millas(df_todos)
+        #graficar_histograma_distancias_millas(df_todos)
 
         st.markdown("---")
 
