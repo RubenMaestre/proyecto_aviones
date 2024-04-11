@@ -44,7 +44,7 @@ def mostrar_aeropuertos_unicos():
         popup=f"{aeropuerto_info['nombre_aeropuerto']} + Airport",
         icon=folium.Icon(color='red', icon='info-sign')
     ).add_to(mapa)
-    st_folium(mapa, width=1080, height=480)
+    st_folium(mapa, width=1280, height=480)
 
     # Información de Wiki
     st.write(f"**Información:** {aeropuerto_info['wiki_info']}")
