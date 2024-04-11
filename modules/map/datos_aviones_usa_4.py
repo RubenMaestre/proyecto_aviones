@@ -4,16 +4,12 @@ from modules.carga_todos_df import cargar_todos_df
 
 def datos_aviones_usa_4():
     df_todos = cargar_todos_df()
-    
+
     # Antes de usar '.dt', asegúrate de que 'hora_salida_real' esté en formato datetime
     df_todos['hora_salida_real'] = pd.to_datetime(df_todos['hora_salida_real'])
 
-    # Ahora deberías poder usar '.dt' sin problemas
-    df_todos['hora_exacta_salida'] = df_todos['hora_salida_real'].dt.minute == 0
+    df_todos['hora_exacta_salida'] = df_todos['hora_salida_real'].apply(lambda x: x.minute == 0 if pd.notnull(x) else False)
 
-
-    # Vuelo más 'cercano a la hora'
-    df_todos['hora_exacta_salida'] = df_todos['hora_salida_real'].dt.minute == 0
     vuelo_cercano_hora = df_todos[df_todos['hora_exacta_salida']]['numero_vuelo'].value_counts().idxmax()
 
     # Aeropuerto 'leyenda urbana'
