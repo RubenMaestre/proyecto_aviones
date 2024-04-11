@@ -38,11 +38,6 @@ def display():
 
     st.markdown("---")
 
-    st.markdown("""
-                ### Selecciona un mapa""")
-    
-    mostrar_mapa_aeropuertos_por_estado_interactivo()
 
-    st.markdown("---")
 
 
