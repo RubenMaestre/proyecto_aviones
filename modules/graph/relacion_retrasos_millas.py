@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def graficar_relacion_retrasos_millas(df):
-    retraso_millas = df[df['retraso_llegada'] > 15].copy()
-    sin_retraso_millas = df[df['retraso_llegada'] <= 15].copy()
-
     def asignar_rango_millas(milla):
         if milla < 500:
             return 'menos de 500'
@@ -17,24 +15,26 @@ def graficar_relacion_retrasos_millas(df):
             return '1500-2000'
         else:
             return 'más de 2000'
-
-    retraso_millas['rango_millas'] = retraso_millas['distancia_millas'].apply(asignar_rango_millas)
-    sin_retraso_millas['rango_millas'] = sin_retraso_millas['distancia_millas'].apply(asignar_rango_millas)
-
-    retrasos_rango_millas = retraso_millas.groupby('rango_millas').size().reset_index(name='con_retraso')
-    sin_retrasos_rango_millas = sin_retraso_millas.groupby('rango_millas').size().reset_index(name='sin_retraso')
-
-    millas = retrasos_rango_millas.merge(sin_retrasos_rango_millas, on='rango_millas', how='outer').fillna(0)
-
-    fig = px.bar(millas, 
-                x='rango_millas', 
-                y=['con_retraso', 'sin_retraso'], 
-                title='Cantidad de vuelos con y sin retraso en la llegada según el recorrido del vuelo',
-                labels={'rango_millas': 'Rango de millas', 'value': 'Cantidad de vuelos'},
-                opacity=0.7, 
-                color_discrete_map={"con_retraso": "tomato", "sin_retraso": "lightseagreen"})
-
-    fig.update_layout(title_x=0.5, xaxis={'categoryorder': 'total descending'}, width=1080)
-
-    # Mostrar la figura en la aplicación Streamlit
-    st.plotly_chart(fig)
+    
+    df['rango_millas'] = df['distancia_millas'].apply(asignar_rango_millas)
+    df['retraso'] = df['retraso_llegada'].apply(lambda x: 'con_retraso' if x > 15 else 'sin_retraso')
+    
+    # Preparar los datos para el gráfico
+    datos_grafico = df.groupby(['rango_millas', 'retraso']).size().unstack(fill_value=0).reset_index()
+    
+    # Configurar el estilo de Seaborn
+    sns.set(style="whitegrid")
+    
+    # Crear el gráfico
+    fig, ax = plt.subplots(figsize=(12, 6))
+    datos_grafico.set_index('rango_millas').plot(kind='bar', stacked=True, ax=ax,
+                                                 color={"con_retraso": "tomato", "sin_retraso": "lightseagreen"})
+    
+    # Configuraciones del gráfico
+    ax.set_title('Cantidad de vuelos con y sin retraso en la llegada según el recorrido del vuelo', fontsize=16)
+    ax.set_xlabel('Rango de millas', fontsize=14)
+    ax.set_ylabel('Cantidad de vuelos', fontsize=14)
+    ax.legend(title='Retraso en la llegada', fontsize=12)
+    
+    # Mostrar el gráfico en Streamlit
+    st.pyplot(fig)
