@@ -5,7 +5,7 @@ def aerolineas_medias():
     st.markdown("### Datos curiosos de las aerolíneas de Estados Unidos que debes saber")
 
     # Cargar los datos de aerolíneas
-    df_aerolineas_unicas = pd.read_pickle('data/aerolineas_unicas.pkl')
+    df_aerolineas_unicas = pd.read_pickle('data/aerolineas_unicos.pkl')
 
     # Preparación de los datos
     df_aerolineas_unicas['founded'] = pd.to_numeric(df_aerolineas_unicas['founded'], errors='coerce')
