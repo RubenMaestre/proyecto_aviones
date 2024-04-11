@@ -29,9 +29,9 @@ def display():
             display_2022()
         elif st.session_state.subpagina_eda == '2021':
             display_2021()
-        elif st.session_state.subpagina_eda == 'Todos - Página 1':
+        elif st.session_state.subpagina_eda == 'Todos - Pagina 1':
             display_todos_1()
-        elif st.session_state.subpagina_eda == 'Todos - Página 2':
+        elif st.session_state.subpagina_eda == 'Todos - Pagina 2':
             display_todos_2()
 
     
