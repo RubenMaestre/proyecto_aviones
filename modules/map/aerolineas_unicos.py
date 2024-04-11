@@ -26,39 +26,28 @@ def mostrar_aerolineas_unicos():
         st.image(imagen_path, width=600, align='center', caption=aerolinea_info['aerolinea'])
 
     # Mostrar la tabla con la información de la aerolínea
-        tabla_html = f"""
-    <table style='border: 3px solid; border-collapse: collapse;'>
-        <tr>
-            <td style='border: 3px solid;'><b>Nombre:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['aerolinea']}</td>
-        </tr>
-        <tr>
-            <td style='border: 3px solid;'><b>IATA:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['IATA']}</td>
-            <td style='border: 3px solid;'><b>ICAO:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['ICAO']}</td>
-        </tr>
-        <tr>
-            <td style='border: 3px solid;'><b>País de la aerolínea:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['country']}</td>
-        </tr>
-        <tr>
-            <td style='border: 3px solid;'><b>Grupo:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['Group']}</td>
-            <td style='border: 3px solid;'><b>Aeropuerto Base:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['Base']}</td>
-        </tr>
-        <tr>
-            <td style='border: 3px solid;'><b>Tamaño Flota:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['fleet_size']}</td>
-            <td style='border: 3px solid;'><b>Edad de la Flota:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['average_fleet_Age']}</td>
-            <td style='border: 3px solid;'><b>Web:</b></td>
-            <td style='border: 3px solid;'>{aerolinea_info['official_site']}</td>
-        </tr>
-    </table>
-    """
-    st.markdown(tabla_html, unsafe_allow_html=True)
+    tabla_data = [
+        ['Nombre:', aerolinea_info['aerolinea']],
+        ['IATA:', aerolinea_info['IATA'], 'ICAO:', aerolinea_info['ICAO']],
+        ['País de la aerolínea:', aerolinea_info['country']],
+        ['Grupo:', aerolinea_info['Group'], 'Aeropuerto Base:', aerolinea_info['Base']],
+        ['Tamaño Flota:', aerolinea_info['fleet_size'], 'Edad de la Flota:', aerolinea_info['average_fleet_Age'], 'Web:', aerolinea_info['official_site']]
+    ]
+    for fila in tabla_data:
+        col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+            st.write(fila[0])
+        with col2:
+            st.write(fila[1])
+        if len(fila) > 2:
+            with col3:
+                st.write(fila[2])
+        if len(fila) > 3:
+            with col4:
+                st.write(fila[3])
+        if len(fila) > 4:
+            with col5:
+                st.write(fila[4])
 
     # Mostrar el título "Sobre la compañía"
     st.markdown("### Sobre la compañía:")
