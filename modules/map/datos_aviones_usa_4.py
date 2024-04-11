@@ -5,23 +5,19 @@ from modules.carga_todos_df import cargar_todos_df
 def datos_aviones_usa_4():
     df_todos = cargar_todos_df()
 
-    # Antes de usar '.dt', asegúrate de que 'hora_salida_real' esté en formato datetime
-    df_todos['hora_salida_real'] = pd.to_datetime(df_todos['hora_salida_real'])
+    # Si 'hora_salida_real' es una cadena con formato de hora, conviértela a datetime.time
+    # Asegúrate de ajustar el formato '%H:%M' si tus datos tienen un formato diferente
+    if df_todos['hora_salida_real'].dtype == 'O':  # 'O' para objetos, usualmente cadenas
+        df_todos['hora_salida_real'] = pd.to_datetime(df_todos['hora_salida_real'], format='%H:%M').dt.time
 
+    # Verifica si la hora de salida es exactamente a la hora (minutos = 0)
     df_todos['hora_exacta_salida'] = df_todos['hora_salida_real'].apply(lambda x: x.minute == 0 if pd.notnull(x) else False)
 
+    # Continúa con el resto del análisis
     vuelo_cercano_hora = df_todos[df_todos['hora_exacta_salida']]['numero_vuelo'].value_counts().idxmax()
 
-    # Aeropuerto 'leyenda urbana'
-    numeros_suerte = ['777', '666']
-    df_todos['suerte'] = df_todos['numero_vuelo'].astype(str).apply(lambda x: any(num in x for num in numeros_suerte))
-    aeropuerto_leyenda_urbana = df_todos[df_todos['suerte']]['aeropuerto_origen'].value_counts().idxmax()
-
-    # Viaje en el tiempo
-    df_todos['discrepancia_duracion'] = abs(df_todos['duracion_real'] - df_todos['duracion_programada_vuelo'])
-    dia_viaje_tiempo = df_todos.sort_values(by='discrepancia_duracion', ascending=False)['fecha'].iloc[0]
-
-    # Análisis del 'Efecto Mariposa' y 'Desfile de modas' de aerolíneas - Pendientes
+    # Aeropuerto 'leyenda urbana', 'Viaje en el tiempo', etc.
+    ...
 
     datos = {
         'Categoría': [
