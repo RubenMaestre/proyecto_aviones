@@ -60,18 +60,28 @@ def display_ml_page():
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
         dia_semana_encoded = dia_semana_map[dia_semana]
 
-        # Genera características aleatorias para las demás columnas necesarias de df_modelo
-        aerolinea_encoded = random.choice(mappings['aerolinea']) 
+        # Asignar características aleatorias para las demás columnas necesarias de df_modelo
+        aerolinea_encoded = np.random.choice(mappings['aerolinea'])
+        numero_cola_encoded = np.random.choice(mappings['numero_cola'])
+        estado_origen_encoded = np.random.choice(mappings['estado_origen'])
+        aeropuerto_origen_encoded = np.random.choice(mappings['aeropuerto_origen'])
+        estado_destino_encoded = np.random.choice(mappings['estado_destino'])
+        aeropuerto_destino_encoded = np.random.choice(mappings['aeropuerto_destino'])
+
         features = [
+            aerolinea_encoded, 
+            numero_cola_encoded, 
             ciudad_origen_encoded, 
-            ciudad_destino_encoded, 
+            estado_origen_encoded, 
+            aeropuerto_origen_encoded, 
             dia_semana_encoded, 
-            hora_salida,  # Asumiendo que hora_salida es numérica y directamente usable
-            aerolinea_encoded  # Valor codificado aleatorio para aerolínea
+            ciudad_destino_encoded, 
+            estado_destino_encoded, 
+            aeropuerto_destino_encoded, 
+            hora_salida
         ]
 
         prediction = model.predict([features])
-
         if prediction[0] == 1:
             st.success('El vuelo probablemente llegará con retraso.')
         else:
