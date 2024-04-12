@@ -43,10 +43,10 @@ def display_ml_page():
 
     # Preparar features para la predicción
     features = np.array([[
-        ciudad_origen_encoded,
-        aeropuerto_origen_encoded,
-        ciudad_destino_encoded,
-        aerolinea_encoded,
+        ciudad_origen,
+        aeropuerto_origen,
+        ciudad_destino,
+        aerolinea,
         dia_semana,  # Asumiendo que día de semana ya es numérico o ha sido codificado adecuadamente
         hora_salida  # Asumiendo que es una entrada numérica directa
     ]])
