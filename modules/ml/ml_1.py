@@ -45,6 +45,9 @@ def display_ml_page():
 
     df_todos = cargar_todos_df()
     df_modelo = unir_df_modelo()
+    
+    dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
+    dia_semana_encoded = dia_semana_map[dia_semana]
 
     # Permitir al usuario seleccionar usando nombres legibles
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
@@ -82,7 +85,7 @@ def display_ml_page():
             hora_salida,
             fecha_encoded,
             hora_salida_programada_encoded,
-            # Asegúrate de incluir todas las 16 características
+
         ]
 
         prediction = model.predict([features])
