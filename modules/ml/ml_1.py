@@ -1,9 +1,18 @@
-# modelos/ml/ml_1.py
+# modules/ml/ml_1.py
 import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
-from modules.carga_todos_df import cargar_todos_df  # Importa la función para cargar todos los DataFrames
+from modules.carga_todos_df import cargar_todos_df
+
+# Importaciones de Scikit-learn y Imbalanced-learn
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import jaccard_score, accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import RandomUnderSampler
+from imblearn.pipeline import Pipeline
 
 def load_model(path):
     with open(path, 'rb') as file:
