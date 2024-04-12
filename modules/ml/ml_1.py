@@ -55,32 +55,33 @@ def display_ml_page():
     dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
 
     if st.button('Predecir Retraso'):
+        # Convertir entradas de usuario en valores codificados usando los mapeos
         ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
         dia_semana_encoded = dia_semana_map[dia_semana]
 
-        aerolinea_encoded = np.random.choice(mappings['aerolinea'])
-        numero_cola_encoded = np.random.choice(mappings['numero_cola'])
-        estado_origen_encoded = np.random.choice(mappings['estado_origen'])
-        aeropuerto_origen_encoded = np.random.choice(mappings['aeropuerto_origen'])
-        estado_destino_encoded = np.random.choice(mappings['estado_destino'])
-        aeropuerto_destino_encoded = np.random.choice(mappings['aeropuerto_destino'])
+        # Generar valores aleatorios para las demás columnas
+        aerolinea_encoded = np.random.choice(list(mappings['aerolinea']))
+        numero_cola_encoded = np.random.choice(list(mappings['numero_cola']))
+        estado_origen_encoded = np.random.choice(list(mappings['estado_origen']))
+        aeropuerto_origen_encoded = np.random.choice(list(mappings['aeropuerto_origen']))
+        estado_destino_encoded = np.random.choice(list(mappings['estado_destino']))
+        aeropuerto_destino_encoded = np.random.choice(list(mappings['aeropuerto_destino']))
         fecha_encoded = np.random.choice(range(1, 13))  # Meses del año
-        hora_salida_programada_encoded = np.random.randint(0, 24)
+        hora_salida_programada_encoded = np.random.choice(range(24))  # Hora del día
 
         features = [
             aerolinea_encoded, 
-            numero_cola_encoded, 
-            ciudad_origen_encoded, 
-            estado_origen_encoded, 
-            aeropuerto_origen_encoded, 
-            dia_semana_encoded, 
-            ciudad_destino_encoded, 
-            estado_destino_encoded, 
-            aeropuerto_destino_encoded, 
-            hora_salida,
             fecha_encoded,
+            numero_cola_encoded,
             hora_salida_programada_encoded,
+            ciudad_origen_encoded,
+            estado_origen_encoded,
+            aeropuerto_origen_encoded,
+            dia_semana_encoded,
+            ciudad_destino_encoded,
+            estado_destino_encoded,
+            aeropuerto_destino_encoded
         ]
 
         prediction = model.predict([features])
