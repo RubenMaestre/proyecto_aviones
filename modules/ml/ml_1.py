@@ -54,5 +54,3 @@ def display_ml_page():
             st.success('El vuelo probablemente llegará con retraso.')
         else:
             st.success('El vuelo probablemente llegará a tiempo.')
-
-
