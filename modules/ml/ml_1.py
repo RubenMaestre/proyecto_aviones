@@ -45,32 +45,28 @@ def display_ml_page():
 
     df_todos = cargar_todos_df()
     df_modelo = unir_df_modelo()
-    
-    dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
-    dia_semana_encoded = dia_semana_map[dia_semana]
+    df_todos = alinear_columnas_df_todos(df_todos, df_modelo)
 
-    # Permitir al usuario seleccionar usando nombres legibles
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=df_todos['ciudad_destino'].unique())
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
 
+    dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
+
     if st.button('Predecir Retraso'):
-        # Convertir entradas de usuario en valores codificados usando los mapeos
         ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
         dia_semana_encoded = dia_semana_map[dia_semana]
 
-        # Asignar características aleatorias para las demás columnas necesarias de df_modelo
         aerolinea_encoded = np.random.choice(mappings['aerolinea'])
         numero_cola_encoded = np.random.choice(mappings['numero_cola'])
         estado_origen_encoded = np.random.choice(mappings['estado_origen'])
         aeropuerto_origen_encoded = np.random.choice(mappings['aeropuerto_origen'])
         estado_destino_encoded = np.random.choice(mappings['estado_destino'])
         aeropuerto_destino_encoded = np.random.choice(mappings['aeropuerto_destino'])
-        # Añadir las características faltantes
-        fecha_encoded = np.random.choice([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])  # Asumiendo una codificación numérica simple para el mes
-        hora_salida_programada_encoded = np.random.choice(np.arange(0, 24))  # Ejemplo si la hora es un factor
+        fecha_encoded = np.random.choice(range(1, 13))  # Meses del año
+        hora_salida_programada_encoded = np.random.randint(0, 24)
 
         features = [
             aerolinea_encoded, 
@@ -85,7 +81,6 @@ def display_ml_page():
             hora_salida,
             fecha_encoded,
             hora_salida_programada_encoded,
-
         ]
 
         prediction = model.predict([features])
