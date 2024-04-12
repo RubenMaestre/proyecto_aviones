@@ -51,11 +51,14 @@ def display_ml_page():
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
 
+    dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
+    dia_semana_encoded = dia_semana_map[dia_semana]
+    
     if st.button('Predecir Retraso'):
         # Convertir entradas de usuario en valores codificados usando los mapeos
         ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
-        dia_semana_encoded = apply_target_encoding(dia_semana, mappings['dia_semana'])
+        dia_semana_encoded = dia_semana_map[dia_semana]
 
         # Genera características aleatorias para las demás columnas necesarias de df_modelo
         aerolinea_encoded = random.choice(list(mappings['aerolinea'].values()))  # Asumiendo que aerolínea también es una característica
