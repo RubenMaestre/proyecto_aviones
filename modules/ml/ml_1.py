@@ -13,8 +13,10 @@ def load_model(path):
     return model
 
 def alinear_columnas_df_todos(df_todos, df_modelo):
-    columnas_modelo = df_modelo.columns.tolist()  # Asume que df_modelo ya está cargado o pasa como parámetro
-    return df_todos[columnas_modelo]
+    # Obtener las columnas que están en ambos DataFrames, excluyendo la columna 'llega_tarde'
+    columnas_comunes = [col for col in df_modelo.columns if col in df_todos.columns and col != 'llega_tarde']
+    return df_todos[columnas_comunes]
+
 
 def load_mappings(path):
     with open(path, 'rb') as file:
@@ -25,12 +27,11 @@ def display_ml_page():
     st.title('Predicción de Retrasos de Vuelos')
     model = load_model('data/modelo_entrenado.joblib')
     mappings = load_mappings('data/target_encodings.pkl')
-    
+
     df_todos = cargar_todos_df()
     df_modelo = unir_df_modelo()
-    df_todos = alinear_columnas_df_todos(df_todos, df_modelo)
+    df_todos = alinear_columnas_df_todos(df_todos, df_modelo)  # Asegúrate de que df_todos y df_modelo están alineados
 
-    # Selección de usuario usando df_todos
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=df_todos['ciudad_destino'].unique())
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
