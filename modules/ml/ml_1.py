@@ -4,52 +4,44 @@ import pandas as pd
 import numpy as np
 from joblib import load
 import pickle
-import random
 from modules.carga_todos_df import cargar_todos_df
+from modules.ml.carga_mod_df import unir_df_modelo
 
 def load_model(path):
     model = load(path)
     return model
+
+def alinear_columnas_df_todos(df_todos, df_modelo):
+    columnas_modelo = df_modelo.columns.tolist()  # Asume que df_modelo ya está cargado o pasa como parámetro
+    return df_todos[columnas_modelo]
 
 def load_mappings(path):
     with open(path, 'rb') as file:
         mappings = pickle.load(file)
     return mappings
 
-def apply_target_encoding(value, mapping):
-    return mapping.get(value, np.nan)  # Retorna NaN si el valor no está en el mapeo
-
 def display_ml_page():
     st.title('Predicción de Retrasos de Vuelos')
     model = load_model('data/modelo_entrenado.joblib')
     mappings = load_mappings('data/target_encodings.pkl')
-    df = cargar_todos_df()
+    
+    df_todos = cargar_todos_df()
+    df_modelo = unir_df_modelo()
+    df_todos = alinear_columnas_df_todos(df_todos, df_modelo)  # Asegúrate de que df_todos y df_modelo están alineados
 
-    ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df['ciudad_origen'].unique())
-    ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=df['ciudad_destino'].unique())
+    # Selección de usuario usando df_todos
+    ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
+    ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=df_todos['ciudad_destino'].unique())
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
 
-    # Variables aleatorias o predeterminadas
-    aerolinea = random.choice(df['aerolinea'].unique())
-    aeropuerto_origen = random.choice(df[df['ciudad_origen'] == ciudad_origen]['aeropuerto_origen'].unique())
-    aeropuerto_destino = random.choice(df[df['ciudad_destino'] == ciudad_destino]['aeropuerto_destino'].unique())
-    
-    # Aplicar target encoding
-    features_encoded = [
-        apply_target_encoding(ciudad_origen, mappings['ciudad_origen']),
-        apply_target_encoding(aeropuerto_origen, mappings['aeropuerto_origen']),
-        apply_target_encoding(ciudad_destino, mappings['ciudad_destino']),
-        apply_target_encoding(aerolinea, mappings['aerolinea']),
-        dia_semana,  # Asumiendo que día de semana ya es numérico o ha sido codificado adecuadamente
-        hora_salida  # Asumiendo que es una entrada numérica directa
-    ]
-    
-    if st.button('Predecir Retraso'):
-        # Preparar features para la predicción
-        features = np.array([features_encoded])
-        prediction = model.predict(features)
+    # Uso de df_modelo para la predicción
+    # Asumiendo que tienes una forma de mapear las selecciones del usuario a sus valores codificados en df_modelo
+    indices = df_todos[(df_todos['ciudad_origen'] == ciudad_origen) & (df_todos['ciudad_destino'] == ciudad_destino)].index
+    features = df_modelo.loc[indices, :].iloc[0]  # Asume que obtienes la primera fila que coincide o adapta según sea necesario
 
+    if st.button('Predecir Retraso'):
+        prediction = model.predict([features.values])
         if prediction[0] == 1:
             st.success('El vuelo probablemente llegará con retraso.')
         else:
