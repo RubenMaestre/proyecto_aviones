@@ -39,7 +39,8 @@ def display_ml_page():
     ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
     aerolinea_encoded = apply_target_encoding(aerolinea, mappings['aerolinea'])
     estado_origen_encoded = apply_target_encoding(df['estado_origen'].iloc[0], mappings['estado_origen'])  # Ejemplo de cómo manejarlo si no es interactivo
-    estado_destino_encoded = apply_target_encoding(df['estado_destino'].iloc[0], mappings['estado_destino'])  # Ejemplo de cómo manejarlo si no es interactivo
+    estado_destino_encoded = apply_target_encoding(df['estado_destino'].iloc[0], mappings['estado_destino'])
+    dia_semana_encoded = apply_target_encoding(df['dia_semana'].iloc[0], mappings['dia_semana'])  
 
     # Preparar features para la predicción
     features = np.array([[
