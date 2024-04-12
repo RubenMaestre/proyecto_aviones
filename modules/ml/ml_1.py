@@ -71,25 +71,17 @@ def display_ml_page():
         hora_salida_programada_encoded = np.random.choice(range(24))  # Hora del día
 
         features = [
-            aerolinea_encoded, 
-            numero_cola_encoded, 
-            ciudad_origen_encoded, 
-            estado_origen_encoded, 
-            aeropuerto_origen_encoded, 
-            dia_semana_encoded, 
-            ciudad_destino_encoded, 
-            estado_destino_encoded, 
-            aeropuerto_destino_encoded, 
-            hora_salida,
-            fecha_encoded,
-            hora_salida_programada_encoded,
+            aerolinea_encoded, fecha_encoded, numero_cola_encoded,
+            hora_salida_programada_encoded, ciudad_origen_encoded,
+            estado_origen_encoded, aeropuerto_origen_encoded, dia_semana_encoded,
+            ciudad_destino_encoded, estado_destino_encoded, aeropuerto_destino_encoded
         ]
 
         # Convertir a DataFrame
         features_df = pd.DataFrame([features], columns=[
-            'aerolinea', 'numero_cola', 'ciudad_origen', 'estado_origen',
-            'aeropuerto_origen', 'dia_semana', 'ciudad_destino', 'estado_destino',
-            'aeropuerto_destino', 'hora_salida', 'fecha', 'hora_salida_programada'
+            'aerolinea', 'fecha', 'numero_cola', 'hora_salida_programada',
+            'ciudad_origen', 'estado_origen', 'aeropuerto_origen', 'dia_semana',
+            'ciudad_destino', 'estado_destino', 'aeropuerto_destino'
         ])
 
         # Usar el DataFrame para hacer la predicción
