@@ -17,6 +17,19 @@ def alinear_columnas_df_todos(df_todos, df_modelo):
     columnas_comunes = [col for col in df_modelo.columns if col in df_todos.columns and col != 'llega_tarde']
     return df_todos[columnas_comunes]
 
+def apply_target_encoding(value, mapping, default_value=np.nan):
+    """
+    Aplica el mapeo de codificación a un valor dado.
+    
+    Args:
+    - value: El valor a codificar.
+    - mapping: Un diccionario que contiene el mapeo de codificación.
+    - default_value: El valor a retornar si `value` no está en `mapping`.
+    
+    Returns:
+    - El valor codificado si `value` está en `mapping`, de lo contrario `default_value`.
+    """
+    return mapping.get(value, default_value)
 
 def load_mappings(path):
     with open(path, 'rb') as file:
@@ -32,30 +45,30 @@ def display_ml_page():
     df_modelo = unir_df_modelo()
     df_todos = alinear_columnas_df_todos(df_todos, df_modelo)  # Asegúrate de que df_todos y df_modelo están alineados
 
+    # Permitir al usuario seleccionar usando nombres legibles
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=df_todos['ciudad_destino'].unique())
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
 
     if st.button('Predecir Retraso'):
-        # Asignar aleatoriamente el resto de las características que no selecciona el usuario
-        aerolinea = random.choice(df_modelo['aerolinea'].unique())
-        fecha = random.choice(df_modelo['fecha'].unique())  # Suponiendo que 'fecha' puede ser seleccionada aleatoriamente
-        numero_cola = random.choice(df_modelo['numero_cola'].unique())
-        estado_origen = random.choice(df_modelo['estado_origen'].unique())
-        aeropuerto_origen = random.choice(df_modelo['aeropuerto_origen'].unique())
-        estado_destino = random.choice(df_modelo['estado_destino'].unique())
-        aeropuerto_destino = random.choice(df_modelo['aeropuerto_destino'].unique())
+        # Convertir entradas de usuario en valores codificados usando los mapeos
+        ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
+        ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
+        dia_semana_encoded = apply_target_encoding(dia_semana, mappings['dia_semana'])
 
-        # Uso de df_modelo para la predicción
-        features = np.array([
-            aerolinea, fecha, numero_cola, hora_salida,
-            ciudad_origen, estado_origen, aeropuerto_origen, dia_semana,
-            ciudad_destino, estado_destino, aeropuerto_destino
-        ])
+        # Genera características aleatorias para las demás columnas necesarias de df_modelo
+        aerolinea_encoded = random.choice(list(mappings['aerolinea'].values()))  # Asumiendo que aerolínea también es una característica
+        features = [
+            ciudad_origen_encoded, 
+            ciudad_destino_encoded, 
+            dia_semana_encoded, 
+            hora_salida,  # Asumiendo que hora_salida es numérica y directamente usable
+            aerolinea_encoded  # Valor codificado aleatorio para aerolínea
+        ]
 
         prediction = model.predict([features])
-        
+
         if prediction[0] == 1:
             st.success('El vuelo probablemente llegará con retraso.')
         else:
