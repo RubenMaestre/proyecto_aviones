@@ -53,7 +53,7 @@ def display_ml_page():
 
     dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
     dia_semana_encoded = dia_semana_map[dia_semana]
-    
+
     if st.button('Predecir Retraso'):
         # Convertir entradas de usuario en valores codificados usando los mapeos
         ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
@@ -61,7 +61,7 @@ def display_ml_page():
         dia_semana_encoded = dia_semana_map[dia_semana]
 
         # Genera características aleatorias para las demás columnas necesarias de df_modelo
-        aerolinea_encoded = random.choice(list(mappings['aerolinea'].values()))  # Asumiendo que aerolínea también es una característica
+        aerolinea_encoded = random.choice(mappings['aerolinea']) 
         features = [
             ciudad_origen_encoded, 
             ciudad_destino_encoded, 
