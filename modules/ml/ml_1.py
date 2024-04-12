@@ -14,6 +14,7 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.pipeline import Pipeline
 
+
 def load_model(path):
     with open(path, 'rb') as file:
         model = pickle.load(file)
@@ -25,10 +26,9 @@ def display_ml_page():
     # Cargar modelo
     model = load_model('data/modelo_entrenado.pkl')
 
-    # Cargar datos
-    df = cargar_todos_df()  # Usar la función importada para cargar todos los datos
+    # Cargar datos y asegurar transformación adecuada
+    df = cargar_todos_df()
 
-    # Interfaces de usuario para seleccionar entradas
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df['ciudad_origen'].unique())
     aeropuertos_disponibles = df[df['ciudad_origen'] == ciudad_origen]['aeropuerto_origen'].unique()
     aeropuerto_origen = st.selectbox('Selecciona el aeropuerto de origen:', options=aeropuertos_disponibles)
@@ -36,10 +36,13 @@ def display_ml_page():
     aerolineas_disponibles = df[(df['ciudad_destino'] == ciudad_destino) & (df['ciudad_origen'] == ciudad_origen)]['aerolinea'].unique()
     aerolinea = st.selectbox('Selecciona la aerolínea:', options=aerolineas_disponibles)
 
-    # Botón para realizar predicción
     if st.button('Predecir Retraso'):
+        # Aquí necesitas asegurarte de que las entradas estén en el formato adecuado
         features = np.array([[ciudad_origen, aeropuerto_origen, ciudad_destino, aerolinea]])
+        # Transformar las características aquí si es necesario antes de la predicción, por ejemplo con un encoder
+        # Si usaste un encoder durante el entrenamiento, deberías cargarlo y usarlo aquí para transformar 'features'
         prediction = model.predict(features)
+
         if prediction[0] == 1:
             st.success('El vuelo probablemente llegará con retraso.')
         else:
