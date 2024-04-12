@@ -5,6 +5,8 @@ import numpy as np
 from joblib import load
 import pickle
 import random
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 from modules.carga_todos_df import cargar_todos_df
 from modules.ml.carga_mod_df import unir_df_modelo
 
