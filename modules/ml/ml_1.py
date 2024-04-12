@@ -53,7 +53,7 @@ def generate_random_feature_value(column_name, df_modelo, mappings):
 
 def display_ml_page():
     st.title('Predicción de Retrasos de Vuelos')
-    model = load_model('data/modelo_nuevo.joblib')
+    model = load_model('data/model_nuevo.joblib')
     mappings = load_mappings('data/target_encodings.pkl')
 
     df_todos = cargar_todos_df()
