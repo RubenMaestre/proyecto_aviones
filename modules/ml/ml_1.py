@@ -56,7 +56,6 @@ def display_ml_page():
 
     df_todos = cargar_todos_df()
     df_modelo = unir_df_modelo()
-    df_todos = alinear_columnas_df_todos(df_todos, df_modelo)  # Asegúrate de que df_todos y df_modelo están alineados
 
     # Permitir al usuario seleccionar usando nombres legibles
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
@@ -64,31 +63,24 @@ def display_ml_page():
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
 
-    dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
-    dia_semana_encoded = dia_semana_map[dia_semana]
-
     if st.button('Predecir Retraso'):
-    # Convertir entradas de usuario en valores codificados usando los mapeos
+        # Convertir entradas de usuario en valores codificados usando los mapeos
         ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
+        dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
         dia_semana_encoded = dia_semana_map[dia_semana]
 
-        # Generar características aleatorias para las demás necesarias
-        features = []
-        for col in df_modelo.columns:
-            if col == 'ciudad_origen':
-                features.append(ciudad_origen_encoded)
-            elif col == 'ciudad_destino':
-                features.append(ciudad_destino_encoded)
-            elif col == 'dia_semana':
-                features.append(dia_semana_encoded)
-            elif col == 'hora_salida_programada':
-                features.append(hora_salida)  # Asumiendo que 'hora_salida_programada' es la 'hora_salida'
-            else:
-                # Para todas las demás características, genera un valor aleatorio
-                features.append(generate_random_feature_value(col, df_modelo, mappings))
+        features = [
+            ciudad_origen_encoded,
+            ciudad_destino_encoded,
+            dia_semana_encoded,
+            hora_salida,  # Asumiendo que la 'hora_salida_programada' es la 'hora_salida'
+        ]
 
-        # Realizar predicción
+        # Agregar valores aleatorios para otras características faltantes
+        for _ in range(16 - len(features)):
+            features.append(np.random.random())  # Añadir un valor numérico aleatorio
+
         prediction = model.predict([features])
         if prediction[0] == 1:
             st.success('El vuelo probablemente llegará con retraso.')
