@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def cargar_unir_2021():
     # Clave 'df_dec_2023' en el estado de sesión para verificar su existencia
     if 'df_dec_2021' not in st.session_state:
