@@ -1,14 +1,27 @@
 import pandas as pd
 import streamlit as st
-from .carga_dec_2021 import cargar_unir_2021
-from .carga_dec_2022 import cargar_unir_2022
-from .carga_dec_2023 import cargar_unir_2023
 
 @st.cache_data
 def cargar_todos_df():
+    # Define los años y la cantidad de archivos pickle por año
+    anios = {
+        '2023': 2,
+        '2022': 2,
+        '2021': 2
+    }
+    
     if 'df_todos' not in st.session_state:
-        df_dec_2021 = cargar_unir_2021()
-        df_dec_2022 = cargar_unir_2022()
-        df_dec_2023 = cargar_unir_2023()
-        st.session_state.df_todos = pd.concat([df_dec_2021, df_dec_2022, df_dec_2023], ignore_index=True)
+        dataframes = []
+        
+        # Iterar sobre cada año y cargar cada pickle correspondiente
+        for anio, num_archivos in anios.items():
+            for i in range(1, num_archivos + 1):
+                archivo = f'data/pickles/df_{anio}_{i}.pkl'
+                df_temp = pd.read_pickle(archivo)
+                dataframes.append(df_temp)
+        
+        # Concatenar todos los DataFrames en uno solo
+        st.session_state.df_todos = pd.concat(dataframes, ignore_index=True)
+
+    # Devolver el DataFrame desde el estado de sesión
     return st.session_state.df_todos
