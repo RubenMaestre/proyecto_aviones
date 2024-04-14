@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 
+@st.cache(allow_output_mutation=True)
 def cargar_unir_2021():
     # Verifica si el DataFrame ya está en el estado de sesión
     if 'df_dec_2021' not in st.session_state:

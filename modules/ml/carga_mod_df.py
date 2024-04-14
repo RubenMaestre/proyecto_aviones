@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 
+@st.cache(allow_output_mutation=True)
 def unir_df_modelo():
     # Verifica si el DataFrame ya está en el estado de sesión
     if 'df_modelo' not in st.session_state:

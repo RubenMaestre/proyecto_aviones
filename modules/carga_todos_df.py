@@ -4,6 +4,7 @@ from .carga_dec_2021 import cargar_unir_2021
 from .carga_dec_2022 import cargar_unir_2022
 from .carga_dec_2023 import cargar_unir_2023
 
+@st.cache(allow_output_mutation=True)
 def cargar_todos_df():
     if 'df_todos' not in st.session_state:
         df_dec_2021 = cargar_unir_2021()
