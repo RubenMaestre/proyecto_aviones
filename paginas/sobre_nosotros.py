@@ -26,8 +26,8 @@ def display():
         with cols[index % 4]:  # Esto rotará entre las 4 columnas
             st.image(f'sources/{name.replace(" ", "").lower()}.jpg', width=300, caption=name)
             st.markdown(description)
-            st.markdown(f'[![](sources/linkedin.png)]({linkedin_url})', unsafe_allow_html=True)
-            st.markdown(f'[![](sources/github.png)]({github_url})', unsafe_allow_html=True)
+            st.markdown(f'<a href="{linkedin_url}" target="_blank"><img src="sources/linkedin.png" alt="LinkedIn" style="width: 30px;"></a>', unsafe_allow_html=True)
+            st.markdown(f'<a href="{github_url}" target="_blank"><img src="sources/github.png" alt="GitHub" style="width: 30px;"></a>', unsafe_allow_html=True)
 
     st.markdown("""
     ---
