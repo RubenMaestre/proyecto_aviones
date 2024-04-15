@@ -29,10 +29,10 @@ def mostrar_aeropuertos_unicos():
     aeropuerto_info = df_ciudad[df_ciudad['nombre_aeropuerto'] == aeropuerto_seleccionado].iloc[0]
 
     # Mostrar detalles del aeropuerto
-    st.markdown(f"### {aeropuerto_info['nombre_aeropuerto']} + Airport")
+    st.markdown(f"### {aeropuerto_info['nombre_aeropuerto']} Airport")
 
     # Tabla con información del aeropuerto
-    st.table(aeropuerto_info[['ciudad', 'nombre_estado', 'latitude', 'longitude']])
+    st.table(aeropuerto_info[['Ciudad', 'Estado', 'Latitud', 'Longitud']])
 
     # Mostrar dirección en una nueva fila
     st.write(f"**Dirección:** {aeropuerto_info['direccion']}")
