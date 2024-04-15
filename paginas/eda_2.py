@@ -21,6 +21,7 @@ def display():
     with col2:
         # Si se ha seleccionado algún conjunto de datos, mostrar gráficas para ese conjunto
         if df_seleccionado is not None:
+            # Colocar el selector de gráficas y la visualización de las mismas en la columna derecha
             seleccionar_y_mostrar_grafica(df_seleccionado)
 
 # Llama a la función para mostrar la página
