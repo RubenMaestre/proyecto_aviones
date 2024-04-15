@@ -4,10 +4,10 @@ from modules.aviones_page.botones_aviones import crear_botones
 from paginas.vuelos import vuelos_usa, aerolineas, aeropuertos, datos
 
 def display():
-    st.title('Vuelos en USA')
+    st.title('Información sobre los vuelos en USA')
 
     # Dividir la interfaz en dos columnas: una para la navegación y otra para el contenido
-    col_navegacion, col_contenido = st.columns([1, 8])
+    col_navegacion, col_contenido = st.columns([1, 7])
 
     with col_navegacion:
         st.markdown("<h4 style='text-align: center;'>Pulse una opción para saber más</h4>", unsafe_allow_html=True)
