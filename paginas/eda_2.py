@@ -12,13 +12,15 @@ def display():
         st.image('sources/mapa_aviones_usa.png')
 
     st.markdown("---")
-    
+
     col1, col2 = st.columns([1, 4])
     with col1:
         st.write("Puedes seleccionar el mes de diciembre de los años 2021, 2022 y 2023, o bien elegir todos los años para ver todos los datos juntos.")
         df_seleccionado = seleccionar_datos()
         if df_seleccionado is not None:
+            st.markdown("---")
             mostrar_estadisticas_df(df_seleccionado, 'fecha')
+            st.markdown("---")
             st.write("Una vez que has elegido el año, ahora puedes elegir qué tipo de gráfica ver. Para ayudarte hemos agrupado las gráficas por categorías.")
             grafica_funcion = seleccionar_grafica()
 
