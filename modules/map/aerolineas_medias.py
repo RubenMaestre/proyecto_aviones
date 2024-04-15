@@ -35,14 +35,24 @@ def muestra_aerolineas_medias():
     ('Compañías con más de 500 aviones', f"{(df_aerolineas_unicas['fleet_size'] > 500).sum()} compañías ({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] > 500]['aerolinea'].tolist())})")
         ]
     
-    # Crear 5 columnas en 2 filas
-    for i in range(0, len(datos), 5):
-        cols = st.columns(5)
-        for j in range(5):
-            if i + j < len(datos):
-                with cols[j]:
-                    st.markdown(f"<h6 style='text-align: center;'>{datos[i + j][0]}</h6>", unsafe_allow_html=True)
-                    st.write(datos[i + j][1])
+    # Estilo CSS para los cuadros
+    st.markdown("""
+        <style>
+            .info-box {
+                border: 2px solid #4CAF50;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 5px;
+                text-align: center;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Mostrar los datos en cuadros
+    cols = st.columns(5)  # Ajusta el número de columnas según necesites
+    for index, (titulo, descripcion) in enumerate(datos):
+        with cols[index % 5]:
+            st.markdown(f"<div class='info-box'><h6>{titulo}</h6><p>{descripcion}</p></div>", unsafe_allow_html=True)
 
 # Llamar a la función fuera de su definición
 muestra_aerolineas_medias()
