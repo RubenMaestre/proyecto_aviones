@@ -16,11 +16,15 @@ from modules.graph.histograma_distancias_millas import graficar_histograma_dista
 from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
 from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
 
+import streamlit as st
+
 def get_graficas_por_categoria():
-    return {
+    year = st.session_state.get('selected_year', 'Todos los años')  # Obtén el año seleccionado
+
+    # Categorías y gráficas comunes a todos los años específicos
+    common_categories = {
         "Aerolíneas": {
             "Vuelos por aerolínea": graficar_vuelos_por_aerolinea,
-            "Evolución de vuelos por aerolínea": graficar_evolucion_vuelos_por_aerolinea,
         },
         "Horarios": {
             "Diagrama de salidas y llegadas": graficar_horas_vuelos,
@@ -41,9 +45,15 @@ def get_graficas_por_categoria():
             "Histograma de distancias en millas": graficar_histograma_distancias_millas,
             "Relación entre retrasos y millas": graficar_relacion_retrasos_millas,
             "Distancia máxima en millas": graficar_maxima_distancia_millas
-        },
-        "Correlaciones": {
-            "Correlación entre variables": graficar_correlacion_variables,
-            "Correlación lineal": graficar_correlacion_lineal,
+        }
+    }
 
-        }}
+    # Añadir gráficas específicas solo para "Todos los años"
+    if year == "Todos los años":
+        common_categories["Aerolíneas"]["Evolución del número de vuelos por compañía aérea"] = graficar_evolucion_vuelos_por_aerolinea
+        common_categories["Correlaciones"] = {
+            "Correlación entre variables": graficar_correlacion_variables,
+            "Correlación lineal": graficar_correlacion_lineal
+        }
+
+    return common_categories
