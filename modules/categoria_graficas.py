@@ -46,4 +46,4 @@ def get_graficas_por_categoria():
             "Correlación entre variables": graficar_correlacion_variables,
             "Correlación lineal": graficar_correlacion_lineal,
 
-    }
+        }}
