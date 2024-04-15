@@ -7,7 +7,7 @@ def display():
     st.title('Vuelos en USA')
 
     # Dividir la interfaz en dos columnas: una para la navegación y otra para el contenido
-    col_navegacion, col_contenido = st.columns([1, 3])
+    col_navegacion, col_contenido = st.columns([1, 8])
 
     with col_navegacion:
         st.markdown("<h4 style='text-align: center;'>Pulse una opción para saber más</h4>", unsafe_allow_html=True)
