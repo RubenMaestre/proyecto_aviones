@@ -23,11 +23,16 @@ def display():
 
     cols = st.columns(4)
     for index, (name, (description, linkedin_url, github_url)) in enumerate(team_members.items()):
-        with cols[index % 4]:  # Esto rotará entre las 4 columnas
+        with cols[index % 4]:
             st.image(f'sources/{name.replace(" ", "").lower()}.jpg', width=300, caption=name)
             st.markdown(description)
-            st.markdown(f'<a href="{linkedin_url}" target="_blank"><img src="sources/linkedin.png" alt="LinkedIn" style="width: 30px;"></a>', unsafe_allow_html=True)
-            st.markdown(f'<a href="{github_url}" target="_blank"><img src="sources/github.png" alt="GitHub" style="width: 30px;"></a>', unsafe_allow_html=True)
+            # Botones de LinkedIn y GitHub
+            if st.button("LinkedIn", key=f"linkedin-{name}", 
+                         help="Visita mi perfil de LinkedIn"):
+                st.write(f"Redirigiendo a {linkedin_url}")
+            if st.button("GitHub", key=f"github-{name}", 
+                         help="Visita mi perfil de GitHub"):
+                st.write(f"Redirigiendo a {github_url}")
 
     st.markdown("""
     ---
@@ -36,8 +41,6 @@ def display():
     y consulta nuestros repositorios en GitHub.
     """)
 
-    st.image('sources/linkedin.png')
-    st.image('sources/github.png')
 display()
 
 
