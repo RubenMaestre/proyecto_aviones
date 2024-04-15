@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_folium import st_folium
 import folium
-from modules.aviones.botones_aviones import crear_botones  
+from modules.aviones_page.botones_aviones import crear_botones  
 from paginas.vuelos import vuelos_usa, aerolineas, aeropuertos, datos 
 
 def display():
