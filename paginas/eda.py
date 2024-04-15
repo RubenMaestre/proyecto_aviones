@@ -13,8 +13,26 @@ def display():
         st.image('sources/mapa_aviones_usa.png')
 
     st.markdown("---")
+    # Inserta aquí el código CSS para la línea de separación
+    
+    st.markdown(
+        """
+        <style>
+        .reportview-container .main .block-container{{
+            max-width: 95%;
+        }}
+        .divider {{
+            height: 100%;
+            width: 1px;
+            border-left: 2px solid #f0f2f6;
+            margin-right: 10px;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    col1, col2 = st.columns([1, 4])
+    col1, divider, col2 = st.columns([1, 0.1, 4])
     with col1:
         st.write("Puedes seleccionar el mes de diciembre de los años 2021, 2022 y 2023, o bien elegir todos los años para ver todos los datos juntos.")
         df_seleccionado = seleccionar_datos()
@@ -24,6 +42,9 @@ def display():
             st.markdown("---")
             st.write("Una vez que has elegido el año, ahora puedes elegir qué tipo de gráfica ver. Para ayudarte hemos agrupado las gráficas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()  # Asumiendo que la función ahora devuelve ambos
+
+    with divider:
+        st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
     with col2:
         if df_seleccionado is not None and grafica_funcion:
