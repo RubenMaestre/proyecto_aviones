@@ -22,7 +22,7 @@ def muestra_aerolineas_medias():
     youngest_fleet_idx = df_aerolineas_unicas['average_fleet_Age'].idxmin()
 
     # Datos para la tabla
-    datos_tabla = {
+    datos = {
         'Dato': [
             'Compañía aérea más antigua',
             'Flota más grande',
@@ -52,7 +52,14 @@ def muestra_aerolineas_medias():
             f"({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] > 500]['aerolinea'].tolist())})"
         ]
     }
+    # Crear los cuadrados con la información
+    for i in range(0, len(datos), 2):
+        cols = st.columns(2)
+        for j in range(2):
+            if i+j < len(datos):
+                with cols[j]:
+                    st.markdown(f"#### {datos[i+j][0]}")
+                    st.write(datos[i+j][1])
+                    st.markdown("---")  # Agregar una línea horizontal para separar visualmente los bloques
 
-    df_datos_curiosos = pd.DataFrame(datos_tabla)
-    html = df_datos_curiosos.to_html(index=False)
-    st.markdown(html, unsafe_allow_html=True)
+muestra_aerolineas_medias()
