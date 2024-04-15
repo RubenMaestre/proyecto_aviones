@@ -21,7 +21,7 @@ def mostrar_mapa_aeropuertos_por_estado():
         centro_estado = [df_aeropuertos_estado['latitude'].mean(), df_aeropuertos_estado['longitude'].mean()]
 
         # Crea un nuevo mapa centrado en el estado seleccionado
-        mapa_estado = folium.Map(location=centro_estado, zoom_start=7)
+        mapa_estado = folium.Map(location=centro_estado, zoom_start=4)
 
         # Agregar GeoJSON para marcar los estados
         folium.GeoJson(
