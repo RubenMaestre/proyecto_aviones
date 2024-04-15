@@ -56,10 +56,12 @@ def muestra_aerolineas_medias():
     for i in range(0, len(datos), 2):
         cols = st.columns(2)
         for j in range(2):
-            if i+j < len(datos):
+            if i + j < len(datos):
                 with cols[j]:
-                    st.markdown(f"#### {datos[i+j][0]}")
-                    st.write(datos[i+j][1])
+                    dato, descripcion = datos[i + j]
+                    st.markdown(f"#### {dato}")
+                    st.write(descripcion)
                     st.markdown("---")  # Agregar una línea horizontal para separar visualmente los bloques
 
+# Llamar a la función fuera de su definición
 muestra_aerolineas_medias()
