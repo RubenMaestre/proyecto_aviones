@@ -40,8 +40,6 @@ def seleccionar_y_mostrar_grafica(df):
 
     # Selector para la gráfica
     grafica_seleccionada = st.selectbox("Selecciona una gráfica para visualizar:", list(graficas_disponibles.keys()))
-
-    # Llama a la función de la gráfica seleccionada pasando el DataFrame
-    graficas_disponibles[grafica_seleccionada](df)
+    return graficas_disponibles[grafica_seleccionada]
 
 
