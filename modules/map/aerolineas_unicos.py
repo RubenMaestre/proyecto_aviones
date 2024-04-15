@@ -19,7 +19,7 @@ def mostrar_aerolineas_unicos():
         ['IATA:', aerolinea_info['IATA'], 'ICAO:', aerolinea_info['ICAO']],
         ['País de la aerolínea:', aerolinea_info['country']],
         ['Grupo:', aerolinea_info['Group'], 'Aeropuerto Base:', aerolinea_info['Base']],
-        ['Tamaño Flota:', aerolinea_info['fleet_size'], 'Edad de la Flota:', aerolinea_info['average_fleet_Age'], 'Web:', aerolinea_info['web']]
+        ['Tamaño Flota:', aerolinea_info['fleet_size'], 'Edad de la Flota:', aerolinea_info['average_fleet_Age'], 'Web:', aerolinea_info['official_site']]
     ]
     for fila in tabla_data:
         col1, col2, col3, col4, col5 = st.columns(5)
