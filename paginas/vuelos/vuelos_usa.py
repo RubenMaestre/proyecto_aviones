@@ -27,7 +27,7 @@ def display():
     st.markdown("""
             ### Mapa de estados de los Estados Unidos""")
 
-    mostrar_mapa_aeropuertos_usa()
+    #mostrar_mapa_aeropuertos_usa()
 
     st.markdown("---")
 
