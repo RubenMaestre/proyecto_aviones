@@ -1,8 +1,9 @@
-# paginas/eda_2.py
+# paginas/eda.py
 import streamlit as st
-from modules.eda.botones_eda_2 import seleccionar_datos
+from modules.eda.botones_eda import seleccionar_datos
 from modules.eda.botones_graficas import seleccionar_grafica
 from modules.eda.datos_df_cargados import mostrar_estadisticas_df
+from modules.eda.descripciones_graficas import obtener_descripcion 
 
 def display():
     st.markdown("<h2 style='text-align: center;'>Página de análisis exploratorio de datos (EDA)</h2>", unsafe_allow_html=True)
@@ -22,11 +23,12 @@ def display():
             mostrar_estadisticas_df(df_seleccionado, 'fecha')
             st.markdown("---")
             st.write("Una vez que has elegido el año, ahora puedes elegir qué tipo de gráfica ver. Para ayudarte hemos agrupado las gráficas por categorías.")
-            grafica_funcion = seleccionar_grafica()
+            grafica_funcion, grafica_nombre = seleccionar_grafica()  # Asumiendo que la función ahora devuelve ambos
 
     with col2:
-        if df_seleccionado is not None and grafica_funcion is not None:
+        if df_seleccionado is not None and grafica_funcion:
             grafica_funcion(df_seleccionado)
+            descripcion = obtener_descripcion(st.session_state['selected_year'], grafica_nombre)
+            st.markdown(descripcion)
 
 display()
-
