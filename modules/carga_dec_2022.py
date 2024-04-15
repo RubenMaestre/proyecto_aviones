@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def cargar_unir_2022():
     clave = 'df_dec_2022'  # Definir la clave que se utilizará en el estado de sesión
     

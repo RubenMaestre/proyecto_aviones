@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def cargar_todos_df():
     # Clave a verificar
     clave = 'df_todos'
