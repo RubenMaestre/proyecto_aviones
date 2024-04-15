@@ -1,28 +1,30 @@
 # paginas/aviones.py
 import streamlit as st
-import pandas as pd
-from streamlit_folium import st_folium
-import folium
-from modules.aviones_page.botones_aviones import crear_botones  
-from paginas.vuelos import vuelos_usa, aerolineas, aeropuertos, datos 
+from modules.aviones_page.botones_aviones import crear_botones
+from paginas.vuelos import vuelos_usa, aerolineas, aeropuertos, datos
 
 def display():
     st.title('Vuelos en USA')
 
-    # Llama a la función para mostrar los botones de navegación
-    crear_botones()
+    # Dividir la interfaz en dos columnas: una para la navegación y otra para el contenido
+    col_navegacion, col_contenido = st.columns([1, 3])
 
-    # Muestra el texto centrado solo si no se ha seleccionado una subpágina
-    if 'subpagina' not in st.session_state or st.session_state.subpagina is None:
-        st.markdown("<h3 style='text-align: center;'>Pulse una opción para saber más</h3>", unsafe_allow_html=True)
+    with col_navegacion:
+        st.markdown("<h4 style='text-align: center;'>Pulse una opción para saber más</h4>", unsafe_allow_html=True)
 
-    # Navegación interna basada en el estado de la sesión
-    if 'subpagina' in st.session_state:
-        if st.session_state.subpagina == 'vuelos_usa':
-            vuelos_usa.display()
-        elif st.session_state.subpagina == 'aeropuertos':
-            aeropuertos.display()
-        elif st.session_state.subpagina == 'aerolineas':
-            aerolineas.display()
-        elif st.session_state.subpagina == 'datos':
-            datos.display()
+        # Llama a la función para mostrar los botones de navegación
+        crear_botones()
+
+    with col_contenido:
+        # Muestra el contenido de la subpágina seleccionada
+        if 'subpagina' in st.session_state:
+            if st.session_state.subpagina == 'vuelos_usa':
+                vuelos_usa.display()
+            elif st.session_state.subpagina == 'aeropuertos':
+                aeropuertos.display()
+            elif st.session_state.subpagina == 'aerolineas':
+                aerolineas.display()
+            elif st.session_state.subpagina == 'datos':
+                datos.display()
+
+display()
