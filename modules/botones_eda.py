@@ -35,7 +35,7 @@ def crear_botones_eda():
     
     # Segunda fila para las páginas "Todos"
     st.write("Visualización general:")
-    row2_space1, row2_col1, row2_col2, row2_col3, row2_col4, row2_space2 = st.columns([1, 2, 2, 2, 2, 1])
+    row2_space1, row2_col1, row2_col2, row2_col3, row2_col4, row2_col5, row2_space2 = st.columns([1, 2, 2, 2, 2, 2, 1])
     
     with row2_col1:
         if st.button("Todos - Página 1", key="todos_1_btn"):
@@ -52,3 +52,7 @@ def crear_botones_eda():
     with row2_col4:
         if st.button("Todos - Página 4", key="todos_4_btn"):
             st.session_state.subpagina_eda = "todos_4"
+    
+    with row2_col5:
+        if st.button("Todos - Página 5", key="todos_5_btn"):
+            st.session_state.subpagina_eda = "todos_5"

@@ -8,6 +8,7 @@ from paginas.anual.todos_1 import display as display_todos_1
 from paginas.anual.todos_2 import display as display_todos_2
 from paginas.anual.todos_3 import display as display_todos_3
 from paginas.anual.todos_4 import display as display_todos_4
+from paginas.anual.todos_5 import display as display_todos_5
 from paginas.anual.dec_2023 import display as display_2023
 from paginas.anual.dec_2022 import display as display_2022
 from paginas.anual.dec_2021 import display as display_2021
@@ -48,6 +49,8 @@ def display():
             display_todos_3()
         elif st.session_state.subpagina_eda == 'todos_4':
             display_todos_4()
+        elif st.session_state.subpagina_eda == 'todos_5':
+            display_todos_5()
 
     
 # Llama a la función para mostrar la página

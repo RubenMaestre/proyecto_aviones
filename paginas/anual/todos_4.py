@@ -55,15 +55,3 @@ def display():
         graficar_relacion_retrasos_millas(df_todos)
 
         st.markdown("---")
-
-        st.markdown("""
-        ### Top 20 de Máximas Distancias entre Aeropuertos Únicos
-
-        Este gráfico muestra el top 20 de las mayores distancias registradas entre pares de aeropuertos únicos. Cada barra representa un par de aeropuertos y la altura de la barra indica la máxima distancia en millas que ha sido registrada entre ellos.
-
-        Este análisis puede ofrecer insights sobre las rutas más largas operadas y cómo estas distancias extremas son gestionadas por las aerolíneas, además de los desafíos logísticos y operativos que representan.
-    """)
-        
-        graficar_maxima_distancia_millas(df_todos)
-
-        st.markdown("---")
