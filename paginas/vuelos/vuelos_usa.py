@@ -25,13 +25,6 @@ def display():
     st.markdown("---")
 
     st.markdown("""
-            ### Mapa de estados de los Estados Unidos""")
-
-    #mostrar_mapa_aeropuertos_usa()
-
-    st.markdown("---")
-
-    st.markdown("""
                 ### Selecciona un estado para ver los aeropuertos que contiene""")
 
     mostrar_mapa_aeropuertos_por_estado()
