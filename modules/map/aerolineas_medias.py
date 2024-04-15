@@ -28,7 +28,7 @@ def muestra_aerolineas_medias():
     ('Flota más pequeña', f"{df_aerolineas_unicas.loc[smallest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[smallest_fleet_idx, 'fleet_size'])} aviones)"),
     ('Flota de mayor edad de media', f"{df_aerolineas_unicas.loc[oldest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[oldest_fleet_idx, 'average_fleet_Age']:.2f} años)"),
     ('Flota más joven de media', f"{df_aerolineas_unicas.loc[youngest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[youngest_fleet_idx, 'average_fleet_Age']:.2f} años)"),
-    ('Media del tamaño de la flota', f"{df_aerolineas_unicas['fleet_size'].mean():.2f} aviones"),
+    ('Media del tamaño de las flotas', f"{df_aerolineas_unicas['fleet_size'].mean():.2f} aviones"),
     ('Edad media de la flota ', f"{df_aerolineas_unicas['average_fleet_Age'].mean():.2f} años"),
     ('Compañías con menos de 150 aviones', f"{(df_aerolineas_unicas['fleet_size'] < 150).sum()} compañías ({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] < 150]['aerolinea'].tolist())})"),
     ('Compañías con 150-500 aviones', f"{((df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)).sum()} compañías ({', '.join(df_aerolineas_unicas[(df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)]['aerolinea'].tolist())})"),
