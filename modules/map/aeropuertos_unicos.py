@@ -29,10 +29,12 @@ def mostrar_aeropuertos_unicos():
     aeropuerto_info = df_ciudad[df_ciudad['nombre_aeropuerto'] == aeropuerto_seleccionado].iloc[0]
 
     # Mostrar detalles del aeropuerto
-    st.markdown(f"### {aeropuerto_info['nombre_aeropuerto']} + Airport")
+    st.markdown(f"### {aeropuerto_info['nombre_aeropuerto']} Airport")
 
     # Tabla con información del aeropuerto
-    st.table(aeropuerto_info[['ciudad', 'nombre_estado', 'latitude', 'longitude']])
+    info = aeropuerto_info[['ciudad', 'nombre_estado', 'latitude', 'longitude']]
+    info.columns = ['Ciudad', 'Estado', 'Latitud', 'Longitud']
+    st.table(info)
 
     # Mostrar dirección en una nueva fila
     st.write(f"**Dirección:** {aeropuerto_info['direccion']}")
@@ -41,7 +43,7 @@ def mostrar_aeropuertos_unicos():
     mapa = folium.Map(location=[aeropuerto_info['latitude'], aeropuerto_info['longitude']], zoom_start=12)
     folium.Marker(
         [aeropuerto_info['latitude'], aeropuerto_info['longitude']],
-        popup=f"{aeropuerto_info['nombre_aeropuerto']} + Airport",
+        popup=f"{aeropuerto_info['nombre_aeropuerto']} Airport",
         icon=folium.Icon(color='red', icon='info-sign')
     ).add_to(mapa)
     st_folium(mapa, width=1280, height=480)
