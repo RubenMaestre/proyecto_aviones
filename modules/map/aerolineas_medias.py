@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 def muestra_aerolineas_medias():
-    st.markdown("### Datos curiosos de las aerolíneas de Estados Unidos que debes saber")
+    st.markdown("### Algunos datos sobre las aerolíneas de Estados Unidos que te podrían interesar")
 
     # Cargar los datos de aerolíneas
     df_aerolineas_unicas = pd.read_pickle('data/aerolineas_unicos.pkl')

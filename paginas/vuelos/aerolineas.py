@@ -10,4 +10,9 @@ def display():
     
     st.markdown("---")
 
+    st.markdown("""
+    ### ¡Prueba a seleccionar una aerolínea del desplegable!
+    Conoce más sobre ella, como su logo, su edad, número de aviones y más información.
+    """)
+
     mostrar_aerolineas_unicos()
