@@ -17,8 +17,7 @@ from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_mi
 from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
 
 
-def seleccionar_y_mostrar_grafica(df):
-    # Diccionario que mapea nombres de gráficas a funciones
+def seleccionar_grafica():
     graficas_disponibles = {
         "Vuelos por aerolínea": graficar_vuelos_por_aerolinea,
         "Evolución de vuelos por aerolínea": graficar_evolucion_vuelos_por_aerolinea,
@@ -37,8 +36,6 @@ def seleccionar_y_mostrar_grafica(df):
         "Relación entre retrasos y millas": graficar_relacion_retrasos_millas,
         "Distancia máxima en millas": graficar_maxima_distancia_millas
     }
-
-    # Selector para la gráfica
     grafica_seleccionada = st.selectbox("Selecciona una gráfica para visualizar:", list(graficas_disponibles.keys()))
     return graficas_disponibles[grafica_seleccionada]
 

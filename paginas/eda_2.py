@@ -18,7 +18,7 @@ def display():
             grafica_funcion = seleccionar_grafica()
 
     with col2:
-        if df_seleccionado is not None and 'grafica_funcion' in locals():
+        if df_seleccionado is not None and grafica_funcion is not None:
             grafica_funcion(df_seleccionado)
 
 display()
