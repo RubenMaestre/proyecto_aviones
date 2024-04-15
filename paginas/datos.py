@@ -71,8 +71,8 @@ def display():
         }}
         </style>
         <div class='data-column'>
-            <h4 style='color: white;'>{title}</h4>
-            <h1 style='color: #B0B0B0;'>{value}</h1>
+            <h4>{title}</h4>
+            <h1>{value}</h1>
         </div>
         """
 
