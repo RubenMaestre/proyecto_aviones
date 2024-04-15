@@ -1,5 +1,5 @@
 import streamlit as st
-from modules.data_count import cargar_y_contar_datos
+from modules.datos_page.data_count import cargar_y_contar_datos
 
 def display():
     st.title('Extracción de datos y explicación')
