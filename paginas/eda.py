@@ -23,16 +23,16 @@ def display():
         }}
         .divider {{
             height: 100%;
-            width: 1px;
-            border-left: 2px solid #f0f2f6;
-            margin-right: 10px;
+            width: 2px;
+            border-left: 2px solid #ffffff;
+            margin-right: 5px;
         }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    col1, divider, col2 = st.columns([1, 0.5, 4])
+    col1, divider, col2 = st.columns([1, 0.3, 4])
     with col1:
         st.write("Puedes seleccionar el mes de diciembre de los años 2021, 2022 y 2023, o bien elegir todos los años para ver todos los datos juntos.")
         df_seleccionado = seleccionar_datos()
