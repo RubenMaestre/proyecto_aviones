@@ -22,36 +22,19 @@ def muestra_aerolineas_medias():
     youngest_fleet_idx = df_aerolineas_unicas['average_fleet_Age'].idxmin()
 
     # Datos para la tabla
-    datos = {
-        'Dato': [
-            'Compañía aérea más antigua',
-            'Flota más grande',
-            'Flota más pequeña',
-            'Flota de mayor edad promedio',
-            'Flota de menor edad promedio',
-            'Media del tamaño de la flota',
-            'Edad media de la flota',
-            'Compañías con menos de 150 aviones',
-            'Compañías con 150-500 aviones',
-            'Compañías con más de 500 aviones'
-        ],
-        
-        'Descripción': [
-            f"{df_aerolineas_unicas.loc[oldest_idx, 'aerolinea']} (Fundada en {int(df_aerolineas_unicas.loc[oldest_idx, 'oldest'])})",
-            f"{df_aerolineas_unicas.loc[largest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[largest_fleet_idx, 'fleet_size'])} aviones)",
-            f"{df_aerolineas_unicas.loc[smallest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[smallest_fleet_idx, 'fleet_size'])} aviones)",
-            f"{df_aerolineas_unicas.loc[oldest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[oldest_fleet_idx, 'average_fleet_Age']:.2f} años)",
-            f"{df_aerolineas_unicas.loc[youngest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[youngest_fleet_idx, 'average_fleet_Age']:.2f} años)",
-            f"{df_aerolineas_unicas['fleet_size'].mean():.2f}",
-            f"{df_aerolineas_unicas['average_fleet_Age'].mean():.2f} años",
-            f"{(df_aerolineas_unicas['fleet_size'] < 150).sum()} compañías " +
-            f"({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] < 150]['aerolinea'].tolist())})",
-            f"{((df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)).sum()} compañías " +
-            f"({', '.join(df_aerolineas_unicas[(df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)]['aerolinea'].tolist())})",
-            f"{(df_aerolineas_unicas['fleet_size'] > 500).sum()} compañías " +
-            f"({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] > 500]['aerolinea'].tolist())})"
+    datos = [
+    ('Compañía aérea más antigua', f"{df_aerolineas_unicas.loc[oldest_idx, 'aerolinea']} (Fundada en {int(df_aerolineas_unicas.loc[oldest_idx, 'oldest'])})"),
+    ('Flota más grande', f"{df_aerolineas_unicas.loc[largest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[largest_fleet_idx, 'fleet_size'])} aviones)"),
+    ('Flota más pequeña', f"{df_aerolineas_unicas.loc[smallest_fleet_idx, 'aerolinea']} ({int(df_aerolineas_unicas.loc[smallest_fleet_idx, 'fleet_size'])} aviones)"),
+    ('Flota de mayor edad promedio', f"{df_aerolineas_unicas.loc[oldest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[oldest_fleet_idx, 'average_fleet_Age']:.2f} años)"),
+    ('Flota de menor edad promedio', f"{df_aerolineas_unicas.loc[youngest_fleet_idx, 'aerolinea']} ({df_aerolineas_unicas.loc[youngest_fleet_idx, 'average_fleet_Age']:.2f} años)"),
+    ('Media del tamaño de la flota', f"{df_aerolineas_unicas['fleet_size'].mean():.2f} aviones"),
+    ('Edad media de la flota', f"{df_aerolineas_unicas['average_fleet_Age'].mean():.2f} años"),
+    ('Compañías con menos de 150 aviones', f"{(df_aerolineas_unicas['fleet_size'] < 150).sum()} compañías ({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] < 150]['aerolinea'].tolist())})"),
+    ('Compañías con 150-500 aviones', f"{((df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)).sum()} compañías ({', '.join(df_aerolineas_unicas[(df_aerolineas_unicas['fleet_size'] >= 150) & (df_aerolineas_unicas['fleet_size'] <= 500)]['aerolinea'].tolist())})"),
+    ('Compañías con más de 500 aviones', f"{(df_aerolineas_unicas['fleet_size'] > 500).sum()} compañías ({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] > 500]['aerolinea'].tolist())})")
         ]
-    }
+    
     # Crear los cuadrados con la información
     for i in range(0, len(datos), 2):
         cols = st.columns(2)
