@@ -8,18 +8,18 @@ from modules.carga_dec_2022 import cargar_unir_2022
 from modules.carga_dec_2021 import cargar_unir_2021
 
 def seleccionar_datos():
-    opcion_año = st.selectbox("Selecciona el año:", ["2023", "2022", "2021", "Todos los años"])
+    opcion_año = st.selectbox("Selecciona el año:", ["Todos los años","2023", "2022", "2021"])
     st.session_state.selected_year = opcion_año  # Guarda el año seleccionado en el estado de sesión
     
     # Carga los datos correspondientes
-    if opcion_año == "2023":
+    if opcion_año == "Todos los años":
+        df = cargar_todos_df()
+    elif opcion_año == "2023":
         df = cargar_unir_2023()
     elif opcion_año == "2022":
         df = cargar_unir_2022()
     elif opcion_año == "2021":
         df = cargar_unir_2021()
-    elif opcion_año == "Todos los años":
-        df = cargar_todos_df()
     
     return df
 
