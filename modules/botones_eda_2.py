@@ -20,7 +20,6 @@ def seleccionar_datos():
         df = cargar_unir_2022()
     elif opcion_año == "2021":
         df = cargar_unir_2021()
-    
     return df
 
 df_seleccionado = seleccionar_datos()
