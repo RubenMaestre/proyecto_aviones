@@ -1,6 +1,6 @@
 #botones_graficas.py
 import streamlit as st
-from modules.categoria_graficas import get_graficas_por_categoria
+from modules.eda.categoria_graficas import get_graficas_por_categoria
 
 def seleccionar_grafica():
     categorias = get_graficas_por_categoria()

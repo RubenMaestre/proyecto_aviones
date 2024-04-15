@@ -1,8 +1,8 @@
 # paginas/eda_2.py
 import streamlit as st
-from modules.botones_eda_2 import seleccionar_datos
-from modules.botones_graficas import seleccionar_grafica
-from modules.datos_df_cargados_2 import mostrar_estadisticas_df
+from modules.eda.botones_eda_2 import seleccionar_datos
+from modules.eda.botones_graficas import seleccionar_grafica
+from modules.eda.datos_df_cargados import mostrar_estadisticas_df
 
 def display():
     st.markdown("<h2 style='text-align: center;'>Página de análisis exploratorio de datos (EDA)</h2>", unsafe_allow_html=True)
