@@ -7,9 +7,25 @@ def display():
     st.markdown("<h2 style='text-align: center;'>Información sobre los vuelos en USA</h2>", unsafe_allow_html=True)
     st.markdown("---")
 
-    # Dividir la interfaz en dos columnas: una para la navegación y otra para el contenido
-    col_navegacion, col_contenido = st.columns([1, 7])
+    st.markdown(
+        """
+        <style>
+        .reportview-container .main .block-container{{
+            max-width: 95%;
+        }}
+        .divider {{
+            height: 100%;
+            width: 2px;
+            border-left: 2px solid #ffffff;
+            margin-right: 5px;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
+    # Dividir la interfaz en dos columnas: una para la navegación y otra para el contenido
+    col_navegacion, divider, col_contenido = st.columns([1, 0.3, 7])
     with col_navegacion:
         st.markdown("<h4 style='text-align: center;'>Pulse una opción para saber más</h4>", unsafe_allow_html=True)
 
