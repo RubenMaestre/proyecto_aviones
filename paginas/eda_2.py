@@ -4,10 +4,10 @@ from modules.botones_eda_2 import seleccionar_datos
 from modules.botones_graficas import seleccionar_grafica
 
 def display():
-    st.title('Página de análisis exploratorio de datos (EDA)')
+    st.markdown("<h2 style='text-align: center;'>Página de análisis exploratorio de datos (EDA)</h2>", unsafe_allow_html=True)
 
     if 'subpagina_eda' not in st.session_state:
-        st.markdown("<h3 style='text-align: center;'>En esta sección de nuestro proyecto podrás encontrar un análisis de los datos empleados a través de gráficos y visualizaciones para explorar y analizar el conjunto de los datos</h3>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center;'>En esta sección de nuestro proyecto, te ofrecemos la oportunidad de explorar un análisis detallado de los datos a través de diversos gráficos y visualizaciones. Este espacio está diseñado para que puedas entender mejor y analizar de forma intuitiva la información que hemos recopilado.</h4>", unsafe_allow_html=True)
         st.image('sources/mapa_aviones_usa.png')
     
     col1, col2 = st.columns([1, 4])
