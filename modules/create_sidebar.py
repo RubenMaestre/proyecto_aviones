@@ -15,8 +15,8 @@ def create_sidebar():
 
     # Crear el menú de opciones en el sidebar con option_menu
     with st.sidebar:
-        selected = option_menu("Menú", ["Inicio", "Datos", "EDA", "EDA_2" "Vuelos en USA", "Modelo machine learning", "Sobre el proyecto", "Sobre nosotros"],
-            icons=["house", "database", "bar-chart-line", "football", "airplane", "cpu", "book", "people"],
+        selected = option_menu("Menú", ["Inicio", "Datos", "EDA", "EDA_2", "Vuelos en USA", "Modelo machine learning", "Sobre el proyecto", "Sobre nosotros"],
+            icons=["house", "database", "bar-chart-line", "ball", "airplane", "cpu", "book", "people"],
             menu_icon="cast", default_index=0, orientation="vertical")
 
     # Llama a la función de la página correspondiente en función de la selección
@@ -27,7 +27,7 @@ def create_sidebar():
     elif selected == "EDA":
         eda.display()
     elif selected == "EDA_2":
-        eda.display()
+        eda_2.display()
     elif selected == "Vuelos en USA":
         aviones.display()
     elif selected == "Modelo machine learning":
