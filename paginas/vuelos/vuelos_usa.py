@@ -25,6 +25,7 @@ def display():
 
     st.markdown("""
                 ### Selecciona un estado para ver los aeropuertos que contiene""")
+    st.write("En este mapa puede ver la cantidad de aeropuertos que hay por estado. Por ello le rogamos que seleccione uno de los 50 estados, el distrito federal, estados asociados o no incorporados.")
 
     mostrar_mapa_aeropuertos_por_estado()
 
