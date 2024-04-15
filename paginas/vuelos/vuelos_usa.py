@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from streamlit_folium import st_folium
-import folium
 
 from modules.map.mapa_aeropuertos import mostrar_mapa_aeropuertos_globales
 from modules.map.estados_usa import mostrar_mapa_aeropuertos_usa
@@ -14,11 +13,11 @@ from modules.map.selector_estado_interactivo import mostrar_mapa_aeropuertos_por
 df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
 
 def display():
-    st.title('Mapas de vuelos sobre Estados Unidos')
+    st.title('Mapas con todos los aeropuertos en Estados Unidos, incluídos territorios no incorporados')
     # Aquí iría el resto de tu contenido de la página de inicio
     
     st.markdown("""
-            ### Mapa donde graficamos todos los Aeropuertos de Estados Unidos""")
+            #### El mapa tiene un zoom enorme para que pueda abarcar todos los aeropuertos que de alguna forma pertenecen a Estados Unidos. Puede hacer zoom para visualizar mejor por zonas.""")
     
     mostrar_mapa_aeropuertos_globales()
 
