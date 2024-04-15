@@ -50,6 +50,7 @@ def display():
         if df_seleccionado is not None and grafica_funcion:
             grafica_funcion(df_seleccionado)
             descripcion = obtener_descripcion(st.session_state['selected_year'], grafica_nombre)
+            st.write("Descripción de la gráfica:")
             st.markdown(descripcion)
 
 display()
