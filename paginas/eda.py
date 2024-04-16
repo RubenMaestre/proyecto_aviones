@@ -39,6 +39,7 @@ def display():
         if df_seleccionado is not None:
             st.markdown("---")
             mostrar_estadisticas_df(df_seleccionado, 'fecha')
+            st.write("* Datos de diciembre")
             st.markdown("---")
             st.write("Una vez que has elegido el año, ahora puedes elegir qué tipo de gráfica ver. Para ayudarte hemos agrupado las gráficas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()  # Asumiendo que la función ahora devuelve ambos
