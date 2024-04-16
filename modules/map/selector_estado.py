@@ -2,34 +2,31 @@ import folium
 import pandas as pd
 import streamlit as st
 from streamlit_folium import st_folium
-import uuid
 
 def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
     geojson_usa = 'data/us-states.json'
     nombres_estados = df_aeropuertos_unicos['nombre_estado'].unique()
-
+    
+    # Asegúrate de pasar la clave con sufijo para evitar conflictos
     nombre_estado_seleccionado = st.selectbox(
         'Selecciona un estado:',
         sorted(nombres_estados),
         key=f'estado_seleccionado{key_suffix}'
     )
 
-    trigger_button = st.button('Mostrar Mapa', key=f'btn_mostrar_mapa{key_suffix}')
+    # Función para actualizar el mapa con los aeropuertos del nombre del estado seleccionado
+    def actualizar_mapa(nombre_estado):
+        # Filtrar aeropuertos por el nombre del estado seleccionado
+        df_aeropuertos_estado = df_aeropuertos_unicos[df_aeropuertos_unicos['nombre_estado'] == nombre_estado]
 
-    # Botón para limpiar el mapa
-    if st.button('Limpiar Mapa', key=f'btn_limpiar_mapa{key_suffix}'):
-        if 'map_triggered' in st.session_state:
-            del st.session_state['map_triggered']  # Eliminar el estado del mapa
-
-    if trigger_button:
-        st.session_state['map_triggered'] = True
-
-    if 'map_triggered' in st.session_state and st.session_state['map_triggered']:
-        unique_key = str(uuid.uuid4())
-        df_aeropuertos_estado = df_aeropuertos_unicos[df_aeropuertos_unicos['nombre_estado'] == nombre_estado_seleccionado]
+        # Encuentra el centro del estado para centrar el mapa
         centro_estado = [df_aeropuertos_estado['latitude'].mean(), df_aeropuertos_estado['longitude'].mean()]
+
+        # Crea un nuevo mapa centrado en el estado seleccionado
         mapa_estado = folium.Map(location=centro_estado, zoom_start=5)
+
+        # Agregar GeoJSON para marcar los estados
         folium.GeoJson(
             geojson_usa,
             name='USA States',
@@ -45,10 +42,20 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
                 'weight': 3,
             }
         ).add_to(mapa_estado)
+
+        # Agrega marcadores para cada aeropuerto en el estado
         for index, row in df_aeropuertos_estado.iterrows():
             folium.Marker(
                 [row['latitude'], row['longitude']],
                 popup=f"{row['nombre_aeropuerto']} ({row['codigo_aeropuerto']})",
                 icon=folium.Icon(color='blue', icon='plane', prefix='fa')
             ).add_to(mapa_estado)
-        st_folium(mapa_estado, width=1280, height=720, key=f"map_{unique_key}")
+
+        # Muestra el mapa actualizado en Streamlit
+        st_folium(mapa_estado, width=1280, height=720)
+
+    # Actualizar el mapa cuando se selecciona un nombre de estado
+    actualizar_mapa(nombre_estado_seleccionado)
+
+# Llamar a la función para mostrar el mapa
+mostrar_mapa_aeropuertos_por_estado(key_suffix='_pagina_principal')
