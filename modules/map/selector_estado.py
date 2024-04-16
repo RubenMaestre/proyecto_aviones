@@ -2,7 +2,7 @@ import folium
 import pandas as pd
 import streamlit as st
 from streamlit_folium import st_folium
-import uuid  
+import uuid
 
 def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
@@ -15,11 +15,14 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
         key=f'estado_seleccionado{key_suffix}'
     )
 
-    if st.button('Mostrar Mapa', key=f'btn_mostrar_mapa{key_suffix}'):
+    trigger_button = st.button('Mostrar Mapa', key=f'btn_mostrar_mapa{key_suffix}')
+
+    # A button to reset the map trigger
+    if trigger_button:
         st.session_state['map_triggered'] = True
 
     if 'map_triggered' in st.session_state and st.session_state['map_triggered']:
-        unique_key = str(uuid.uuid4())  # Generar un UUID único para cada mapa para evitar colisiones de clave
+        unique_key = str(uuid.uuid4())
         df_aeropuertos_estado = df_aeropuertos_unicos[df_aeropuertos_unicos['nombre_estado'] == nombre_estado_seleccionado]
         centro_estado = [df_aeropuertos_estado['latitude'].mean(), df_aeropuertos_estado['longitude'].mean()]
         mapa_estado = folium.Map(location=centro_estado, zoom_start=5)
@@ -46,4 +49,6 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
             ).add_to(mapa_estado)
         st_folium(mapa_estado, width=1280, height=720, key=f"map_{unique_key}")
 
+        # Reset the trigger after rendering the map
+        st.session_state['map_triggered'] = False  # Reset the trigger to stop re-rendering
 
