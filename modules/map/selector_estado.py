@@ -2,12 +2,13 @@ import folium
 import pandas as pd
 import streamlit as st
 from streamlit_folium import st_folium
+import uuid  
 
 def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
     geojson_usa = 'data/us-states.json'
     nombres_estados = df_aeropuertos_unicos['nombre_estado'].unique()
-    
+
     # Asegúrate de pasar la clave con sufijo para evitar conflictos
     nombre_estado_seleccionado = st.selectbox(
         'Selecciona un estado:',
@@ -17,6 +18,9 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
 
     # Función para actualizar el mapa con los aeropuertos del nombre del estado seleccionado
     def actualizar_mapa(nombre_estado):
+        # Generar un UUID único para cada mapa para evitar colisiones de clave
+        unique_key = str(uuid.uuid4())
+
         # Filtrar aeropuertos por el nombre del estado seleccionado
         df_aeropuertos_estado = df_aeropuertos_unicos[df_aeropuertos_unicos['nombre_estado'] == nombre_estado]
 
@@ -52,10 +56,9 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
             ).add_to(mapa_estado)
 
         # Muestra el mapa actualizado en Streamlit
-        st_folium(mapa_estado, width=1280, height=720)
+        st_folium(mapa_estado, width=1280, height=720, key=f"map_{unique_key}")
 
-    # Actualizar el mapa cuando se selecciona un nombre de estado
+    # Llama a actualizar_mapa directamente sin necesidad de pasar unique_key como argumento
     actualizar_mapa(nombre_estado_seleccionado)
 
-# Llamar a la función para mostrar el mapa
-mostrar_mapa_aeropuertos_por_estado(key_suffix='_pagina_principal')
+
