@@ -24,7 +24,7 @@ def display():
     # Cambiando st.write por st.markdown para mantener la consistencia en el formato de texto
     st.markdown("En este mapa puede ver la cantidad de aeropuertos que hay por estado. Por ello le rogamos que seleccione uno de los 50 estados, el distrito federal, estados asociados o no incorporados de los Estados Unidos en este mapa interactivo ampliable para conocer la posición de los aeropuertos.")
 
-    mostrar_mapa_aeropuertos_por_estado()
+    mostrar_mapa_aeropuertos_por_estado(key_suffix='_en_us_map')
 
     st.markdown("---")
     

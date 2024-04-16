@@ -3,14 +3,17 @@ import pandas as pd
 import streamlit as st
 from streamlit_folium import st_folium
 
-def mostrar_mapa_aeropuertos_por_estado():
-    # Cargar los datos de aeropuertos
+def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
-    geojson_usa = 'data/us-states.json'  # Asegúrate de que la ruta al archivo GeoJSON es correcta
-
-    # Crear un selector de nombres de estados en español
+    geojson_usa = 'data/us-states.json'
     nombres_estados = df_aeropuertos_unicos['nombre_estado'].unique()
-    nombre_estado_seleccionado = st.selectbox('Selecciona un estado:', sorted(nombres_estados), key='estado_seleccionado')
+    
+    # Asegúrate de pasar la clave con sufijo para evitar conflictos
+    nombre_estado_seleccionado = st.selectbox(
+        'Selecciona un estado:',
+        sorted(nombres_estados),
+        key=f'estado_seleccionado{key_suffix}'
+    )
 
     # Función para actualizar el mapa con los aeropuertos del nombre del estado seleccionado
     def actualizar_mapa(nombre_estado):
@@ -55,4 +58,4 @@ def mostrar_mapa_aeropuertos_por_estado():
     actualizar_mapa(nombre_estado_seleccionado)
 
 # Llamar a la función para mostrar el mapa
-mostrar_mapa_aeropuertos_por_estado()
+mostrar_mapa_aeropuertos_por_estado(key_suffix='_pagina_principal')
