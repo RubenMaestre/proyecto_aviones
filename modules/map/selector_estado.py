@@ -10,7 +10,7 @@ def mostrar_mapa_aeropuertos_por_estado():
 
     # Crear un selector de nombres de estados en español
     nombres_estados = df_aeropuertos_unicos['nombre_estado'].unique()
-    nombre_estado_seleccionado = st.selectbox('Selecciona un estado:', sorted(nombres_estados))
+    nombre_estado_seleccionado = st.selectbox('Selecciona un estado:', sorted(nombres_estados), key='estado_seleccionado')
 
     # Función para actualizar el mapa con los aeropuertos del nombre del estado seleccionado
     def actualizar_mapa(nombre_estado):
