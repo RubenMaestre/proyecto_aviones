@@ -44,7 +44,7 @@ def display():
             grafica_funcion, grafica_nombre = seleccionar_grafica()
             if grafica_funcion:
                 grafica_funcion(df_seleccionado)
-                descripcion = obtener_descripcion(st.session_state.get('selected_year', 'default_value'), grafica_nombre)
+                descripcion = obtener_descripcion(st.session_state.get('selected_year', 'Default Year'), grafica_nombre)
                 st.write("Descripción de la gráfica:")
                 st.markdown(descripcion)
 
@@ -54,7 +54,7 @@ def display():
     with col2:
         if df_seleccionado is not None and grafica_funcion:
             grafica_funcion(df_seleccionado)
-            descripcion = obtener_descripcion(st.session_state['selected_year'], grafica_nombre)
+            descripcion = obtener_descripcion(st.session_state.get('selected_year', 'Default Year'), grafica_nombre)
             st.write("Descripción de la gráfica:")
             st.markdown(descripcion)
 
