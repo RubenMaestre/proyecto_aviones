@@ -6,6 +6,8 @@ from streamlit_folium import st_folium
 def mostrar_aeropuertos_unicos():
     # Cargar los datos de aeropuertos
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
+    df_aeropuertos_unicos['latitude'] = pd.to_numeric(df_aeropuertos_unicos['latitude'], errors='coerce')
+    df_aeropuertos_unicos['longitude'] = pd.to_numeric(df_aeropuertos_unicos['longitude'], errors='coerce')
 
     # Selector de Estado
     nombres_estados = sorted(df_aeropuertos_unicos['nombre_estado'].unique())
@@ -32,7 +34,9 @@ def mostrar_aeropuertos_unicos():
     st.markdown(f"### {aeropuerto_info['nombre_aeropuerto']} Airport")
 
     # Tabla con información del aeropuerto
-    info = aeropuerto_info[['ciudad', 'nombre_estado', 'latitude', 'longitude']]
+    info = aeropuerto_info[['ciudad', 'nombre_estado', 'latitude', 'longitude']].copy()
+    info['latitude'] = info['latitude'].astype(str)
+    info['longitude'] = info['longitude'].astype(str)
     info.columns = ['Ciudad', 'Estado', 'Latitud', 'Longitud']
     st.table(info)
 
@@ -40,9 +44,10 @@ def mostrar_aeropuertos_unicos():
     st.write(f"**Dirección:** {aeropuerto_info['direccion']}")
 
     # Mostrar el mapa
-    mapa = folium.Map(location=[aeropuerto_info['latitude'], aeropuerto_info['longitude']], zoom_start=12)
+    location = [float(aeropuerto_info['latitude']), float(aeropuerto_info['longitude'])]
+    mapa = folium.Map(location=location, zoom_start=12)
     folium.Marker(
-        [aeropuerto_info['latitude'], aeropuerto_info['longitude']],
+        location,
         popup=f"{aeropuerto_info['nombre_aeropuerto']} Airport",
         icon=folium.Icon(color='red', icon='info-sign')
     ).add_to(mapa)
