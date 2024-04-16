@@ -7,9 +7,7 @@ import pickle
 import random
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from modules.carga_todos_df import cargar_todos_df
-from modules.ml.import_df import cargar_df_modelo
-from modules.ml.rutas_unicas import obtener_rutas_unicas
+from modules.ml.carga_previa import carga_inicial
 
 def load_model(path):
     return load(path)
@@ -26,13 +24,9 @@ def apply_target_encoding(value, mapping, default_value=np.nan):
     return mapping.get(value, default_value)
 
 def display_ml_page():
+    df_todos, df_modelo, rutas, model, mappings = carga_inicial()  # Carga todo lo necesario
     st.title('Predicción de Retrasos de Vuelos')
-    model = load_model('data/joblib/model.joblib')
-    mappings = load_mappings('data/target_encodings.pkl')
-    df_todos = cargar_todos_df()
-    df_modelo = cargar_df_modelo()
-    df_todos = alinear_columnas_df_todos(df_todos, df_modelo)
-    rutas = obtener_rutas_unicas()
+
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
     ciudades_destino_validas = rutas[rutas['ciudad_origen'] == ciudad_origen]['ciudad_destino'].unique()
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
