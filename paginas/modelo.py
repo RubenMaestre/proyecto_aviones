@@ -1,6 +1,6 @@
 #paginas/modelo.py
 import streamlit as st
-#from modules.ml.ml_2 import display_ml_page
+from modules.ml.ml_2 import display_ml_page
 
 def display():
     st.title('Modelo machine learning')
