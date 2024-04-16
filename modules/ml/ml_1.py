@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from modules.carga_todos_df import cargar_todos_df
 from modules.ml.carga_mod_df import unir_df_modelo
+from modules.ml.rutas_unicas import obtener_rutas_unicas
 
 def load_model(path):
     model = load(path)
@@ -46,9 +47,16 @@ def display_ml_page():
     df_todos = cargar_todos_df()
     df_modelo = unir_df_modelo()
     df_todos = alinear_columnas_df_todos(df_todos, df_modelo)
+    
+    # Cargar rutas únicas
+    rutas = obtener_rutas_unicas()
 
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=df_todos['ciudad_origen'].unique())
-    ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=df_todos['ciudad_destino'].unique())
+    
+    # Filtrar las ciudades destino basadas en la ciudad de origen seleccionada
+    ciudades_destino_validas = rutas[rutas['ciudad_origen'] == ciudad_origen]['ciudad_destino'].unique()
+    ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
+    
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
 
