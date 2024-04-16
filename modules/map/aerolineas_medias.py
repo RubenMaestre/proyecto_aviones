@@ -35,7 +35,7 @@ def muestra_aerolineas_medias():
     ('Compañías con más de 500 aviones', f"{(df_aerolineas_unicas['fleet_size'] > 500).sum()} compañías ({', '.join(df_aerolineas_unicas[df_aerolineas_unicas['fleet_size'] > 500]['aerolinea'].tolist())})")
         ]
     
-    # Estilo CSS para los cuadros
+     # Estilo CSS para los cuadros
     st.markdown("""
         <style>
             .info-box {
@@ -49,9 +49,25 @@ def muestra_aerolineas_medias():
     """, unsafe_allow_html=True)
 
     # Mostrar los datos en cuadros
-    cols = st.columns(5)  # Ajusta el número de columnas según necesites
-    for index, (titulo, descripcion) in enumerate(datos):
-        with cols[index % 5]:
+    # Primera fila de 3 columnas
+    cols = st.columns(3)
+    for i in range(3):
+        with cols[i]:
+            titulo, descripcion = datos[i]
+            st.markdown(f"<div class='info-box'><h6>{titulo}</h6><p>{descripcion}</p></div>", unsafe_allow_html=True)
+
+    # Segunda fila de 4 columnas
+    cols = st.columns(4)
+    for i in range(3, 7):
+        with cols[i - 3]:
+            titulo, descripcion = datos[i]
+            st.markdown(f"<div class='info-box'><h6>{titulo}</h6><p>{descripcion}</p></div>", unsafe_allow_html=True)
+
+    # Tercera fila de 3 columnas
+    cols = st.columns(3)
+    for i in range(7, 10):
+        with cols[i - 7]:
+            titulo, descripcion = datos[i]
             st.markdown(f"<div class='info-box'><h6>{titulo}</h6><p>{descripcion}</p></div>", unsafe_allow_html=True)
 
 # Llamar a la función fuera de su definición
