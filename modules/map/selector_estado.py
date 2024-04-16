@@ -46,5 +46,5 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
                 ).add_to(mapa_estado)
             st_folium(mapa_estado, width=1280, height=720, key=f"map_{unique_key}")
 
-        actualizar_mapa(nombre_estado_seleccionado)
+        
 
