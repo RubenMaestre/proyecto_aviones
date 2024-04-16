@@ -1,7 +1,7 @@
 #paginas/modelo.py
+# paginas/modelo.py
 import streamlit as st
-import streamlit as st
-from modules.ml.prediccion import cargar_modelo, hacer_prediccion
+from modules.ml.prediccion import cargar_modelo
 
 def display():
     st.title('Modelo de Machine Learning')
@@ -9,8 +9,9 @@ def display():
     Haz tu selección para saber si tu vuelo llegará con retraso o no con nuestro infalible modelo de predicción...
     """)
 
-    # Botón para cargar el modelo y hacer una predicción
+    modelo_url = 'https://www.rubenmaestre.com/modelos/model.joblib'
+
     if st.button('Cargar modelo y predecir retraso'):
-        # Cargar el modelo solo cuando el usuario lo solicite
-        modelo = cargar_modelo('data/joblib/model.joblib')
+        modelo = cargar_modelo(modelo_url)
         st.write("Modelo cargado correctamente.")
+        # Añadir más lógica para manejar la entrada del usuario y hacer predicciones aquí.

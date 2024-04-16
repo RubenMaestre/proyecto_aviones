@@ -2,13 +2,12 @@
 import pandas as pd
 import streamlit as st
 import joblib
+import requests
+from io import BytesIO
 
-def cargar_modelo(path):
-    # Esta función carga el modelo desde un archivo joblib
-    modelo = joblib.load(path)
+def cargar_modelo(url):
+    response = requests.get(url)
+    modelo = joblib.load(BytesIO(response.content))
     return modelo
 
-# Función para realizar una predicción
-def hacer_prediccion(modelo, datos):
-    return modelo.predict(datos)
 
