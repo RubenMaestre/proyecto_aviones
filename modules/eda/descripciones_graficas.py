@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Cargar las descripciones desde CSV
-@st.cache
+@st.cache_data
 def cargar_descripciones():
     return pd.read_csv('data/graficas/comentarios.csv')
 

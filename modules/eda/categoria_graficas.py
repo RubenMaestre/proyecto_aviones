@@ -16,8 +16,6 @@ from modules.graph.histograma_distancias_millas import graficar_histograma_dista
 from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
 from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
 
-import streamlit as st
-
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Obtén el año seleccionado
 
