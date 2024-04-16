@@ -34,15 +34,19 @@ def display():
 
     col1, divider, col2 = st.columns([1, 0.3, 4])
     with col1:
-        st.write("Puedes seleccionar el mes de diciembre de los años 2021, 2022 y 2023, o bien elegir todos los años para ver todos los datos juntos.")
+        st.write("Selecciona el mes de diciembre de los años 2021, 2022 y 2023, o bien todos los años.")
         df_seleccionado = seleccionar_datos(key_suffix='eda_page')
         if df_seleccionado is not None:
-            st.markdown("---")
             mostrar_estadisticas_df(df_seleccionado, 'fecha')
             st.write("* Datos de diciembre")
             st.markdown("---")
-            st.write("Una vez que has elegido el año, ahora puedes elegir qué tipo de gráfica ver. Para ayudarte hemos agrupado las gráficas por categorías.")
-            grafica_funcion, grafica_nombre = seleccionar_grafica()  # Asumiendo que la función ahora devuelve ambos
+            st.write("Elige qué tipo de gráfica ver, agrupadas por categorías.")
+            grafica_funcion, grafica_nombre = seleccionar_grafica()
+            if grafica_funcion:
+                grafica_funcion(df_seleccionado)
+                descripcion = obtener_descripcion(st.session_state.get('selected_year', 'default_value'), grafica_nombre)
+                st.write("Descripción de la gráfica:")
+                st.markdown(descripcion)
 
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
