@@ -17,7 +17,11 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
 
     trigger_button = st.button('Mostrar Mapa', key=f'btn_mostrar_mapa{key_suffix}')
 
-    # A button to reset the map trigger
+    # Botón para limpiar el mapa
+    if st.button('Limpiar Mapa', key=f'btn_limpiar_mapa{key_suffix}'):
+        if 'map_triggered' in st.session_state:
+            del st.session_state['map_triggered']  # Eliminar el estado del mapa
+
     if trigger_button:
         st.session_state['map_triggered'] = True
 
@@ -48,7 +52,3 @@ def mostrar_mapa_aeropuertos_por_estado(key_suffix=''):
                 icon=folium.Icon(color='blue', icon='plane', prefix='fa')
             ).add_to(mapa_estado)
         st_folium(mapa_estado, width=1280, height=720, key=f"map_{unique_key}")
-
-        # Reset the trigger after rendering the map
-        st.session_state['map_triggered'] = False  # Reset the trigger to stop re-rendering
-
