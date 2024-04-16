@@ -8,17 +8,7 @@ import random
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from modules.carga_todos_df import cargar_todos_df
-from modules.ml.import_df_modelo import cargar_df_modelo
-from modules.ml.rutas_unicas import obtener_rutas_unicas
-
-# modules/ml/ml_1.py
-import streamlit as st
-import pandas as pd
-import numpy as np
-from joblib import load
-import pickle
-import random
-from modules.carga_todos_df import cargar_todos_df
+from modules.ml.import_df import cargar_df_modelo
 from modules.ml.rutas_unicas import obtener_rutas_unicas
 
 def load_model(path):
@@ -27,9 +17,6 @@ def load_model(path):
 def load_mappings(path):
     with open(path, 'rb') as file:
         return pickle.load(file)
-
-def cargar_df_modelo():
-    return load('data/joblib/df_modelo.joblib')
 
 def alinear_columnas_df_todos(df_todos, df_modelo):
     columnas_comunes = [col for col in df_modelo.columns if col in df_todos.columns and col != 'llega_tarde']
