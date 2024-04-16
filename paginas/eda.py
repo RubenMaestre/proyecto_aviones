@@ -42,12 +42,7 @@ def display():
             st.markdown("---")
             st.write("Elige qué tipo de gráfica ver, agrupadas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()
-            if grafica_funcion:
-                grafica_funcion(df_seleccionado)
-                descripcion = obtener_descripcion(st.session_state.get('selected_year', 'Default Year'), grafica_nombre)
-                st.write("Descripción de la gráfica:")
-                st.markdown(descripcion)
-
+            
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
