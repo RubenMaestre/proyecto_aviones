@@ -17,7 +17,7 @@ def carga_inicial():
         st.session_state.rutas = obtener_rutas_unicas()
 
     if 'model' not in st.session_state:
-        st.session_state.model = load('data/joblib/model.joblib')
+        st.session_state.model = load('https://www.rubenmaestre.com/modelos/model.joblib')
 
     if 'mappings' not in st.session_state:
         with open('data/target_encodings.pkl', 'rb') as file:
