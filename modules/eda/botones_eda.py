@@ -1,3 +1,4 @@
+#modules/eda/botones_eda.py
 import streamlit as st
 import pandas as pd
 
@@ -7,11 +8,13 @@ from modules.carga_dec_2023 import cargar_unir_2023
 from modules.carga_dec_2022 import cargar_unir_2022
 from modules.carga_dec_2021 import cargar_unir_2021
 
-def seleccionar_datos():
-    opcion_año = st.selectbox("Selecciona el año:", ["Todos los años","2023", "2022", "2021"], key='seleccion_año_vuelos_1')
-    st.session_state.selected_year = opcion_año  # Guarda el año seleccionado en el estado de sesión
-    
-    # Carga los datos correspondientes
+def seleccionar_datos(key_suffix):
+    opcion_año = st.selectbox(
+        "Selecciona el año:",
+        ["Todos los años", "2023", "2022", "2021"],
+        key=f'seleccion_año_vuelos_{key_suffix}'  # Clave única basada en el sufijo
+    )
+    # El resto de la función sigue igual
     if opcion_año == "Todos los años":
         df = cargar_todos_df()
     elif opcion_año == "2023":
