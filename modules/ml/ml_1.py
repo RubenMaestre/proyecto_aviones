@@ -30,7 +30,7 @@ def display_ml_page():
     col1, col2, col3 = st.columns([5, 2, 5])  # Divide la interfaz en tres columnas
 
     with col1:
-        st.write("")  # Espacio en blanco para ajustar el diseño
+        st.write("Primero selecciona desde la ciudad donde vas a volar")  # Espacio en blanco para ajustar el diseño
         # Seleccionar estado de origen
         opciones_estado_origen = sorted(rutas['estado_origen'].map(estados_dict).unique())  # Mapea los estados a español
         estado_origen = st.selectbox('Selecciona el estado de origen:', options=opciones_estado_origen)
@@ -41,19 +41,22 @@ def display_ml_page():
         st.image("sources/volando_voy.png")  # Mostrar imagen en la columna central
 
     with col3:
-        st.write("")  # Espacio en blanco para ajustar el diseño
+        st.write("Ahora selecciona a la ciudad a la que quieres llegar")  # Espacio en blanco para ajustar el diseño
         # Seleccionar destino basado en la ciudad de origen
         opciones_estado_destino = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['estado_destino'].map(estados_dict).unique())  # Mapea los estados a español
         estado_destino = st.selectbox('Selecciona el estado destino:', options=opciones_estado_destino)
         ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'].map(estados_dict) == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
         ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
 
+    st.write("Elige que día quieres volar...")
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
         
     col4, col5 = st.columns(2)
     with col4:
+        st.write("Y ahora a que hora sale tu vuelo...")
         hora = st.slider('Hora de salida programada (hora):', 0, 23, 12)
     with col5:
+        st.write("... o a que hora pretendes salir 😎")
         minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
 
     if st.button('Predecir Retraso'):
