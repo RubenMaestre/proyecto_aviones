@@ -26,6 +26,7 @@ def display_ml_page():
     estados_dict = estados_en_espanol()
 
     st.title('✈️ JetSet Predictor (JSP): Tu pasaporte a la puntualidad ✈️')
+    st.markdown("---")
 
     col1, col2, col3 = st.columns([5, 2, 5])  # Divide la interfaz en tres columnas
 
