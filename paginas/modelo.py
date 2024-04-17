@@ -13,7 +13,9 @@ def display():
 
     st.markdown("---")
 
-    colizq, colcenter, colder = st.columns([4, 3, 4])
-    with colcenter:
+    col1, col2 = st.columns([2, 5])
+    with col1:
         st.write("Presentamos a continuación las métricas de rendimiento del modelo desarrollado utilizando DecisionTreeClassifier de scikit-learn. Estos indicadores te ayudarán a comprender la eficacia y precisión del modelo en la clasificación de datos.")
+        
+    with col2:
         mostrar_metricas()
