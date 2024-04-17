@@ -74,34 +74,43 @@ def display_ml_page():
         st.write("... o a qué hora pretendes salir? 😎")
         minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
     
-    colizq, colcenter, colder = st.columns([4, 5, 4])
-    with colcenter:
-        if st.button('¿Llegará puntual mi vuelo a su destino'):
-            dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
-            dia_semana_encoded = dia_semana_map[dia_semana]
-            # Convertir hora y minutos a minutos desde medianoche
-            hora_salida_programada_encoded = hora * 60 + minuto
-            fecha_encoded = 12
+    st.markdown("""
+    <style>
+        .css-18e3th9 {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    if st.button('¿Llegará puntual mi vuelo a su destino'):
+        dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
+        dia_semana_encoded = dia_semana_map[dia_semana]
+        # Convertir hora y minutos a minutos desde medianoche
+        hora_salida_programada_encoded = hora * 60 + minuto
+        fecha_encoded = 12
 
-            ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
-            ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
-            aerolinea_encoded = np.random.choice(list(mappings['aerolinea']))
-            numero_cola_encoded = np.random.choice(list(mappings['numero_cola']))
-            estado_origen_encoded = apply_target_encoding(estado_origen, mappings['estado_origen'])
-            aeropuerto_origen_encoded = np.random.choice(list(mappings['aeropuerto_origen']))
-            estado_destino_encoded = apply_target_encoding(estado_destino, mappings['estado_destino'])
-            aeropuerto_destino_encoded = np.random.choice(list(mappings['aeropuerto_destino']))
+        ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
+        ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
+        aerolinea_encoded = np.random.choice(list(mappings['aerolinea']))
+        numero_cola_encoded = np.random.choice(list(mappings['numero_cola']))
+        estado_origen_encoded = apply_target_encoding(estado_origen, mappings['estado_origen'])
+        aeropuerto_origen_encoded = np.random.choice(list(mappings['aeropuerto_origen']))
+        estado_destino_encoded = apply_target_encoding(estado_destino, mappings['estado_destino'])
+        aeropuerto_destino_encoded = np.random.choice(list(mappings['aeropuerto_destino']))
 
-            features = [
-                aerolinea_encoded, fecha_encoded, numero_cola_encoded, hora_salida_programada_encoded,
-                ciudad_origen_encoded, estado_origen_encoded, aeropuerto_origen_encoded,
-                dia_semana_encoded, ciudad_destino_encoded, estado_destino_encoded, aeropuerto_destino_encoded
-            ]
-            features_df = pd.DataFrame([features], columns=df_modelo.columns.drop('llega_tarde'))  # Asumimos 'llega_tarde' como target.
-            prediction = model.predict(features_df)
+        features = [
+            aerolinea_encoded, fecha_encoded, numero_cola_encoded, hora_salida_programada_encoded,
+            ciudad_origen_encoded, estado_origen_encoded, aeropuerto_origen_encoded,
+            dia_semana_encoded, ciudad_destino_encoded, estado_destino_encoded, aeropuerto_destino_encoded
+        ]
+        features_df = pd.DataFrame([features], columns=df_modelo.columns.drop('llega_tarde'))  # Asumimos 'llega_tarde' como target.
+        prediction = model.predict(features_df)
             
-            if prediction[0] == 1:
-                st.error('🚩 Ups, parece que tu vuelo podría sufrir un retraso. 😢 De todas formas, a ver, somos un poco tikismikis y queremos informarte que consideramos en nuestro modelo de predicción como retraso la llegada posterior a 15 minutos de la hora programada a priori... 😬 igual tampoco es para dramatizar 🙈.')  # Uso de st.error para retrasos
-            else:
-                st.success('✈️ ¡El vuelo probablemente llegará a tiempo! ¿No te hemos dicho ya que nuestro modelo era increíble? 🎉 🍾 Siiiiiiiiiuuuuuuuu!!!! 😎')  # Uso de st.success para llegadas a tiempo
-                st.balloons() 
+        if prediction[0] == 1:
+            st.error('🚩 Ups, parece que tu vuelo podría sufrir un retraso. 😢 De todas formas, a ver, somos un poco tikismikis y queremos informarte que consideramos en nuestro modelo de predicción como retraso la llegada posterior a 15 minutos de la hora programada a priori... 😬 igual tampoco es para dramatizar 🙈.')  # Uso de st.error para retrasos
+        else:
+            st.success('✈️ ¡El vuelo probablemente llegará a tiempo! ¿No te hemos dicho ya que nuestro modelo era increíble? 🎉 🍾 Siiiiiiiiiuuuuuuuu!!!! 😎')  # Uso de st.success para llegadas a tiempo
+            st.balloons() 
