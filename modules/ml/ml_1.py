@@ -27,23 +27,33 @@ def display_ml_page():
 
     st.title('Predicción de Retrasos de Vuelos')
 
-    # Seleccionar estado de origen
-    opciones_estado_origen = sorted(rutas['estado_origen'].map(estados_dict).unique())  # Mapea los estados a español
-    estado_origen = st.selectbox('Selecciona el estado de origen:', options=opciones_estado_origen)
-    opciones_ciudad_origen = sorted(rutas[rutas['estado_origen'].map(estados_dict) == estado_origen]['ciudad_origen'].unique())
-    ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=opciones_ciudad_origen)
-    
-    # Seleccionar destino basado en la ciudad de origen
-    opciones_estado_destino = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['estado_destino'].map(estados_dict).unique())  # Mapea los estados a español
-    estado_destino = st.selectbox('Selecciona el estado destino:', options=opciones_estado_destino)
-    ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'].map(estados_dict) == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
-    ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
+    col1, col2, col3 = st.columns([1, 5, 1])  # Divide la interfaz en tres columnas
+
+    with col1:
+        st.write("")  # Espacio en blanco para ajustar el diseño
+        # Seleccionar estado de origen
+        opciones_estado_origen = sorted(rutas['estado_origen'].map(estados_dict).unique())  # Mapea los estados a español
+        estado_origen = st.selectbox('Selecciona el estado de origen:', options=opciones_estado_origen)
+        opciones_ciudad_origen = sorted(rutas[rutas['estado_origen'].map(estados_dict) == estado_origen]['ciudad_origen'].unique())
+        ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=opciones_ciudad_origen)
+
+    with col2:
+        st.image("sources/volando_voy.png", width=80, height=200)  # Mostrar imagen en la columna central
+
+    with col3:
+        st.write("")  # Espacio en blanco para ajustar el diseño
+        # Seleccionar destino basado en la ciudad de origen
+        opciones_estado_destino = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['estado_destino'].map(estados_dict).unique())  # Mapea los estados a español
+        estado_destino = st.selectbox('Selecciona el estado destino:', options=opciones_estado_destino)
+        ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'].map(estados_dict) == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
+        ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
+
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
         
-    col1, col2 = st.columns(2)
-    with col1:
+    col4, col5 = st.columns(2)
+    with col4:
         hora = st.slider('Hora de salida programada (hora):', 0, 23, 12)
-    with col2:
+    with col5:
         minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
 
     if st.button('Predecir Retraso'):
