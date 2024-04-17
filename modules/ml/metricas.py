@@ -3,38 +3,51 @@ import json
 import pandas as pd
 
 def mostrar_metricas():
+    st.markdown("### Métricas del Modelo de Clasificación")
+
     # Cargar métricas
     with open('data/model_metrics.json', 'r') as f:
         metrics = json.load(f)
-    
-    # Imprimir las métricas cargadas para depuración
-    print("Métricas cargadas:", metrics)
 
     # Diccionario con descripciones de las métricas
     descriptions = {
-        "jaccard_index": "Medida de la similitud entre los conjuntos de predicciones y las etiquetas verdaderas. Varía de 0 a 1, donde 1 es la mejor puntuación.",
-        "accuracy": "Proporción de predicciones correctas sobre el total. Es una medida general de cómo el modelo predice correctamente.",
-        "precision": "Proporción de predicciones positivas correctas respecto al total de predicciones positivas hechas.",
+        "jaccard_index": "Medida de la similitud entre los conjuntos de predicciones y las etiquetas verdaderas.",
+        "accuracy": "Proporción de predicciones correctas sobre el total.",
+        "precision": "Proporción de predicciones positivas correctas respecto al total de predicciones positivas.",
         "recall": "Capacidad del modelo para encontrar todas las instancias positivas relevantes.",
-        "f1_score": "Media armónica de la precisión y el recall. Combina ambos en una sola métrica.",
-        "roc_auc": "Mide la habilidad del modelo para discriminar entre clases. Un área de 1 representa un modelo perfecto.",
+        "f1_score": "Media armónica de la precisión y el recall.",
+        "roc_auc": "Mide la habilidad del modelo para discriminar entre clases.",
         "confusion_matrix": "Tabla que describe el rendimiento del modelo de clasificación.",
-        "confusion_matrix_percent": "Similar a la matriz de confusión, pero mostrando los porcentajes sobre el total de casos en cada fila.",
+        "confusion_matrix_percent": "Porcentajes sobre el total de casos en cada fila de la matriz de confusión.",
         "specificity": "Capacidad del modelo de identificar correctamente los negativos verdaderos.",
         "classification_report": "Resumen de la precisión, recall y F1-score para cada clase."
     }
 
-    # Crear DataFrame para las métricas
-    data = []
-    for key, desc in descriptions.items():
-        value = metrics.get(key, "No disponible")  # Obtener el valor de cada métrica del JSON
-        data.append({"Métrica": key, "Valor": value, "Descripción": desc})
+    datos = [(desc, metrics.get(key, "No disponible")) for key, desc in descriptions.items()]
 
-    df_metrics = pd.DataFrame(data)
+    # Estilo CSS para los cuadros
+    st.markdown("""
+        <style>
+            .metric-box {
+                border: 2px solid #4CAF50;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 5px;
+                text-align: center;
+            }
+        </style>
+    """, unsafe_allow_html=True)
 
-    # Botón para mostrar métricas
-    if st.button('VER MÉTRICAS DEL MODELO'):
-        st.subheader("Métricas del Modelo")
-        st.dataframe(df_metrics, width=700, height=600)  # Puedes ajustar el ancho y alto según necesites
+    # Mostrar los datos en cuadros organizados en 2 columnas y 5 filas
+    for i in range(0, len(datos), 2):
+        cols = st.columns(2)
+        with cols[0]:
+            titulo, valor = datos[i]
+            st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p></div>", unsafe_allow_html=True)
+        if i + 1 < len(datos):
+            with cols[1]:
+                titulo, valor = datos[i+1]
+                st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p></div>", unsafe_allow_html=True)
 
-
+# Llamar a la función en alguna parte del código principal
+mostrar_metricas()
