@@ -25,7 +25,7 @@ def display_ml_page():
     rutas = obtener_rutas_unicas()
     estados_dict = estados_en_espanol()
 
-    st.title('JetSet Predictor (JSP): Tu pasaporte a la puntualidad')
+    st.title('✈️ JetSet Predictor (JSP): Tu pasaporte a la puntualidad ✈️')
 
     col1, col2, col3 = st.columns([5, 2, 5])  # Divide la interfaz en tres columnas
 
