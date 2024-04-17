@@ -38,7 +38,7 @@ def display_ml_page():
         ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=opciones_ciudad_origen)
 
     with col2:
-        st.image("sources/volando_voy.png", width=80, height=200)  # Mostrar imagen en la columna central
+        st.image("sources/volando_voy.png")  # Mostrar imagen en la columna central
 
     with col3:
         st.write("")  # Espacio en blanco para ajustar el diseño
