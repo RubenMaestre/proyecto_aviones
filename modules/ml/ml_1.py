@@ -59,7 +59,7 @@ def display_ml_page():
         st.write("... o a que hora pretendes salir 😎")
         minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
     
-    colizq, colcenter, colder = st.columns([5, 3, 5])
+    colizq, colcenter, colder = st.columns([4, 3, 4])
     with colcenter:
         if st.button('¿Llegará puntual mi vuelo a su destino'):
             dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
@@ -86,7 +86,7 @@ def display_ml_page():
             prediction = model.predict(features_df)
             
             if prediction[0] == 1:
-                st.error('🚩 Ups, parece que tu vuelo podría sufrir un retraso a la llegada. 😢 De todas formas, queremos informarte que consideramos en nuestro modelo de predicción como retraso a la llegada posterior a 15 minutos de la hora programada de llegada.')  # Uso de st.error para retrasos
+                st.error('🚩 Ups, parece que tu vuelo podría sufrir un retraso. 😢 De todas formas, a ver, somos un poco tikismikis y queremos informarte que consideramos en nuestro modelo de predicción como retraso la llegada posterior a 15 minutos de la hora programada a priori... 😬 igual tampoco es para dramatizar 🙈.')  # Uso de st.error para retrasos
             else:
-                st.success('✈️ ¡El vuelo probablemente llegará a tiempo! Ya te dijimos que nuestro modelo era increíble. Siiiiiiiiiuuuuuuuu!!!! 😎')  # Uso de st.success para llegadas a tiempo
+                st.success('✈️ ¡El vuelo probablemente llegará a tiempo! ¿No te hemos dicho ya que nuestro modelo era increíble? 🎉 🍾 Siiiiiiiiiuuuuuuuu!!!! 😎')  # Uso de st.success para llegadas a tiempo
 
