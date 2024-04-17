@@ -1,0 +1,30 @@
+{
+    "jaccard_index": 0.49420573896640607,
+    "accuracy": 0.9026635469843071,
+    "precision": 0.5855916793384534,
+    "recall": 0.5437746137786427,
+    "f1_score": 0.553915160364482,
+    "roc_auc": 0.5437746137786428,
+    "confusion_matrix": [
+        [
+            302422,
+            9772
+        ],
+        [
+            23176,
+            3126
+        ]
+    ],
+    "confusion_matrix_percent": [
+        [
+            96.87,
+            3.13
+        ],
+        [
+            88.11,
+            11.89
+        ]
+    ],
+    "specificity": 0.9686989500118516,
+    "classification_report": "              precision    recall  f1-score   support\n\n           0      0.929     0.969     0.948    312194\n           1      0.242     0.119     0.159     26302\n\n    accuracy                          0.903    338496\n   macro avg      0.586     0.544     0.554    338496\nweighted avg      0.875     0.903     0.887    338496\n"
+}

@@ -1,6 +1,7 @@
 #paginas/modelo.py
 import streamlit as st
 from modules.ml.ml_1 import display_ml_page
+from modules.ml.metricas import mostrar_metricas
 
 def display():
     st.title('Modelo de Machine Learning')
@@ -9,3 +10,5 @@ def display():
     """)
 
     display_ml_page()
+
+    mostrar_metricas()
