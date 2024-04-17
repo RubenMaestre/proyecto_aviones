@@ -27,7 +27,7 @@ def display_ml_page():
 
     st.title('Predicción de Retrasos de Vuelos')
 
-    col1, col2, col3 = st.columns([1, 5, 1])  # Divide la interfaz en tres columnas
+    col1, col2, col3 = st.columns([5, 1, 5])  # Divide la interfaz en tres columnas
 
     with col1:
         st.write("")  # Espacio en blanco para ajustar el diseño
