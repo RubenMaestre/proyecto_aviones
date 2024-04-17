@@ -19,11 +19,10 @@ def mostrar_metricas():
         "roc_auc": "Mide la habilidad del modelo para discriminar entre clases.",
         "confusion_matrix": "Tabla que describe el rendimiento del modelo de clasificación.",
         "confusion_matrix_percent": "Porcentajes sobre el total de casos en cada fila de la matriz de confusión.",
-        "specificity": "Capacidad del modelo de identificar correctamente los negativos verdaderos.",
-        "classification_report": "Resumen de la precisión, recall y F1-score para cada clase."
+        "specificity": "Capacidad del modelo de identificar correctamente los negativos verdaderos."
     }
 
-    datos = [(desc, metrics.get(key, "No disponible")) for key, desc in descriptions.items()]
+    datos = [(key.replace('_', ' ').title(), metrics.get(key, "No disponible"), descriptions[key]) for key in descriptions.keys()]
 
     # Estilo CSS para los cuadros
     st.markdown("""
@@ -42,12 +41,18 @@ def mostrar_metricas():
     for i in range(0, len(datos), 2):
         cols = st.columns(2)
         with cols[0]:
-            titulo, valor = datos[i]
-            st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p></div>", unsafe_allow_html=True)
+            titulo, valor, descripcion = datos[i]
+            st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p><p><small>{descripcion}</small></p></div>", unsafe_allow_html=True)
         if i + 1 < len(datos):
             with cols[1]:
-                titulo, valor = datos[i+1]
-                st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p></div>", unsafe_allow_html=True)
+                titulo, valor, descripcion = datos[i+1]
+                st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p><p><small>{descripcion}</small></p></div>", unsafe_allow_html=True)
+
+    # Mostrar classification_report al final
+    report = metrics.get('classification_report', "No disponible")
+    st.markdown("### Informe de Clasificación")
+    st.text(report)
 
 # Llamar a la función en alguna parte del código principal
 mostrar_metricas()
+
