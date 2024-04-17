@@ -76,7 +76,7 @@ def display_ml_page():
     
     colizq, colcenter, colder = st.columns([1, 2, 1])
     with colcenter:
-        if st.button('¿Quieres saber si llegará puntual tu vuelo a su destino? Ha llegado el momento de saberlo, pulsa aquí...'):
+        if st.button('¿Quieres saber si tu vuelo llegará puntual? Ha llegado el momento de saberlo, pulsa aquí...'):
             dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
             dia_semana_encoded = dia_semana_map[dia_semana]
             # Convertir hora y minutos a minutos desde medianoche
