@@ -8,4 +8,4 @@ def display():
     Haz tu selección para saber si tu vuelo llegará con retraso o no con nuestro infalible modelo de predicción...
     """)
 
-display_ml_page()
+    display_ml_page()
