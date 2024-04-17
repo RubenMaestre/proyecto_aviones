@@ -25,9 +25,16 @@ def display_ml_page():
 
     st.title('Predicción de Retrasos de Vuelos')
 
-    opciones_ciudad_origen = sorted(rutas['ciudad_origen'].unique())
+    # Seleccionar estado de origen
+    opciones_estado_origen = sorted(rutas['estado_origen'].unique())
+    estado_origen = st.selectbox('Selecciona el estado de origen:', options=opciones_estado_origen)
+    opciones_ciudad_origen = sorted(rutas[rutas['estado_origen'] == estado_origen]['ciudad_origen'].unique())
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=opciones_ciudad_origen)
-    ciudades_destino_validas = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['ciudad_destino'].unique())
+    
+    # Seleccionar destino basado en la ciudad de origen
+    opciones_estado_destino = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['estado_destino'].unique())
+    estado_destino = st.selectbox('Selecciona el estado destino:', options=opciones_estado_destino)
+    ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'] == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
         
@@ -48,9 +55,9 @@ def display_ml_page():
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
         aerolinea_encoded = np.random.choice(list(mappings['aerolinea']))
         numero_cola_encoded = np.random.choice(list(mappings['numero_cola']))
-        estado_origen_encoded = np.random.choice(list(mappings['estado_origen']))
+        estado_origen_encoded = apply_target_encoding(estado_origen, mappings['estado_origen'])
         aeropuerto_origen_encoded = np.random.choice(list(mappings['aeropuerto_origen']))
-        estado_destino_encoded = np.random.choice(list(mappings['estado_destino']))
+        estado_destino_encoded = apply_target_encoding(estado_destino, mappings['estado_destino'])
         aeropuerto_destino_encoded = np.random.choice(list(mappings['aeropuerto_destino']))
 
         features = [
