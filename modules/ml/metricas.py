@@ -22,8 +22,7 @@ def mostrar_metricas():
         "confusion_matrix_percent": "Similar a la matriz de confusión, pero mostrando los porcentajes sobre el total de casos en cada fila.",
         "specificity": "Capacidad del modelo de identificar correctamente los negativos verdaderos.",
         "classification_report": "Resumen de la precisión, recall y F1-score para cada clase."
-}
-
+    }
 
     # Crear DataFrame para las métricas
     data = []
@@ -36,5 +35,6 @@ def mostrar_metricas():
     # Botón para mostrar métricas
     if st.button('VER MÉTRICAS DEL MODELO'):
         st.subheader("Métricas del Modelo")
-        st.table(df_metrics)
+        st.dataframe(df_metrics, width=700, height=600)  # Puedes ajustar el ancho y alto según necesites
+
 
