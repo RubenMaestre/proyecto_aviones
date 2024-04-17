@@ -49,10 +49,11 @@ def mostrar_metricas():
                 with cols[1]:
                     titulo, valor, descripcion = datos[i+1]
                     st.markdown(f"<div class='metric-box'><h6>{titulo}</h6><p>{valor}</p><p><small>{descripcion}</small></p></div>", unsafe_allow_html=True)
-
+        
+        st.markdown("---")
         # Mostrar classification_report al final
         report = metrics.get('classification_report', "No disponible")
-        st.markdown("### Informe de Clasificación")
+        st.markdown("### Reporte de clasificación")
         st.text(report)
 
 # Llamar a la función en alguna parte del código principal
