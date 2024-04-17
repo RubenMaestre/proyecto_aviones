@@ -18,8 +18,8 @@ def apply_target_encoding(value, mapping, default_value=np.nan):
     return mapping.get(value, default_value)
 
 def display_ml_page():
-    model = load_model('data/model.joblib')  # Asumimos la ruta correcta al modelo
-    mappings = load_mappings('data/target_encodings.pkl')  # Asumimos la ruta correcta a los mappings
+    model = load_model('data/model.joblib')  
+    mappings = load_mappings('data/target_encodings.pkl') 
     df_modelo = cargar_df_modelo()
     rutas = obtener_rutas_unicas()
 
