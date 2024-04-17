@@ -18,7 +18,7 @@ def display():
 
     st.markdown("---")
 
-    col1, col2 = st.columns([1, 3])
+    col1, col2 = st.columns([1, 4])
     with col1:
         st.write("Presentamos a continuación las métricas de rendimiento del modelo desarrollado utilizando DecisionTreeClassifier de scikit-learn. Estos indicadores te ayudarán a comprender la eficacia y precisión del modelo en la clasificación de datos.")
         st.image("sources/metricas.jpg")  # Mostrar imagen en la columna central
