@@ -6,6 +6,7 @@ import pickle
 from datetime import time
 from modules.ml.import_df import cargar_df_modelo
 from modules.ml.rutas_unicas import obtener_rutas_unicas
+from modules.ml.dic_estados import estados_en_espanol
 
 def load_model(path):
     return load(path)
@@ -22,19 +23,20 @@ def display_ml_page():
     mappings = load_mappings('data/target_encodings.pkl') 
     df_modelo = cargar_df_modelo()
     rutas = obtener_rutas_unicas()
+    estados_dict = estados_en_espanol()
 
     st.title('Predicción de Retrasos de Vuelos')
 
     # Seleccionar estado de origen
-    opciones_estado_origen = sorted(rutas['estado_origen'].unique())
+    opciones_estado_origen = sorted(rutas['estado_origen'].map(estados_dict).unique())  # Mapea los estados a español
     estado_origen = st.selectbox('Selecciona el estado de origen:', options=opciones_estado_origen)
-    opciones_ciudad_origen = sorted(rutas[rutas['estado_origen'] == estado_origen]['ciudad_origen'].unique())
+    opciones_ciudad_origen = sorted(rutas[rutas['estado_origen'].map(estados_dict) == estado_origen]['ciudad_origen'].unique())
     ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=opciones_ciudad_origen)
     
     # Seleccionar destino basado en la ciudad de origen
-    opciones_estado_destino = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['estado_destino'].unique())
+    opciones_estado_destino = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['estado_destino'].map(estados_dict).unique())  # Mapea los estados a español
     estado_destino = st.selectbox('Selecciona el estado destino:', options=opciones_estado_destino)
-    ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'] == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
+    ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'].map(estados_dict) == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
         
