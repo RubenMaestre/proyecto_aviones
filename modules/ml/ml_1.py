@@ -25,8 +25,9 @@ def display_ml_page():
 
     st.title('Predicción de Retrasos de Vuelos')
 
-    ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=rutas['ciudad_origen'].unique())
-    ciudades_destino_validas = rutas[rutas['ciudad_origen'] == ciudad_origen]['ciudad_destino'].unique()
+    opciones_ciudad_origen = sorted(rutas['ciudad_origen'].unique())
+    ciudad_origen = st.selectbox('Selecciona la ciudad de origen:', options=opciones_ciudad_origen)
+    ciudades_destino_validas = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['ciudad_destino'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora_salida = st.slider('Hora de salida programada', 0, 23, 12)
