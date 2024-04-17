@@ -25,7 +25,7 @@ def display_ml_page():
     rutas = obtener_rutas_unicas()
     estados_dict = estados_en_espanol()
 
-    st.title('Predicción de Retrasos de Vuelos')
+    st.title('JetSet Predictor (JSP): Tu pasaporte a la puntualidad')
 
     col1, col2, col3 = st.columns([5, 2, 5])  # Divide la interfaz en tres columnas
 
@@ -49,7 +49,7 @@ def display_ml_page():
         ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
 
     st.markdown("---")
-    
+
     st.write("Elige que día quieres volar...")
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
         
