@@ -31,7 +31,12 @@ def display_ml_page():
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
     hora = st.selectbox('Hora de salida programada (hora):', options=list(range(24)))
-    minuto = st.selectbox('Hora de salida programada (minutos):', options=list(range(60)))
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        hora = st.slider('Hora de salida programada (hora):', 0, 23, 12)
+    with col2:
+        minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
 
     if st.button('Predecir Retraso'):
         dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
