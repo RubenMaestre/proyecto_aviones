@@ -30,8 +30,7 @@ def display_ml_page():
     ciudades_destino_validas = sorted(rutas[rutas['ciudad_origen'] == ciudad_origen]['ciudad_destino'].unique())
     ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
-    hora = st.selectbox('Hora de salida programada (hora):', options=list(range(24)))
-    
+        
     col1, col2 = st.columns(2)
     with col1:
         hora = st.slider('Hora de salida programada (hora):', 0, 23, 12)
