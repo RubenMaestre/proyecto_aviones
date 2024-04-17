@@ -25,9 +25,19 @@ def display_ml_page():
     rutas = obtener_rutas_unicas()
     estados_dict = estados_en_espanol()
 
-    colizq, colcen, colder = st.columns([1, 6, 1])  # Divide la interfaz en tres columnas
-    with colcen:
-        st.title('✈️ JetSet Predictor (JSP): Tu pasaporte a la puntualidad ✈️')
+        # Agrega CSS para centrar el título
+    st.markdown("""
+        <style>
+        .big-font {
+            font-size:30px !important;
+            font-weight: bold !important;
+            text-align: center;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+    # Usa el estilo para centrar el título
+    st.markdown('<p class="big-font">✈️ JetSet Predictor (JSP): Tu pasaporte a la puntualidad ✈️</p>', unsafe_allow_html=True)
     st.markdown("---")
 
     col1, col2, col3 = st.columns([5, 2, 5])  # Divide la interfaz en tres columnas
