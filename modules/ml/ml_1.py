@@ -89,4 +89,4 @@ def display_ml_page():
                 st.error('🚩 Ups, parece que tu vuelo podría sufrir un retraso. 😢 De todas formas, a ver, somos un poco tikismikis y queremos informarte que consideramos en nuestro modelo de predicción como retraso la llegada posterior a 15 minutos de la hora programada a priori... 😬 igual tampoco es para dramatizar 🙈.')  # Uso de st.error para retrasos
             else:
                 st.success('✈️ ¡El vuelo probablemente llegará a tiempo! ¿No te hemos dicho ya que nuestro modelo era increíble? 🎉 🍾 Siiiiiiiiiuuuuuuuu!!!! 😎')  # Uso de st.success para llegadas a tiempo
-
+                st.balloons() 
