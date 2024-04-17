@@ -48,15 +48,17 @@ def display_ml_page():
         ciudades_destino_validas = sorted(rutas[(rutas['estado_destino'].map(estados_dict) == estado_destino) & (rutas['ciudad_origen'] == ciudad_origen)]['ciudad_destino'].unique())
         ciudad_destino = st.selectbox('Selecciona la ciudad destino:', options=ciudades_destino_validas)
 
+    st.markdown("---")
+    
     st.write("Elige que día quieres volar...")
     dia_semana = st.selectbox('Selecciona el día de la semana:', options=['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'])
         
     col4, col5 = st.columns(2)
     with col4:
-        st.write("Y ahora a que hora sale tu vuelo...")
+        st.write("Y ahora, ¿A qué hora sale tu vuelo...")
         hora = st.slider('Hora de salida programada (hora):', 0, 23, 12)
     with col5:
-        st.write("... o a que hora pretendes salir 😎")
+        st.write("... o a qué hora pretendes salir? 😎")
         minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
     
     colizq, colcenter, colder = st.columns([4, 3, 4])
