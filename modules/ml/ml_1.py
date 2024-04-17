@@ -74,7 +74,7 @@ def display_ml_page():
         st.write("... o a qué hora pretendes salir? 😎")
         minuto = st.slider('Minuto de salida programada (minutos):', 0, 59, 30)
     
-    colizq, colcenter, colder = st.columns([4, 3, 4])
+    colizq, colcenter, colder = st.columns([4, 5, 4])
     with colcenter:
         if st.button('¿Llegará puntual mi vuelo a su destino'):
             dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
