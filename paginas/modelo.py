@@ -12,7 +12,8 @@ def display():
 
     ¿Estás listo para descubrir cómo puede cambiar tu experiencia de viaje? **Haz tu selección** y deja que nuestro modelo de predicción te demuestre su eficacia. ¡Descubre si tu vuelo llegará a tiempo y gestiona mejor tu tiempo y expectativas! Con nuestro modelo, cada predicción es un paso hacia un viaje más tranquilo y predecible. Ven y experimenta el poder de la ciencia de datos aplicada a la vida real. ¡Tu próximo viaje a Estados Unidos podría ser el más puntual de tu vida!
     """)
-
+    st.markdown("---")
+    
     display_ml_page()
 
     st.markdown("---")
