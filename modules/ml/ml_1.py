@@ -1,9 +1,9 @@
-# modules/ml/ml_1.py
 import streamlit as st
 import pandas as pd
 import numpy as np
 from joblib import load
 import pickle
+from datetime import time
 from modules.ml.import_df import cargar_df_modelo
 from modules.ml.rutas_unicas import obtener_rutas_unicas
 
@@ -35,8 +35,8 @@ def display_ml_page():
     if st.button('Predecir Retraso'):
         dia_semana_map = {'Lunes': 0, 'Martes': 1, 'Miércoles': 2, 'Jueves': 3, 'Viernes': 4, 'Sábado': 5, 'Domingo': 6}
         dia_semana_encoded = dia_semana_map[dia_semana]
-        # Codificar la hora y minuto seleccionado
-        hora_salida_programada_encoded = hora_salida.hour * 60 + hora_salida.minute  # convertir a minutos desde medianoche
+        # Convertir hora y minutos a minutos desde medianoche
+        hora_salida_programada_encoded = hora_salida.hour * 60 + hora_salida.minute
 
         ciudad_origen_encoded = apply_target_encoding(ciudad_origen, mappings['ciudad_origen'])
         ciudad_destino_encoded = apply_target_encoding(ciudad_destino, mappings['ciudad_destino'])
