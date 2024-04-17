@@ -56,6 +56,7 @@ def display_ml_page():
         prediction = model.predict(features_df)
         
         if prediction[0] == 1:
-            st.success('El vuelo probablemente llegará con retraso.')
+            st.error('🚩 Ups, parece que tu vuelo podría sufrir un retraso a la llegada. 😢 De todas formas, queremos informarte que consideramos en nuestro modelo de predicción como retraso a la llegada posterior a 15 minutos de la hora programada de llegada.')  # Uso de st.error para retrasos
         else:
-            st.success('El vuelo probablemente llegará a tiempo.')
+            st.success('✈️ ¡El vuelo probablemente llegará a tiempo! Ya te dijimos que nuestro modelo era increíble. Siiiiiiiiiuuuuuuuu!!!! 😎')  # Uso de st.success para llegadas a tiempo
+
