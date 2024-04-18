@@ -207,7 +207,7 @@ def display():
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-    colizq, colder = st.columns([1, 2])
+    colizq, colder = st.columns([1, 2.5])
 
     with colizq:
         st.subheader('Extracción de días festivos en Estados Unidos')
