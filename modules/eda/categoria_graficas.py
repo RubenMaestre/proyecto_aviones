@@ -3,6 +3,8 @@ from modules.graph.a_vuelos_totales_por_year import graficar_vuelos_totales_por_
 from modules.graph.b_evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_por_aerolinea
 from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
 from modules.graph.d_diagrama_salidas_llegadas import graficar_horas_vuelos
+from modules.graph.ee_mapa_calor import graficar_mapa_calor_correlacion
+from modules.graph.f_correlaciones_especificas import mostrar_correlaciones_significativas
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 #from modules.graph.correlacion_lineal import graficar_correlacion_lineal
@@ -45,5 +47,13 @@ def get_graficas_por_categoria():
         "Aerolíneas": aerolineas_category,
         "Horarios": horarios_category
     }
+
+    # Categoría de Correlaciones, solo para 'Todos los años'
+    if year == "Todos los años":
+        correlaciones_category = {
+            "Mapa de calor de correlación": graficar_mapa_calor_correlacion,
+            "Correlaciones específicas significativas": mostrar_correlaciones_significativas
+        }
+        common_categories["Correlaciones"] = correlaciones_category
 
     return common_categories
