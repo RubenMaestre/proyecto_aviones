@@ -10,7 +10,9 @@ def display():
             </div>
         """, unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns([1, 12, 1])
+    st.markdown("<br><br>", unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns([0.5, 12, 0.5])
     with col2:  # Utilizamos la columna del medio para la imagen
         st.image('sources/cabecera_datos.jpg')  # Asegúrate de que la ruta de la imagen sea correcta
 
