@@ -11,6 +11,8 @@ from modules.graph.i_retrasos_mas_15_festivos import graficar_retrasos_mas_15_fe
 from modules.graph.j_top_aerolineas_con_sin_retrasos import graficar_top_aerolineas_con_sin_retrasos
 from modules.graph.k_top_aeropuertos_sin_retrasos import graficar_top_aeropuertos_con_sin_retrasos
 from modules.graph.l_numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
+from modules.graph.m_numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
+
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 
 #from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
@@ -31,46 +33,39 @@ def get_graficas_por_categoria():
     common_categories = {}
 
     # Categoría de Aerolíneas
-    aerolineas_category = {}
-    if year == "Todos los años":
-        aerolineas_category = {
-            "Vuelos totales por año": graficar_vuelos_totales_por_year,
-            "Evolución del número de vuelos por compañía aérea": graficar_evolucion_vuelos_por_aerolinea,
-            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
-        }
-    else:
-        aerolineas_category = {
-            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
-        }
-    common_categories["Aerolíneas"] = aerolineas_category
+    aerolineas_category = {
+        "Vuelos totales por año": graficar_vuelos_totales_por_year if year == "Todos los años" else None,
+        "Evolución del número de vuelos por compañía aérea": graficar_evolucion_vuelos_por_aerolinea,
+        "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
+    }
+    common_categories["Aerolíneas"] = {k: v for k, v in aerolineas_category.items() if v is not None}
 
     # Categoría de Horarios
-    horarios_category = {
+    common_categories["Horarios"] = {
         "Diagrama de salidas y llegadas": graficar_horas_vuelos
     }
-    common_categories["Horarios"] = horarios_category
 
     # Categoría de Correlaciones, solo para 'Todos los años'
     if year == "Todos los años":
-        correlaciones_category = {
+        common_categories["Correlaciones"] = {
             "Mapa de calor de correlación": graficar_mapa_calor_correlacion,
             "Correlaciones específicas significativas": mostrar_correlaciones_significativas,
             "Correlación lineal": graficar_correlacion_lineal
         }
-        common_categories["Correlaciones"] = correlaciones_category
 
-    # Nueva Categoría de Puntualidad
-    puntualidad_category = {
+    # Categoría de Puntualidad
+    common_categories["Puntualidad"] = {
         "Retrasos mayores a 15 minutos": graficar_retrasos_mas_15,
-        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos
+        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos,
+        "Top aerolíneas con y sin retrasos": graficar_top_aerolineas_con_sin_retrasos,
+        "Top aeropuertos con y sin retrasos": graficar_top_aeropuertos_con_sin_retrasos
     }
-    common_categories["Puntualidad"] = puntualidad_category
 
-    # Nueva Categoría de Vuelos, solo para 'Todos los años'
+    # Categoría de Vuelos, solo para 'Todos los años'
     if year == "Todos los años":
-        vuelos_category = {
-            "Número de vuelos por días en diciembre": graficar_numero_vuelos_dias_diciembre
+        common_categories["Vuelos"] = {
+            "Número de vuelos por días en diciembre": graficar_numero_vuelos_dias_diciembre,
+            "Número de vuelos acumulados por días en diciembre": graficar_numero_vuelos_acumulados_diciembre
         }
-        common_categories["Vuelos"] = vuelos_category
 
     return common_categories
