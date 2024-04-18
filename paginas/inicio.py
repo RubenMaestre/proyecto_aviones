@@ -14,6 +14,8 @@ def display():
         
     """)
 
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+
     col1, col2, col3 = st.columns([5, 1, 5])
     
     with col1:
@@ -37,6 +39,7 @@ def display():
         Con los insights obtenidos del EDA, procedimos a entrenar varios modelos de Machine Learning, buscando el que ofreciera la mejor capacidad predictiva respecto a la probabilidad de retraso de los vuelos. Aunque enfrentamos desafíos técnicos debido al gran tamaño de algunos modelos, que dificultaba su integración en plataformas como GitHub y Streamlit debido a restricciones de almacenamiento, seleccionamos un modelo con excelentes métricas de rendimiento. Este modelo está preparado para ser utilizado en entornos operativos, y estamos dispuestos a desarrollar un análisis más detallado y personalizado para aerolíneas que estén interesadas en optimizar sus operaciones.
         """)
 
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
     
     col4, col5 = st.columns([5,2])
 
