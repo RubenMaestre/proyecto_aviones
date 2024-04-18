@@ -69,7 +69,7 @@ def display():
     col1, col2, col3 = st.columns([5,1,5])
 
     with col1:
-        st.image('sources/datos_1.jpg')
+        st.image('sources/datos_1.jpg', use_column_width=True)
         st.header('Automatización del Proceso de Selección')
         st.markdown("""
             Esta función automatiza la selección de elementos en un menú desplegable. Se utiliza específicamente para seleccionar los aeropuertos y aerolíneas previamente almacenados en dos listas. La elección de **By.NAME** se debe al hecho de que estos elementos están identificados por su nombre en el código HTML.
@@ -91,7 +91,8 @@ def display():
         st.write("")
 
     with col3:
-        st.image('sources/datos_2.jpg') 
+        st.image('sources/datos_2.jpg', use_column_width=True) 
+        st.header('Función para preselecciones')
         st.markdown("""
             La función **preselecciones** se utiliza al inicio para marcar de antemano todas las estadísticas (por qué sale tarde, el tiempo que tarda en despegar, etc.), todos los días del mes, el mes de diciembre y los tres años con los que hemos hecho el trabajo.
             """)
