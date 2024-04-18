@@ -32,7 +32,7 @@ def get_graficas_por_categoria():
         }
     else:
         aerolineas_category = {
-            "Evolución del número de vuelos por compañía aérea": graficar_evolucion_vuelos_por_aerolinea
+            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
         }
 
     common_categories = {"Aerolíneas": aerolineas_category}
