@@ -17,6 +17,8 @@ from modules.graph.o_cantidad_retrasos_hora import graficar_cantidad_retrasos_po
 from modules.graph.p_dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
 from modules.graph.q_total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
 from modules.graph.r_analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
+from modules.graph.s_top_estados_mas_retrasos import graficar_estados_mas_retrasos
+from modules.graph.t_top_menos_retrasos import graficar_estados_menos_retrasos
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 
@@ -91,5 +93,11 @@ def get_graficas_por_categoria():
         "Análisis de retrasos aéreos": graficar_analisis_retrasos_aereos
     }
     common_categories["Retrasos"] = retrasos_category
+
+    estados_category = {
+        "Top estados con más retrasos": graficar_estados_mas_retrasos,
+        "Top estados con menos retrasos": graficar_estados_menos_retrasos
+    }
+    common_categories["Estados"] = estados_category
 
     return common_categories
