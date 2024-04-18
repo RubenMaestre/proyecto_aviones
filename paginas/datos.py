@@ -322,10 +322,12 @@ def display():
     st.markdown("""
     Con este proceso, aseguramos que cada aeropuerto esté representado una sola vez en nuestra base de datos, lo cual es crucial para la etapa siguiente donde se vincularán las coordenadas geográficas. La claridad y precisión en esta fase son fundamentales para evitar errores en el mapeo y en la visualización de datos.
     """)
-
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.image('sources/map_usa.jpg', use_column_width=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     st.header('Obtención de Coordenadas Usando la API de Foursquare')
 
-    col_izq, col_der = st.columns([4, 1])
+    col_izq, col_der = st.columns([3, 1])
 
     with col_izq:
         st.code("""
