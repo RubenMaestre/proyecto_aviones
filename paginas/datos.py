@@ -451,7 +451,7 @@ def display():
     st.markdown("<br>", unsafe_allow_html=True)
     st.image('sources/wikipedia.jpg', use_column_width=True)
 
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     st.header('Uso de los datos')
 
     st.markdown("""
