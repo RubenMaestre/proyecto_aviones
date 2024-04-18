@@ -10,7 +10,7 @@ from modules.graph.h_retrasos_mas_15 import graficar_retrasos_mas_15
 from modules.graph.i_retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
 from modules.graph.j_top_aerolineas_con_sin_retrasos import graficar_top_aerolineas_con_sin_retrasos
 from modules.graph.k_top_aeropuertos_sin_retrasos import graficar_top_aeropuertos_con_sin_retrasos
-
+from modules.graph.l_numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 
 #from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
@@ -62,10 +62,15 @@ def get_graficas_por_categoria():
     # Nueva Categoría de Puntualidad
     puntualidad_category = {
         "Retrasos mayores a 15 minutos": graficar_retrasos_mas_15,
-        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos,
-        "Top de aerolíneas con y sin retrasos": graficar_top_aerolineas_con_sin_retrasos,
-        "Top de aeropuertos con y sin retrasos": graficar_top_aeropuertos_con_sin_retrasos
+        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos
     }
     common_categories["Puntualidad"] = puntualidad_category
+
+    # Nueva Categoría de Vuelos, solo para 'Todos los años'
+    if year == "Todos los años":
+        vuelos_category = {
+            "Número de vuelos por días en diciembre": graficar_numero_vuelos_dias_diciembre
+        }
+        common_categories["Vuelos"] = vuelos_category
 
     return common_categories
