@@ -53,5 +53,5 @@ def display():
     """)
 
     with col5:
-        st.markdown("<br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br>", unsafe_allow_html=True)
         st.image("sources/logotipo_hack_a_boss.png")
