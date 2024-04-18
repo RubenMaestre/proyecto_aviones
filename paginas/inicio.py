@@ -5,18 +5,18 @@ def display():
     st.image('sources/cabecera.jpg', use_column_width=True)
 
     # Título
-    st.title("Estudio de puntualidad aérea: Un análisis en profundidad sobre la puntualidad en los aeropuertos estadounidenses")
+    st.markdown("<h1 style='text-align: center;'>Estudio de puntualidad aérea: Un análisis en profundidad sobre la puntualidad en los aeropuertos estadounidenses</h1>", unsafe_allow_html=True)
 
+    
     col1, col2 = st.columns([5,2])
     with col1:
         st.markdown("""
-            ### Proyecto final para Hack a Boss
-            """)
-        st.markdown("""##### Este proyecto constituye el punto culminante de nuestra formación en el Bootcamp de Data Science e Inteligencia Artificial en Hack a Boss. En nuestro tercer y último proyecto, hemos decidido abordar un desafío crítico y de alta aplicabilidad en el sector aeronáutico: la optimización de la puntualidad y la gestión de retrasos en vuelos operados desde y hacia aeropuertos en Estados Unidos. A través de un exhaustivo análisis exploratorio de datos, este estudio ofrece perspectivas sobre causas, desempeños y factores influyentes en la puntualidad aérea, proporcionando un modelo predictivo en cuanto a la puntualidad de las aerolíneas para mejorar la satisfacción de los pasajeros.
-            
-        """)
+            <div style='text-align: justify;'>
+                <h3>Proyecto final para Hack a Boss</h3>
+                <p>Este proyecto constituye el punto culminante de nuestra formación en el Bootcamp de Data Science e Inteligencia Artificial en Hack a Boss. En nuestro tercer y último proyecto, hemos decidido abordar un desafío crítico y de alta aplicabilidad en el sector aeronáutico: la optimización de la puntualidad y la gestión de retrasos en vuelos operados desde y hacia aeropuertos en Estados Unidos. A través de un exhaustivo análisis exploratorio de datos, este estudio ofrece perspectivas sobre causas, desempeños y factores influyentes en la puntualidad aérea, proporcionando un modelo predictivo en cuanto a la puntualidad de las aerolíneas para mejorar la satisfacción de los pasajeros.</p>
+            </div>
+        """, unsafe_allow_html=True)
     with col2:
-        st.markdown("<br><br>", unsafe_allow_html=True)
         st.image("sources/logotipo_hack_a_boss.png")
 
 
