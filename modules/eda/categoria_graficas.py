@@ -20,8 +20,7 @@ from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aeroline
 
 
 def get_graficas_por_categoria():
-    year = st.session_state.get('selected_year', 'Todos los años')
-    st.write(f"Selected Year: {year}")  # Para depuración
+    year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
 
     aerolineas_category = {}
 
@@ -37,6 +36,4 @@ def get_graficas_por_categoria():
         }
 
     common_categories = {"Aerolíneas": aerolineas_category}
-    st.write(f"Available Categories: {common_categories}")  # Para depuración
-
     return common_categories

@@ -14,7 +14,8 @@ def seleccionar_datos(key_suffix):
         ["Todos los años", "2023", "2022", "2021"],
         key=f'seleccion_año_vuelos_{key_suffix}'  # Clave única basada en el sufijo
     )
-    # El resto de la función sigue igual
+    st.session_state['selected_year'] = opcion_año  # Guarda la selección en el estado de sesión
+
     if opcion_año == "Todos los años":
         df = cargar_todos_df()
     elif opcion_año == "2023":
@@ -24,3 +25,4 @@ def seleccionar_datos(key_suffix):
     elif opcion_año == "2021":
         df = cargar_unir_2021()
     return df
+
