@@ -17,8 +17,8 @@ def graficar_maxima_distancia_millas(df):
     plt.figure(figsize=(10, 8))  # Configurar el tamaño del gráfico
     sns.barplot(x='distancia_millas', y='par_aeropuertos', data=top_10_distancias, palette='viridis')
 
-    plt.title('Top 20 Máxima Distancia en Millas entre Pares de Aeropuertos Únicos')
-    plt.xlabel('Distancia en Millas')
+    plt.title('Top 10 máxima distancia en millas entre Aeropuertos')
+    plt.xlabel('Distancia en millas')
     plt.ylabel('Par de Aeropuertos')
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.tight_layout()
