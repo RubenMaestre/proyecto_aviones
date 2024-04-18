@@ -30,8 +30,13 @@ def display():
 
     st.header('Fuente de los datos')
     st.markdown("""
-    Los datos fueron extraídos de [Departamentos de Estadísticas de Transporte de EE. UU.](https://www.transtats.bts.gov/ONTIME/Departures.aspx)
-    """)
+        Los datos para este estudio fueron extraídos del [Departamento de Estadísticas de Transporte de EE. UU. (BTS)](https://www.transtats.bts.gov/ONTIME/Departures.aspx), una entidad del Departamento de Transporte (DOT). El BTS es reconocido como la principal fuente de estadísticas sobre la aviación comercial, la actividad de transporte multimodal de mercancías y la economía del transporte, proporcionando datos esenciales para tomadores de decisiones y el público en general.
+
+        El BTS asegura la credibilidad de sus productos y servicios a través de un análisis riguroso, una calidad de datos transparente y una independencia de la influencia política, promoviendo métodos innovadores de recolección, análisis, visualización y difusión de datos. Estos esfuerzos ayudan a mejorar la eficiencia operativa, explorar temas emergentes y crear productos informativos que contribuyen a un entendimiento profundo del transporte y su papel transformador en la sociedad.
+
+        La directora del BTS, la Sra. Patricia S. Hu, posee una extensa experiencia estadística, un profundo conocimiento del transporte y una sólida formación en investigación. El Dr. Rolf R. Schmitt, el Subdirector, es un experto reconocido en política de transporte y en el desarrollo de estadísticas para informar decisiones de transporte. Ambos lideran un equipo que es clave en el establecimiento de normativas y estrategias que influyen en el panorama del transporte estadounidense y global.
+        """)
+
 
     st.header('Proceso de extracción')
     st.markdown("""
