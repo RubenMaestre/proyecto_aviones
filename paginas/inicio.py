@@ -19,10 +19,12 @@ def display():
     with col1:
         st.markdown("""
             #### El Equipo
-
+        """)
+        st.markdown("""
         Este estudio ha sido desarrollado por José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez. Como equipo, hemos combinado nuestras competencias técnicas y experiencia analítica para investigar los retrasos en los vuelos, un tema crítico en la gestión aeronáutica. A través del análisis de grandes volúmenes de datos, hemos identificado tendencias significativas y patrones de comportamiento que influyen en la puntualidad aérea. Nuestro trabajo se centra en proporcionar un entendimiento detallado de los factores que afectan los tiempos de vuelo, con el objetivo de contribuir a la mejora de las operaciones en aeropuertos estadounidenses.
 
-        Nuestro enfoque sistemático nos ha permitido desglosar los elementos clave que contribuyen a los retrasos aéreos, evaluando cómo variaciones en la gestión de aerolíneas, la infraestructura aeroportuaria y condiciones externas como festividades y clima impactan en la eficiencia operacional. Las conclusiones derivadas de este análisis proporcionan una base para la formulación de estrategias que pueden ser implementadas por entidades del sector para optimizar la puntualidad de sus operaciones.        """)
+        Nuestro enfoque sistemático nos ha permitido desglosar los elementos clave que contribuyen a los retrasos aéreos, evaluando cómo variaciones en la gestión de aerolíneas, la infraestructura aeroportuaria y condiciones externas como festividades y clima impactan en la eficiencia operacional. Las conclusiones derivadas de este análisis proporcionan una base para la formulación de estrategias que pueden ser implementadas por entidades del sector para optimizar la puntualidad de sus operaciones.
+        """)
     
     with col2:
         st.markdown("""
@@ -30,7 +32,8 @@ def display():
 
         En la fase inicial de nuestro estudio, implementamos técnicas de web scraping utilizando Selenium para recolectar datos relevantes de múltiples fuentes en línea. Este enfoque nos permitió compilar un conjunto de datos exhaustivo y actualizado, esencial para nuestro Análisis Exploratorio de Datos (EDA). Durante el EDA, investigamos diversas variables para identificar aquellas que influyen significativamente en la puntualidad de los vuelos. El objetivo principal de esta fase era preparar el terreno para el desarrollo de un modelo predictivo.
 
-        Con los insights obtenidos del EDA, procedimos a entrenar varios modelos de Machine Learning, buscando el que ofreciera la mejor capacidad predictiva respecto a la probabilidad de retraso de los vuelos. Aunque enfrentamos desafíos técnicos debido al gran tamaño de algunos modelos, que dificultaba su integración en plataformas como GitHub y Streamlit debido a restricciones de almacenamiento, seleccionamos un modelo con excelentes métricas de rendimiento. Este modelo está preparado para ser utilizado en entornos operativos, y estamos dispuestos a desarrollar un análisis más detallado y personalizado para aerolíneas que estén interesadas en optimizar sus operaciones.        """)
+        Con los insights obtenidos del EDA, procedimos a entrenar varios modelos de Machine Learning, buscando el que ofreciera la mejor capacidad predictiva respecto a la probabilidad de retraso de los vuelos. Aunque enfrentamos desafíos técnicos debido al gran tamaño de algunos modelos, que dificultaba su integración en plataformas como GitHub y Streamlit debido a restricciones de almacenamiento, seleccionamos un modelo con excelentes métricas de rendimiento. Este modelo está preparado para ser utilizado en entornos operativos, y estamos dispuestos a desarrollar un análisis más detallado y personalizado para aerolíneas que estén interesadas en optimizar sus operaciones.
+        """)
 
     
     col3, col4 = st.columns([5,2])
