@@ -205,13 +205,15 @@ def display():
     with col4:
         st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas, note=""), unsafe_allow_html=True)
 
-    st.header('Extracción de Días Festivos en Estados Unidos')
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
 
     colizq, colder = st.columns([1, 2])
 
     with colizq:
+        st.subheaderheader('Extracción de Días Festivos en Estados Unidos')
+        st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("""
-        Este notebook está diseñado para recopilar información sobre los días festivos en Estados Unidos desde 2019 hasta 2023. El proceso de extracción se realiza mediante web scraping en el sitio web: [Cuando en el Mundo](https://www.cuandoenelmundo.com/calendario/estados-unidos/2023).
+        Lo siguiente que hemos trabajado es recopilar información sobre los días festivos en Estados Unidos desde 2019 hasta 2023. El proceso de extracción se realiza mediante web scraping en el sitio web: [Cuando en el Mundo](https://www.cuandoenelmundo.com/calendario/estados-unidos/2023).
 
         La función `fechar_festivos` se encarga de:
         - **Inicialización de Listas**: Se crean tres listas vacías para almacenar los días, meses y años de cada festivo detectado.
