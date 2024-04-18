@@ -403,7 +403,7 @@ def display():
     import requests
 
     # Cargar el archivo .pkl
-    aeropuertos_df = pd.read_pickle('C:/Users/34670/Desktop/python/Hack a boss/proyecto_3/streamlit/proyecto_aviones/data/aeropuertos_unicos.pkl')
+    aeropuertos_df = pd.read_pickle('data/aeropuertos_unicos.pkl')
 
     # Selecciona un aeropuerto de ejemplo y añade la palabra "aeropuerto" al final
     nombre_aeropuerto_ejemplo = "aeropuerto " + aeropuertos_df.iloc[4]['nombre_aeropuerto']
