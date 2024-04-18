@@ -281,7 +281,7 @@ def display():
     Así, la obtención de las coordenadas geográficas se convierte en un componente crucial para la expansión de nuestro análisis, permitiendo no solo una mejor comprensión de la distribución geográfica de los aeropuertos y su actividad, sino también ofreciendo una base sólida para futuras investigaciones y desarrollos dentro del proyecto.
     """)
     st.markdown("<br>", unsafe_allow_html=True)
-    colizq, colder = st.columns([2, 1])
+    colizq, colder = st.columns(2)
 
     with colizq:
         st.markdown("""
