@@ -280,13 +280,12 @@ def display():
 
     Así, la obtención de las coordenadas geográficas se convierte en un componente crucial para la expansión de nuestro análisis, permitiendo no solo una mejor comprensión de la distribución geográfica de los aeropuertos y su actividad, sino también ofreciendo una base sólida para futuras investigaciones y desarrollos dentro del proyecto.
     """)
-    st.markdown("<br>", unsafe_allow_html=True)
-    colizq, colder = st.columns(2)
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    colizq, colder = st.columns([1, 1.5])
 
     with colizq:
+        st.subheader('**Proceso de obtención de coordenadas**')
         st.markdown("""
-        **Proceso de obtención de coordenadas**
-
         El proceso para adquirir las coordenadas de los aeropuertos implica varias etapas críticas, comenzando por la identificación de fuentes de datos confiables y culminando con la integración de estas coordenadas en nuestro conjunto de datos existente. Uno de los primeros pasos es la consolidación de los datos de aeropuertos para asegurar que manejamos un conjunto único y preciso para cada ubicación.
 
         Para comenzar, se realiza una limpieza inicial de los datos, donde se separan y preparan los aeropuertos de origen y destino. Dado que nuestros datos incluyen tanto el aeropuerto de origen como el de destino para cada vuelo, es esencial reducir estos a una lista única para evitar duplicidades y simplificar el análisis posterior.
