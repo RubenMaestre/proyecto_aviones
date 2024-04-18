@@ -164,6 +164,10 @@ def display():
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
+    st.markdown("""
+    Por ir adelantando alguna cosa... aquí tenéis datos preliminares de lo que hemos descargado.
+    """)
+    st.markdown("<br>", unsafe_allow_html=True)
     # Llamar a la función para obtener los datos calculados
     numero_total_estados, numero_total_ciudades, numero_total_aeropuertos, numero_total_aerolineas = cargar_y_contar_datos()
 
@@ -185,9 +189,7 @@ def display():
             <h1>{value}</h1>
         </div>
         """
-    st.markdown("""
-    Por ir adelantando alguna cosa... aquí tenéis datos preliminares de lo que hemos descargado.<br>
-    """)
+    
     with col1:
         st.markdown(column_style.format(title='Número total de Estados*', value=numero_total_estados), unsafe_allow_html=True)
 
