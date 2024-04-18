@@ -12,10 +12,11 @@ from modules.graph.j_top_aerolineas_con_sin_retrasos import graficar_top_aerolin
 from modules.graph.k_top_aeropuertos_sin_retrasos import graficar_top_aeropuertos_con_sin_retrasos
 from modules.graph.l_numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
 from modules.graph.m_numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
+from modules.graph.n_cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 
-#from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
+
 #from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
 #from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
 #from modules.graph.total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
@@ -47,9 +48,10 @@ def get_graficas_por_categoria():
     common_categories["Aerolíneas"] = aerolineas_category
 
     # Categoría de Horarios
-    horarios_category = {
-        "Diagrama de salidas y llegadas": graficar_horas_vuelos
-    }
+    horarios_category = {}
+    if year == "Todos los años":
+        horarios_category["Diagrama de salidas y llegadas"] = graficar_horas_vuelos
+    horarios_category["Cantidad de llegadas y salidas por hora"] = graficar_cantidad_llegadas_salidas_por_hora
     common_categories["Horarios"] = horarios_category
 
     # Categoría de Correlaciones, solo para 'Todos los años'
