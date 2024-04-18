@@ -216,12 +216,12 @@ def display():
         Lo siguiente que hemos trabajado es recopilar información sobre los días festivos en Estados Unidos desde 2019 hasta 2023. El proceso de extracción se realiza mediante web scraping en el sitio web: [Cuando en el Mundo](https://www.cuandoenelmundo.com/calendario/estados-unidos/2023).
 
         La función `fechar_festivos` se encarga de:
-        - **Inicialización de Listas**: Se crean tres listas vacías para almacenar los días, meses y años de cada festivo detectado.
-        - **Iteración por Año**: El proceso itera desde 2019 hasta 2023. Para cada año, construye una URL específica al calendario de días festivos de Estados Unidos.
-        - **Extracción de Datos**: Realiza una solicitud HTTP GET para obtener y analizar el HTML del calendario anual de festivos. Utilizando BeautifulSoup, busca elementos HTML que representen los días festivos.
-        - **Almacenamiento de Datos**: Los días y meses festivos se extraen y almacenan en las listas correspondientes.
-        - **Creación de DataFrame**: Utilizando pandas, se crea un DataFrame con los datos recopilados y se mapean los nombres de los meses a números para facilitar su procesamiento.
-        - **Conversión y Almacenamiento**: Se convierten las columnas a tipos de datos apropiados y se combinan para formar una columna de fecha completa en formato `datetime`. Finalmente, se guarda el DataFrame en un archivo pickle para su uso posterior.
+        - **Inicialización de listas**: Se crean tres listas vacías para almacenar los días, meses y años de cada festivo detectado.
+        - **Iteración por año**: El proceso itera desde 2019 hasta 2023. Para cada año, construye una URL específica al calendario de días festivos de Estados Unidos.
+        - **Extracción de datos**: Realiza una solicitud HTTP GET para obtener y analizar el HTML del calendario anual de festivos. Utilizando BeautifulSoup, busca elementos HTML que representen los días festivos.
+        - **Almacenamiento de datos**: Los días y meses festivos se extraen y almacenan en las listas correspondientes.
+        - **Creación de dataFrame**: Utilizando pandas, se crea un DataFrame con los datos recopilados y se mapean los nombres de los meses a números para facilitar su procesamiento.
+        - **Conversión y almacenamiento**: Se convierten las columnas a tipos de datos apropiados y se combinan para formar una columna de fecha completa en formato `datetime`. Finalmente, se guarda el DataFrame en un archivo pickle para su uso posterior.
         """)
 
     with colder:
@@ -269,6 +269,28 @@ def display():
 
     fechar_festivos()
         """, language='python')
+
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.header('Obtención de las coordenadas de los aeropuertos de Estados Unidos')
+
+    st.markdown("""
+    Tras haber recolectado y procesado los datos iniciales de vuelos y días festivos, el siguiente paso en nuestro proyecto implica la visualización geográfica de estos datos. Para ello, es esencial disponer de las coordenadas precisas de cada aeropuerto en Estados Unidos. La importancia de integrar estos datos geoespaciales radica en nuestra capacidad para presentar información de manera más intuitiva y accesible mediante mapas interactivos.
+
+    La utilización de las coordenadas de los aeropuertos nos permite implementar visualizaciones en mapas mediante la biblioteca Folium, una herramienta poderosa para la creación de mapas interactivos en Python. Estos mapas no solo enriquecerán visualmente nuestra presentación de datos, sino que también facilitarán análisis más complejos, como la evaluación de patrones de tráfico aéreo y la identificación de zonas con alta frecuencia de retrasos.
+
+    Así, la obtención de las coordenadas geográficas se convierte en un componente crucial para la expansión de nuestro análisis, permitiendo no solo una mejor comprensión de la distribución geográfica de los aeropuertos y su actividad, sino también ofreciendo una base sólida para futuras investigaciones y desarrollos dentro del proyecto.
+    """)
+
+    st.markdown("""
+    ### Proceso de obtención de coordenadas
+
+    El proceso para adquirir las coordenadas de los aeropuertos implica varias etapas, desde la identificación de fuentes de datos confiables hasta la integración de estas coordenadas en nuestro conjunto de datos existente. En las siguientes secciones, detallaremos los métodos específicos utilizados para recopilar y validar estas coordenadas, asegurando que la información sea precisa y esté actualizada.
+    """)
+
+
+
+
+
 
 
     st.header('Uso de los datos')
