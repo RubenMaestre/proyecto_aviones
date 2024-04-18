@@ -20,7 +20,7 @@ def display():
         st.markdown("""
             #### El Equipo
         """)
-        st.markdown("""
+        st.write("""
         Este estudio ha sido desarrollado por José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez. Como equipo, hemos combinado nuestras competencias técnicas y experiencia analítica para investigar los retrasos en los vuelos, un tema crítico en la gestión aeronáutica. A través del análisis de grandes volúmenes de datos, hemos identificado tendencias significativas y patrones de comportamiento que influyen en la puntualidad aérea. Nuestro trabajo se centra en proporcionar un entendimiento detallado de los factores que afectan los tiempos de vuelo, con el objetivo de contribuir a la mejora de las operaciones en aeropuertos estadounidenses.
 
         Nuestro enfoque sistemático nos ha permitido desglosar los elementos clave que contribuyen a los retrasos aéreos, evaluando cómo variaciones en la gestión de aerolíneas, la infraestructura aeroportuaria y condiciones externas como festividades y clima impactan en la eficiencia operacional. Las conclusiones derivadas de este análisis proporcionan una base para la formulación de estrategias que pueden ser implementadas por entidades del sector para optimizar la puntualidad de sus operaciones.
