@@ -205,6 +205,69 @@ def display():
     with col4:
         st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas, note=""), unsafe_allow_html=True)
 
+    st.header('Extracción de Días Festivos en Estados Unidos')
+
+    colizq, colder = st.columns([1, 2])
+
+    with colizq:
+        st.markdown("""
+        Este notebook está diseñado para recopilar información sobre los días festivos en Estados Unidos desde 2019 hasta 2023. El proceso de extracción se realiza mediante web scraping en el sitio web: [Cuando en el Mundo](https://www.cuandoenelmundo.com/calendario/estados-unidos/2023).
+
+        La función `fechar_festivos` se encarga de:
+        - **Inicialización de Listas**: Se crean tres listas vacías para almacenar los días, meses y años de cada festivo detectado.
+        - **Iteración por Año**: El proceso itera desde 2019 hasta 2023. Para cada año, construye una URL específica al calendario de días festivos de Estados Unidos.
+        - **Extracción de Datos**: Realiza una solicitud HTTP GET para obtener y analizar el HTML del calendario anual de festivos. Utilizando BeautifulSoup, busca elementos HTML que representen los días festivos.
+        - **Almacenamiento de Datos**: Los días y meses festivos se extraen y almacenan en las listas correspondientes.
+        - **Creación de DataFrame**: Utilizando pandas, se crea un DataFrame con los datos recopilados y se mapean los nombres de los meses a números para facilitar su procesamiento.
+        - **Conversión y Almacenamiento**: Se convierten las columnas a tipos de datos apropiados y se combinan para formar una columna de fecha completa en formato `datetime`. Finalmente, se guarda el DataFrame en un archivo pickle para su uso posterior.
+        """)
+
+    with colder:
+        st.code("""
+    def fechar_festivos():
+        dias_festivos = list()
+        mes_festivos = list()
+        years = list()
+
+        for year in range(2019, 2024):
+            url = f'https://www.cuandoenelmundo.com/calendario/estados-unidos/{year}'
+            response = requests.get(url)
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            # Días festivos
+            reddays = soup.find_all('td', class_='day redday')
+            for d in reddays:
+                dias_festivos.append(d.text)
+
+            # Meses festivos
+            redmonths = soup.find_all('td', class_='month redday')
+            for m in redmonths:
+                mes_festivos.append(m.text)
+
+            # Añadir el año
+            for y in reddays:
+                years.append(year)
+
+        df = pd.DataFrame({
+            'dia': dias_festivos,
+            'mes': mes_festivos,
+            'ano': years
+        })
+
+        diccionario = {'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4, 'mayo': 5,
+                    'junio': 6, 'julio': 7, 'agosto': 8, 'septiembre': 9,
+                    'octubre': 10, 'noviembre': 11, 'diciembre': 12}
+
+        df['dia'] = df['dia'].astype(int)
+        df['mes'] = df['mes'].map(diccionario)
+        df['festivos'] = pd.to_datetime(df['ano'].astype(str) + '-' +
+                                        df['mes'].astype(str) + '-' +
+                                        df['dia'].astype(str))
+        df.to_pickle('fecha_festivos.pkl')
+
+    fechar_festivos()
+        """, language='python')
+
 
     st.header('Uso de los datos')
     st.markdown("""
