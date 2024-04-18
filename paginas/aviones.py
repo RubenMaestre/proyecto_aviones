@@ -10,15 +10,15 @@ def display():
     st.markdown(
         """
         <style>
-        .reportview-container .main .block-container{{
+        .reportview-container .main .block-container{
             max-width: 95%;
-        }}
-        .divider {{
+        }
+        .divider {
             height: 100%;
             width: 2px;
             border-left: 2px solid #ffffff;
             margin-right: 5px;
-        }}
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -28,13 +28,13 @@ def display():
     col_navegacion, divider, col_contenido = st.columns([1, 0.3, 7])
     with col_navegacion:
         st.markdown("<h4 style='text-align: center;'>Pulse una opción para saber más</h4>", unsafe_allow_html=True)
-
+        
         # Llama a la función para mostrar los botones de navegación
         crear_botones()
 
     with col_contenido:
-        # Muestra el contenido de la subpágina seleccionada
-        if 'subpagina' in st.session_state:
+        # Verifica si una subpágina ha sido seleccionada, si no, muestra la imagen inicial
+        if 'subpagina' in st.session_state and st.session_state.subpagina:
             if st.session_state.subpagina == 'vuelos_usa':
                 vuelos_usa.display()
             elif st.session_state.subpagina == 'aeropuertos':
@@ -43,5 +43,8 @@ def display():
                 aerolineas.display()
             elif st.session_state.subpagina == 'datos':
                 datos.display()
+        else:
+            # Muestra la imagen inicial
+            st.image('sources/new_york_flight.png', use_column_width=True)
 
 display()
