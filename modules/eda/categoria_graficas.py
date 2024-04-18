@@ -2,8 +2,8 @@ import streamlit as st
 from modules.graph.a_vuelos_totales_por_year import graficar_vuelos_totales_por_year
 from modules.graph.b_evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_por_aerolinea
 from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
+from modules.graph.d_diagrama_salidas_llegadas import graficar_horas_vuelos
 
-#from modules.graph.diagrama_salidas_llegadas import graficar_horas_vuelos
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 #from modules.graph.correlacion_lineal import graficar_correlacion_lineal
 #from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
@@ -22,8 +22,8 @@ from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aeroline
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
 
+    # Categoría de Aerolíneas
     aerolineas_category = {}
-
     if year == "Todos los años":
         aerolineas_category = {
             "Vuelos totales por año": graficar_vuelos_totales_por_year,
@@ -35,5 +35,15 @@ def get_graficas_por_categoria():
             "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
         }
 
-    common_categories = {"Aerolíneas": aerolineas_category}
+    # Categoría de Horarios
+    horarios_category = {
+        "Diagrama de salidas y llegadas": graficar_horas_vuelos
+    }
+
+    # Combinar todas las categorías en un solo diccionario
+    common_categories = {
+        "Aerolíneas": aerolineas_category,
+        "Horarios": horarios_category
+    }
+
     return common_categories
