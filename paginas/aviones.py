@@ -45,6 +45,6 @@ def display():
                 datos.display()
         else:
             # Muestra la imagen inicial
-            st.image('sources/new_york_flight.png', use_column_width=True)
+            st.image('sources/new_york_flight.png')
 
 display()
