@@ -402,17 +402,17 @@ def display():
     import pandas as pd
     import requests
 
-    # Cargar el archivo .pkl
+    # Cargamos el archivo .pkl
     aeropuertos_df = pd.read_pickle('data/aeropuertos_unicos.pkl')
 
-    # Selecciona un aeropuerto de ejemplo y añade la palabra "aeropuerto" al final
+    # Seleccionamos un aeropuerto de ejemplo y añade la palabra "aeropuerto" al final
     nombre_aeropuerto_ejemplo = "aeropuerto " + aeropuertos_df.iloc[4]['nombre_aeropuerto']
 
     def buscar_info_completa_wikipedia(titulo):
         S = requests.Session()
         URL = "https://es.wikipedia.org/w/api.php"
 
-        # Primero, busca el título de la página usando la función de búsqueda
+        # Primero buscamos el título de la página usando la función de búsqueda
         SEARCH_PARAMS = {
             "action": "query",
             "list": "search",
@@ -428,7 +428,7 @@ def display():
         if search_results:
             page_title = search_results[0]['title']
 
-            # Luego, obtén el contenido completo de la página encontrada
+            # Luego vamos a por el contenido completo de la página encontrada
             CONTENT_PARAMS = {
                 "action": "parse",
                 "page": page_title,
@@ -444,7 +444,7 @@ def display():
                 return text  # Esto devolverá HTML
         return 'No se encontró información.'
 
-    # Usar el título del artículo obtenido anteriormente para obtener información completa
+    # Usamos el título del artículo obtenido anteriormente para obtener información completa
     info_completa_aeropuerto = buscar_info_completa_wikipedia(nombre_aeropuerto_ejemplo)
     print(info_completa_aeropuerto)
     """, language='python')
