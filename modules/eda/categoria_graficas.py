@@ -23,7 +23,7 @@ from modules.graph.u_diagrama_distancia_millas import graficar_diagrama_distanci
 from modules.graph.v_histograma_distancias_millas import graficar_histograma_distancias_millas
 from modules.graph.w_relacion_retrasos_millas import graficar_relacion_retrasos_millas
 from modules.graph.z_diagrama_caja_retraso_llegada import graficar_diagrama_caja_retrasos
-from modules.graph.x_numero_retrasos_intervalo import graficar_retrasos_por_intervalo
+from modules.graph.y_costo_aerolinea import graficar_vuelos_por_costo_aerolinea
 
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
@@ -37,11 +37,13 @@ def get_graficas_por_categoria():
         aerolineas_category = {
             "Vuelos totales por año": graficar_vuelos_totales_por_year,
             "Evolución del número de vuelos por compañía aérea": graficar_evolucion_vuelos_por_aerolinea,
-            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
+            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea,
+            "Tipo de aerolínea": graficar_vuelos_por_costo_aerolinea
         }
     else:
         aerolineas_category = {
-            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
+            "Vuelos por aerolínea": graficar_vuelos_por_aerolinea,
+            "Tipo de aerolínea": graficar_vuelos_por_costo_aerolinea
         }
     common_categories["Aerolíneas"] = aerolineas_category
 
