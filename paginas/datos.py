@@ -280,12 +280,50 @@ def display():
 
     Así, la obtención de las coordenadas geográficas se convierte en un componente crucial para la expansión de nuestro análisis, permitiendo no solo una mejor comprensión de la distribución geográfica de los aeropuertos y su actividad, sino también ofreciendo una base sólida para futuras investigaciones y desarrollos dentro del proyecto.
     """)
+    st.markdown("<br>", unsafe_allow_html=True)
+    colizq, colder = st.columns([2, 1])
+
+    with colizq:
+        st.markdown("""
+        **Proceso de obtención de coordenadas**
+
+        El proceso para adquirir las coordenadas de los aeropuertos implica varias etapas críticas, comenzando por la identificación de fuentes de datos confiables y culminando con la integración de estas coordenadas en nuestro conjunto de datos existente. Uno de los primeros pasos es la consolidación de los datos de aeropuertos para asegurar que manejamos un conjunto único y preciso para cada ubicación.
+
+        Para comenzar, se realiza una limpieza inicial de los datos, donde se separan y preparan los aeropuertos de origen y destino. Dado que nuestros datos incluyen tanto el aeropuerto de origen como el de destino para cada vuelo, es esencial reducir estos a una lista única para evitar duplicidades y simplificar el análisis posterior.
+
+        Esta preparación incluye la creación de dos dataframes temporales, uno para los aeropuertos de origen y otro para los de destino, los cuales luego se concatenan para formar un único dataframe. Posteriormente, eliminamos los duplicados y reorganizamos las columnas para que el dataframe final solo contenga información única sobre cada aeropuerto, incluyendo su nombre, ciudad y estado.
+        """)
+
+    with colder:
+        st.code("""
+        # Código para consolidar los aeropuertos en un dataframe único
+        df_origen = df_aviones[['aeropuerto_origen', 'ciudad_origen', 'estado_origen']].copy()
+        df_destino = df_aviones[['aeropuerto_destino']].copy()
+        df_destino.columns = ['aeropuerto_origen']
+        df_destino['ciudad_origen'] = None
+        df_destino['estado_origen'] = None
+
+        # Concatenar los dataframes de origen y destino
+        df_aeropuertos_concatenados = pd.concat([df_origen, df_destino])
+
+        # Eliminar duplicados y resetear el índice
+        df_aeropuertos_unicos = df_aeropuertos_concatenados.drop_duplicates(subset=['aeropuerto_origen'])
+        df_aeropuertos_unicos.reset_index(drop=True, inplace=True)
+
+        # Renombrar las columnas para claridad
+        df_aeropuertos_unicos.rename(columns={
+            'aeropuerto_origen': 'nombre_aeropuerto',
+            'ciudad_origen': 'ciudad',
+            'estado_origen': 'estado'
+        }, inplace=True)
+
+        print(df_aeropuertos_unicos)
+        """, language='python')
 
     st.markdown("""
-    ### Proceso de obtención de coordenadas
-
-    El proceso para adquirir las coordenadas de los aeropuertos implica varias etapas, desde la identificación de fuentes de datos confiables hasta la integración de estas coordenadas en nuestro conjunto de datos existente. En las siguientes secciones, detallaremos los métodos específicos utilizados para recopilar y validar estas coordenadas, asegurando que la información sea precisa y esté actualizada.
+    Con este proceso, aseguramos que cada aeropuerto esté representado una sola vez en nuestra base de datos, lo cual es crucial para la etapa siguiente donde se vincularán las coordenadas geográficas. La claridad y precisión en esta fase son fundamentales para evitar errores en el mapeo y en la visualización de datos.
     """)
+
 
 
 
