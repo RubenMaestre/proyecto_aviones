@@ -14,7 +14,7 @@ def display():
         
     """)
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(5,1,5)
     
     with col1:
         st.markdown("""
@@ -25,7 +25,7 @@ def display():
         Nuestro enfoque sistemático nos ha permitido desglosar los elementos clave que contribuyen a los retrasos aéreos, evaluando cómo variaciones en la gestión de aerolíneas, la infraestructura aeroportuaria y condiciones externas como festividades y clima impactan en la eficiencia operacional. Las conclusiones derivadas de este análisis proporcionan una base para la formulación de estrategias que pueden ser implementadas por entidades del sector para optimizar la puntualidad de sus operaciones.
         """)
     
-    with col2:
+    with col3:
         st.markdown("""
             #### Metodología y Objetivos
 
@@ -35,9 +35,9 @@ def display():
         """)
 
     
-    col3, col4 = st.columns([5,2])
+    col4, col5 = st.columns([5,2])
 
-    with col3:
+    with col4:
         st.markdown("""
         #### Herramientas y Tecnologías
 
@@ -46,5 +46,5 @@ def display():
         Mediante el uso de Streamlit, hemos logrado presentar nuestros resultados de manera dinámica y accesible, proporcionando a los usuarios la posibilidad de interactuar con los datos y explorar en profundidad las diversas facetas de nuestro análisis. Este proyecto refleja no solo el aprendizaje alcanzado en Hack a Boss, sino también nuestra determinación por aplicar la ciencia de datos en la solución de problemas prácticos del mundo real. Confiamos en que los insights y visualizaciones que ofrecemos sean tanto informativos como de utilidad práctica para los interesados.
     """)
 
-    with col4:
+    with col5:
         st.image("sources/logotipo_hack_a_boss.png")
