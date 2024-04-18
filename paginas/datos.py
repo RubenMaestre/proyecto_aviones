@@ -112,7 +112,7 @@ def display():
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-    st.markdown("<h3 style='text-align: center;'>'Proceso de extracción automatizado')</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Proceso de extracción automatizado</h3><br>", unsafe_allow_html=True)
     colizq, colder = st.columns(2)
     with colizq:
         
@@ -129,9 +129,7 @@ def display():
 
             5. **Cierre y limpieza**: Una vez finalizado el proceso de extracción para todas las combinaciones, el script cierra el navegador para terminar la sesión. Este paso es crucial para liberar recursos y evitar problemas de rendimiento en el sistema.
             """)
-        st.markdown("""
-            Este proceso está diseñado para ser lo más eficiente posible, minimizando la interacción humana y maximizando la precisión y la repetibilidad del proceso de extracción. La automatización mediante Selenium permite un control detallado sobre el navegador, crucial para interactuar con elementos web que de otro modo serían inaccesibles mediante métodos de extracción de datos más estáticos.
-            """)
+        
 
     with colder:
         st.code("""
@@ -160,6 +158,9 @@ def display():
 
         driver.quit()
         """, language='python')
+        st.markdown("""
+            Este proceso está diseñado para ser lo más eficiente posible, minimizando la interacción humana y maximizando la precisión y la repetibilidad del proceso de extracción. La automatización mediante Selenium permite un control detallado sobre el navegador, crucial para interactuar con elementos web que de otro modo serían inaccesibles mediante métodos de extracción de datos más estáticos.
+            """)
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
