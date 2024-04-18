@@ -18,12 +18,15 @@ def display():
 
     st.header('Tecnologías utilizadas')
     st.markdown("""
-    - **BeautifulSoup**: para el análisis del HTML de las páginas web y la extracción de datos.
-    - **Selenium**: una herramienta para la automatización de navegadores web, utilizada para interactuar con elementos de la página que requieren de acciones como clics o selección de opciones.
-    - **Pandas**: una librería de Python que ofrece estructuras de datos y herramientas de análisis.
-    - **NumPy**: una librería fundamental para la computación científica con Python.
-    - **Requests**: permite enviar solicitudes HTTP en Python, utilizada para obtener el contenido de la página web.
+    - **BeautifulSoup**: Una librería de Python que facilita la extracción de información de páginas web, parseando los documentos HTML y permitiendo la manipulación eficiente de los mismos.
+    - **Requests**: Un módulo de Python para enviar solicitudes HTTP de manera sencilla, utilizado para obtener el código fuente de las páginas web desde las cuales recolectamos datos.
+    - **Selenium WebDriver**: Herramienta de automatización para manejar navegadores web, que permite interactuar con elementos web de forma programática en sitios que requieren interacciones dinámicas.
+    - **By**: Módulo en Selenium utilizado para localizar elementos dentro de una página web usando varios métodos como id, name, xpath, entre otros.
+    - **Select**: Clase en Selenium para interactuar con los elementos `<select>` de los formularios HTML, facilitando la selección automática en menús desplegables.
+    - **WebDriverWait y Expected Conditions (EC)**: Utilizados para gestionar la espera de elementos específicos en la página que pueden tardar en aparecer, asegurando que los datos estén disponibles antes de proceder con su extracción.
+    - **sleep (time)**: Función del módulo `time` de Python que pausa la ejecución del script para simular interacciones humanas o cumplir con las políticas de uso de los servidores web, evitando ser detectados como bots.
     """)
+
 
     st.header('Fuente de los datos')
     st.markdown("""
