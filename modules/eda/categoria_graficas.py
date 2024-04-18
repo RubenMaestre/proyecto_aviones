@@ -25,7 +25,7 @@ from modules.graph.w_relacion_retrasos_millas import graficar_relacion_retrasos_
 from modules.graph.z_diagrama_caja_retraso_llegada import graficar_diagrama_caja_retrasos
 from modules.graph.x_numero_retrasos_intervalo import graficar_retrasos_por_intervalo
 from modules.graph.y_costo_aerolinea import graficar_vuelos_por_costo_aerolinea
-from modules.graph.yy_aerolinea_costo_retrasos import graficar_vuelos_por_costo_aerolinea
+from modules.graph.yy_aerolinea_costo_retrasos import graficar_vuelos_retrasos_por_costo_aerolinea
 
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
@@ -88,7 +88,8 @@ def get_graficas_por_categoria():
         "Total de minutos por tipo de retraso": graficar_total_minutos_por_tipo_retraso,
         "Análisis de retrasos aéreos": graficar_analisis_retrasos_aereos,
         "Diagrama de caja del retraso en la llegada": graficar_diagrama_caja_retrasos,
-        "Número de Retrasos por Intervalo (Hasta 200 Minutos)": graficar_retrasos_por_intervalo
+        "Número de Retrasos por Intervalo (Hasta 200 Minutos)": graficar_retrasos_por_intervalo,
+        "Tipo de aerolínea con y sin retraso": graficar_vuelos_retrasos_por_costo_aerolinea
     }
     common_categories["Retrasos"] = retrasos_category
 
