@@ -25,6 +25,9 @@ from modules.graph.i_retrasos_mas_15_festivos import graficar_retrasos_mas_15_fe
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
 
+    # Inicializa common_categories al inicio para asegurar que está disponible en todos los flujos del código
+    common_categories = {}
+
     # Categoría de Aerolíneas
     aerolineas_category = {}
     if year == "Todos los años":
@@ -37,11 +40,13 @@ def get_graficas_por_categoria():
         aerolineas_category = {
             "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
         }
+    common_categories["Aerolíneas"] = aerolineas_category
 
     # Categoría de Horarios
     horarios_category = {
         "Diagrama de salidas y llegadas": graficar_horas_vuelos
     }
+    common_categories["Horarios"] = horarios_category
 
     # Categoría de Correlaciones, solo para 'Todos los años'
     if year == "Todos los años":
@@ -57,12 +62,6 @@ def get_graficas_por_categoria():
         "Retrasos mayores a 15 minutos": graficar_retrasos_mas_15,
         "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos
     }
-
-    # Combinar todas las categorías en un solo diccionario
-    common_categories = {
-        "Aerolíneas": aerolineas_category,
-        "Horarios": horarios_category,
-        "Puntualidad": puntualidad_category
-    }
+    common_categories["Puntualidad"] = puntualidad_category
 
     return common_categories
