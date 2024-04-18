@@ -48,7 +48,7 @@ def get_graficas_por_categoria():
 
     # Añadir gráficas específicas solo para "Todos los años"
     if year == "Todos los años":
-        common_categories["Aerolíneas"]["Evolución del número de vuelos por compañía aérea", ] = graficar_evolucion_vuelos_por_aerolinea
+        common_categories["Aerolíneas"]["Evolución del número de vuelos por compañía aérea"] = graficar_evolucion_vuelos_por_aerolinea
         #common_categories["Correlaciones"] = {
             #"Correlación entre variables": graficar_correlacion_variables,
             #"Correlación lineal": graficar_correlacion_lineal
