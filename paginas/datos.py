@@ -92,7 +92,7 @@ def display():
 
     with col3:
         st.image('sources/datos_2.jpg', use_column_width=True) 
-        st.header('Función para preselecciones')
+        st.header('Función para seleccionar datos')
         st.markdown("""
             La función **preselecciones** se utiliza al inicio para marcar de antemano todas las estadísticas (por qué sale tarde, el tiempo que tarda en despegar, etc.), todos los días del mes, el mes de diciembre y los tres años con los que hemos hecho el trabajo.
             """)
@@ -110,6 +110,59 @@ def display():
                 driver.find_element(By.ID, "chkYears_36").click()
         """, language='python')
 
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+
+  
+    colizq, colder = st.columns(2)
+
+    with colizq:
+        st.header('Proceso de extracción automatizado')
+        st.markdown("""
+            Este script automatiza completamente el proceso de extracción de datos de la página web para cada combinación de aeropuertos y aerolíneas. A continuación se detallan los pasos clave del proceso:
+
+            1. **Inicialización del navegador**: Utilizamos Selenium para iniciar una instancia del navegador Firefox, lo cual nos permite cargar la URL específica desde donde se extraerán los datos. Este enfoque simula una sesión de navegación real, esencial para interactuar con los elementos web dinámicos.
+
+            2. **Configuración inicial**: Antes de comenzar la extracción de datos, es crucial configurar correctamente las opciones en el sitio web. Para ello, llamamos a la función `preselecciones` que automatiza la selección de todas las estadísticas relevantes, días específicos, el mes de diciembre y los años 2021, 2022 y 2023. Este paso asegura que los datos que vamos a extraer son precisamente los que necesitamos para nuestro análisis.
+
+            3. **Iteración sobre aeropuertos y aerolíneas**: El script ejecuta un bucle que recorre cada aeropuerto listado y, para cada uno de ellos, un bucle anidado itera sobre cada aerolínea disponible. Esta estructura de bucle doble es fundamental para asegurar que se exploran todas las combinaciones posibles de aeropuertos y aerolíneas.
+
+            4. **Extracción de datos**: Durante la iteración, el script intenta seleccionar la combinación específica de aeropuerto y aerolínea y solicita la descarga del archivo .CSV correspondiente. Si la combinación no opera (es decir, no hay datos disponibles), el script omite esta y continúa con la siguiente. Además, se implementa una función de desplazamiento en la página para asegurar que el enlace de descarga está visible y accesible.
+
+            5. **Cierre y limpieza**: Una vez finalizado el proceso de extracción para todas las combinaciones, el script cierra el navegador para terminar la sesión. Este paso es crucial para liberar recursos y evitar problemas de rendimiento en el sistema.
+            """)
+        st.markdown("""
+            Este proceso está diseñado para ser lo más eficiente posible, minimizando la interacción humana y maximizando la precisión y la repetibilidad del proceso de extracción. La automatización mediante Selenium permite un control detallado sobre el navegador, crucial para interactuar con elementos web que de otro modo serían inaccesibles mediante métodos de extracción de datos más estáticos.
+            """)
+
+    with colder:
+        st.code("""
+        driver = webdriver.Firefox()
+        driver.get(url)
+
+        preselecciones(driver)
+
+        for aeropuerto in listado_aeropuertos:
+            select_aeropuerto = Select(driver.find_element(By.NAME, "cboAirport"))
+            select_aeropuerto.select_by_visible_text(aeropuerto)
+
+            for aerolinea in listado_aerolineas:
+                select_aerolinea = Select(driver.find_element(By.NAME, "cboAirline"))
+                select_aerolinea.select_by_visible_text(aerolinea)
+
+                click_submit = driver.find_element(By.ID, "btnSubmit").click()
+                driver.execute_script("window.scrollBy(0, 200);")
+
+                try:
+                    element = WebDriverWait(driver, 3).until(
+                        EC.presence_of_element_located((By.ID, "DL_CSV")))
+                    element.click()
+                except:
+                    pass
+
+        driver.quit()
+        """, language='python')
+
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
 
     # Llamar a la función para obtener los datos calculados
     numero_total_estados, numero_total_ciudades, numero_total_aeropuertos, numero_total_aerolineas = cargar_y_contar_datos()
