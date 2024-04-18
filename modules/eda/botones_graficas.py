@@ -1,4 +1,4 @@
-# botones_graficas.py
+# modules/eda/botones_graficas.py
 import streamlit as st
 from modules.eda.categoria_graficas import get_graficas_por_categoria
 
