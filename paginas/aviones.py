@@ -45,19 +45,8 @@ def display():
                 datos.display()
         else:
             # Muestra la imagen inicial
-            st.markdown(
-            """
-            <style>
-            .centered {
-                display: flex;
-                justify-content: center;
-            }
-            </style>
-            <div class="centered">
-                <img src="sources/new_york_flight.png">
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+            col = st.columns([1, 6, 1])[1]
+            with col:
+                st.image('sources/new_york_flight.png', use_column_width=True)
 
 display()
