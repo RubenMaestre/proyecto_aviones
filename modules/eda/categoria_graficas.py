@@ -22,7 +22,6 @@ from modules.graph.t_top_menos_retrasos import graficar_estados_menos_retrasos
 from modules.graph.u_diagrama_distancia_millas import graficar_diagrama_distancia_millas
 from modules.graph.v_histograma_distancias_millas import graficar_histograma_distancias_millas
 from modules.graph.w_relacion_retrasos_millas import graficar_relacion_retrasos_millas
-from modules.graph.y_maxima_distancia_millas import graficar_maxima_distancia_millas
 from modules.graph.z_diagrama_caja_retraso_llegada import graficar_diagrama_caja_retrasos
 from modules.graph.x_numero_retrasos_intervalo import graficar_retrasos_por_intervalo
 
@@ -99,9 +98,8 @@ def get_graficas_por_categoria():
         millas_analisis_category = {
             "Diagrama de distancia en millas": graficar_diagrama_distancia_millas,
             "Histograma de distancias en millas": graficar_histograma_distancias_millas,
-            "Relación entre retrasos y millas": graficar_relacion_retrasos_millas,
-            "Máxima distancia en millas": graficar_maxima_distancia_millas
-        }
+            "Relación entre retrasos y millas": graficar_relacion_retrasos_millas
+            }
         common_categories["Millas Análisis"] = millas_analisis_category
 
     return common_categories
