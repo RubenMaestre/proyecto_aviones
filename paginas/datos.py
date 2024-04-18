@@ -381,7 +381,7 @@ def display():
         """)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.header('Enriquecimiento de Datos a través de la API de Wikipedia')
+    st.header('Ampliación de datos de interés a través de la API de Wikipedia')
 
     st.markdown("""
     Después de consolidar los datos geográficos de los aeropuertos y aerolíneas, decidimos complementar nuestro conjunto de datos con información adicional que podría ser relevante para análisis futuros. Para lograr esto, recurrimos a la API de Wikipedia, una fuente rica y accesible de información estructurada.
