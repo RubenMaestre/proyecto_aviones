@@ -40,7 +40,7 @@ def display():
         """)
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
-    
+
     col4, col5 = st.columns([5,2])
 
     with col4:
@@ -53,4 +53,5 @@ def display():
     """)
 
     with col5:
+        st.markdown("<br>", unsafe_allow_html=True)
         st.image("sources/logotipo_hack_a_boss.png")
