@@ -16,10 +16,8 @@ def graficar_horas_vuelos(df):
     # Crear la figura con Plotly Graph Objects
     fig = go.Figure()
 
-    fig.add_trace(go.Box(x=df["hora_salida_minutos"], name="Salida", hoverinfo='text', 
-                         hovertext=df["hora_salida_minutos"].apply(lambda x: f'{x//60}:{x%60:02d}')))
-    fig.add_trace(go.Box(x=df["hora_llegada_minutos"], name="Llegada", hoverinfo='text', 
-                         hovertext=df["hora_llegada_minutos"].apply(lambda x: f'{x//60}:{x%60:02d}')))
+    fig.add_trace(go.Box(x=df["hora_salida_minutos"], name="Salida"))
+    fig.add_trace(go.Box(x=df["hora_llegada_minutos"], name="Llegada"))
 
     # Definir las marcas personalizadas para el eje x
     tickvals = [i * 60 for i in range(25)]  # Cada hora en minutos
@@ -35,8 +33,8 @@ def graficar_horas_vuelos(df):
             tickvals=tickvals,
             ticktext=ticktext
         ),
-        width=1080,  # Ancho personalizado
-        height=720   # Altura personalizada
+        width=900,  # Ancho personalizado
+        height=600   # Altura personalizada
     )
 
     # Mostrar la figura en la aplicación Streamlit
