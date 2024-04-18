@@ -66,7 +66,7 @@ def display():
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns(5,1,5)
+    col1, col2, col3 = st.columns[(5,1,5)]
 
     with col1:
         st.image('sources/datos_1.jpg')
@@ -108,7 +108,7 @@ def display():
                 driver.find_element(By.ID, "chkYears_35").click() 
                 driver.find_element(By.ID, "chkYears_36").click()
         """, language='python')
-        
+
 
     # Llamar a la función para obtener los datos calculados
     numero_total_estados, numero_total_ciudades, numero_total_aeropuertos, numero_total_aerolineas = cargar_y_contar_datos()
