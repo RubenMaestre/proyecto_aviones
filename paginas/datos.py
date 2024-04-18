@@ -112,11 +112,10 @@ def display():
 
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-  
+    st.markdown("<h3 style='text-align: center;'>'Proceso de extracción automatizado')</h3>", unsafe_allow_html=True)
     colizq, colder = st.columns(2)
-
     with colizq:
-        st.header('Proceso de extracción automatizado')
+        
         st.markdown("""
             Este script automatiza completamente el proceso de extracción de datos de la página web para cada combinación de aeropuertos y aerolíneas. A continuación se detallan los pasos clave del proceso:
 
