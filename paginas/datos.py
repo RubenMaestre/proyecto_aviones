@@ -64,30 +64,51 @@ def display():
         Utilizando estas listas, procedimos a iterar sobre cada combinación de aeropuerto y aerolínea, aplicando filtros en la página para obtener datos de vuelos específicos de diciembre de los años 2021, 2022 y 2023. Este método automatizado facilitó la recolección sistemática y eficiente de los datos necesarios para nuestro análisis.
         """)
 
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(5,1,5)
 
     with col1:
         st.image('sources/datos_1.jpg')
-        st.subheader('Preselecciones')
+        st.header('Automatización del Proceso de Selección')
         st.markdown("""
-        - Seleccionar todas las estadísticas y días disponibles.
-        - Foco específico en los vuelos nacionales.
-        """)
+            Esta función automatiza la selección de elementos en un menú desplegable. Se utiliza específicamente para seleccionar los aeropuertos y aerolíneas previamente almacenados en dos listas. La elección de **By.NAME** se debe al hecho de que estos elementos están identificados por su nombre en el código HTML.
+            """)
+
+        st.code("""
+            def seleccionar_por_indice(url, nombre_seleccionado, lista_elementos):
+                \"\"\"Esta función selecciona los aeropuertos y las aerolíneas en el menú desplegable\"\"\"
+                driver = webdriver.Firefox()
+                driver.get(url)
+                seleccion = Select(driver.find_element(By.NAME, nombre_seleccionado))
+                
+                for elemento in lista_elementos:
+                    seleccion.select_by_visible_text(elemento)
+                    sleep(1) 
+        """, language='python')
 
     with col2:
-        st.image('sources/datos_2.jpg') 
-        st.subheader('Descarga de datos')
-        st.markdown("""
-        - Configuración de filtros para los meses de diciembre de 2021, 2022 y 2023.
-        - Técnicas para manejar elementos dinámicos y esperas.
-        """)
+        st.write("")
 
-    st.header('Contenido de los datos')
-    st.markdown("""
-    Los datos recopilados abarcan información detallada sobre los vuelos nacionales en Estados Unidos durante los meses de diciembre de 2021, 2022 y 2023. Esto incluye horarios de vuelo, retrasos, cancelaciones, aerolíneas y aeropuertos implicados.
-    """)
+    with col3:
+        st.image('sources/datos_2.jpg') 
+        st.markdown("""
+            La función **preselecciones** se utiliza al inicio para marcar de antemano todas las estadísticas (por qué sale tarde, el tiempo que tarda en despegar, etc.), todos los días del mes, el mes de diciembre y los tres años con los que hemos hecho el trabajo.
+            """)
+
+        st.code("""
+            def preselecciones(driver):
+                \"\"\"Preselecciona las casillas necesarias para la extracción\"\"\"
+                driver.find_element(By.ID, "chkAllStatistics").click() 
+                driver.find_element(By.ID, "chkAllDays").click()  
+                driver.find_element(By.ID, "chkMonths_11").click()  # click_mes_diciembre
+                
+                # Selecciona 2021, 2022 y 2023
+                driver.find_element(By.ID, "chkYears_34").click()
+                driver.find_element(By.ID, "chkYears_35").click() 
+                driver.find_element(By.ID, "chkYears_36").click()
+        """, language='python')
+        
 
     # Llamar a la función para obtener los datos calculados
     numero_total_estados, numero_total_ciudades, numero_total_aeropuertos, numero_total_aerolineas = cargar_y_contar_datos()
