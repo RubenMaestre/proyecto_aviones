@@ -10,34 +10,34 @@ def graficar_numero_vuelos_dias_diciembre(df):
     fig2 = px.line(df_fechas[df_fechas['anio'] == 2022], x='fecha', y='numero_vuelos', color_discrete_sequence=['violet'])
     fig3 = px.line(df_fechas[df_fechas['anio'] == 2023], x='fecha', y='numero_vuelos', color_discrete_sequence=['springgreen'])
 
-    # Combinar los gráficos en un solo gráfico con subplots y ajustar el espaciado
+    # Combinar los gráficos en un solo gráfico con subplots
     fig = make_subplots(
-        rows=2, 
-        cols=2, 
-        subplot_titles=('2021', '2022', '2023', 'Todos los Años'),
-        vertical_spacing=0.15,  # Ajusta el espaciado vertical
-        horizontal_spacing=0.1  # Ajusta el espaciado horizontal
+        rows=3,  # Tres filas
+        cols=1,  # Una columna
+        subplot_titles=('2021', '2022', '2023'),
+        vertical_spacing=0.1  # Ajustar el espaciado vertical
     )
 
+    # Añadir cada gráfico a su respectiva fila
     fig.add_trace(fig1.data[0], row=1, col=1)
-    fig.add_trace(fig2.data[0], row=1, col=2)
-    fig.add_trace(fig3.data[0], row=2, col=1)
-
-    # Crear un gráfico combinado de todos los años
-    for anio, color in zip([2021, 2022, 2023], ['skyblue', 'violet', 'springgreen']):
-        fig.add_trace(
-            px.line(df_fechas[df_fechas['anio'] == anio], x='fecha', y='numero_vuelos', color_discrete_sequence=[color]).data[0],
-            row=2, col=2
-        )
+    fig.add_trace(fig2.data[0], row=2, col=1)
+    fig.add_trace(fig3.data[0], row=3, col=1)
 
     # Actualizar ejes y layout
-    for n in range(1, 3):
-        fig.update_xaxes(title_text='Fecha', row=1, col=n)
-        fig.update_xaxes(title_text='Fecha', row=2, col=n)
+    fig.update_xaxes(title_text='Fecha', row=1, col=1)
+    fig.update_xaxes(title_text='Fecha', row=2, col=1)
+    fig.update_xaxes(title_text='Fecha', row=3, col=1)
 
     fig.update_yaxes(title_text='Número de vuelos', row=1, col=1)
     fig.update_yaxes(title_text='Número de vuelos', row=2, col=1)
-    fig.update_layout(title_text='Número de vuelos por días en Diciembre por Año', title_x=0.5, width=1080)
+    fig.update_yaxes(title_text='Número de vuelos', row=3, col=1)
+
+    fig.update_layout(
+        title_text='Número de vuelos por días en Diciembre por Año',
+        title_x=0.5,
+        width=1080,
+        height=1200  # Ajusta la altura para acomodar los tres gráficos
+    )
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
