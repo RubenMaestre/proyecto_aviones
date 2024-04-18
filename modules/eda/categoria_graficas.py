@@ -19,19 +19,10 @@ from modules.graph.q_total_minutos_tipo_retraso import graficar_total_minutos_po
 from modules.graph.r_analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
 from modules.graph.s_top_estados_mas_retrasos import graficar_estados_mas_retrasos
 from modules.graph.t_top_menos_retrasos import graficar_estados_menos_retrasos
-
-#from modules.graph.correlacion_variables import graficar_correlacion_variables
-
-
-
-
-
-
-#from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
-#from modules.graph.histograma_distancias_millas import graficar_histograma_distancias_millas
-#from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
-#from modules.graph.maxima_distancia_millas import graficar_maxima_distancia_millas
-
+from modules.graph.u_diagrama_distancia_millas import graficar_diagrama_distancia_millas
+from modules.graph.v_histograma_distancias_millas import graficar_histograma_distancias_millas
+from modules.graph.w_relacion_retrasos_millas import graficar_relacion_retrasos_millas
+from modules.graph.y_maxima_distancia_millas import graficar_maxima_distancia_millas
 
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
@@ -99,5 +90,14 @@ def get_graficas_por_categoria():
         "Top estados con menos retrasos": graficar_estados_menos_retrasos
     }
     common_categories["Estados"] = estados_category
+
+    if year == "Todos los años":
+        millas_analisis_category = {
+            "Diagrama de distancia en millas": graficar_diagrama_distancia_millas,
+            "Histograma de distancias en millas": graficar_histograma_distancias_millas,
+            "Relación entre retrasos y millas": graficar_relacion_retrasos_millas,
+            "Máxima distancia en millas": graficar_maxima_distancia_millas
+        }
+        common_categories["Millas Análisis"] = millas_analisis_category
 
     return common_categories
