@@ -323,6 +323,61 @@ def display():
     Con este proceso, aseguramos que cada aeropuerto esté representado una sola vez en nuestra base de datos, lo cual es crucial para la etapa siguiente donde se vincularán las coordenadas geográficas. La claridad y precisión en esta fase son fundamentales para evitar errores en el mapeo y en la visualización de datos.
     """)
 
+    st.header('Obtención de Coordenadas Usando la API de Foursquare')
+
+    col_izq, col_der = st.columns([4, 1])
+
+    with col_izq:
+        st.code("""
+        # API de Foursquare
+        CLIENT_ID = "xxxxxxxxxxxxxxxx"
+        CLIENT_SECRET = "xxxxxxxxxxxxxxxxx"
+        API_KEY = "xxxxxxxxxxxxxxxxx"
+
+        headers = {"Accept": "application/json", "Authorization": API_KEY}
+
+        df_aeropuertos_unicos['latitude'] = None
+        df_aeropuertos_unicos['longitude'] = None
+        df_aeropuertos_unicos['direccion'] = None
+
+        for index, row in df_aeropuertos_unicos.iterrows():
+            url_params = {
+                "query": "airport" + row['nombre_aeropuerto'],
+                "near": f"{row['ciudad']}, {row['estado']}, USA",
+                "limit": 1
+            }
+
+            response = requests.get(url="https://api.foursquare.com/v3/places/search", params=url_params, headers=headers)
+
+            if response.status_code == 200:
+                data = response.json()
+                
+                if data['results']:
+                    result = data['results'][0] 
+                    latitude = result['geocodes']['main']['latitude']
+                    longitude = result['geocodes']['main']['longitude']
+                    direccion = result['location']['formatted_address']
+                
+                    df_aeropuertos_unicos.at[index, 'latitude'] = latitude
+                    df_aeropuertos_unicos.at[index, 'longitude'] = longitude
+                    df_aeropuertos_unicos.at[index, 'direccion'] = direccion
+            else:
+                print(f"Error en la fila {index} con el aeropuerto {row['nombre_aeropuerto']}. Respuesta: {response.status_code}")
+
+        print(df_aeropuertos_unicos.head())
+            """, language='python')
+
+    with col_der:
+        st.markdown("""
+        **Explicación del proceso de uso de la API de Foursquare**
+
+        Hemos decidido utilizar la API de Foursquare para obtener las coordenadas geográficas de los aeropuertos debido a la familiaridad con esta plataforma durante nuestra formación en Hack a Boss. Al buscar por palabras clave relacionadas con "aeropuerto" y ciudades específicas, esperábamos ubicar precisamente cada aeropuerto.
+
+        Aunque la API funcionó bien en muchos casos, es importante destacar que la precisión de la ubicación no fue del 100%. En ocasiones, los resultados indicaban posiciones centradas en la ciudad en lugar del aeropuerto exacto, o cerca de este. Aunque consideramos corregir estos datos manualmente, decidimos que no era prioritario dado que la precisión absoluta no era crítica para nuestros propósitos.
+
+        Posteriormente, al utilizar estas coordenadas en mapas de Folium, observamos y corregimos algunos errores evidentes, como aeropuertos incorrectamente ubicados en la Ciudad de México o en Trinidad y Tobago en lugar de Guam. Estos ajustes fueron posibles gracias a nuestra comprensión geográfica y a las capacidades interactivas de Folium, que permitieron una revisión visual directa de las ubicaciones.
+        """)
+
 
 
 
