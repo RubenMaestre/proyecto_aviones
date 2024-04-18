@@ -8,8 +8,18 @@ def graficar_correlacion_lineal(df):
         st.warning("Advertencia: Se detectaron valores nulos en las columnas de datos.")
         df = df.dropna(subset=["retraso_salida", "retraso_llegada"])  # Eliminar valores nulos
     
-    # Usar una muestra de datos para mantener el rendimiento
-    df_sample = df.sample(n=100000, random_state=42) if len(df) > 100000 else df
+    # Tamaño de la muestra y random_state configurados
+    sample_size = 300000
+    random_state = 42
+
+    # Comprobación del tamaño de los datos para decidir si se toma una muestra
+    if len(df) > 10000:
+        df_sample = df.sample(n=sample_size, random_state=random_state)
+        message = f"Esta visualización está basada en una muestra aleatoria de {sample_size} datos del total, " \
+                  f"utilizando un estado aleatorio (random state) de {random_state}."
+        st.info(message)
+    else:
+        df_sample = df
 
     # Crear gráfico de dispersión
     fig = px.scatter(
@@ -24,7 +34,7 @@ def graficar_correlacion_lineal(df):
     # Ajustes de visualización y rendimiento
     fig.update_layout(
         title_x=0.5,
-        width=900,
+        width=800,
         height=600,
         showlegend=False
     )
