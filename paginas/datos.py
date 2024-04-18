@@ -43,9 +43,9 @@ def display():
         El proceso de extracción se inició almacenando la URL de la página web de vuelos desde la que extraeríamos la información. Esta URL corresponde a la página oficial del [Departamento de Estadísticas de Transporte de EE. UU.](https://www.transtats.bts.gov/ONTIME/Departures.aspx).
 
         Desarrollamos una función en Python diseñada para desplegar y extraer las opciones disponibles de los menús desplegables de la página. La función, denominada `obtener_opciones`, realiza una solicitud GET a la URL, analiza el HTML de la página utilizando BeautifulSoup y extrae las opciones del menú especificado. A continuación, se muestra un ejemplo de cómo funciona esta función para obtener las listas de aeropuertos y aerolíneas:
+        """)
 
-        *Ejemplo de código:*
-        _```python
+    st.code("""
         url = "https://www.transtats.bts.gov/ONTIME/Departures.aspx"
 
         def obtener_opciones(url, aeropuertos_aerolineas):
@@ -58,10 +58,12 @@ def display():
 
         listado_aeropuertos = obtener_opciones(url, "cboAirport")
         listado_aerolineas = obtener_opciones(url, "cboAirline")
-        ```_
+        """, language='python')
 
+    st.markdown("""
         Utilizando estas listas, procedimos a iterar sobre cada combinación de aeropuerto y aerolínea, aplicando filtros en la página para obtener datos de vuelos específicos de diciembre de los años 2021, 2022 y 2023. Este método automatizado facilitó la recolección sistemática y eficiente de los datos necesarios para nuestro análisis.
         """)
+
 
 
     col1, col2 = st.columns(2)
