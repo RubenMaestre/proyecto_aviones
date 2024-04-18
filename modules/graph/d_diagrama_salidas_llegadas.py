@@ -3,14 +3,8 @@ import plotly.graph_objs as go
 import pandas as pd
 
 def graficar_horas_vuelos(df):
-    # Verificar que las columnas de tiempo son del tipo correcto y manejar valores nulos
+    # Verificar y manejar valores nulos para las columnas de tiempo
     for col in ['hora_salida_real', 'hora_llegada_real']:
-        if df[col].dtype != '<M8[ns]':  # Chequear si no son datetime
-            try:
-                df[col] = pd.to_datetime(df[col])  # Intentar convertir a datetime
-            except Exception as e:
-                st.error(f"Error al convertir {col} a datetime: {e}")
-                return
         if df[col].isnull().any():
             st.warning(f"Existen valores nulos en {col}. Se omitirán esos registros.")
             df = df.dropna(subset=[col])
@@ -41,8 +35,8 @@ def graficar_horas_vuelos(df):
             tickvals=tickvals,
             ticktext=ticktext
         ),
-        width=900,  # Ancho personalizado
-        height=500   # Altura personalizada
+        width=1080,  # Ancho personalizado
+        height=720   # Altura personalizada
     )
 
     # Mostrar la figura en la aplicación Streamlit
