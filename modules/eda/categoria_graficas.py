@@ -8,6 +8,7 @@ from modules.graph.f_correlaciones_especificas import mostrar_correlaciones_sign
 from modules.graph.g_correlacion_lineal import graficar_correlacion_lineal
 from modules.graph.h_retrasos_mas_15 import graficar_retrasos_mas_15
 from modules.graph.i_retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
+from modules.graph.j_top_aerolineas_con_sin_retrasos import graficar_top_aerolineas_con_sin_retrasos
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 
@@ -60,7 +61,8 @@ def get_graficas_por_categoria():
     # Nueva Categoría de Puntualidad
     puntualidad_category = {
         "Retrasos mayores a 15 minutos": graficar_retrasos_mas_15,
-        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos
+        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos,
+        "Top de aerolíneas sin retrasos": graficar_top_aerolineas_con_sin_retrasos
     }
     common_categories["Puntualidad"] = puntualidad_category
 
