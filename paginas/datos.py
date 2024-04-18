@@ -380,22 +380,94 @@ def display():
         Posteriormente, al utilizar estas coordenadas en mapas de Folium, observamos y corregimos algunos errores evidentes, como aeropuertos incorrectamente ubicados en la Ciudad de México o en Trinidad y Tobago en lugar de Guam. Estos ajustes fueron posibles gracias a nuestra comprensión geográfica y a las capacidades interactivas de Folium, que permitieron una revisión visual directa de las ubicaciones.
         """)
 
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.header('Enriquecimiento de Datos a través de la API de Wikipedia')
 
-
-
-
-
-
-
-    st.header('Uso de los datos')
     st.markdown("""
-    Esta valiosa colección de datos permite realizar una variedad de análisis y visualizaciones, ofreciendo insights sobre tendencias en el tráfico aéreo, la puntualidad de las aerolíneas, los aeropuertos más activos, entre otros aspectos relevantes para investigadores, analistas y entusiastas de la aviación.
+    Después de consolidar los datos geográficos de los aeropuertos y aerolíneas, decidimos complementar nuestro conjunto de datos con información adicional que podría ser relevante para análisis futuros. Para lograr esto, recurrimos a la API de Wikipedia, una fuente rica y accesible de información estructurada.
+
+    ### Información sobre Aeropuertos
+    Para cada aeropuerto listado en nuestro conjunto de datos, utilizamos la API de Wikipedia para obtener descripciones detalladas, datos históricos, y otras informaciones clave como las terminales y servicios disponibles. Estos datos no solo proporcionan contexto adicional sobre cada ubicación, sino que también enriquecen nuestras visualizaciones y análisis, permitiéndonos ofrecer una perspectiva más completa sobre el funcionamiento y la importancia de cada aeropuerto.
+
+    ### Información sobre Aerolíneas
+    De manera similar, extrajimos información detallada sobre cada aerolínea incluida en nuestro estudio. Utilizando la misma API, obtuvimos datos sobre el tamaño de las flotas, la antigüedad de las aeronaves, alianzas con otras aerolíneas, y detalles operativos que son cruciales para entender su posicionamiento en la industria. Además, recopilamos los logos de cada aerolínea, lo que nos permitirá incorporar estos elementos gráficos en presentaciones y dashboards para una identificación rápida y visual.
+
+    Este proceso de enriquecimiento de datos no solo fortalece la base de nuestro análisis, sino que también nos prepara mejor para cualquier evaluación detallada que pueda surgir en el futuro. Con estos datos adicionales, podemos explorar desde tendencias históricas hasta dinámicas actuales del mercado aéreo, proporcionando insights más profundos y fundamentados.
+    A continuación, se muestra el código utilizado para buscar y extraer información detallada de Wikipedia sobre aeropuertos utilizando la API de Wikipedia. Este proceso implica buscar primero el título de una página relacionada con el aeropuerto y luego extraer el contenido completo de esa página.
+    """)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.header('Obtención de información detallada de wikipedia, ejemplo de aeropuertos')
+
+    st.code("""
+    import pandas as pd
+    import requests
+
+    # Cargar el archivo .pkl
+    aeropuertos_df = pd.read_pickle('C:/Users/34670/Desktop/python/Hack a boss/proyecto_3/streamlit/proyecto_aviones/data/aeropuertos_unicos.pkl')
+
+    # Selecciona un aeropuerto de ejemplo y añade la palabra "aeropuerto" al final
+    nombre_aeropuerto_ejemplo = "aeropuerto " + aeropuertos_df.iloc[4]['nombre_aeropuerto']
+
+    def buscar_info_completa_wikipedia(titulo):
+        S = requests.Session()
+        URL = "https://es.wikipedia.org/w/api.php"
+
+        # Primero, busca el título de la página usando la función de búsqueda
+        SEARCH_PARAMS = {
+            "action": "query",
+            "list": "search",
+            "srsearch": titulo,
+            "format": "json",
+            "srlimit": 1
+        }
+
+        search_response = S.get(url=URL, params=SEARCH_PARAMS)
+        search_data = search_response.json()
+
+        search_results = search_data['query']['search']
+        if search_results:
+            page_title = search_results[0]['title']
+
+            # Luego, obtén el contenido completo de la página encontrada
+            CONTENT_PARAMS = {
+                "action": "parse",
+                "page": page_title,
+                "format": "json",
+                "prop": "text"  # Obtener el texto completo de la página
+            }
+
+            content_response = S.get(url=URL, params=CONTENT_PARAMS)
+            content_data = content_response.json()
+
+            if 'parse' in content_data:
+                text = content_data['parse']['text']['*']
+                return text  # Esto devolverá HTML
+        return 'No se encontró información.'
+
+    # Usar el título del artículo obtenido anteriormente para obtener información completa
+    info_completa_aeropuerto = buscar_info_completa_wikipedia(nombre_aeropuerto_ejemplo)
+    print(info_completa_aeropuerto)
+    """, language='python')
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.image('sources/wikipedia.jpg', use_column_width=True)
+
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.header('Uso de los datos')
+
+    st.markdown("""
+    Esta valiosa colección de datos no solo facilita una variedad de análisis y visualizaciones, sino que también abre puertas a comprensiones profundas sobre dinámicas cruciales en la aviación. Con estos datos, podemos explorar tendencias en el tráfico aéreo, evaluar la puntualidad de las aerolíneas, y identificar los aeropuertos más activos. Esta información es esencial no solo para investigadores y analistas sino también para entusiastas de la aviación que buscan entender mejor los patrones y comportamientos del sector. Además, permite a las partes interesadas en la industria tomar decisiones más informadas basadas en tendencias históricas y actuales.
     """)
 
     st.header('Compromiso futuro')
+
     st.markdown("""
-    En el futuro iremos incorporando los datos de todos los meses y años de los que hay registro. Debido al enorme volumen de datos, hemos decidido seleccionar los meses de diciembre los 3 últimos años para arrancar el proyecto.
+    Mirando hacia adelante, nuestro compromiso con la expansión y mejora de este proyecto es firme. Planeamos incorporar datos de todos los meses y años disponibles para obtener una visión más completa y representativa del tráfico aéreo. Aunque el enorme volumen de datos presentó un desafío inicial, la selección de los meses de diciembre de los últimos tres años fue estratégica, permitiéndonos arrancar el proyecto y establecer una base sólida. A medida que nuestro sistema y capacidades de procesamiento evolucionen, expandiremos nuestro conjunto de datos para incluir más periodos y variables, enriqueciendo aún más nuestro análisis y aumentando su precisión y relevancia.
     """)
+
+    st.markdown("""
+    Estas iniciativas no solo refuerzan nuestro proyecto actual, sino que también allanan el camino para futuras investigaciones y desarrollos. Al mantenernos al día con las tecnologías emergentes y las metodologías analíticas, aseguramos que nuestro trabajo continúe siendo de vanguardia y de máximo valor para la comunidad.
+    """)
+
 
 # Llama a la función para mostrar la página
 display()
