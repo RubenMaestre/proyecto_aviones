@@ -1,6 +1,7 @@
 #modules/eda/botones_eda.py
 import streamlit as st
 import pandas as pd
+import time
 
 # Suponiendo que las funciones de carga están en sus respectivos módulos
 from modules.carga_todos_df import cargar_todos_df
