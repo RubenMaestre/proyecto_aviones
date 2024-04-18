@@ -185,7 +185,9 @@ def display():
             <h1>{value}</h1>
         </div>
         """
-
+    st.markdown("""
+    Por ir adelantando alguna cosa... aquí tenéis datos preliminares de lo que hemos descargado.<br>
+    """)
     with col1:
         st.markdown(column_style.format(title='Número total de Estados*', value=numero_total_estados), unsafe_allow_html=True)
 
