@@ -2,47 +2,41 @@
 import streamlit as st
 
 def display():
-    # Asegúrate de que la ruta a la imagen esté correcta y sea accesible
     st.image('sources/cabecera.jpg', use_column_width=True)
 
-    # Título de bienvenida
-    st.title("Bienvenidos al análisis de puntualidad en aeropuertos")
+    # Título
+    st.title("Estudio de puntualidad aérea: Un análisis en profundidad sobre la puntualidad en los aeropuertos estadounidenses")
 
-    # Texto introductorio
     st.markdown("""
         ### Proyecto final para Hack a Boss
 
-        Este proyecto representa el culmen de nuestro aprendizaje en el Bootcamp de Data Science & Inteligencia Artificial de Hack a Boss. Como nuestro tercer y último proyecto, hemos querido abordar un tema de gran relevancia y aplicabilidad práctica: el estudio de la puntualidad y los retrasos en los vuelos de diversos aeropuertos.
-
+        Este proyecto constituye el punto culminante de nuestra formación en el Bootcamp de Data Science e Inteligencia Artificial en Hack a Boss. En nuestro tercer y último proyecto, hemos decidido abordar un desafío crítico y de alta aplicabilidad en el sector aeronáutico: la optimización de la puntualidad y la gestión de retrasos en vuelos operados desde y hacia aeropuertos en Estados Unidos. A través de un exhaustivo análisis exploratorio de datos, este estudio ofrece perspectivas sobre causas, desempeños y factores influyentes en la puntualidad aérea, proporcionando un modelo predictivo en cuanto a la puntualidad de las aerolíneas para mejorar la satisfacción de los pasajeros.
         ---
     """)
 
-    # Creación de dos columnas para los textos
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown("""
             #### El Equipo
 
-            Este estudio ha sido llevado a cabo por José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez. Juntos, hemos fusionado nuestros conocimientos y habilidades para sumergirnos en el fascinante mundo de la aviación, analizando grandes volúmenes de datos para extraer conclusiones significativas y patrones reveladores sobre los retrasos en los vuelos.
-        """)
+        Este estudio ha sido desarrollado por José Núñez, Rubén Maestre, Dafne Moreno y Nahuel Núñez. Como equipo, hemos combinado nuestras competencias técnicas y experiencia analítica para investigar los retrasos en los vuelos, un tema crítico en la gestión aeronáutica. A través del análisis de grandes volúmenes de datos, hemos identificado tendencias significativas y patrones de comportamiento que influyen en la puntualidad aérea. Nuestro trabajo se centra en proporcionar un entendimiento detallado de los factores que afectan los tiempos de vuelo, con el objetivo de contribuir a la mejora de las operaciones en aeropuertos estadounidenses.
+
+        Nuestro enfoque sistemático nos ha permitido desglosar los elementos clave que contribuyen a los retrasos aéreos, evaluando cómo variaciones en la gestión de aerolíneas, la infraestructura aeroportuaria y condiciones externas como festividades y clima impactan en la eficiencia operacional. Las conclusiones derivadas de este análisis proporcionan una base para la formulación de estrategias que pueden ser implementadas por entidades del sector para optimizar la puntualidad de sus operaciones.        """)
     
     with col2:
         st.markdown("""
             #### Metodología y Objetivos
 
-            A través de un minucioso Análisis Exploratorio de Datos (EDA), hemos explorado las diferentes variables que pueden influir en la puntualidad de los vuelos. El objetivo final es desarrollar un modelo de Machine Learning capaz de predecir la probabilidad de retraso de un vuelo, basándose en una serie de factores determinantes.
-        """)
+        En la fase inicial de nuestro estudio, implementamos técnicas de web scraping utilizando Selenium para recolectar datos relevantes de múltiples fuentes en línea. Este enfoque nos permitió compilar un conjunto de datos exhaustivo y actualizado, esencial para nuestro Análisis Exploratorio de Datos (EDA). Durante el EDA, investigamos diversas variables para identificar aquellas que influyen significativamente en la puntualidad de los vuelos. El objetivo principal de esta fase era preparar el terreno para el desarrollo de un modelo predictivo.
+
+        Con los insights obtenidos del EDA, procedimos a entrenar varios modelos de Machine Learning, buscando el que ofreciera la mejor capacidad predictiva respecto a la probabilidad de retraso de los vuelos. Aunque enfrentamos desafíos técnicos debido al gran tamaño de algunos modelos, que dificultaba su integración en plataformas como GitHub y Streamlit debido a restricciones de almacenamiento, seleccionamos un modelo con excelentes métricas de rendimiento. Este modelo está preparado para ser utilizado en entornos operativos, y estamos dispuestos a desarrollar un análisis más detallado y personalizado para aerolíneas que estén interesadas en optimizar sus operaciones.        """)
 
     st.markdown("""
         ---
         #### Herramientas y Tecnologías
 
-        Para llevar a cabo este proyecto, hemos utilizado una amplia gama de herramientas que hemos ido dominando a lo largo del curso, incluyendo Python, Pandas, Numpy, Plotly, Matplotlib y Keras, entre otras. Estas herramientas nos han permitido no solo procesar y analizar los datos de manera eficiente, sino también visualizar los resultados de forma clara e interactiva, facilitando la comprensión de los patrones y tendencias subyacentes.
+        Para la realización de este proyecto, hemos empleado una variedad de herramientas tecnológicas adquiridas durante nuestro curso, incluyendo Python, Pandas, Numpy, Plotly, Matplotlib y Keras. Estas herramientas han sido fundamentales para procesar y analizar grandes volúmenes de datos de manera eficiente, así como para la visualización clara e interactiva de los resultados, facilitando el entendimiento de las tendencias y patrones detectados.
 
-        Gracias a Streamlit, hemos podido ilustrar y compartir nuestros hallazgos de una manera dinámica y accesible, permitiendo a cualquier interesado explorar los diferentes aspectos de nuestro análisis y las conclusiones a las que hemos llegado.
-
-        Este proyecto es un testimonio de nuestro viaje de aprendizaje en Hack a Boss y de nuestro compromiso por aplicar la ciencia de datos para resolver problemas reales. Esperamos que encuentres los insights y visualizaciones proporcionados tanto informativos como estimulantes.
+        Mediante el uso de Streamlit, hemos logrado presentar nuestros resultados de manera dinámica y accesible, proporcionando a los usuarios la posibilidad de interactuar con los datos y explorar en profundidad las diversas facetas de nuestro análisis. Este proyecto refleja no solo el aprendizaje alcanzado en Hack a Boss, sino también nuestra determinación por aplicar la ciencia de datos en la solución de problemas prácticos del mundo real. Confiamos en que los insights y visualizaciones que ofrecemos sean tanto informativos como de utilidad práctica para los interesados.
     """)
-
-    # Aquí puedes añadir más contenido si lo deseas, como imágenes, gráficos interactivos, etc.
