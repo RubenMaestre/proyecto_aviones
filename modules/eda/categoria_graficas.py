@@ -7,7 +7,7 @@ from modules.graph.e_mapa_calor import graficar_mapa_calor_correlacion
 from modules.graph.f_correlaciones_especificas import mostrar_correlaciones_significativas
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
-#from modules.graph.correlacion_lineal import graficar_correlacion_lineal
+from modules.graph.g_correlacion_lineal import graficar_correlacion_lineal
 #from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
 #from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
 #from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
@@ -51,9 +51,10 @@ def get_graficas_por_categoria():
     # Categoría de Correlaciones, solo para 'Todos los años'
     if year == "Todos los años":
         correlaciones_category = {
-            "Mapa de calor de correlación": graficar_mapa_calor_correlacion,
-            "Correlaciones específicas significativas": mostrar_correlaciones_significativas
-        }
-        common_categories["Correlaciones"] = correlaciones_category
+        "Mapa de calor de correlación": graficar_mapa_calor_correlacion,
+        "Correlaciones específicas significativas": mostrar_correlaciones_significativas,
+        "Correlación lineal": graficar_correlacion_lineal  # Añadir esta línea
+    }
+    common_categories["Correlaciones"] = correlaciones_category
 
     return common_categories
