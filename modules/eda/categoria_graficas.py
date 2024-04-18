@@ -5,11 +5,12 @@ from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aeroline
 from modules.graph.d_diagrama_salidas_llegadas import graficar_horas_vuelos
 from modules.graph.e_mapa_calor import graficar_mapa_calor_correlacion
 from modules.graph.f_correlaciones_especificas import mostrar_correlaciones_significativas
+from modules.graph.g_correlacion_lineal import graficar_correlacion_lineal
+from modules.graph.h_retrasos_mas_15 import graficar_retrasos_mas_15
+from modules.graph.i_retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
-from modules.graph.g_correlacion_lineal import graficar_correlacion_lineal
-#from modules.graph.retrasos_mas_15 import graficar_retrasos_mas_15
-#from modules.graph.retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
+
 #from modules.graph.cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
 #from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
 #from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
@@ -42,19 +43,26 @@ def get_graficas_por_categoria():
         "Diagrama de salidas y llegadas": graficar_horas_vuelos
     }
 
-    # Combinar todas las categorías en un solo diccionario
-    common_categories = {
-        "Aerolíneas": aerolineas_category,
-        "Horarios": horarios_category
-    }
-
     # Categoría de Correlaciones, solo para 'Todos los años'
     if year == "Todos los años":
         correlaciones_category = {
-        "Mapa de calor de correlación": graficar_mapa_calor_correlacion,
-        "Correlaciones específicas significativas": mostrar_correlaciones_significativas,
-        "Correlación lineal": graficar_correlacion_lineal  # Añadir esta línea
+            "Mapa de calor de correlación": graficar_mapa_calor_correlacion,
+            "Correlaciones específicas significativas": mostrar_correlaciones_significativas,
+            "Correlación lineal": graficar_correlacion_lineal
+        }
+        common_categories["Correlaciones"] = correlaciones_category
+
+    # Nueva Categoría de Puntualidad
+    puntualidad_category = {
+        "Retrasos mayores a 15 minutos": graficar_retrasos_mas_15,
+        "Retrasos mayores a 15 minutos en días festivos": graficar_retrasos_mas_15_festivos
     }
-    common_categories["Correlaciones"] = correlaciones_category
+
+    # Combinar todas las categorías en un solo diccionario
+    common_categories = {
+        "Aerolíneas": aerolineas_category,
+        "Horarios": horarios_category,
+        "Puntualidad": puntualidad_category
+    }
 
     return common_categories
