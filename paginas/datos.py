@@ -40,8 +40,29 @@ def display():
 
     st.header('Proceso de extracción')
     st.markdown("""
-    El proceso de extracción se inició obteniendo listas de todos los aeropuertos y aerolíneas disponibles en el sitio web objetivo. Posteriormente, se automatizó la navegación en el sitio para seleccionar cada combinación de aeropuerto y aerolínea, aplicando filtros para obtener los datos de los vuelos de diciembre de los años 2021, 2022 y 2023.
-    """)
+        El proceso de extracción se inició almacenando la URL de la página web de vuelos desde la que extraeríamos la información. Esta URL corresponde a la página oficial del [Departamento de Estadísticas de Transporte de EE. UU.](https://www.transtats.bts.gov/ONTIME/Departures.aspx).
+
+        Desarrollamos una función en Python diseñada para desplegar y extraer las opciones disponibles de los menús desplegables de la página. La función, denominada `obtener_opciones`, realiza una solicitud GET a la URL, analiza el HTML de la página utilizando BeautifulSoup y extrae las opciones del menú especificado. A continuación, se muestra un ejemplo de cómo funciona esta función para obtener las listas de aeropuertos y aerolíneas:
+
+        *Ejemplo de código:*
+        _```python
+        url = "https://www.transtats.bts.gov/ONTIME/Departures.aspx"
+
+        def obtener_opciones(url, aeropuertos_aerolineas):
+            response = requests.get(url)
+            soup = BeautifulSoup(response.text, 'html.parser')
+            seleccionar_aeropuerto_aerolinea = soup.find("select", attrs={"name": aeropuertos_aerolineas})
+            opciones = seleccionar_aeropuerto_aerolinea.find_all("option")
+            listado_opciones = [opcion.text for opcion in opciones]
+            return listado_opciones
+
+        listado_aeropuertos = obtener_opciones(url, "cboAirport")
+        listado_aerolineas = obtener_opciones(url, "cboAirline")
+        ```_
+
+        Utilizando estas listas, procedimos a iterar sobre cada combinación de aeropuerto y aerolínea, aplicando filtros en la página para obtener datos de vuelos específicos de diciembre de los años 2021, 2022 y 2023. Este método automatizado facilitó la recolección sistemática y eficiente de los datos necesarios para nuestro análisis.
+        """)
+
 
     col1, col2 = st.columns(2)
 
