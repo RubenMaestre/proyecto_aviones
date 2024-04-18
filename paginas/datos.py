@@ -167,14 +167,12 @@ def display():
     st.markdown("""
     Por ir adelantando alguna cosa... aquí tenéis datos preliminares de lo que hemos descargado.
     """)
-    st.markdown("<br>", unsafe_allow_html=True)
     # Llamar a la función para obtener los datos calculados
     numero_total_estados, numero_total_ciudades, numero_total_aeropuertos, numero_total_aerolineas = cargar_y_contar_datos()
 
-    # Crear 4 columnas para mostrar los datos
     col1, col2, col3, col4 = st.columns(4)
 
-    # Definir el estilo CSS para el borde y el contenido de la columna
+    # Definimos el estilo CSS para el borde y el contenido de la columna
     column_style = """
         <style>
         .data-column {{
@@ -183,28 +181,30 @@ def display():
             padding: 20px;  /* Espaciado interno */
             text-align: center;  /* Alineación del texto */
         }}
+        .note {{
+            font-size: small;  /* Tamaño de la fuente más pequeño para la nota */
+            color: #555555;  /* Color gris para la nota */
+        }}
         </style>
         <div class='data-column'>
             <h4>{title}</h4>
             <h1>{value}</h1>
+            {note}
         </div>
         """
-    
+
     with col1:
-        st.markdown(column_style.format(title='Número total de Estados*', value=numero_total_estados), unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de Estados*', value=numero_total_estados, note="<p class='note'>*Incluye estados de EE. UU. y territorios no incorporados.</p>"), unsafe_allow_html=True)
 
     with col2:
-        st.markdown(column_style.format(title='Número total de ciudades', value=numero_total_ciudades), unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de ciudades', value=numero_total_ciudades, note=""), unsafe_allow_html=True)
 
     with col3:
-        st.markdown(column_style.format(title='Número total de aeropuertos', value=numero_total_aeropuertos), unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de aeropuertos', value=numero_total_aeropuertos, note=""), unsafe_allow_html=True)
 
     with col4:
-        st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas), unsafe_allow_html=True)
+        st.markdown(column_style.format(title='Número total de aerolíneas', value=numero_total_aerolineas, note=""), unsafe_allow_html=True)
 
-    st.markdown("""
-    "*" Aquí se incluyen estados de los Estados Unidos y también territorios no incorporados.
-    """)
 
     st.header('Uso de los datos')
     st.markdown("""
