@@ -13,14 +13,18 @@ from modules.graph.k_top_aeropuertos_sin_retrasos import graficar_top_aeropuerto
 from modules.graph.l_numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
 from modules.graph.m_numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
 from modules.graph.n_cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
+from modules.graph.o_cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
+from modules.graph.p_dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
+from modules.graph.q_total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
+from modules.graph.r_analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
 
 #from modules.graph.correlacion_variables import graficar_correlacion_variables
 
 
-#from modules.graph.cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
-#from modules.graph.dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
-#from modules.graph.total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
-#from modules.graph.analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
+
+
+
+
 #from modules.graph.diagrama_distancia_millas import graficar_diagrama_distancia_millas
 #from modules.graph.histograma_distancias_millas import graficar_histograma_distancias_millas
 #from modules.graph.relacion_retrasos_millas import graficar_relacion_retrasos_millas
@@ -79,5 +83,13 @@ def get_graficas_por_categoria():
             "Número de vuelos acumulados por días en diciembre": graficar_numero_vuelos_acumulados_diciembre
         }
         common_categories["Vuelos"] = vuelos_category
+
+    retrasos_category = {
+        "Cantidad de retrasos por hora": graficar_cantidad_retrasos_por_hora,
+        "Días de la semana con y sin retrasos": graficar_dias_semana_con_sin_retrasos,
+        "Total de minutos por tipo de retraso": graficar_total_minutos_por_tipo_retraso,
+        "Análisis de retrasos aéreos": graficar_analisis_retrasos_aereos
+    }
+    common_categories["Retrasos"] = retrasos_category
 
     return common_categories
