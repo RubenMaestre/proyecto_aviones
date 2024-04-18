@@ -23,6 +23,8 @@ from modules.graph.u_diagrama_distancia_millas import graficar_diagrama_distanci
 from modules.graph.v_histograma_distancias_millas import graficar_histograma_distancias_millas
 from modules.graph.w_relacion_retrasos_millas import graficar_relacion_retrasos_millas
 from modules.graph.y_maxima_distancia_millas import graficar_maxima_distancia_millas
+from modules.graph.z_diagrama_caja_retraso_llegada import graficar_diagrama_caja_retrasos
+from modules.graph.x_numero_retrasos_intervalo import graficar_retrasos_por_intervalo
 
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Usar el valor guardado
@@ -81,7 +83,9 @@ def get_graficas_por_categoria():
         "Cantidad de retrasos por hora": graficar_cantidad_retrasos_por_hora,
         "Días de la semana con y sin retrasos": graficar_dias_semana_con_sin_retrasos,
         "Total de minutos por tipo de retraso": graficar_total_minutos_por_tipo_retraso,
-        "Análisis de retrasos aéreos": graficar_analisis_retrasos_aereos
+        "Análisis de retrasos aéreos": graficar_analisis_retrasos_aereos,
+        "Diagrama de caja del retraso en la llegada": graficar_diagrama_caja_retrasos,
+        "Número de Retrasos por Intervalo (Hasta 200 Minutos)": graficar_retrasos_por_intervalo
     }
     common_categories["Retrasos"] = retrasos_category
 
