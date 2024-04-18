@@ -22,19 +22,23 @@ from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aeroline
 def get_graficas_por_categoria():
     year = st.session_state.get('selected_year', 'Todos los años')  # Obtén el año seleccionado
 
-    # Define las categorías base
-    common_categories = {"Aerolíneas": {}}
+    # Inicializar las categorías base para las aerolíneas
+    aerolineas_category = {}
 
     # Añadir gráficas específicas para "Todos los años"
     if year == "Todos los años":
-        common_categories["Aerolíneas"] = {
+        aerolineas_category = {
             "Vuelos totales por año": graficar_vuelos_totales_por_year,
             "Evolución del número de vuelos por compañía aérea": graficar_evolucion_vuelos_por_aerolinea,
             "Vuelos por aerolínea": graficar_vuelos_por_aerolinea
         }
     else:
-        # Solo mostrar la evolución de vuelos por aerolínea para años específicos
-        common_categories["Aerolíneas"]["Evolución del número de vuelos por compañía aérea"] = graficar_evolucion_vuelos_por_aerolinea
+        # Solo mostrar la gráfica de evolución de vuelos por aerolínea para años específicos
+        aerolineas_category = {
+            "Evolución del número de vuelos por compañía aérea": graficar_evolucion_vuelos_por_aerolinea
+        }
+
+    # Construir el diccionario final con las categorías actualizadas
+    common_categories = {"Aerolíneas": aerolineas_category}
 
     return common_categories
-
