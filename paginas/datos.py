@@ -110,7 +110,7 @@ def display():
                 driver.find_element(By.ID, "chkYears_36").click()
         """, language='python')
 
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
     st.markdown("<h3 style='text-align: center;'>Proceso de extracción automatizado</h3><br>", unsafe_allow_html=True)
     colizq, colder = st.columns(2)
