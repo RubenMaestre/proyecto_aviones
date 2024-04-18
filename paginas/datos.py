@@ -210,7 +210,7 @@ def display():
     colizq, colder = st.columns([1, 2])
 
     with colizq:
-        st.subheaderheader('Extracción de Días Festivos en Estados Unidos')
+        st.subheader('Extracción de días festivos en Estados Unidos')
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("""
         Lo siguiente que hemos trabajado es recopilar información sobre los días festivos en Estados Unidos desde 2019 hasta 2023. El proceso de extracción se realiza mediante web scraping en el sitio web: [Cuando en el Mundo](https://www.cuandoenelmundo.com/calendario/estados-unidos/2023).
