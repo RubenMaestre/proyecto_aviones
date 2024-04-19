@@ -15,7 +15,8 @@ def graficar_vuelos_totales_por_year(df):
                  y='cantidad_vuelos_anuales',
                  opacity=0.8,
                  title="Cantidad de Vuelos Anuales",
-                 color='anio')
+                 color='anio',  # Se espera que 'anio' se use para agrupar y colorear las barras.
+                 labels={'anio': 'Años'})  # Actualizar la leyenda de la barra de colores.
 
     # Actualizar la configuración del layout del gráfico
     fig.update_layout(
@@ -25,10 +26,6 @@ def graficar_vuelos_totales_por_year(df):
         xaxis={'categoryorder': 'total descending', 'type': 'category'},
         width=900  # Establecer el ancho del gráfico
     )
-
-    # Cambiar la etiqueta de la leyenda de "anio" a "Años"
-    fig.update_traces(marker=dict(color='anio'), overwrite=True)  # Esto podría no ser necesario si ya se muestra bien
-    fig.for_each_trace(lambda t: t.update(name=t.name.replace('anio', 'Años')))
 
     # Mostrar el gráfico en Streamlit
     st.plotly_chart(fig)
