@@ -3,8 +3,6 @@ import streamlit as st
 from modules.carga_todos_df import cargar_todos_df
 from modules.map.datos_aviones_usa import datos_aviones_usa
 from modules.map.datos_aviones_usa_2 import datos_aviones_usa_2
-#from modules.map.datos_aviones_usa_3 import datos_aviones_usa_3
-#from modules.map.datos_aviones_usa_4 import datos_aviones_usa_4
 
 
 
