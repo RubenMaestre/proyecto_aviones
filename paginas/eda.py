@@ -3,7 +3,7 @@ import streamlit as st
 from modules.eda.botones_eda import seleccionar_datos
 from modules.eda.botones_graficas import seleccionar_grafica
 from modules.eda.datos_df_cargados import mostrar_estadisticas_df
-from modules.eda.descripciones_graficas import obtener_descripcion 
+from modules.eda.descripciones_graficas import obtener_descripcion, cargar_descripciones
 
 def display():
     st.markdown("<h2 style='text-align: center;'>Página de análisis exploratorio de datos (EDA)</h2>", unsafe_allow_html=True)
@@ -13,24 +13,8 @@ def display():
         st.image('sources/mapa_aviones_usa.png')
 
     st.markdown("---")
-    # Inserta aquí el código CSS para la línea de separación
-    
-    st.markdown(
-        """
-        <style>
-        .reportview-container .main .block-container{{
-            max-width: 95%;
-        }}
-        .divider {{
-            height: 100%;
-            width: 2px;
-            border-left: 2px solid #ffffff;
-            margin-right: 5px;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # Cargar descripciones aquí
+    descripciones = cargar_descripciones()
 
     col1, divider, col2 = st.columns([1, 0.3, 4])
     with col1:
@@ -49,7 +33,10 @@ def display():
     with col2:
         if df_seleccionado is not None and grafica_funcion:
             grafica_funcion(df_seleccionado)
-            descripcion = obtener_descripcion(st.session_state.get('selected_year', 'Default Year'), grafica_nombre)
+            # Asegúrate de que 'selected_year' se maneja correctamente
+            selected_year = st.session_state.get('selected_year', 'Default Year')
+            # Llamada a obtener_descripcion con la corrección del manejo de descripciones
+            descripcion = obtener_descripcion(selected_year, grafica_nombre, descripciones)
             st.write("Descripción de la gráfica:")
             st.markdown(descripcion)
 
