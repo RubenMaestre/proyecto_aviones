@@ -36,6 +36,9 @@ def display():
                 st.session_state['content_to_show'] = 'grafica'
                 st.session_state['mostrar_conclusiones'] = False
         
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("---")
+        st.markdown("<br>", unsafe_allow_html=True)
         if st.button("Ver conclusiones del EDA"):
             st.session_state['mostrar_conclusiones'] = True
             st.session_state['content_to_show'] = 'conclusiones'
