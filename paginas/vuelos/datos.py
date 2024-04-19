@@ -14,12 +14,13 @@ def display():
     # Llama a la función para cargar y unir todos los DataFrames
     df_todos = cargar_todos_df()
 
+    datos_aviones_usa()
     # Crear columnas para centrar el contenido
     col_izq, col_1, col_der = st.columns([1, 10, 1])
 
     with col_1:
     
-        datos_aviones_usa()
+        
 
         st.markdown("---")
 
