@@ -1,0 +1,61 @@
+# modules/eda/graficas.py
+
+# Importar funciones de visualización
+from modules.graph.a_vuelos_totales_por_year import graficar_vuelos_totales_por_year
+from modules.graph.b_evolucion_vuelos_aerolineas import graficar_evolucion_vuelos_por_aerolinea
+from modules.graph.c_vuelos_total_aerolineas import graficar_vuelos_por_aerolinea
+from modules.graph.d_diagrama_salidas_llegadas import graficar_horas_vuelos
+from modules.graph.e_mapa_calor import graficar_mapa_calor_correlacion
+from modules.graph.f_correlaciones_especificas import mostrar_correlaciones_significativas
+from modules.graph.g_correlacion_lineal import graficar_correlacion_lineal
+from modules.graph.h_retrasos_mas_15 import graficar_retrasos_mas_15
+from modules.graph.i_retrasos_mas_15_festivos import graficar_retrasos_mas_15_festivos
+from modules.graph.j_top_aerolineas_con_sin_retrasos import graficar_top_aerolineas_con_sin_retrasos
+from modules.graph.k_top_aeropuertos_sin_retrasos import graficar_top_aeropuertos_con_sin_retrasos
+from modules.graph.l_numero_vuelos_dias_diciembre import graficar_numero_vuelos_dias_diciembre
+from modules.graph.m_numero_vuelos_acumulados_diciembre import graficar_numero_vuelos_acumulados_diciembre
+from modules.graph.n_cantidad_llegadas_salidas_hora import graficar_cantidad_llegadas_salidas_por_hora
+from modules.graph.o_cantidad_retrasos_hora import graficar_cantidad_retrasos_por_hora
+from modules.graph.p_dias_semana_con_sin_retrasos import graficar_dias_semana_con_sin_retrasos
+from modules.graph.q_total_minutos_tipo_retraso import graficar_total_minutos_por_tipo_retraso
+from modules.graph.r_analisis_retrasos_aereos import graficar_analisis_retrasos_aereos
+from modules.graph.s_top_estados_mas_retrasos import graficar_estados_mas_retrasos
+from modules.graph.t_top_menos_retrasos import graficar_estados_menos_retrasos
+from modules.graph.u_diagrama_distancia_millas import graficar_diagrama_distancia_millas
+from modules.graph.v_histograma_distancias_millas import graficar_histograma_distancias_millas
+from modules.graph.w_relacion_retrasos_millas import graficar_relacion_retrasos_millas
+from modules.graph.z_diagrama_caja_retraso_llegada import graficar_diagrama_caja_retrasos
+from modules.graph.x_numero_retrasos_intervalo import graficar_retrasos_por_intervalo
+from modules.graph.y_costo_aerolinea import graficar_vuelos_por_costo_aerolinea
+from modules.graph.yy_aerolinea_costo_retrasos import graficar_vuelos_retrasos_por_costo_aerolinea
+
+# Diccionario
+graficas_por_nombre = {
+    "graficar_vuelos_totales_por_year": graficar_vuelos_totales_por_year,
+    "graficar_evolucion_vuelos_por_aerolinea": graficar_evolucion_vuelos_por_aerolinea,
+    "graficar_vuelos_por_aerolinea": graficar_vuelos_por_aerolinea,
+    "graficar_horas_vuelos": graficar_horas_vuelos,
+    "graficar_mapa_calor_correlacion": graficar_mapa_calor_correlacion,
+    "mostrar_correlaciones_significativas": mostrar_correlaciones_significativas,
+    "graficar_correlacion_lineal": graficar_correlacion_lineal,
+    "graficar_retrasos_mas_15": graficar_retrasos_mas_15,
+    "graficar_retrasos_mas_15_festivos": graficar_retrasos_mas_15_festivos,
+    "graficar_top_aerolineas_con_sin_retrasos": graficar_top_aerolineas_con_sin_retrasos,
+    "graficar_top_aeropuertos_con_sin_retrasos": graficar_top_aeropuertos_con_sin_retrasos,
+    "graficar_numero_vuelos_dias_diciembre": graficar_numero_vuelos_dias_diciembre,
+    "graficar_numero_vuelos_acumulados_diciembre": graficar_numero_vuelos_acumulados_diciembre,
+    "graficar_cantidad_llegadas_salidas_por_hora": graficar_cantidad_llegadas_salidas_por_hora,
+    "graficar_cantidad_retrasos_por_hora": graficar_cantidad_retrasos_por_hora,
+    "graficar_dias_semana_con_sin_retrasos": graficar_dias_semana_con_sin_retrasos,
+    "graficar_total_minutos_por_tipo_retraso": graficar_total_minutos_por_tipo_retraso,
+    "graficar_analisis_retrasos_aereos": graficar_analisis_retrasos_aereos,
+    "graficar_estados_mas_retrasos": graficar_estados_mas_retrasos,
+    "graficar_estados_menos_retrasos": graficar_estados_menos_retrasos,
+    "graficar_diagrama_distancia_millas": graficar_diagrama_distancia_millas,
+    "graficar_histograma_distancias_millas": graficar_histograma_distancias_millas,
+    "graficar_relacion_retrasos_millas": graficar_relacion_retrasos_millas,
+    "graficar_diagrama_caja_retrasos": graficar_diagrama_caja_retrasos,
+    "graficar_retrasos_por_intervalo": graficar_retrasos_por_intervalo,
+    "graficar_vuelos_por_costo_aerolinea": graficar_vuelos_por_costo_aerolinea,
+    "graficar_vuelos_retrasos_por_costo_aerolinea": graficar_vuelos_retrasos_por_costo_aerolinea
+}
