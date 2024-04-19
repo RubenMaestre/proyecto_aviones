@@ -87,11 +87,34 @@ def display():
 
     # FAQ Nueva 6
     with st.expander("¿Qué lecciones hemos aprendido con el proyecto?"):
-        st.write("Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.")
+        st.write("""
+            Una de las lecciones más impactantes que hemos aprendido durante este proyecto es el manejo eficiente de grandes volúmenes de datos en Streamlit. Experimentamos de primera mano que cargar DataFrames muy grandes puede comprometer significativamente el rendimiento de la aplicación. En particular, enfrentamos desafíos al trabajar con archivos Pickle y CSV que llegaban a pesar entre 200 y 300 megabytes, lo cual nos obligó a familiarizarnos con Git LFS para manejar estos archivos grandes en GitHub.
+
+            Configurar Git LFS inicialmente fue un desafío; en un caso específico, un archivo Pickle de 300 megas nos costó bastante trabajo subir y configurar correctamente. Aunque logramos subirlo a GitHub, luego encontramos problemas para que Streamlit lo leyera adecuadamente. Después de mucho investigar y probar, logramos hacerlo funcionar. Además, descubrimos que la extensión .parquet era mucho más eficiente y rápida para manejar DataFrames, reduciendo considerablemente el tamaño de los archivos.
+
+            Otro aprendizaje crucial fue durante nuestro trabajo con modelos de Deep Learning, donde uno de los modelos alcanzó un tamaño de 3.5GB, lo cual resultó ser inviable para su implementación en Streamlit debido a las limitaciones de tamaño y rendimiento. A pesar de que el modelo ofrecía buenas métricas, tuvimos que descartarlo y optar por un modelo más pequeño de poco más de 400 megabytes. Incluso entonces, enfrentamos problemas de bloqueos en Streamlit, lo que nos obligó a reiniciar la aplicación repetidamente hasta que decidimos implementar un modelo alternativo más manejable.
+
+            Finalmente, una anécdota que refleja los desafíos de gestionar recursos en plataformas de desarrollo es que, tras exceder significativamente los límites de Git LFS, recibimos una notificación de GitHub indicando que nuestro acceso a Git LFS había sido 'disabled' después de haber consumido 7.18GB de Bandwidth de un límite de 1GB. Esta experiencia reafirmó la importancia de planificar y optimizar el uso de recursos en proyectos de desarrollo de software.
+        """)
+
+
 
     # FAQ Nueva 7
     with st.expander("Conclusión final del proyecto"):
-        st.write("Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.")
+        st.write("""
+            Con la finalización de este proyecto, hemos alcanzado un hito significativo en nuestra formación y desarrollo profesional. Este proyecto no solo cumplió con los objetivos propuestos, sino que también superó nuestras expectativas en términos de profundidad y alcance del análisis de puntualidad aérea.
+
+            El uso integrado de tecnologías como Python, Streamlit, Pandas, y Plotly, entre otros, no solo facilitó la manipulación de grandes volúmenes de datos, sino que también mejoró nuestra capacidad de presentar datos complejos de manera intuitiva y accesible. Este proyecto ha sido una prueba tangible de cómo la ciencia de datos puede aplicarse para resolver problemas reales y ofrecer soluciones prácticas en la industria aeronáutica.
+
+            La colaboración y el trabajo en equipo fueron fundamentales para superar los numerosos desafíos técnicos y logísticos que surgieron, enseñándonos el valor de la comunicación efectiva y el apoyo mutuo en un entorno de alta presión y expectativas.
+
+            A lo largo de este proyecto, aprendimos no solo a manejar herramientas y datos, sino también a pensar críticamente sobre las necesidades del usuario final y a diseñar soluciones que respondan a esas necesidades de manera ética y eficiente.
+
+            Mirando hacia el futuro, vemos un gran potencial para expandir este proyecto. Podríamos incorporar más variables, explorar nuevas técnicas de modelado predictivo o ampliar nuestro análisis a otras regiones geográficas. Cada uno de estos pasos representa una oportunidad para profundizar aún más en nuestro conocimiento y refinar nuestras habilidades.
+
+            En conclusión, este proyecto no solo ha sido una culminación de nuestro aprendizaje, sino también un trampolín hacia futuros desafíos y exploraciones en el campo de la ciencia de datos. Estamos agradecidos por esta oportunidad y emocionados por lo que depara el futuro.
+        """)
+
 
     # FAQ 3 (Retrasada)
     with st.expander("¿Cómo puedo contribuir al proyecto?"):
