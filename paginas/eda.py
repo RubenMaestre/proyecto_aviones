@@ -13,8 +13,10 @@ def display():
         st.markdown("<h4 style='text-align: center;'>En esta sección de nuestro proyecto, te ofrecemos la oportunidad de explorar un análisis detallado de los datos a través de diversos gráficos y visualizaciones. Este espacio está diseñado para que puedas entender mejor y analizar de forma intuitiva la información que hemos recopilado.</h4>", unsafe_allow_html=True)
         st.image('sources/mapa_aviones_usa.png')
 
+    if 'mostrar_conclusiones' not in st.session_state:
+        st.session_state['mostrar_conclusiones'] = False  # Estado inicial para mostrar conclusiones
+
     st.markdown("---")
-    # Cargar descripciones aquí
     descripciones = cargar_descripciones()
 
     col1, divider, col2 = st.columns([1, 0.3, 4])
@@ -29,23 +31,22 @@ def display():
             grafica_funcion, grafica_nombre = seleccionar_grafica()
         
         # Botón para mostrar las conclusiones
-        ver_conclusiones = st.button("Ver conclusiones del EDA")
+        if st.button("Ver conclusiones del EDA"):
+            st.session_state['mostrar_conclusiones'] = True
+
+        # Opción para visualizar gráficas (cambia el estado al seleccionar una gráfica)
+        if grafica_funcion:
+            st.session_state['mostrar_conclusiones'] = False
 
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
     with col2:
-        if df_seleccionado is not None and grafica_funcion:
+        if st.session_state['mostrar_conclusiones']:
+            mostrar_conclusiones()
+        elif df_seleccionado is not None and grafica_funcion:
             grafica_funcion(df_seleccionado)
-            # Asegúrate de que 'selected_year' se maneja correctamente
             selected_year = st.session_state.get('selected_year', 'Default Year')
-            # Llamada a obtener_descripcion con la corrección del manejo de descripciones
             descripcion = obtener_descripcion(selected_year, grafica_nombre, descripciones)
             st.write("Descripción de la gráfica:")
             st.markdown(descripcion)
-
-        # Mostrar conclusiones si se ha presionado el botón
-        if ver_conclusiones:
-            mostrar_conclusiones()
-
-display()
