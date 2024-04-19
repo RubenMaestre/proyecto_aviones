@@ -12,8 +12,8 @@ def graficar_numero_vuelos_dias_diciembre(df):
 
     # Combinar los gráficos en un solo gráfico con subplots
     fig = make_subplots(
-        rows=3,  # Tres filas
-        cols=1,  # Una columna
+        rows=1,  # Tres filas
+        cols=3,  # Una columna
         subplot_titles=('2021', '2022', '2023'),
         vertical_spacing=0.1  # Ajustar el espaciado vertical
     )
