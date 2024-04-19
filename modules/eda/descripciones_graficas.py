@@ -2,21 +2,20 @@
 import pandas as pd
 
 def cargar_descripciones():
-    """Carga las descripciones de las gráficas desde un archivo Excel."""
     try:
-        df_descripciones = pd.read_excel('data/graficas/comentarios.xlsx')
+        df_descripciones = pd.read_parquet('data/graficas/descripciones.parquet')
         return df_descripciones
     except Exception as e:
         print(f"Error al cargar las descripciones: {e}")
         return pd.DataFrame()  # Retorna un DataFrame vacío si hay error
 
-def obtener_descripcion(año, nombre_grafica, df_descripciones):
+def obtener_descripcion(year, nombre_grafica, df_descripciones):
     """Busca y retorna la descripción para una gráfica específica dada por año y nombre."""
     try:
-        print(f"Buscando descripción para el año: {año}, gráfica: {nombre_grafica}")  # Diagnóstico
+        print(f"Buscando descripción para el año: {year}, gráfica: {nombre_grafica}")  # Diagnóstico
         descripcion = df_descripciones[
-            (df_descripciones['Año'] == año) & (df_descripciones['Nombre'] == nombre_grafica)
-        ]['Descripción'].values
+            (df_descripciones['year'].astype(str) == str(year)) & (df_descripciones['nombre'] == nombre_grafica)
+        ]['descripcion'].values
 
         if descripcion.size > 0:
             print("Descripción encontrada:", descripcion[0])  # Diagnóstico
