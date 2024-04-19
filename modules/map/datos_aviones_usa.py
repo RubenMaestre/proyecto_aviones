@@ -2,36 +2,54 @@ import pandas as pd
 import streamlit as st
 from modules.carga_todos_df import cargar_todos_df
 
+def render_data(title, value, note=""):
+    column_style = """
+    <style>
+    .data-column {
+        border: 2px solid #CCCCCC;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .note {
+        font-size: small;
+        color: #555555;
+    }
+    </style>
+    <div class='data-column'>
+        <h4>{title}</h4>
+        <h1>{value}</h1>
+        {note}
+    </div>
+    """.format(title=title, value=value, note=note)
+    st.markdown(column_style, unsafe_allow_html=True)
+
 def datos_aviones_usa():
-    # Cargar todos los DataFrames
     df_todos = cargar_todos_df()
     df_aeropuertos_unicos = pd.read_pickle('data/aeropuertos_unicos.pkl')
+    estado_a_nombre_estado = df_aeropuertos_unicos.set_index('estado')['nombre_estado'].to_dict()
 
-    # Código para calcular los datos aquí...
+    # Optimización: Calcular conteos una sola vez y reutilizarlos
+    conteo_origen = df_todos['aeropuerto_origen'].value_counts()
+    conteo_destino = df_todos['aeropuerto_destino'].value_counts()
+    trafico_aeropuerto = conteo_origen.add(conteo_destino, fill_value=0)
 
-    # Agrupar aeropuertos y estados según las especificaciones
-    trafico_aeropuerto = df_todos['aeropuerto_origen'].value_counts() + df_todos['aeropuerto_destino'].value_counts()
+    conteo_estado_origen = df_todos['estado_origen'].value_counts()
+    conteo_estado_destino = df_todos['estado_destino'].value_counts()
+    trafico_estado = conteo_estado_origen.add(conteo_estado_destino, fill_value=0)
+
+    # Obtención de datos específicos
     aeropuerto_mas_trafico = trafico_aeropuerto.idxmax()
     aeropuerto_menos_trafico = trafico_aeropuerto.idxmin()
+    estado_mas_trafico = trafico_estado.idxmax()
+    estado_menos_trafico = trafico_estado.idxmin()
 
-    trafico_estado_origen = df_todos['estado_origen'].value_counts() + df_todos['estado_destino'].value_counts()
-    estado_mas_trafico = trafico_estado_origen.idxmax()
-    estado_menos_trafico = trafico_estado_origen.idxmin()
-
-    # Suponiendo que las ciudades están de manera similar en tus datos
-    trafico_ciudad_origen = df_todos['ciudad_origen'].value_counts() + df_todos['ciudad_destino'].value_counts()
-    ciudad_mas_trafico = trafico_ciudad_origen.idxmax()
-    ciudad_menos_trafico = trafico_ciudad_origen.idxmin()
-
-    # Renderizar los datos
+    # Renderizar los datos en columnas
     col1, col2 = st.columns(2)
     with col1:
         render_data('Aeropuerto con más tráfico aéreo', aeropuerto_mas_trafico)
         render_data('Estado con más tráfico aéreo', estado_mas_trafico)
-        render_data('Ciudad con más tráfico aéreo', ciudad_mas_trafico)
     with col2:
         render_data('Aeropuerto con menos tráfico aéreo', aeropuerto_menos_trafico)
         render_data('Estado con menos tráfico aéreo', estado_menos_trafico)
-        render_data('Ciudad con menos tráfico aéreo', ciudad_menos_trafico)
-
-    
