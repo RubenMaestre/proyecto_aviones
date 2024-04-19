@@ -28,8 +28,8 @@ def display():
             st.write("Elige qué tipo de gráfica ver, agrupadas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()
         
-        if st.button("Ver conclusiones del EDA"):  # Botón para mostrar las conclusiones
-            mostrar_conclusiones()
+        # Botón para mostrar las conclusiones
+        ver_conclusiones = st.button("Ver conclusiones del EDA")
 
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
@@ -43,5 +43,9 @@ def display():
             descripcion = obtener_descripcion(selected_year, grafica_nombre, descripciones)
             st.write("Descripción de la gráfica:")
             st.markdown(descripcion)
+
+        # Mostrar conclusiones si se ha presionado el botón
+        if ver_conclusiones:
+            mostrar_conclusiones()
 
 display()
