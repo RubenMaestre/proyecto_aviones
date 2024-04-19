@@ -31,11 +31,20 @@ def display():
 
     # FAQ Nueva 1
     with st.expander("¿Qué desafíos nos hemos encontrado?"):
-        st.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+        st.write("""
+            El primer gran desafío que enfrentamos en cualquier proyecto de datos es asegurar la disponibilidad de datos de calidad. Una vez que decidimos enfocarnos en la puntualidad de los vuelos en Estados Unidos, comenzamos a aplicar todo lo aprendido durante nuestra formación en Hack a Boss. Trabajar en equipo fue crucial; nos apoyamos mutuamente en los momentos complicados para superar los desafíos que surgían. 
+            Gracias a la colaboración y determinación del equipo, logramos superar los obstáculos y alcanzar con éxito los objetivos marcados por Hack a Boss para nuestro proyecto.
+        """)
+
 
     # FAQ Nueva 2
     with st.expander("¿Cuáles han sido los problemas más importantes que nos hemos encontrado?"):
-        st.write("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        st.write("""
+            A lo largo del proyecto, nos enfrentamos a varios problemas que requirieron soluciones creativas y un pensamiento crítico agudo. Manejar un gran volumen de datos fue una tarea compleja, especialmente porque adaptamos muchos de los datos al contexto español, como las unidades de tiempo, distancias y nombres, lo que añadió una capa adicional de dificultad.
+            El proceso de limpieza de datos fue intenso pero fructífero, permitiéndonos realizar un Análisis Exploratorio de Datos (EDA) con una amplia variedad de gráficos que ahora presentamos en este proyecto de Streamlit.
+            Sin embargo, el mayor reto fue la selección del modelo de machine learning adecuado. Experimentamos con múltiples algoritmos, incluyendo Random Forest, Naive Bayes, GaussianNB, KNN, Gradient Boosting, NearestCentroid, DecisionTreeClassifier y AdaBoostClassifier, así como pruebas con redes neuronales de Deep Learning. Finalmente, optamos por el DecisionTreeClassifier, que no solo ofreció buenas métricas sino que también fue factible integrarlo en Streamlit dadas las restricciones de tamaño de archivo, con muchos modelos superando los 3GB que no podíamos cargar en la plataforma. Este fue, sin duda, uno de los desafíos más significativos que tuvimos que afrontar.
+        """)
+
 
     # FAQ Nueva 3
     with st.expander("¿Cómo ha sido el desarrollo con Streamlit?"):
