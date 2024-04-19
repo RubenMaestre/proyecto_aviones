@@ -13,8 +13,12 @@ def obtener_descripcion(year, nombre_grafica, df_descripciones):
     """Busca y retorna la descripción para una gráfica específica dada por año y nombre."""
     try:
         print(f"Buscando descripción para el año: {year}, gráfica: {nombre_grafica}")  # Diagnóstico
+        # Asegurarse de que los tipos de datos son correctos para la comparación
+        year = str(year)  # Convertir el año a string si es necesario
+        df_descripciones['year'] = df_descripciones['year'].astype(str)
+
         descripcion = df_descripciones[
-            (df_descripciones['year'].astype(str) == str(year)) & (df_descripciones['nombre'] == nombre_grafica)
+            (df_descripciones['year'] == year) & (df_descripciones['nombre'] == nombre_grafica)
         ]['descripcion'].values
 
         if descripcion.size > 0:
@@ -26,3 +30,4 @@ def obtener_descripcion(year, nombre_grafica, df_descripciones):
     except Exception as e:
         print(f"Error al obtener la descripción: {e}")
         return "Descripción no disponible."
+
