@@ -10,14 +10,23 @@ def display():
         st.write("""
             Este proyecto constituye el trabajo final del Bootcamp de Data Science e Inteligencia Artificial en Hack a Boss. El objetivo principal es ofrecer una plataforma interactiva donde los usuarios puedan analizar y visualizar datos de vuelos, ayudando a entender mejor las tendencias y comportamientos en el tráfico aéreo de los Estados Unidos. Buscamos abordar un desafío crítico en la gestión aeronáutica: la optimización de la puntualidad y la gestión de retrasos en vuelos.
 
-            A través de un análisis exploratorio de datos, proporcionamos perspectivas sobre las causas y factores que influyen en la puntualidad aérea y desarrollamos un modelo predictivo para mejorar la eficiencia de las operaciones aeroportuarias y la satisfacción de los pasajeros. El proyecto no solo cumple con los requisitos académicos de Hack a Boss, sino que también aplica lo aprendido en la solución de problemas prácticos, reflejando nuestra competencia técnica y determinación por innovar en el sector aeronáutico.
+            A través de un análisis exploratorio de datos, proporcionamos perspectivas sobre las causas y factores que influyen en la puntualidad aérea y desarrollamos un modelo predictivo para mejorar la eficiencia de las operaciones aeroportuarias y la satisfacción de los pasajeros. El proyecto no solo cumple con los requisitos académicos de Hack a Boss, sino que también aplica lo aprendido en la solución de problemas prácticos, reflejando nuestra competencia técnica y determinación por innovar y ser creativos en la realización de proyectos.
         """)
 
     # Otras FAQs
     with st.expander("¿Qué tecnologías se utilizan en el proyecto?"):
         st.write("""
-            Este proyecto utiliza Python y Streamlit para la interfaz web, junto con bibliotecas como Pandas para 
-            el manejo de datos y Plotly para las visualizaciones gráficas.
+            En este proyecto, hemos utilizado una amplia variedad de tecnologías y bibliotecas para la recolección, análisis y visualización de datos. La recolección de datos se realizó mediante técnicas de web scraping utilizando **BeautifulSoup** y **Selenium**, herramientas que nos permitieron automatizar la interacción con páginas web y extraer información de manera eficiente. **Requests** fue usado para manejar las solicitudes HTTP durante el scraping.
+
+            Para el análisis y manipulación de datos, empleamos **Pandas**, una biblioteca fundamental en ciencia de datos para operaciones de manipulación de datos, y **NumPy** para operaciones numéricas complejas. **Datetime** facilitó la manipulación de fechas y tiempos.
+
+            La visualización de datos es crucial para interpretar eficazmente las tendencias y patrones. Utilizamos **Matplotlib** y **Seaborn** para generar gráficos estáticos, mientras que **Plotly** nos permitió crear visualizaciones interactivas y dinámicas. **Folium** fue utilizado específicamente para mapas interactivos, permitiendo una contextualización geográfica de los datos.
+
+            En cuanto al modelado predictivo, implementamos varios modelos de aprendizaje automático utilizando bibliotecas como **Scikit-learn**, que nos proporcionó algoritmos de clasificación como KNeighbors, DecisionTree, RandomForest y GradientBoosting, entre otros. **Imblearn** fue crucial para manejar el desbalance de clases mediante técnicas de OverSampling y UnderSampling.
+
+            Para la interfaz de usuario, elegimos **Streamlit** por su capacidad para desarrollar aplicaciones de ciencia de datos de manera rápida y con un alto nivel de interactividad. Además, para el control de versiones y manejo de grandes volúmenes de datos, utilizamos **Git** con **GitHub** y **Git LFS** (Large File Storage), lo que nos permitió gestionar eficientemente los archivos de tamaño considerable generados durante el proyecto.
+
+            Todas estas herramientas y tecnologías juntas nos han permitido crear un sistema robusto que no solo cumple con los requisitos técnicos del análisis de datos, sino que también proporciona una plataforma accesible y fácil de usar para cualquier usuario interesado en la puntualidad aérea.
         """)
 
     # FAQ Nueva 1
