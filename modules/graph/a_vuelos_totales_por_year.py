@@ -14,14 +14,14 @@ def graficar_vuelos_totales_por_year(df):
                  x='anio',
                  y='cantidad_vuelos_anuales',
                  opacity=0.8,
-                 title="Cantidad de Vuelos Anuales",
+                 title="Cantidad de vuelos anuales",
                  color='anio')
 
     # Actualizar la configuración del layout del gráfico
     fig.update_layout(
         title_x=0.5,
-        xaxis_title='Año',
-        yaxis_title='Cantidad de Vuelos',
+        xaxis_title='Años',
+        yaxis_title='Cantidad de vuelos',
         xaxis={'categoryorder': 'total descending', 'type': 'category'}  # Especificar que el eje x es categórico
     )
 
