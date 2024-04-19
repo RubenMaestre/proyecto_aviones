@@ -1,17 +1,22 @@
 # modules/eda/descripciones_graficas.py
-import streamlit as st
 import pandas as pd
 
-@st.cache
 def cargar_descripciones():
-    return pd.read_excel('data/graficas/comentarios.xlsx')
-
-def obtener_descripcion(year, grafica_seleccionada, descripciones):
-    # Asegúrate de que 'year' sea un string si los años en Excel están como texto
-    year = str(year)
+    """Carga las descripciones de las gráficas desde un archivo Excel."""
     try:
-        filtro = ((descripciones['years'] == year) | (descripciones['years'] == 'Todo')) & (descripciones['grafica'] == grafica_seleccionada)
-        descripcion = descripciones[filtro]['comentario'].iloc[0] if any(filtro) else "Descripción no disponible."
+        df_descripciones = pd.read_excel('data/graficas/comentarios.xlsx')
+        return df_descripciones
     except Exception as e:
-        descripcion = f"Error al obtener descripción: {str(e)}"
-    return descripcion
+        print(f"Error al cargar las descripciones: {e}")
+        return pd.DataFrame()  # Retorna un DataFrame vacío si hay error
+
+def obtener_descripcion(año, nombre_grafica, df_descripciones):
+    """Busca y retorna la descripción para una gráfica específica dada por año y nombre."""
+    descripcion = df_descripciones[
+        (df_descripciones['Año'] == año) & (df_descripciones['Nombre'] == nombre_grafica)
+    ]['Descripción'].values
+
+    if descripcion.size > 0:
+        return descripcion[0]
+    else:
+        return "Descripción no disponible."

@@ -26,7 +26,7 @@ def display():
             st.markdown("---")
             st.write("Elige qué tipo de gráfica ver, agrupadas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()
-            
+
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
