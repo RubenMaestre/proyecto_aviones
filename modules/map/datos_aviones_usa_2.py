@@ -32,11 +32,12 @@ def datos_aviones_usa_2():
     aerolinea_mas_vuelos = df_todos['aerolinea'].value_counts().idxmax()
     aerolinea_menos_vuelos = df_todos['aerolinea'].value_counts().idxmin()
 
-    # Combinar salidas y llegadas para el día de la semana
-    df_todos['dia_semana'].replace({1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo'}, inplace=True)
-    dia_mas_trafico = (df_todos['dia_semana_origen'].value_counts() + df_todos['dia_semana_destino'].value_counts()).idxmax()
+    # Día de la semana con más tráfico aéreo
+    dia_mas_trafico = df_todos['dia_semana'].value_counts().idxmax()
+    dias_semana = {1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo'}
+    dia_mas_trafico_nombre = dias_semana[dia_mas_trafico]
 
-    # Combinar ciudad origen-destino para identificar la ruta más transitada
+    # Ruta más transitada
     df_todos['ruta'] = df_todos['ciudad_origen'] + '-' + df_todos['ciudad_destino']
     ruta_mas_transitada = df_todos['ruta'].value_counts().idxmax()
 
@@ -59,7 +60,7 @@ def datos_aviones_usa_2():
     col1, col2 = st.columns(2)
     with col1:
         render_data('Aerolínea con más vuelos', f"{aerolinea_mas_vuelos} ({df_todos['aerolinea'].value_counts().max()} vuelos)")
-        render_data('Día de la semana con más tráfico', dia_mas_trafico)
+        render_data('Día de la semana con más tráfico', dia_mas_trafico_nombre)
         render_data('Ruta más transitada', ruta_mas_transitada)
         render_data('Promedio de retraso por aerolínea', promedio_retraso_aerolinea)
         render_data('Vuelo más largo', f"{df_todos.loc[vuelo_mas_largo, 'aerolinea']} - Duración: {df_todos.loc[vuelo_mas_largo, 'duracion_programada_vuelo']} minutos")
