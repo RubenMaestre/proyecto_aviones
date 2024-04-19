@@ -5,15 +5,15 @@ def display():
     
     st.write("Aquí encontrarás respuestas a algunas preguntas frecuentes sobre nuestro proyecto.")
 
-    # FAQ 1
+        # FAQ 1: Objetivo del Proyecto
     with st.expander("¿Cuál es el objetivo de este proyecto?"):
         st.write("""
-            El objetivo principal de este proyecto es proporcionar una plataforma donde los usuarios puedan 
-            analizar y visualizar datos de vuelos de manera interactiva, ayudando a entender mejor las tendencias 
-            y comportamientos en el tráfico aéreo.
+            Este proyecto constituye el trabajo final del Bootcamp de Data Science e Inteligencia Artificial en Hack a Boss. El objetivo principal es ofrecer una plataforma interactiva donde los usuarios puedan analizar y visualizar datos de vuelos, ayudando a entender mejor las tendencias y comportamientos en el tráfico aéreo de los Estados Unidos. Buscamos abordar un desafío crítico en la gestión aeronáutica: la optimización de la puntualidad y la gestión de retrasos en vuelos.
+
+            A través de un análisis exploratorio de datos, proporcionamos perspectivas sobre las causas y factores que influyen en la puntualidad aérea y desarrollamos un modelo predictivo para mejorar la eficiencia de las operaciones aeroportuarias y la satisfacción de los pasajeros. El proyecto no solo cumple con los requisitos académicos de Hack a Boss, sino que también aplica lo aprendido en la solución de problemas prácticos, reflejando nuestra competencia técnica y determinación por innovar en el sector aeronáutico.
         """)
 
-    # FAQ 2
+    # Otras FAQs
     with st.expander("¿Qué tecnologías se utilizan en el proyecto?"):
         st.write("""
             Este proyecto utiliza Python y Streamlit para la interfaz web, junto con bibliotecas como Pandas para 
