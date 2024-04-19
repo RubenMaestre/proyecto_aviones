@@ -104,7 +104,7 @@ def display():
         st.write("""
             Con la finalización de este proyecto, hemos alcanzado un hito significativo en nuestra formación y desarrollo profesional. Este proyecto no solo cumplió con los objetivos propuestos, sino que también superó nuestras expectativas en términos de profundidad y alcance del análisis de puntualidad aérea.
 
-            El uso integrado de tecnologías como Python, Streamlit, Pandas, y Plotly, entre otros, no solo facilitó la manipulación de grandes volúmenes de datos, sino que también mejoró nuestra capacidad de presentar datos complejos de manera intuitiva y accesible. Este proyecto ha sido una prueba tangible de cómo la ciencia de datos puede aplicarse para resolver problemas reales y ofrecer soluciones prácticas en la industria aeronáutica.
+            El uso integrado de tecnologías como Python, Streamlit, Pandas, y Plotly, entre otros, no solo facilitó la manipulación de grandes volúmenes de datos, sino que también mejoró nuestra capacidad de presentar datos complejos de manera intuitiva y accesible. Este proyecto ha sido una prueba tangible de cómo la ciencia de datos puede aplicarse para resolver problemas reales y ofrecer soluciones prácticas, en este caso en la industria aeronáutica. Pero aplicable a otras industrias, actividades y negocios.
 
             La colaboración y el trabajo en equipo fueron fundamentales para superar los numerosos desafíos técnicos y logísticos que surgieron, enseñándonos el valor de la comunicación efectiva y el apoyo mutuo en un entorno de alta presión y expectativas.
 
@@ -112,16 +112,22 @@ def display():
 
             Mirando hacia el futuro, vemos un gran potencial para expandir este proyecto. Podríamos incorporar más variables, explorar nuevas técnicas de modelado predictivo o ampliar nuestro análisis a otras regiones geográficas. Cada uno de estos pasos representa una oportunidad para profundizar aún más en nuestro conocimiento y refinar nuestras habilidades.
 
-            En conclusión, este proyecto no solo ha sido una culminación de nuestro aprendizaje, sino también un trampolín hacia futuros desafíos y exploraciones en el campo de la ciencia de datos. Estamos agradecidos por esta oportunidad y emocionados por lo que depara el futuro.
+            En conclusión, este proyecto no solo ha sido una culminación de nuestro aprendizaje, sino también un trampolín hacia futuros desafíos y exploraciones en el campo de la ciencia de datos. Estamos ilusionados por las futuras oportunidades que nos depara el futuro y con ganas de demostrar todo nuestro talento y capacidad de trabajo.
         """)
 
 
     # FAQ 3 (Retrasada)
     with st.expander("¿Cómo puedo contribuir al proyecto?"):
         st.write("""
-            Los interesados en contribuir al proyecto pueden hacerlo de varias maneras, como sugerir mejoras, 
-            reportar bugs o colaborar en el desarrollo. Puedes contactarnos a través de [nuestro formulario de contacto](#).
+            Si nuestro proyecto te ha inspirado o encontrado útil, la mejor manera de contribuir y apoyarnos es compartiéndolo con otros. Hablar de nuestro trabajo con colegas, amigos y en tus redes sociales, especialmente en plataformas profesionales como LinkedIn, amplifica nuestro alcance y abre nuevas oportunidades para todos nosotros. 
+
+            Cada mención y cada discusión sobre nuestro proyecto no solo nos ayuda a ganar visibilidad sino también nos acerca un paso más a realizar nuestro sueño de convertirnos en profesionales influyentes en el campo de la ciencia de datos. Si te ha gustado nuestro enfoque y los resultados, por favor, comparte nuestra historia y menciona las habilidades y la dedicación de nuestro equipo. 
+
+            Además, Streamlit ofrece la posibilidad de 'estrellar' las aplicaciones que te gustan. Puedes encontrar esta opción en la parte superior derecha de la página. Darle a la estrella ayuda a recomendar nuestro proyecto dentro de la comunidad de Streamlit, incrementando su visibilidad y demostrando apoyo a nuestro esfuerzo y trabajo.
+
+            Más allá de compartir y estrellar, habla de nosotros y de nuestro deseo de demostrar nuestra capacidad y talento. Estamos preparados y deseosos de asumir nuevos retos y proyectos estimulantes, y cuanto más nos conozca la gente, mejor será para nuestro desarrollo profesional y personal. Tu apoyo y reconocimiento son la mayor contribución que podrías ofrecernos y estamos profundamente agradecidos por ello.
         """)
+
 
 # Llama a la función para mostrar la página
 display()
