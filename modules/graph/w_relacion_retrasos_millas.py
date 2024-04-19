@@ -19,6 +19,10 @@ def graficar_relacion_retrasos_millas(df):
     df['rango_millas'] = df['distancia_millas'].apply(asignar_rango_millas)
     df['retraso'] = df['retraso_llegada'].apply(lambda x: 'con_retraso' if x > 15 else 'sin_retraso')
     
+    # Definir el orden de las categorías para el eje x
+    orden_rangos = ['menos de 500', '500-1000', '1000-1500', '1500-2000', 'más de 2000']
+    df['rango_millas'] = pd.Categorical(df['rango_millas'], categories=orden_rangos, ordered=True)
+    
     # Preparar los datos para el gráfico
     datos_grafico = df.groupby(['rango_millas', 'retraso']).size().unstack(fill_value=0).reset_index()
     
