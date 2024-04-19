@@ -48,15 +48,42 @@ def display():
 
     # FAQ Nueva 3
     with st.expander("¿Cómo ha sido el desarrollo con Streamlit?"):
-        st.write("Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
+        st.write("""
+            El desarrollo con Streamlit ha representado una curva de aprendizaje empinada pero enriquecedora para nuestro equipo, ya que ninguno tenía experiencia previa en construir aplicaciones web con esta herramienta. Desde el principio, optamos por publicar nuestro proyecto directamente, lo cual, aunque no es una práctica común, nos permitió minimizar errores potenciales y facilitó que todo el equipo participara viendo los desarrollos en tiempo real.
+
+            Comenzamos con lo básico, configurando un archivo `app.py` y diseñando la arquitectura de nuestro proyecto en papel, planeando cómo llamaríamos a otras páginas dentro de Streamlit, y cómo implementaríamos botones, menús y secciones. La capacidad de Streamlit para manejar estados con `st.session_state`, permitiéndonos conservar datos entre páginas, fue particularmente impresionante.
+
+            A medida que el proyecto evolucionaba, desarrollamos nuevas funcionalidades, aprendimos sobre la formatación de texto y empleamos HTML y CSS para mejorar la presentación. También hicimos uso extensivo de columnas y tablas, e integramos gráficos interactivos en la aplicación. Sin embargo, enfrentamos desafíos significativos relacionados con el manejo de recursos de memoria, especialmente al intentar cargar todas las gráficas en una sola página para nuestro EDA. Esto ocasionaba que la aplicación se colgara frecuentemente, llevándonos a reinventar nuestra estrategia para la visualización de datos.
+
+            Implementamos selectores para permitir a los usuarios elegir cargar datos de todos los años o de años específicos, lo que modificaba la disponibilidad de ciertas gráficas. Esta solución no solo mejoró los tiempos de carga sino que también estabilizó la aplicación, eliminando casi por completo la necesidad de reinicios forzados —una mejora que inicialmente no sabíamos gestionar por desconocer la existencia del botón de reinicio en Streamlit.
+
+            Después de tres intensas semanas de trabajo, hemos logrado desarrollar una aplicación que no solo funciona eficazmente sino que también es intuitiva y refleja fielmente todos los pasos que hemos dado en el proyecto. Creemos que cualquier usuario que acceda a nuestra aplicación encontrará una experiencia de navegación sencilla y directa que transmite fielmente el esfuerzo y la dedicación invertidos en el proyecto.
+        """)
+
 
     # FAQ Nueva 4
     with st.expander("¿Qué tipo de fortalezas destacamos en la ejecución del proyecto?"):
-        st.write("Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+        st.write("""
+            Las fortalezas que más destacaríamos de nuestra ejecución del proyecto son, sin duda, el trabajo en equipo y la comunicación efectiva. Desde el inicio, cada miembro del equipo mostró un gran compromiso y entusiasmo, dedicando tiempo y esfuerzo, incluso sacrificando días personales, para asegurar el éxito del proyecto. 
+
+            Nuestra comunicación fue constante y fluida, utilizando diversos canales para organizarnos y sincronizar nuestras actividades. Esta coordinación nos permitió optimizar nuestros recursos y avanzar de manera eficiente en cada etapa del desarrollo.
+
+            Además, una cualidad destacada de nuestro equipo fue la habilidad para contar una historia coherente y atractiva a través del proyecto. Desde el principio, tuvimos una visión clara del mensaje que queríamos transmitir. Esta visión se reflejó no solo en los notebooks de Jupyter que utilizamos para el análisis y la modelación, sino también en cada elemento de la aplicación Streamlit. Prestamos especial atención a los detalles, desde las imágenes hasta los textos, asegurando que todo contribuyera a una presentación y narrativa convincentes.
+
+            Creemos que estas fortalezas han sido fundamentales para crear un proyecto bien integrado, no solo técnica sino también visualmente, lo cual consideramos esencial para comunicar efectivamente los resultados de nuestra investigación y análisis.
+        """)
+
 
     # FAQ Nueva 5
     with st.expander("Autocrítica con el proyecto"):
-        st.write("Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.")
+        st.write("""
+            Reflexionando sobre el desarrollo del proyecto, sinceramente todos sentimos que nos hubiera gustado presentar algo aún más grande y ambicioso. La limitación de tiempo, combinada con nuestras responsabilidades personales, no siempre nos permitió involucrarnos con el proyecto tanto como hubiéramos querido, lo que en ocasiones nos dejó con un regusto algo amargo.
+
+            Hemos discutido esto en varias ocasiones y coincidimos en que, si pudiéramos dedicar más tiempo y si esto fuera nuestro trabajo a tiempo completo, estamos convencidos de que podríamos desarrollar grandes proyectos y materializar ideas innovadoras. Aunque estamos satisfechos con lo logrado, no podemos evitar sentir que, con más recursos y tiempo, nuestro potencial podría haberse expresado aún más.
+
+            Si bien es cierto que el tiempo fue un recurso escaso, si tuviéramos que señalar un aspecto a mejorar, sería precisamente esa aspiración de hacer más y mejor. Este sentimiento, más que un reproche, refleja nuestro espíritu de superación y el deseo de aprovechar al máximo las oportunidades para demostrar nuestra capacidad y valía.
+        """)
+
 
     # FAQ Nueva 6
     with st.expander("¿Qué lecciones hemos aprendido con el proyecto?"):
