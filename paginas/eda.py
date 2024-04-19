@@ -14,7 +14,10 @@ def display():
         st.image('sources/mapa_aviones_usa.png')
 
     if 'mostrar_conclusiones' not in st.session_state:
-        st.session_state['mostrar_conclusiones'] = False  # Estado inicial para mostrar conclusiones
+        st.session_state['mostrar_conclusiones'] = False
+
+    if 'content_to_show' not in st.session_state:
+        st.session_state['content_to_show'] = None
 
     st.markdown("---")
     descripciones = cargar_descripciones()
@@ -29,22 +32,21 @@ def display():
             st.markdown("---")
             st.write("Elige qué tipo de gráfica ver, agrupadas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()
+            if grafica_funcion:
+                st.session_state['content_to_show'] = 'grafica'
+                st.session_state['mostrar_conclusiones'] = False
         
-        # Botón para mostrar las conclusiones
         if st.button("Ver conclusiones del EDA"):
             st.session_state['mostrar_conclusiones'] = True
-        
-        # Añadir una condición para resetear las conclusiones cuando se elige una gráfica
-        if grafica_funcion:
-            st.session_state['mostrar_conclusiones'] = False
+            st.session_state['content_to_show'] = 'conclusiones'
 
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
     with col2:
-        if st.session_state['mostrar_conclusiones']:
+        if st.session_state['content_to_show'] == 'conclusiones' and st.session_state['mostrar_conclusiones']:
             mostrar_conclusiones()
-        elif df_seleccionado is not None and grafica_funcion:
+        elif st.session_state['content_to_show'] == 'grafica' and df_seleccionado is not None and grafica_funcion:
             grafica_funcion(df_seleccionado)
             selected_year = st.session_state.get('selected_year', 'Default Year')
             descripcion = obtener_descripcion(selected_year, grafica_nombre, descripciones)
