@@ -4,6 +4,7 @@ from modules.eda.botones_eda import seleccionar_datos
 from modules.eda.botones_graficas import seleccionar_grafica
 from modules.eda.datos_df_cargados import mostrar_estadisticas_df
 from modules.eda.descripciones_graficas import obtener_descripcion, cargar_descripciones
+from modules.eda.conclusiones import mostrar_conclusiones
 
 def display():
     st.markdown("<h2 style='text-align: center;'>Página de análisis exploratorio de datos (EDA)</h2>", unsafe_allow_html=True)
@@ -26,6 +27,9 @@ def display():
             st.markdown("---")
             st.write("Elige qué tipo de gráfica ver, agrupadas por categorías.")
             grafica_funcion, grafica_nombre = seleccionar_grafica()
+        
+        if st.button("Ver conclusiones del EDA"):  # Botón para mostrar las conclusiones
+            mostrar_conclusiones()
 
     with divider:
         st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
