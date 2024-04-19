@@ -14,7 +14,7 @@ def graficar_vuelos_totales_por_year(df):
                  x='anio',
                  y='cantidad_vuelos_anuales',
                  opacity=0.8,
-                 title="Cantidad de Vuelos Anuales",
+                 title="Cantidad de vuelos anuales",
                  color='anio',  # Se espera que 'anio' se use para agrupar y colorear las barras.
                  labels={'anio': 'Años'})  # Actualizar la leyenda de la barra de colores.
 
@@ -22,7 +22,7 @@ def graficar_vuelos_totales_por_year(df):
     fig.update_layout(
         title_x=0.5,
         xaxis_title='Año',
-        yaxis_title='Cantidad de Vuelos',
+        yaxis_title='Cantidad de vuelos',
         xaxis={'categoryorder': 'total descending', 'type': 'category'},
         width=900  # Establecer el ancho del gráfico
     )
