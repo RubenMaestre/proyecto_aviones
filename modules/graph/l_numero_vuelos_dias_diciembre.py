@@ -12,33 +12,32 @@ def graficar_numero_vuelos_dias_diciembre(df):
 
     # Combinar los gráficos en un solo gráfico con subplots
     fig = make_subplots(
-        rows=1,  # Tres filas
-        cols=3,  # Una columna
+        rows=1,  # Una fila
+        cols=3,  # Tres columnas
         subplot_titles=('2021', '2022', '2023'),
-        vertical_spacing=0.1  # Ajustar el espaciado vertical
+        horizontal_spacing=0.1  # Ajustar el espaciado horizontal
     )
 
-    # Añadir cada gráfico a su respectiva fila
+    # Añadir cada gráfico a su respectiva columna
     fig.add_trace(fig1.data[0], row=1, col=1)
-    fig.add_trace(fig2.data[0], row=2, col=1)
-    fig.add_trace(fig3.data[0], row=3, col=1)
+    fig.add_trace(fig2.data[0], row=1, col=2)
+    fig.add_trace(fig3.data[0], row=1, col=3)
 
     # Actualizar ejes y layout
     fig.update_xaxes(title_text='Fecha', row=1, col=1)
-    fig.update_xaxes(title_text='Fecha', row=2, col=1)
-    fig.update_xaxes(title_text='Fecha', row=3, col=1)
+    fig.update_xaxes(title_text='Fecha', row=1, col=2)
+    fig.update_xaxes(title_text='Fecha', row=1, col=3)
 
     fig.update_yaxes(title_text='Número de vuelos', row=1, col=1)
-    fig.update_yaxes(title_text='Número de vuelos', row=2, col=1)
-    fig.update_yaxes(title_text='Número de vuelos', row=3, col=1)
+    fig.update_yaxes(title_text='Número de vuelos', row=1, col=2)
+    fig.update_yaxes(title_text='Número de vuelos', row=1, col=3)
 
     fig.update_layout(
         title_text='Número de vuelos por días en Diciembre por Año',
         title_x=0.5,
         width=1080,
-        height=1200  # Ajusta la altura para acomodar los tres gráficos
+        height=400  # Ajusta la altura para acomodar una sola fila
     )
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
-
