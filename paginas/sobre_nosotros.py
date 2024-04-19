@@ -5,30 +5,18 @@ def display():
     st.title("Sobre nosotros")
 
     st.markdown("""
-            ### Sobre Nosotros - Proyecto Final en Hack a Boss
+        ### Sobre Nosotros
 
-            Somos un equipo de aspirantes a científicos de datos que se han unido con un propósito común en el Bootcamp de Data Science & Inteligencia Artificial de Hack a Boss. Este proyecto es el culmen de meses de aprendizaje intensivo y colaboración, donde cada miembro ha aportado su dedicación, conocimientos técnicos y creatividad para superar los retos propuestos.
+        Somos un equipo formado en el Bootcamp de Data Science & Inteligencia Artificial de Hack a Boss, dedicados a aplicar nuestros conocimientos en un proyecto que aborda los desafíos de la puntualidad y los retrasos en los vuelos. Este proyecto es el resultado de una colaboración intensiva, donde cada uno de nosotros ha aportado su expertise técnico para analizar y presentar datos complejos de manera efectiva y accesible.
 
-            #### Nuestro Viaje
+        A lo largo de este proyecto, hemos utilizado herramientas avanzadas como Python, Streamlit, Pandas y Plotly, que nos han permitido manipular grandes conjuntos de datos y desarrollar visualizaciones interactivas. Este enfoque no solo nos ha permitido alcanzar una comprensión más profunda de los datos, sino también mejorar nuestras habilidades en la presentación y análisis de información.
 
-            Desde el comienzo de este proyecto, nos propusimos no solo cumplir con los requisitos académicos, sino también superar nuestras propias expectativas en cuanto a la profundidad y utilidad del análisis. A través del uso integrado de tecnologías avanzadas como Python, Streamlit, Pandas y Plotly, hemos logrado manipular y presentar grandes volúmenes de datos sobre la puntualidad aérea de manera que no solo es comprensible, sino también visualmente atractiva y práctica.
+        El trabajo en equipo ha sido crucial para nuestro éxito, permitiéndonos superar múltiples desafíos técnicos y logísticos. A través de esta experiencia, hemos fortalecido nuestras habilidades de comunicación y colaboración, preparándonos para futuros roles profesionales en la ciencia de datos.
 
-            #### Colaboración y Crecimiento
+        Si este proyecto te inspira o encuentras utilidad en el análisis presentado, te animamos a compartirlo dentro de tu red y contribuir a nuestra visibilidad en la comunidad profesional. Tu apoyo es invaluable y apreciamos cada contribución que amplifica nuestro trabajo y esfuerzos.
 
-            El trabajo en equipo ha sido esencial para nuestro éxito. Nos hemos enfrentado a desafíos técnicos y logísticos, aprendiendo en el proceso la importancia de una comunicación efectiva y el soporte mutuo. Este proyecto ha sido una valiosa lección sobre el trabajo colaborativo en situaciones de alta exigencia, preparándonos para futuros desafíos profesionales.
-
-            #### Impacto y Futuro
-
-            Miramos hacia adelante con entusiasmo, conscientes del potencial de expansión de nuestro proyecto. Estamos interesados en explorar nuevas variables, técnicas de modelado predictivo y expandir nuestro análisis a otras regiones. Cada paso adelante es una oportunidad para profundizar nuestro conocimiento y perfeccionar nuestras habilidades.
-
-            #### Invitación a Colaborar
-
-            Creemos firmemente en el poder de la comunidad y el intercambio de conocimientos. Si encuentras valor en nuestro trabajo o te sientes inspirado por nuestros esfuerzos, te animamos a compartirlo en tus redes sociales y plataformas profesionales. Tu apoyo amplifica nuestro alcance y abre puertas a nuevas oportunidades, acercándonos a nuestro sueño de convertirnos en influenciadores en el campo de la ciencia de datos.
-
-            Además, puedes mostrar tu apoyo a nuestro proyecto dando una estrella en Streamlit. Esta acción incrementa la visibilidad de nuestro trabajo dentro de la comunidad y es un gran estímulo para nosotros. Habla de nuestro proyecto, comparte nuestra historia y ayuda a que más personas reconozcan la pasión y el esfuerzo que hemos invertido en convertirnos en profesionales capaces y comprometidos.
-
-            **¡Gracias por tu apoyo y por ser parte de nuestro viaje!**
-            """)
+        Agradecemos tu interés y apoyo, y esperamos que nuestro proyecto te ofrezca insights valiosos y perspectivas nuevas sobre la ciencia de datos aplicada a la industria aeronáutica.
+        """)
 
     # Información del equipo
     team_members = {
