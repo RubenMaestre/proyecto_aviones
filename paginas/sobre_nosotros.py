@@ -41,11 +41,10 @@ def display():
                 st.write(f"Redirigiendo a {github_url}")
 
     st.markdown("""
-    ---
-    Esperamos que esta sección proporcione una visión más cercana de quiénes somos y qué nos impulsa
-    en el campo de la ciencia de datos. Para más detalles sobre nuestro trabajo, síguenos en LinkedIn
-    y consulta nuestros repositorios en GitHub.
-    """)
+        ---
+        Esperamos que esta sección haya ofrecido una visión clara de nuestro equipo y nuestras motivaciones en el campo de la ciencia de datos. Si deseas explorar más sobre nuestro trabajo o seguir nuestra trayectoria profesional, te invitamos a conectarte con nosotros a través de LinkedIn y revisar nuestros proyectos y contribuciones en GitHub. Valoramos el intercambio de ideas y la colaboración, y estamos abiertos a oportunidades de conectar y crecer profesionalmente.
+        """)
+
 
 display()
 
