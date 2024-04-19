@@ -30,6 +30,8 @@ def graficar_correlacion_lineal(df):
         opacity=0.5,
         trendline=None  # Remover la línea de tendencia para mejorar el rendimiento
     )
+    # Cambiar el color de los puntos a fucsia
+    fig.update_traces(marker=dict(color='fuchsia'))
 
     # Ajustes de visualización y rendimiento
     fig.update_layout(
