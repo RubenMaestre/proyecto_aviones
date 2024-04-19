@@ -5,17 +5,17 @@ from modules.carga_todos_df import cargar_todos_df
 def render_data(title, value, note=""):
     column_style = """
     <style>
-    .data-column {
-        border: 2px solid #CCCCCC;
-        border-radius: 10px;
-        padding: 20px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .note {
-        font-size: small;
-        color: #555555;
-    }
+    .data-column {{
+        border: 2px solid #CCCCCC;  /* Grosor y color del borde */
+        border-radius: 10px;  /* Bordes redondeados */
+        padding: 20px;  /* Espaciado interno */
+        text-align: center;  /* Alineación del texto */
+        margin-bottom: 20px;  /* Espacio debajo de cada bloque */
+    }}
+    .note {{
+        font-size: small;  /* Tamaño de la fuente más pequeño para la nota */
+        color: #555555;  /* Color gris para la nota */
+    }}
     </style>
     <div class='data-column'>
         <h4>{title}</h4>
