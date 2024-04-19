@@ -33,8 +33,8 @@ def display():
         # Botón para mostrar las conclusiones
         if st.button("Ver conclusiones del EDA"):
             st.session_state['mostrar_conclusiones'] = True
-
-        # Opción para visualizar gráficas (cambia el estado al seleccionar una gráfica)
+        
+        # Añadir una condición para resetear las conclusiones cuando se elige una gráfica
         if grafica_funcion:
             st.session_state['mostrar_conclusiones'] = False
 
