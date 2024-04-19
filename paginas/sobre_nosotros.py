@@ -18,6 +18,7 @@ def display():
         Agradecemos tu interés y apoyo, y esperamos que nuestro proyecto te ofrezca insights valiosos y perspectivas nuevas sobre la ciencia de datos aplicada a la industria aeronáutica.
         """)
 
+    st.markdown("<br><br>", unsafe_allow_html=True)
     # Información del equipo
     team_members = {
         'José Núñez': ('Junior Data Scientist | Inteligencia Artificial, Python, SQL y Machine Learning | Químico | Profesor de ciencias | Haz las cosas bien, pero sobre todo, disfrútalas.', 'https://www.linkedin.com/in/jose-nunez-ben-ali/', 'https://github.com/josnuzbel'),
