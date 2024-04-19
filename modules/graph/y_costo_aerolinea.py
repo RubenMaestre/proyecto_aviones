@@ -23,16 +23,16 @@ def graficar_vuelos_por_costo_aerolinea(df):
     # Agrupar por categoría de costo y contar vuelos
     vuelos_aerolinea = df.groupby('costo_aerolinea').size().reset_index(name='numero_vuelos')
 
-    # Crear gráfico de barras usando Plotly Express
-    fig = px.bar(vuelos_aerolinea,
-                 x='costo_aerolinea',
-                 y='numero_vuelos',
-                 title='Cantidad de Vuelos según el Costo de la Aerolínea',
-                 labels={'costo_aerolinea': 'Costo de la Aerolínea', 'numero_vuelos': 'Cantidad de Vuelos'},
+    # Crear gráfico de tarta usando Plotly Express
+    fig = px.pie(vuelos_aerolinea,
+                 names='costo_aerolinea',
+                 values='numero_vuelos',
+                 title='Porcentaje de Vuelos según el Costo de la Aerolínea',
                  color='costo_aerolinea',
                  color_discrete_map={'alto_costo': 'red', 'medio_costo': 'orange', 'bajo_costo': 'green', 'otro': 'grey'})
 
-    fig.update_layout(title_x=0.5, xaxis_title='Costo de la Aerolínea', yaxis_title='Cantidad de Vuelos')
+    fig.update_traces(textinfo='percent+label')
+    fig.update_layout(title_x=0.5)
 
     # Mostrar la figura en la aplicación Streamlit
     st.plotly_chart(fig)
