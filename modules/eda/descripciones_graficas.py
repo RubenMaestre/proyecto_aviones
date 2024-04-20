@@ -26,8 +26,8 @@ def obtener_descripcion(year, nombre_grafica, df_descripciones):
             return descripcion[0]
         else:
             print("Esta sección no contiene comentarios adicionales o está pendiente de comentar.")  # Diagnóstico
-            return "Descripción no disponible."
+            return "Esta sección no contiene comentarios adicionales o está pendiente de comentar."
     except Exception as e:
         print(f"Error al obtener la descripción: {e}")
-        return "Descripción no disponible."
+        return "Esta sección no contiene comentarios adicionales o está pendiente de comentar."
 
