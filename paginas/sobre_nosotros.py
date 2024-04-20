@@ -24,7 +24,7 @@ def display():
         'José Núñez': ('Junior Data Scientist | Inteligencia Artificial, Python, SQL y Machine Learning | Químico | Profesor de ciencias | Haz las cosas bien, pero sobre todo, disfrútalas.', 'https://www.linkedin.com/in/jose-nunez-ben-ali/', 'https://github.com/josnuzbel'),
         'Rubén Maestre': ('Junior Data Scientist | Inteligencia Artificial, Python, SQL y Machine Learning | Experto en Marketing Digital y Comunicación | MBA en Gestión Deportiva | Diseño Gráfico, WordPress y Redes Sociales | Proyectos Digitales', 'https://www.linkedin.com/in/rubenmaestrezaplana/', 'https://github.com/RubenMaestre'),
         'Dafne Moreno': ('Junior Data Scientist | Inteligencia Artificial, Python, SQL, Machine Learning, Deep Learning, Streamlit | Desarrollo web: HTML, CSS, JavaScript / Terapeuta Ocupacional: salud mental', 'https://www.linkedin.com/in/dafne-moreno-palomares-86a30526b/', 'https://github.com/dafnemorenop'),
-        'Nahuel Núñez': ('Argentino, actualmente viviendo en Málaga. Me considero un trabajador muy eficiente para tareas en solitario como así también en grupo.', 'https://www.linkedin.com/in/nahuel-nunez-/', 'https://www.github.com/'),
+        'Nahuel Núñez': ('Data Science Junior, Python, Pandas, Machine Learning & Deep Learning, Plotly', 'https://www.linkedin.com/in/nahuel-nunez-/', 'https://github.com/Nahuel-nunez'),
     }
 
     cols = st.columns(4)
